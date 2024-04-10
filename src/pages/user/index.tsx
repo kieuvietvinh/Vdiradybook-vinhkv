@@ -1,10 +1,10 @@
-import Tabs from "@/components/user/User";
+import User from "@/components/user/User";
 import React from "react";
 
 const NewUser = () => {
   return (
     <div>
-      <Tabs />
+      <User />
     </div>
   );
 };

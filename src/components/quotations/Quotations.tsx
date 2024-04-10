@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Dropdown = () => {
+const Quotations = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -92,4 +92,4 @@ const Dropdown = () => {
   );
 };
 
-export default Dropdown;
+export default Quotations;

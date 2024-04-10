@@ -1,0 +1,223 @@
+header {
+    background-color: white;
+    display: flex;
+    padding: 10px 0;
+    width: 100%;
+    box-shadow: 10px 10px 5px #0000000F;
+
+
+    justify-content: space-between;
+
+    .logo {
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+        }
+
+        .farm {
+            display: flex;
+            align-items: center;
+        }
+
+    }
+
+    .degree {
+        font-size: 12px;
+        color: #28CD41;
+        font-weight: 400;
+    }
+
+    .cloud {
+        color: #000000;
+        font-size: 10px;
+        font-weight: 400;
+    }
+
+    .user {
+
+        right: 5px;
+        display: flex;
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+        }
+    }
+
+}
+
+.seach {
+    border: 1px solid #e6e6e6;
+    display: flex;
+
+    .dropdown {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border-right: 1px solid #e6e6e6;
+    }
+}
+
+nav {
+    display: flex;
+}
+
+.container {
+    display: flex;
+    padding-top: 10px;
+
+}
+
+.left {
+    flex: 1;
+    background-color: #FFFFFF;
+    padding: 10px;
+    max-width: 260px;
+    position: relative;
+
+    .community {
+        display: flex;
+        align-items: center;
+
+        img {
+            position: absolute;
+            right: 10px;
+
+        }
+    }
+
+    p {
+        color: #4284F3;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px;
+        color: #1F1F1F;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+
+
+        .arrow {
+            position: absolute;
+            right: 10px;
+        }
+    }
+}
+
+.right {
+    flex: 2;
+    background-color: #FFFFFF;
+    padding: 10px;
+    position: absolute;
+    right: 0px;
+    width: 260px;
+
+    .right-page {
+        display: flex;
+        position: relative;
+    }
+
+    p {
+        color: #1F1F1F;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+
+    .sting {
+        display: flex;
+        position: absolute;
+        right: 10px;
+        gap: 5px;
+    }
+
+    .useres {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        padding-top: 20px;
+    }
+
+    .one {
+        border-bottom: 3px solid #4284F3;
+    }
+
+    .userone {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px;
+        position: relative;
+    }
+
+    .onemo {
+        width: 30px;
+        height: 30px;
+
+    }
+
+    .towmo {
+        position: absolute;
+        top: 8px;
+        left: -6px;
+    }
+
+    .chatone {
+        color: #4284F3;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        position: relative;
+    }
+
+    .teck {
+        position: absolute;
+        top: 0px;
+        right: 40%;
+    }
+
+    .chattow {
+        display: flex;
+        gap: 5px;
+
+        .sys {
+            border: 1px solid #4284F3;
+            padding: 2px;
+            border-radius: 3px;
+        }
+    }
+    .chattrue {
+        display:flex ;
+        border: 1px solid #4284F3;
+        padding: 2px;
+        border-radius: 3px;
+
+        
+        p {
+            color: #838383;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 10px;
+        }
+
+        img {
+            height: 10px;
+            width: 10px;
+        }
+
+    }
+
+}

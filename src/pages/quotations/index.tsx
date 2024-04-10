@@ -1,10 +1,10 @@
-import Suggest from "@/components/suggest/Suggest";
+import Quotations from "@/components/quotations/Quotations";
 import React from "react";
 
 const Puotations = () => {
   return (
     <div>
-      <Suggest />
+      <Quotations />
     </div>
   );
 };

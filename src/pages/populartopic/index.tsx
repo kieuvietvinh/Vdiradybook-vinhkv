@@ -1,12 +1,12 @@
-import Topic from "@/components/popular-topic/PopularTopic";
+import PopularTopic from "@/components/popular-topic/PopularTopic";
 import React from "react";
 
-const PopularTopic = () => {
+const PopularTopicPage = () => {
   return (
     <div>
-      <Topic />
+      <PopularTopic />
     </div>
   );
 };
 
-export default PopularTopic;
+export default PopularTopicPage;

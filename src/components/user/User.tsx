@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Tabs = () => {
+const User = () => {
   const [activeTab, setActiveTab] = useState(1);
 
   const handleTabClick = (tabIndex: any) => {
@@ -273,4 +273,4 @@ const Tabs = () => {
   );
 };
 
-export default Tabs;
+export default User;

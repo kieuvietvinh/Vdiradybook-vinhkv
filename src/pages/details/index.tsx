@@ -1,10 +1,10 @@
-import PortfolioDetails from "@/components/details/Details";
+import Details from "@/components/details/Details";
 import React from "react";
 
 const NewDetails = () => {
   return (
     <div>
-      <PortfolioDetails />
+      <Details />
     </div>
   );
 };

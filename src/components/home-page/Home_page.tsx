@@ -307,7 +307,7 @@ const nation = [
   },
 ];
 
-const Home = () => {
+const Home_page = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -513,7 +513,7 @@ const Home = () => {
           />
         </div>
         {product.map((ocop) => (
-          <a href="" key={ocop.id} className="bg-white shadow-md  ">
+          <div key={ocop.id} className="bg-white shadow-md  ">
             <div className="w-full h-auto bg-white  overflow-hidden">
               <img
                 className="hover:scale-110 hover:delay-300 hover:duration-300"
@@ -553,7 +553,7 @@ const Home = () => {
                 </div>
               ))}
             </div>
-          </a>
+          </div>
         ))}
       </div>
       <div className="mt-5 ">
@@ -584,11 +584,13 @@ const Home = () => {
         <div className="col-span-2 bg-white">
           <div>
             <div className="overflow-hidden">
-              <img
-                className="hover:scale-110 hover:delay-100 hover:duration-300"
-                src="https://ocopmart.org/static/media/images/news/2022_05_18/s700_700/z3422643372693b31c1498dadfaef561cb10691b2f8a48-1652844702.jpg"
-                alt=""
-              />
+              <a href="">
+                <img
+                  className="hover:scale-110 hover:delay-100 hover:duration-300"
+                  src="https://ocopmart.org/static/media/images/news/2022_05_18/s700_700/z3422643372693b31c1498dadfaef561cb10691b2f8a48-1652844702.jpg"
+                  alt=""
+                />
+              </a>
             </div>
             <div className="p-5">
               <h3 className="text-[#3f3f3f] font-bold text-lg ">
@@ -606,11 +608,13 @@ const Home = () => {
         <div className="">
           <div className="bg-white">
             <div className="overflow-hidden">
-              <img
-                className="hover:scale-110 hover:delay-100 hover:duration-300 w-full"
-                src="https://ocopmart.org/static/media/images/news/2022_06_17/s300_300/ocop-1655474327.jpg"
-                alt=""
-              />
+              <a href="">
+                <img
+                  className="hover:scale-110 hover:delay-100 hover:duration-300 w-full"
+                  src="https://ocopmart.org/static/media/images/news/2022_06_17/s300_300/ocop-1655474327.jpg"
+                  alt=""
+                />
+              </a>
             </div>
             <div className="p-3">
               <h2 className="text-[#3f3f3f] text-base font-bold">
@@ -633,10 +637,12 @@ const Home = () => {
               Video
             </h2>
             <div className="flex px-[10px] py-[15px]">
-              <img
-                src="https://ocopmart.org/static/media/images/video/s100_100/349_1635340084_68061794f3415f91.jpg"
-                alt="Thành Phố Cà Mau chi 18 tỷ đồng. Để tham gia chương trinh OCOP"
-              />
+              <a href="">
+                <img
+                  src="https://ocopmart.org/static/media/images/video/s100_100/349_1635340084_68061794f3415f91.jpg"
+                  alt="Thành Phố Cà Mau chi 18 tỷ đồng. Để tham gia chương trinh OCOP"
+                />
+              </a>
               <h3 className="text-sm font-normal text-[#000] pl-2">
                 Thành Phố Cà Mau chi 18 tỷ đồng. Để tham gia chương trinh OCOP
               </h3>
@@ -645,11 +651,13 @@ const Home = () => {
         </div>
         <div className="lg:col-span-3 flex bg-white ">
           <div className="overflow-hidden">
-            <img
-              className="hover:scale-110 hover:delay-100 hover:duration-300 "
-              src="https://ocopmart.org/static/media/images/news/2022_06_14/s300_300/thiet-ke-chua-co-ten-10-1655212196.png"
-              alt=""
-            />
+            <a href="">
+              <img
+                className="hover:scale-110 hover:delay-100 hover:duration-300 "
+                src="https://ocopmart.org/static/media/images/news/2022_06_14/s300_300/thiet-ke-chua-co-ten-10-1655212196.png"
+                alt=""
+              />
+            </a>
           </div>
           <div className="p-5 w-full">
             <h3 className="font-bold text-base text-[#3f3f3f] ">
@@ -672,9 +680,15 @@ const Home = () => {
               </h2>
               <ul className="text-[#333] font-normal text-sm">
                 <li className="mt-[3px]">
-                  Quy định sử dụng tính năng Gian hàng trên Ocopmart.org
+                  <a className="hover:text-[#2f80ed]" href="">
+                    Quy định sử dụng tính năng Gian hàng trên Ocopmart.org
+                  </a>
                 </li>
-                <li className="mt-[3px]">Quy trình giải quyết tranh chấp</li>
+                <li className="mt-[3px]">
+                  <a className="hover:text-[#2f80ed]" href="">
+                    Quy trình giải quyết tranh chấp
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -684,19 +698,36 @@ const Home = () => {
                 HỖ TRỢ KHÁCH HÀNG
               </h2>
               <ul className="text-[#333] font-normal text-sm">
-                <li className="mt-[3px]">QUY CHẾ HOẠT ĐỘNG </li>
-                <li className="mt-[3px]">Trung tâm hỗ trợ khách hàng</li>
                 <li className="mt-[3px]">
-                  Chính sách Bảo mật thông tin cá nhân{" "}
+                  <a className="hover:text-[#2f80ed]" href="">
+                    {" "}
+                    QUY CHẾ HOẠT ĐỘNG{" "}
+                  </a>
                 </li>
-                <li className="mt-[3px]">Hỗ trợ vận chuyển</li>
+                <li className="mt-[3px]">
+                  <a className="hover:text-[#2f80ed]" href="">
+                    Trung tâm hỗ trợ khách hàng
+                  </a>
+                </li>
+                <li className="mt-[3px]">
+                  <a className="hover:text-[#2f80ed]" href="">
+                    Chính sách Bảo mật thông tin cá nhân
+                  </a>
+                </li>
+                <li className="mt-[3px]">
+                  <a className="hover:text-[#2f80ed]" href="">
+                    Hỗ trợ vận chuyển
+                  </a>
+                </li>
               </ul>
               <div className="flex mt-[25px]">
                 <div>
-                  <img
-                    src="https://ocopmart.org/images/icon-phone.png"
-                    alt=""
-                  />
+                  <a href="">
+                    <img
+                      src="https://ocopmart.org/images/icon-phone.png"
+                      alt=""
+                    />
+                  </a>
                 </div>
                 <div className="pl-5">
                   <p className="font-normal text-sm text-[#000]">
@@ -719,10 +750,12 @@ const Home = () => {
               </div>
               <div className="flex mt-[25px]">
                 <div>
-                  <img
-                    src="	https://ocopmart.org/images/icon-email.png"
-                    alt=""
-                  />
+                  <a href="">
+                    <img
+                      src="	https://ocopmart.org/images/icon-email.png"
+                      alt=""
+                    />
+                  </a>
                 </div>
                 <div className="pl-5">
                   <p className="font-normal text-sm text-[#000]">
@@ -800,15 +833,17 @@ const Home = () => {
               </div>
               <div>
                 <h2 className="text-[#000] font-normal text-sm">0109597338</h2>
-                <p className="text-[#979797] font-normal text-xs italic">
-                  CÔNG TY CỔ PHẦN ĐẦU TƯ VZONE GLOBAL - Giấy chứng nhận đăng ký
-                  kinh doanh số 0109329515 do sở Kế hoạch và đầu tư thành phố Hà
-                  Nội cấp ngày 01/09/2020 - Người đại diện theo pháp luật: Lê
-                  Trung Hiếu- Địa chỉ trụ sở chính: Số 16 ngõ 79 Triều Khúc,
-                  Phường Thanh Xuân Bắc, Quận Thanh Xuân, Thành phố Hà Nội, Việt
-                  Nam- Số điện thoại: 02466.623.632 - 0986.29.00.22 - email:
-                  lienhe.ocopmart@gmail.com.
-                </p>
+                <a href="">
+                  <p className="text-[#979797] font-normal text-xs italic">
+                    CÔNG TY CỔ PHẦN ĐẦU TƯ VZONE GLOBAL - Giấy chứng nhận đăng
+                    ký kinh doanh số 0109329515 do sở Kế hoạch và đầu tư thành
+                    phố Hà Nội cấp ngày 01/09/2020 - Người đại diện theo pháp
+                    luật: Lê Trung Hiếu- Địa chỉ trụ sở chính: Số 16 ngõ 79
+                    Triều Khúc, Phường Thanh Xuân Bắc, Quận Thanh Xuân, Thành
+                    phố Hà Nội, Việt Nam- Số điện thoại: 02466.623.632 -
+                    0986.29.00.22 - email: lienhe.ocopmart@gmail.com.
+                  </p>
+                </a>
               </div>
             </div>
           </div>
@@ -887,4 +922,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default Home_page;

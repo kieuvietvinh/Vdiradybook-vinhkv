@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const PortfolioDetails = () => {
+const Details = () => {
   const [count, setCount] = useState(1);
 
   const handleIncrease = () => {
@@ -113,4 +113,4 @@ const PortfolioDetails = () => {
     </div>
   );
 };
-export default PortfolioDetails;
+export default Details;

@@ -74,7 +74,7 @@ const tabs = [
   },
 ];
 
-const Topic = () => {
+const PopularTopic = () => {
   const [activeTab, setActiveTab] = useState(1);
 
   const handleTabClick = (tabIndex: any) => {
@@ -193,4 +193,4 @@ const Topic = () => {
     </div>
   );
 };
-export default Topic;
+export default PopularTopic;

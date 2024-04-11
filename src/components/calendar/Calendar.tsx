@@ -1,9 +1,10 @@
 import React from "react";
+import Statistical from "../statistical/Statistical";
 
 const Calendar = () => {
   return (
     <div className="">
-      <header>
+      <header className="shadow-md">
         <div className="logo">
           <ul>
             <li>
@@ -27,34 +28,41 @@ const Calendar = () => {
             </li>
           </ul>
         </div>
-        {/* <div className="seach">
-          <form>
-            <div>
-              <button className="dropdown" type="button">
-                <a href="">
-                  <img src="/image/image.png" alt="" />
-                </a>
+        <div className="seach">
+          <form className="max-w-[600px] mx-auto">
+            <div className="flex">
+              <button
+                id="dropdown-button"
+                data-dropdown-toggle="dropdown"
+                className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-[#1F1F1F] bg-[#F2F2F2] border border-[#DADADA] rounded-s-full gap-2   "
+                type="button"
+              >
+                <img src="/image/image.png" alt="" />
                 Hình ảnh
-                <a href="">
-                  <img src="/image/muiten.png" alt="" />
-                </a>
+                <img src="/image/muiten.png" alt="" />
               </button>
-              <div>
+              <div
+                id="dropdown"
+                className="z-10 hidden bg-white divide-y divide-gray-100 rounded-full shadow w-44 "
+              ></div>
+              <div className="relative w-full">
                 <input
                   type="search"
                   id="search-dropdown"
-                  placeholder="Huyền Thương"
+                  className="block p-2.5 w-full z-20 text-sm text-[#1F1F1F] bg-white rounded-e-full border-s-gray-50 border-s-2 border border-gray-300 "
+                  placeholder="Thu Hương"
                   required
                 />
-                <button type="submit">
-                  <a href="">
-                    <img src="/image/Search1.png" alt="" />
-                  </a>
+                <button
+                  type="submit"
+                  className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-[#838383]"
+                >
+                  <img src="/image/Search1.png" alt="" />
                 </button>
               </div>
             </div>
           </form>
-        </div> */}
+        </div>
         <div className="user">
           <div>
             <ul>
@@ -94,7 +102,7 @@ const Calendar = () => {
       </header>
       <div className="container">
         <div className="left">
-          <div>
+          <div className="leftone">
             <div className="community ">
               <p>TRANG CỘNG ĐỒNG</p>
               <img src="/image-left/may.png" alt="" />
@@ -259,13 +267,17 @@ const Calendar = () => {
               <li>
                 <a href="#">
                   <img src="/image-left/sinhnhat.png" alt="" />
-                  <span> TRang sắp ra mắt </span>
+                  <span> Trang sắp ra mắt </span>
                   <img className="arrow" src="/image-left/muiten.png" alt="" />
                 </a>
               </li>
             </ul>
           </div>
         </div>
+        <div>
+          <Statistical />
+        </div>
+
         <div className="right">
           <div>
             <div className="right-page">
@@ -276,12 +288,18 @@ const Calendar = () => {
               </div>
             </div>
             <div className="useres">
-              <a className="one" href="">
-                <img src="/image-left/usereys.png" alt="" />
-              </a>
-              <a href="">
-                <img src="/image-left/useres.png" alt="" />
-              </a>
+              <ul>
+                <li>
+                  <a className="one" href="">
+                    <img src="/image-left/usereys.png" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <img src="/image-left/useres.png" alt="" />
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
           <div className="">
@@ -289,13 +307,35 @@ const Calendar = () => {
               <img className="onemo" src="/image/userone.png" alt="" />
               <img className="towmo" src="/image-left/Ensign.png" alt="" />
               <div>
-                <div className="chatone">Huyền Thương</div>
-                <img className="teck" src="/image-left/teck.png" alt="" />
+                <div className="chatone">
+                  Huyền Thương
+                  <img className="teck" src="/image-left/teck.png" alt="" />
+                </div>
                 <div className="chattow">
                   <img className="sys" src="/image-left/tim.png" alt="" />
                   <div className="chattrue">
                     <img src="/image/chat.png" alt="" />
                     <p>Trò chuyện</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="userone">
+              <img className="onemo" src="/image/userone.png" alt="" />
+              <img className="towmo" src="/image-left/Ensign.png" alt="" />
+              <div>
+                <div className="chatone">
+                  Xuân Hái
+                  <img className="teck" src="/image-left/teck.png" alt="" />
+                </div>
+                <div className="chattowminit">
+                  <img
+                    className="sysminit"
+                    src="/image-left/timxanh.png"
+                    alt=""
+                  />
+                  <div className="chattrueminit">
+                    <p>5 phút trước</p>
                   </div>
                 </div>
               </div>

@@ -320,6 +320,40 @@ const Home_page = () => {
   };
   return (
     <div className="font-roboto lg:max-w-screen-xl  mx-auto w-full max-w-screen-xl bg-[#fafafa]">
+      <div>
+        <ul className="flex gap-4 ">
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/page">Màn thống kê truy cập</a>
+          </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/orderdetails">Màn thanh toán</a>
+          </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/populartopic">Màn đặt câu hỏi</a>
+          </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/contribute">Màn đạt câu hỏi</a>
+          </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/details">Màn mua hàng</a>
+          </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/newbranch">Màn thêm nhánh mới</a>
+          </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/quotations">Màn danh ngôn</a>
+          </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/user">Màn người dùng</a>
+          </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/utilities">Màn tiện ích</a>
+          </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/suggest">Màn gợi ý kết bạn</a>
+          </li>
+        </ul>
+      </div>
       <div className=" justify-between items-center p-4 lg:grid lg:grid-cols-5  grid-cols-1 gap-4 bg-white flex">
         <div>
           <img

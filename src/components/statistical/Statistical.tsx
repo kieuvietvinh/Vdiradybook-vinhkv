@@ -1,8 +1,23 @@
 import React from "react";
+import { Line } from "react-chartjs-2";
+import "chart.js/auto";
+
+const data = {
+  labels: ["Thứ 2", "Thứ ", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"],
+  datasets: [
+    {
+      label: "Sales",
+      data: [0, 200, 400, 600, 800, 1000],
+      fill: true,
+      backgroundColor: "rgba(22, 93, 255, 0.2)",
+      borderColor: "#165DFF",
+    },
+  ],
+};
 
 const Statistical = () => {
   return (
-    <div className="max-w-screen-lg mx-auto">
+    <div className="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm max-[390px]  mx-auto">
       <div className="bg-white rounded-[9px]">
         <div className="">
           <ul>
@@ -16,7 +31,7 @@ const Statistical = () => {
             </li>
           </ul>
         </div>
-        <div className="flex justify-between p-3 relative">
+        <div className="grid grid-cols-3 gap-4 p-5 relative">
           <div>
             <p className="text-[#DD2B17] text-sm font-normal italic text-center">
               Linh vật, vật phẩm
@@ -56,14 +71,23 @@ const Statistical = () => {
             <div>
               <a href="">
                 <img
-                  className="absolute -top-[50px] right-[41%]"
+                  className="absolute -top-[50px] right-[45%]"
                   src="/image/vi.png"
+                  alt=""
+                />
+              </a>
+              <a href="">
+                <img
+                  className="absolute top-[15px] right-[45%]"
+                  src="/image/mayanh.png"
                   alt=""
                 />
               </a>
             </div>
             <div className="text-center pt-7">
-              <p className="text-base font-bold">Smile Life (@)</p>
+              <p className="text-base font-bold text-[#1D62F0]">
+                Smile Life (@)
+              </p>
               <p className="text-[#DD2B17] text-sm font-normal tracking-wide">
                 Tôn trọng - Yêu thương - Biết ơn
               </p>
@@ -112,10 +136,10 @@ const Statistical = () => {
           </div>
           <div>
             <ul>
-              <p className="text-[#DD2B17] text-sm font-normal italic ">
+              <p className="text-[#DD2B17] text-sm font-normal italic text-right ">
                 Nhận hiệu cuộc sống
               </p>
-              <li className="flex pt-2 justify-center">
+              <li className="flex pt-2 justify-end">
                 <a href="">
                   <img src="/image/sos2.png" alt="" />
                 </a>
@@ -144,8 +168,9 @@ const Statistical = () => {
           <li>
             <a href="">Sự kiện</a>
           </li>
-          <li>
+          <li className="flex items-center gap-2">
             <a href="">VDB driver</a>
+            <img src="/image/muixuong.png" alt="" />
           </li>
           <li>
             <a href="">Mã QR</a>
@@ -165,7 +190,7 @@ const Statistical = () => {
         <p className="text-[#1F1F1F] text-lg font-semibold">
           Thống kê truy cập
         </p>
-        <div className="grid grid-cols-4 gap-4 pt-2">
+        <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 pt-2">
           <div className="p-3 border rounded-2xl">
             <div className="flex gap-3 items-center relative">
               <img src="/image/ghetham.png" alt="" />
@@ -184,7 +209,7 @@ const Statistical = () => {
           </div>
           <div className="p-3 border rounded-2xl">
             <div className="flex gap-3 items-center">
-              <img src="/image/ghetham.png" alt="" />
+              <img src="/image/tong.png" alt="" />
               <p className="font-normal text-[#1F1F1F] text-sm">
                 Tổng đơn hàng
               </p>
@@ -195,7 +220,7 @@ const Statistical = () => {
           </div>
           <div className="p-3 border rounded-2xl">
             <div className="flex gap-3 items-center">
-              <img src="/image/ghetham.png" alt="" />
+              <img src="/image/don.png" alt="" />
               <p className="font-normal text-[#1F1F1F] text-sm">
                 Đơn hoàn thành
               </p>
@@ -206,7 +231,7 @@ const Statistical = () => {
           </div>
           <div className="p-3 border rounded-2xl">
             <div className="flex gap-3 items-center">
-              <img src="/image/ghetham.png" alt="" />
+              <img src="/image/doanhso.png" alt="" />
               <p className="font-normal text-[#1F1F1F] text-sm">Doanh số</p>
             </div>
             <div className="text-[#1F1F1F] text-2xl font-semibold text-center pt-2">
@@ -216,7 +241,7 @@ const Statistical = () => {
 
           <div className="p-3 border rounded-2xl">
             <div className="flex gap-3 items-center relative">
-              <img src="/image/ghetham.png" alt="" />
+              <img src="/image/sanpham.png" alt="" />
               <p className="font-normal text-[#1F1F1F] text-sm">
                 Tổng số sản phẩm
               </p>
@@ -232,7 +257,7 @@ const Statistical = () => {
           </div>
           <div className="p-3 border rounded-2xl">
             <div className="flex gap-3 items-center">
-              <img src="/image/ghetham.png" alt="" />
+              <img src="/image/rating.png" alt="" />
               <p className="font-normal text-[#1F1F1F] text-sm">
                 Lượt đánh giá
               </p>
@@ -243,7 +268,7 @@ const Statistical = () => {
           </div>
           <div className="p-3 border rounded-2xl">
             <div className="flex gap-3 items-center">
-              <img src="/image/ghetham.png" alt="" />
+              <img src="/image/lich.png" alt="" />
               <p className="font-normal text-[#1F1F1F] text-sm">
                 Thời gian tham gia
               </p>
@@ -255,19 +280,56 @@ const Statistical = () => {
           </div>
           <div className="p-3 border rounded-2xl">
             <div className="flex gap-3 items-center">
-              <img src="/image/ghetham.png" alt="" />
+              <img src="/image/time.png" alt="" />
               <p className="font-normal text-[#1F1F1F] text-sm">
                 Tổng thời gian online
               </p>
             </div>
             <div className="text-[#1F1F1F] text-2xl font-semibold text-center pt-2 flex items-baseline gap-3 justify-center">
-              102.4
+              1.024
               <p className="font-normal text-[#1F1F1F] text-sm">phút</p>
             </div>
           </div>
         </div>
+        <div className="  border mt-4 rounded-2xl p-5">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[#1D2129] text-base font-semibold">
+                Thời gian online
+              </p>
+            </div>
+            <div className="">
+              <ul className="flex gap-1 text-[#4284F3] font-normal text-xs ">
+                <li>
+                  <a
+                    className="border border-[#4284F3] rounded-2xl px-3 py-1 hover:bg-[#3498DB33]"
+                    href=""
+                  >
+                    Tuần
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="border border-[#4284F3] rounded-2xl px-3 py-1 hover:bg-[#3498DB33]"
+                    href=""
+                  >
+                    Tháng
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="border border-[#4284F3] rounded-2xl px-3 py-1 hover:bg-[#3498DB33]"
+                    href=""
+                  >
+                    Năm
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <Line data={data} />
+        </div>
       </div>
-      <div className=""></div>
     </div>
   );
 };

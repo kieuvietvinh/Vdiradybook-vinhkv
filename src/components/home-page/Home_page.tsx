@@ -49,6 +49,7 @@ const nabar = [
   {
     id: 1,
     tabel: "SỰ KIỆN - TUYỂN DỤNG",
+    link: "/page",
   },
   {
     id: 2,
@@ -368,7 +369,10 @@ const Home_page = () => {
             {nabar.map((nab) => (
               <ul key={nab.id} className="flex flex-wrap  pt-[0.6rem]">
                 <li className="me-2">
-                  <a className="inline-block  pl-[1.6rem] border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 ">
+                  <a
+                    href="/page"
+                    className="inline-block  pl-[1.6rem] border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 "
+                  >
                     {nab.tabel}
                   </a>
                 </li>

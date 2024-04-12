@@ -1,10 +1,133 @@
 import React from "react";
 import Statistical from "../statistical/Statistical";
 
+const functions = [
+  {
+    id: 1,
+    img: "/image-left/kiemvien.png",
+    name: "Kiểm duyệt viên",
+  },
+  {
+    id: 2,
+    img: "/image-left/dinhanh.png",
+    name: "Định danh cá nhân",
+  },
+
+  {
+    id: 3,
+    img: "/image-left/tailieu.png",
+    name: "Tài liệu",
+  },
+  {
+    id: 4,
+    img: "/image/chat.png",
+    name: "Trò chuyện",
+  },
+  {
+    id: 5,
+    img: "/image-left/danglam.png",
+    name: "Đang làm",
+  },
+  {
+    id: 6,
+    img: "/image-left/lich.png",
+    name: "Lịch",
+  },
+  {
+    id: 7,
+    img: "/image-left/sinhnhat.png",
+    name: "Sinh nhật",
+  },
+  {
+    id: 8,
+    img: "/image-left/thoitiet.png",
+    name: "Thời tiết",
+  },
+  {
+    id: 9,
+    img: "/image-left/amnhac.png",
+    name: "Âm nhạc",
+  },
+];
+const network = [
+  {
+    id: 1,
+    img: "/image-left/nhatki.png",
+    name: "Nhật Ký",
+  },
+  {
+    id: 2,
+    img: "/image-left/quehuong.png",
+    name: "Tin tức quê hương",
+  },
+  {
+    id: 3,
+    img: "/image-left/toi.png",
+    name: "Trang của tôi",
+  },
+  {
+    id: 4,
+    img: "/image-left/banbe.png",
+    name: "Bạn bè",
+  },
+  {
+    id: 5,
+    img: "/image-left/so.png",
+    name: "Sổ nhật Ký",
+  },
+  {
+    id: 1,
+    img: "/image-left/donvi.png",
+    name: "Đơn vị, Chi nhánh",
+  },
+  {
+    id: 1,
+    img: "/image-left/thongbao.png",
+    name: "Thông báo",
+  },
+];
+const pages = [
+  {
+    id: 1,
+    img: "/image/market.png",
+    name: "Market Place",
+  },
+  {
+    id: 2,
+    img: "/image/blog.png",
+    name: "Blog",
+  },
+  {
+    id: 3,
+    img: "/image/cuahang.png",
+    name: "Cửa hàng",
+  },
+  {
+    id: 4,
+    img: "/image/mail.png",
+    name: "Mail",
+  },
+  {
+    id: 5,
+    img: "/image/datbiet.png",
+    name: "Trang đặt biệt",
+  },
+  {
+    id: 6,
+    img: "/image/tienich.png",
+    name: "Tiện ích",
+  },
+  {
+    id: 7,
+    img: "/image/ramat.png",
+    name: "Trang sắp ra mắt",
+  },
+];
+
 const Calendar = () => {
   return (
     <div className="">
-      <header className="shadow-md">
+      <header className="shadow-md px-2">
         <div className="logo">
           <ul>
             <li>
@@ -12,24 +135,25 @@ const Calendar = () => {
                 <img src="/image/logo.png" alt="Flowbite Logo" />
               </a>
             </li>
-            <li>
+            <li className="max-[1024px]:hidden ">
               <a href="">
                 <img src="/image/ngang.png" alt="user photo" />
               </a>
             </li>
-            <li className="farm">
-              <a href="">
+            <li className="farm ">
+              <a className="max-[1024px]:hidden" href="">
                 <img src="/image/may.png" alt="user photo" />
               </a>
-              <a href="">
+              <a className="max-[1024px]:hidden" href="">
                 <p className="degree">Hanoi, 30.02°C</p>
                 <p className="cloud">Mây cụm</p>
               </a>
             </li>
           </ul>
         </div>
-        <div className="seach">
-          <form className="max-w-[600px] mx-auto">
+
+        <div className="seach ">
+          <form className="max-w-[600px] mx-auto max-[1024px]:hidden ">
             <div className="flex">
               <button
                 id="dropdown-button"
@@ -63,9 +187,9 @@ const Calendar = () => {
             </div>
           </form>
         </div>
-        <div className="user">
-          <div>
-            <ul>
+        <div className="user ">
+          <div className="max-[1024px]:hidden">
+            <ul className="">
               <li>
                 <a href="">
                   <img src="/image/home.png" alt="" />
@@ -101,184 +225,69 @@ const Calendar = () => {
         </div>
       </header>
       <div className="container">
-        <div className="left">
+        <div className="left absolute left-0 top-[72px] z-10 max-[1024px]:hidden ">
           <div className="leftone">
-            <div className="community ">
+            <div className="community py-2">
               <p>TRANG CỘNG ĐỒNG</p>
               <img src="/image-left/may.png" alt="" />
             </div>
-            <p>MẠNG XÃ HỘI</p>
-            <ul>
-              <li>
-                <a href="#">
-                  <img src="/image-left/nhatki.png" alt="" />
-                  <span>Nhật Ký</span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/quehuong.png" alt="" />
-                  <span>Tin tức quê hương</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/toi.png" alt="" />
-                  <span>TRang của tôi</span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/banbe.png" alt="" />
-                  <span>Bạn bè</span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/so.png" alt="" />
-                  <span>Sổ nhật kí</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/donvi.png" alt="" />
-                  <span>Đơn vị, Chi nhánh</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/thongbao.png" alt="" />
-                  <span>Thông báo</span>
-                </a>
-              </li>
-            </ul>
+            <p className="py-2">MẠNG XÃ HỘI</p>
+            {network.map((net) => (
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src={net.img} alt="" />
+                    <span>{net.name}</span>
+                    <img
+                      className="arrow"
+                      src="/image-left/muiten.png"
+                      alt=""
+                    />
+                  </a>
+                </li>
+              </ul>
+            ))}
           </div>
-          <div>
+          <div className="pt-2">
             <div>
               <p>CHỨC NĂNG</p>
             </div>
-            <ul>
-              <li>
-                <a href="#">
-                  <img src="/image-left/kiemvien.png" alt="" />
-                  <span>Kiểm duyệt viên</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/dinhanh.png" alt="" />
-                  <span>Định danh cá nhân</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/tailieu.png" alt="" />
-                  <span>Tài liệu</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image/chat.png" alt="" />
-                  <span>Trò chuyện</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/danglam.png" alt="" />
-                  <span>Đang làm</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/lich.png" alt="" />
-                  <span>Lịch</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/sinhnhat.png" alt="" />
-                  <span>Sinh nhật </span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/thoitiet.png" alt="" />
-                  <span>Thời tiết </span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/amnhac.png" alt="" />
-                  <span>Âm nhạc </span>
-                </a>
-              </li>
-            </ul>
+            {functions.map((funct) => (
+              <ul key={funct.id}>
+                <li>
+                  <a href="#">
+                    <img src={funct.img} alt="" />
+                    <span>{funct.name}</span>
+                  </a>
+                </li>
+              </ul>
+            ))}
           </div>
-          <div>
+          <div className=" relative pt-2">
             <div>
               <p>NHỮNG TRANG KHÁC</p>
             </div>
-            <ul>
-              <li>
-                <a href="#">
-                  <img src="/image-left/kiemvien.png" alt="" />
-                  <span>Market Place</span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/dinhanh.png" alt="" />
-                  <span>Blog</span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/tailieu.png" alt="" />
-                  <span>Cửa hàng</span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image/chat.png" alt="" />
-                  <span>Mail</span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/danglam.png" alt="" />
-                  <span>TRang đặt biệt</span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/lich.png" alt="" />
-                  <span>Tiện ích</span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/image-left/sinhnhat.png" alt="" />
-                  <span> Trang sắp ra mắt </span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-            </ul>
+            {pages.map((page) => (
+              <ul key={page.id}>
+                <li>
+                  <a href="#">
+                    <img src={page.img} alt="" />
+                    <span> {page.name} </span>
+                    <img
+                      className="arrow"
+                      src="/image-left/muiten.png"
+                      alt=""
+                    />
+                  </a>
+                </li>
+              </ul>
+            ))}
           </div>
         </div>
-        <div>
+        <div className="mx-auto">
           <Statistical />
         </div>
-
-        <div className="right">
+        <div className="right max-[1024px]:hidden">
           <div>
             <div className="right-page">
               <p>Trò chuyện</p>
@@ -304,8 +313,10 @@ const Calendar = () => {
           </div>
           <div className="">
             <div className="userone">
-              <img className="onemo" src="/image/userone.png" alt="" />
-              <img className="towmo" src="/image-left/Ensign.png" alt="" />
+              <a href="">
+                <img className="onemo" src="/image/userone.png" alt="" />
+                <img className="towmo" src="/image-left/Ensign.png" alt="" />
+              </a>
               <div>
                 <div className="chatone">
                   Huyền Thương

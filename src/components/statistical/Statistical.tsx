@@ -172,7 +172,7 @@ const Statistical = () => {
       </div>
       <div className=" bg-white mt-2 flex justify-between overflow-x-auto ">
         {tabs.map((tab, a) => (
-          <button
+          <a
             key={a}
             className={` border-b-4  border-transparent whitespace-nowrap hover:bg-gray-100 hover:rounded  text-[#777d74] text-xs px-4 py-2 ${
               activeTab === tab.id
@@ -182,7 +182,7 @@ const Statistical = () => {
             onClick={() => handleTabClick(tab.id)}
           >
             {tab.name}
-          </button>
+          </a>
         ))}
       </div>
       <div className="mt-5 bg-white rounded-2xl p-3 max-w-full">

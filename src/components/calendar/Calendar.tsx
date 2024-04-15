@@ -123,11 +123,37 @@ const pages = [
     name: "Trang sắp ra mắt",
   },
 ];
+const chatpage = [
+  {
+    id: 1,
+    img: "/image/userone.png",
+    name: "Huyền Thương",
+    tatel: "Trò chuyện",
+  },
+  {
+    id: 2,
+    img: "/image/userone.png",
+    name: " Xuân Hái",
+    tatel: "5 phút trước",
+  },
+  {
+    id: 3,
+    img: "/image/userone.png",
+    name: " Thanh Huyền",
+    tatel: "5 phút trước",
+  },
+  {
+    id: 4,
+    img: "/image/userone.png",
+    name: "Hà My",
+    tatel: "Trò chuyện",
+  },
+];
 
 const Calendar = () => {
   return (
     <div className="">
-      <header className="shadow-md px-2">
+      <header className="shadow-md px-2 w-full">
         <div className="logo">
           <ul>
             <li>
@@ -151,7 +177,6 @@ const Calendar = () => {
             </li>
           </ul>
         </div>
-
         <div className="seach ">
           <form className="max-w-[600px] mx-auto max-[1024px]:hidden ">
             <div className="flex">
@@ -163,7 +188,7 @@ const Calendar = () => {
               >
                 <img src="/image/image.png" alt="" />
                 Hình ảnh
-                <img src="/image/muiten.png" alt="" />
+                <img className="pl-2" src="/image/muiten.png" alt="" />
               </button>
               <div
                 id="dropdown"
@@ -296,8 +321,8 @@ const Calendar = () => {
                 <img src="/image-left/usercong.png" alt="" />
               </div>
             </div>
-            <div className="useres">
-              <ul>
+            <div className="">
+              <ul className="useres">
                 <li>
                   <a className="one" href="">
                     <img src="/image-left/usereys.png" alt="" />
@@ -311,47 +336,29 @@ const Calendar = () => {
               </ul>
             </div>
           </div>
-          <div className="">
-            <div className="userone">
-              <a href="">
-                <img className="onemo" src="/image/userone.png" alt="" />
-                <img className="towmo" src="/image-left/Ensign.png" alt="" />
-              </a>
-              <div>
-                <div className="chatone">
-                  Huyền Thương
-                  <img className="teck" src="/image-left/teck.png" alt="" />
-                </div>
-                <div className="chattow">
-                  <img className="sys" src="/image-left/tim.png" alt="" />
-                  <div className="chattrue">
-                    <img src="/image/chat.png" alt="" />
-                    <p>Trò chuyện</p>
+          {chatpage.map((chat) => (
+            <div className="">
+              <div className="userone">
+                <a href="">
+                  <img className="onemo" src={chat.img} alt="" />
+                  <img className="towmo" src="/image-left/Ensign.png" alt="" />
+                </a>
+                <div>
+                  <div className="chatone">
+                    {chat.name}
+                    <img className="teck" src="/image-left/teck.png" alt="" />
+                  </div>
+                  <div className="chattow">
+                    <img className="sys" src="/image-left/tim.png" alt="" />
+                    <div className="chattrue">
+                      <img src="/image/chat.png" alt="" />
+                      <p>{chat.tatel}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="userone">
-              <img className="onemo" src="/image/userone.png" alt="" />
-              <img className="towmo" src="/image-left/Ensign.png" alt="" />
-              <div>
-                <div className="chatone">
-                  Xuân Hái
-                  <img className="teck" src="/image-left/teck.png" alt="" />
-                </div>
-                <div className="chattowminit">
-                  <img
-                    className="sysminit"
-                    src="/image-left/timxanh.png"
-                    alt=""
-                  />
-                  <div className="chattrueminit">
-                    <p>5 phút trước</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

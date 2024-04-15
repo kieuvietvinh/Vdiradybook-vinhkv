@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
+
+const tabs = [
+  { id: 1, name: "Trang web" },
+  { id: 2, name: "Giới thiệu " },
+  { id: 3, name: "Bạn bè" },
+  { id: 4, name: "Sự kiện" },
+  { id: 5, name: "VDB driver" },
+  { id: 6, name: "Doanh nghiệp " },
+  { id: 7, name: "Tài sản" },
+  { id: 8, name: "Thống kê truy cập" },
+];
 
 const data = {
   labels: ["Thứ 2", "Thứ ", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"],
   datasets: [
     {
-      label: "Sales",
-      data: [0, 200, 400, 600, 800, 1000],
+      label: "Times",
+      data: [200, 280, 390, 420, 610, 60, 1000],
       fill: true,
       backgroundColor: "rgba(22, 93, 255, 0.2)",
       borderColor: "#165DFF",
@@ -16,8 +27,13 @@ const data = {
 };
 
 const Statistical = () => {
+  const [activeTab, setActiveTab] = useState(8);
+
+  const handleTabClick = (tabIndex: any) => {
+    setActiveTab(tabIndex);
+  };
   return (
-    <div className="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm max-[390px]  mx-auto">
+    <div className="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm  mx-auto">
       <div className="bg-white rounded-[9px]">
         <div className="">
           <ul>
@@ -31,13 +47,13 @@ const Statistical = () => {
             </li>
           </ul>
         </div>
-        <div className="grid grid-cols-3 gap-4 p-5 relative">
-          <div>
-            <p className="text-[#DD2B17] text-sm font-normal italic text-center">
+        <div className="grid grid-cols-1 sm:grid sm:grid-cols-3 gap-4 p-5 relative ">
+          <div className="">
+            <p className="text-[#DD2B17] text-sm font-normal italic text-center ">
               Linh vật, vật phẩm
             </p>
             <ul>
-              <li className="flex items-center pt-2">
+              <li className="flex items-center pt-2 max-[700px]:justify-center">
                 <a href="">
                   <img src="/image/ga.png" alt="" />
                 </a>
@@ -51,7 +67,7 @@ const Statistical = () => {
                   <img src="/image/vang.png" alt="" />
                 </a>
               </li>
-              <div className="flex pt-2 gap-2">
+              <div className="flex pt-2 gap-2 max-[700px]:justify-center">
                 <div className="flex gap-2">
                   <p className="font-semibold text-xs text-[#1F1F1F]">150</p>
                   <p className="font-normal text-xs text-[#1F1F1F]"> Nhật ký</p>
@@ -92,10 +108,10 @@ const Statistical = () => {
                 Tôn trọng - Yêu thương - Biết ơn
               </p>
 
-              <div className="relative overflow-x-auto">
-                <table className="w-full text-sm  text-gray-500 ">
+              <div className="relative flex justify-center">
+                <table className=" text-sm  text-gray-500 ">
                   <thead className="">
-                    <tr>
+                    <tr className="">
                       <th className="">
                         <img src="/image/v7.png" alt="" />
                       </th>
@@ -121,7 +137,7 @@ const Statistical = () => {
                   </thead>
                   <tbody className="mt-2">
                     <tr className="  text-xs text-[#000000] font-normal">
-                      <td className=" ">12</td>
+                      <td className="">12</td>
                       <td className="">45</td>
                       <td className="">653</td>
                       <td className="">567</td>
@@ -135,11 +151,11 @@ const Statistical = () => {
             </div>
           </div>
           <div>
-            <ul>
-              <p className="text-[#DD2B17] text-sm font-normal italic text-right ">
+            <ul className="">
+              <p className="text-[#DD2B17] text-sm font-normal italic justify-end max-[700px]:justify-center flex">
                 Nhận hiệu cuộc sống
               </p>
-              <li className="flex pt-2 justify-end">
+              <li className="flex pt-2 justify-end max-[700px]:justify-center">
                 <a href="">
                   <img src="/image/sos2.png" alt="" />
                 </a>
@@ -154,39 +170,22 @@ const Statistical = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white mt-2">
-        <ul className="flex justify-between py-2 px-5 text-sm text-[#1F1F1F] font-normal">
-          <li>
-            <a href="">Trang web</a>
-          </li>
-          <li>
-            <a href="">Gới thiệu</a>
-          </li>
-          <li>
-            <a href="">Bạn bè</a>
-          </li>
-          <li>
-            <a href="">Sự kiện</a>
-          </li>
-          <li className="flex items-center gap-2">
-            <a href="">VDB driver</a>
-            <img src="/image/muixuong.png" alt="" />
-          </li>
-          <li>
-            <a href="">Mã QR</a>
-          </li>
-          <li>
-            <a href="">Doanh nghiệp</a>
-          </li>
-          <li>
-            <a href="">Tài sản</a>
-          </li>
-          <li className="text-[#4284F3] ">
-            <a href="">Thống kê truy cập</a>
-          </li>
-        </ul>
+      <div className="bg-white mt-2 flex justify-between overflow-scroll max-w-full">
+        {tabs.map((tab, a) => (
+          <button
+            key={a}
+            className={` border-b-4  border-transparent whitespace-nowrap hover:bg-gray-100 hover:rounded  text-[#777d74] text-xs px-4 py-2 ${
+              activeTab === tab.id
+                ? "inline-block p-4  !border-blue-600   rounded-t-lg  text-blue-600  "
+                : ""
+            }`}
+            onClick={() => handleTabClick(tab.id)}
+          >
+            {tab.name}
+          </button>
+        ))}
       </div>
-      <div className="mt-5 bg-white rounded-2xl p-3">
+      <div className="mt-5 bg-white rounded-2xl p-3 max-w-full">
         <p className="text-[#1F1F1F] text-lg font-semibold">
           Thống kê truy cập
         </p>

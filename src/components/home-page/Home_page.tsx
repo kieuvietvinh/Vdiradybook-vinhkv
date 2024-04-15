@@ -332,7 +332,7 @@ const Home_page = () => {
             <a href="/populartopic">Màn đặt câu hỏi</a>
           </li>
           <li className="bg-blue-500 text-white p-3">
-            <a href="/contribute">Màn đạt câu hỏi</a>
+            <a href="/contribute">Màn bạn cần giúp đỡ gì</a>
           </li>
           <li className="bg-blue-500 text-white p-3">
             <a href="/details">Màn mua hàng</a>
@@ -351,6 +351,9 @@ const Home_page = () => {
           </li>
           <li className="bg-blue-500 text-white p-3">
             <a href="/suggest">Màn gợi ý kết bạn</a>
+          </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/suggest">Màn niêm yết</a>
           </li>
         </ul>
       </div>

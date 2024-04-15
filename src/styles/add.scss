@@ -158,6 +158,7 @@ nav {
     }
 
     .useres {
+        align-items: center;
         display: flex;
         gap: 50px;
         justify-content: center;
@@ -190,6 +191,8 @@ nav {
 
     .chatone {
         position: relative;
+        display: flex;
+        align-items: center;
         color: #4284F3;
         font-weight: 400;
         font-size: 14px;
@@ -198,7 +201,8 @@ nav {
     }
 
     .teck {
-        position: absolute;
+        transform: translate(5px,-5px);
+        
         top: 0px;
         right: -15px;
     }

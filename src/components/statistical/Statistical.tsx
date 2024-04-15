@@ -170,7 +170,7 @@ const Statistical = () => {
           </div>
         </div>
       </div>
-      <div className=" bg-white mt-2 flex justify-between overflow-x-auto ">
+      <div className="crooll bg-white mt-2 flex justify-between overflow-x-auto ">
         {tabs.map((tab, a) => (
           <a
             key={a}

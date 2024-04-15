@@ -48,7 +48,7 @@ const Statistical = () => {
           </ul>
         </div>
         <div className="grid grid-cols-1 sm:grid sm:grid-cols-3 gap-4 p-5 relative ">
-          <div className="">
+          <div className="mt-6 sm:mt-0">
             <p className="text-[#DD2B17] text-sm font-normal italic text-center ">
               Linh vật, vật phẩm
             </p>
@@ -170,7 +170,7 @@ const Statistical = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white mt-2 flex justify-between overflow-scroll max-w-full">
+      <div className=" bg-white mt-2 flex justify-between overflow-x-auto ">
         {tabs.map((tab, a) => (
           <button
             key={a}
@@ -189,7 +189,7 @@ const Statistical = () => {
         <p className="text-[#1F1F1F] text-lg font-semibold">
           Thống kê truy cập
         </p>
-        <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 pt-2">
+        <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-2 gap-4 pt-2">
           <div className="p-3 border rounded-2xl">
             <div className="flex gap-3 items-center relative">
               <img src="/image/ghetham.png" alt="" />

@@ -249,8 +249,11 @@ const Calendar = () => {
           </div>
         </div>
       </header>
+      <div className="mx-auto pt-2">
+        <Statistical />
+      </div>
       <div className="container">
-        <div className="left absolute left-0 top-[72px] z-10 max-[1024px]:hidden ">
+        <div className="left absolute left-0 top-[70px] z-10 max-[1024px]:hidden ">
           <div className="leftone">
             <div className="community py-2">
               <p>TRANG CỘNG ĐỒNG</p>
@@ -309,10 +312,8 @@ const Calendar = () => {
             ))}
           </div>
         </div>
-        <div className="mx-auto">
-          <Statistical />
-        </div>
-        <div className="right max-[1024px]:hidden">
+
+        <div className="right max-[1024px]:hidden ">
           <div>
             <div className="right-page">
               <p>Trò chuyện</p>

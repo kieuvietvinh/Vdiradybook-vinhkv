@@ -4,6 +4,7 @@ header {
     display: flex;
     padding: 10px 0;
     width: 100%;
+    position: relative;
 
 
     justify-content: space-between;
@@ -74,7 +75,6 @@ nav {
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
-    max-width: 1900px;
 
 }
 
@@ -82,7 +82,8 @@ nav {
     flex: 1;
     background-color: #FFFFFF;
     padding: 10px;
-    width: 260px;
+    width: 300px;
+    border-radius: 8px;
    
     
 
@@ -128,14 +129,20 @@ nav {
     }
 }
 
+
+.scrooll {
+    -ms-overflow-style: none;
+}
+
 .right {
     flex: 2;
     background-color: #FFFFFF;
     padding: 10px;
     position: absolute;
     right: 0px;
-
-    width: 260px;
+    top: 70px;
+    width: 300px;
+    border-radius: 8px;
 
     .right-page {
         display: flex;

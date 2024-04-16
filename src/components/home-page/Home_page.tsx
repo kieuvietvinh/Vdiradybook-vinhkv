@@ -355,6 +355,9 @@ const Home_page = () => {
           <li className="bg-blue-500 text-white p-3">
             <a href="/suggest">Màn niêm yết</a>
           </li>
+          <li className="bg-blue-500 text-white p-3">
+            <a href="/findList">Màn tìm liệt sĩ</a>
+          </li>
         </ul>
       </div>
       <div className=" justify-between items-center p-4 lg:grid lg:grid-cols-5  grid-cols-1 gap-4 bg-white flex">

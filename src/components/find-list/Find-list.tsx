@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import HeadstoneItem from "../headstone/HeadstoneItem";
 
 const list = [
   {
@@ -6,180 +7,177 @@ const list = [
     name: "B1",
     img: "/image/rating1.png",
     table: "/image/lietsi1.png",
+    active: false,
+  },
+
+  {
+    id: 2,
+    name: "B2",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: true,
   },
   {
-    id: 1,
+    id: 3,
+    name: "B3",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: true,
+  },
+  {
+    id: 4,
+    name: "B4",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: false,
+  },
+  {
+    id: 5,
+    name: "B5",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: false,
+  },
+  {
+    id: 6,
+    name: "B6",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: false,
+  },
+  {
+    id: 7,
+    name: "B7",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: true,
+  },
+  {
+    id: 8,
+    name: "B8",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: true,
+  },
+  {
+    id: 9,
+    name: "B9",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: false,
+  },
+  {
+    id: 10,
+    name: "B10",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: false,
+  },
+  {
+    id: 11,
+    name: "B11",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: true,
+  },
+  {
+    id: 12,
+    name: "B12",
+    img: "/image/rating1.png",
+    table: "/image/lietsi1.png",
+    active: true,
+  },
+  {
+    id: 13,
     name: "B1",
     img: "/image/rating1.png",
     table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
-  },
-  {
-    id: 1,
-    name: "B1",
-    img: "/image/rating1.png",
-    table: "/image/lietsi1.png",
+    active: false,
   },
 ];
 
 const FindList = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleModal = () => {
+  const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
   return (
     <div className="mx-auto max-w-5xl pt-2">
-      <div className="all  bg-white px-6 py-3 rounded-lg flex justify-between overflow-x-scroll items-center">
-        <ul className="flex items-center gap-1 ">
-          <li>
-            <a className="text-[#FFFFFF] bg-[#4284F3] font-normal text-sm rounded-2xl px-4 py-1 flex gap-1">
+      <div className="all  bg-white px-6 py-3 rounded-lg flex justify-between overflow-x-scroll items-center  whitespace-nowrap">
+        <ul className="flex items-center gap-1  ">
+          <li className="">
+            <a className="text-[#FFFFFF] bg-[#4284F3] font-normal text-sm rounded-2xl px-4 py-1 flex ">
               <img src="/image/tatca.png" alt="" />
-              <p> Tất cả</p>
+              <p className="pr-1"> Tất cả</p>
             </a>
           </li>
-          <li className="">
+          <li className="pl-1">
             <a
-              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border gap-1"
+              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border  "
               href=""
             >
               <img src="/image/cuuhoa.png" alt="" />
-              <p>Cứu hỏa</p>
+              <p className="pr-1">Cứu hỏa</p>
             </a>
           </li>
-          <li>
+          <li className="pl-1">
             <a
-              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border gap-1 "
+              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border  "
               href=""
             >
               <img src="/image/cuunan.png" alt="" />
-              <p> Cứu nạn</p>
+              <p className="pr-1"> Cứu nạn</p>
             </a>
           </li>
-          <li>
+          <li className="pl-1">
             <a
-              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border gap-1"
+              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border "
               href=""
             >
               <img src="/image/thannhan.png" alt="" />
-              Tìm nhân thân
+              <p className="pl-1">Tìm nhân thân</p>
             </a>
           </li>
-          <li>
+          <li className="pl-1">
             <a
-              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border gap-1"
+              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border "
               href=""
             >
               <img src="/image/bando.png" alt="" />
-              Xem trên bản đồ
+              <p className="pl-1">Xem trên bản đồ</p>
             </a>
           </li>
         </ul>
-        <ul className="flex gap-4">
-          <li>
+        <ul className="flex gap-4 items-center">
+          <li className="pl-1">
             <a
-              className="text-[#4284F3] font-medium text-sm flex gap-1 items-center"
+              className="text-[#4284F3] font-medium text-sm flex  items-center"
               href=""
             >
               <img src="/image/quanhday.png" alt="" />
               <p>Tìm quanh đây</p>
             </a>
           </li>
-          <li>
+          {/* <li className="border-l-2 border-[#4284F3] h-4 pl-1 text-center"></li> */}
+          <li className="pl-1">
             <a
-              className="text-[#4284F3] font-medium text-sm flex items-center gap-1"
+              className="text-[#4284F3] font-medium text-sm flex items-center "
               href=""
             >
               <img src="/image/boloc.png" alt="" />
-              <p> Bộ lọc</p>
+              <p className="pr-1"> Bộ lọc</p>
             </a>
           </li>
         </ul>
       </div>
       <div className="flex justify-between items-center py-4">
-        <div className="relative w-[400px] h-9 ">
+        <div className="relative md:w-[400px] w-[250px] h-9 ">
           <input
             type="search"
             id="search-dropdown"
             className=" p-2.5 w-full text-xs text-[#A89E9F]  rounded-2xl border-s-gray-50 border border-gray-300 pl-12 font-normal"
-            placeholder="Tìm kiếm Vdiraybook..."
+            placeholder="Tìm kiếm thân nhân..."
             required
           />
           <button
@@ -196,7 +194,18 @@ const FindList = () => {
           </button>
         </div>
       </div>
-      <div className="bg-white w-full p-4 rounded-lg ">
+      <div className="flex gap-4">
+        <div className="flex gap-1">
+          <p className="text-[#636363] font-normal text-sm">Ghé thăm:</p>
+          <p className="text-[#1F1F1F] text-sm font-medium">1.000</p>
+        </div>
+        <div className="border-l-2 border-[#CAD0D7]"></div>
+        <div className="flex gap-1">
+          <p className="text-[#636363] font-normal text-sm">Đã dâng hương:</p>
+          <p className="text-[#1F1F1F] text-sm font-medium">1.000.000.000đ</p>
+        </div>
+      </div>
+      <div className="bg-white w-full p-4 rounded-lg mt-2">
         <div className="">
           <a className="flex justify-center" href="">
             <img src="/image/lietsi.png" alt="" />
@@ -213,74 +222,9 @@ const FindList = () => {
           </div>
         </div>
       </div>
-      <div className="list flex gap-2 bg-white mt-2 p-6 rounded-lg overflow-x-scroll">
+      <div className="list flex gap-4 bg-white mt-4 p-6 rounded-lg flex-wrap ">
         {list.map((lis) => (
-          <div
-            onClick={toggleModal}
-            key={lis.id}
-            className="bg-[#DD2B17] h-auto w-full rounded-lg p-2"
-          >
-            {isOpen && (
-              <div className="absolute top-1/2 left-1/2  border  bg-white rounded-lg">
-                <div className=" p-4  ">
-                  <div>
-                    <img src="/image/bialietsi.png" alt="" />
-                    <div className="flex justify-between text-[#1F1F1F] font-semibold text-sm pt-2">
-                      <p>TRẦN VĂN ĐỨC</p>
-                      <p>B1</p>
-                    </div>
-                    <div className="text-sm font-normal text-[#1F1F1F] pt-2">
-                      <li className="px-2 py-1">Năm sinh: 1946</li>
-                      <li className="px-2 py-1">Năm hy sinh: 30/04/1975</li>
-                      <li className="px-2 py-1">Quê quán: Hóc Môn</li>
-                      <li className="px-2 py-1">Chức vụ: Thiếu tá</li>
-                      <li className="px-2 py-1">Đơn vị: Sư đoàn 302</li>
-                    </div>
-                    <div className="pt-2">
-                      <p className="#1F1F1F font-semibold text-sm text-[#1F1F1F]">
-                        THÂN NHÂN (MẸ)
-                      </p>
-                      <div className="flex gap-2 pt-2">
-                        <img src="/image/nguoithan.png" alt="" />
-                        <div className="font-semibold text-base text-[#4284F3] flex items-center relative">
-                          Nguyễn Thị Xuyến
-                          <img
-                            className="teckone"
-                            src="/image-left/teck.png"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <p className="text-[#4284F3] font-medium text-sm pt-2">
-                        Xem chi tiết
-                      </p>
-                    </div>
-                  </div>
-                  <button
-                    className="absolute top-0 right-0 text-[#4284F3]"
-                    onClick={toggleModal}
-                  >
-                    X
-                  </button>
-                </div>
-              </div>
-            )}
-            <div className="flex justify-center">
-              <button className="bg-[#00000033] px-2 py-1 rounded-lg text-white ">
-                {lis.name}
-              </button>
-            </div>
-            <div className="flex justify-center">
-              <button className=" py-3">
-                <img src={lis.img} alt="" />
-              </button>
-            </div>
-            <div className="flex justify-center">
-              <button className="">
-                <img src={lis.table} alt="" />
-              </button>
-            </div>
-          </div>
+          <HeadstoneItem lis={lis} />
         ))}
       </div>
     </div>

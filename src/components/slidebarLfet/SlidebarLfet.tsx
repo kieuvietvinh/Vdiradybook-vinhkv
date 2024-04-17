@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import HierarchySlide from "../hierarchy/HierarchySlide";
 
 const functions = [
   {
@@ -138,15 +139,7 @@ const SlidebarLfet = () => {
             MẠNG XÃ HỘI
           </p>
           {network.map((net) => (
-            <ul>
-              <li>
-                <a href="#">
-                  <img src={net.img} alt="" />
-                  <span>{net.name}</span>
-                  <img className="arrow" src="/image-left/muiten.png" alt="" />
-                </a>
-              </li>
-            </ul>
+            <HierarchySlide net={net} />
           ))}
         </div>
         <div className="pt-2">
@@ -155,7 +148,7 @@ const SlidebarLfet = () => {
           </div>
           {functions.map((funct) => (
             <ul key={funct.id}>
-              <li>
+              <li className="px-4 py-2">
                 <a href="#">
                   <img src={funct.img} alt="" />
                   <span>{funct.name}</span>
@@ -170,7 +163,7 @@ const SlidebarLfet = () => {
           </div>
           {pages.map((page) => (
             <ul key={page.id}>
-              <li>
+              <li className="px-4 py-2">
                 <a href="#">
                   <img src={page.img} alt="" />
                   <span> {page.name} </span>

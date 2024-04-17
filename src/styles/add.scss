@@ -1,12 +1,14 @@
 body {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .crooll::-webkit-scrollbar {
     display: none;
-  }
-  
+}
+
 header {
     background-color: white;
     display: flex;
@@ -61,7 +63,7 @@ header {
 }
 
 .containerSeach {
-    
+
     display: flex;
 
     .dropdown {
@@ -88,21 +90,20 @@ nav {
     background-color: #FFFFFF;
     padding: 10px;
     width: 300px;
-    border-top-right-radius: 0.5rem; 
+    border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-   
-    
+
+
 
     .leftone {
         position: relative;
 
     }
 
-    a {
+    li {
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 8px;
+        gap: 10px;    
         color: #1F1F1F;
         font-size: 14px;
         font-weight: 400;
@@ -113,6 +114,16 @@ nav {
             position: absolute;
             right: 10px;
         }
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #1F1F1F;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
     }
 }
 
@@ -128,8 +139,8 @@ nav {
     position: absolute;
     right: 0px;
     top: 70px;
-    width: 300px;
-    border-top-left-radius: 0.5rem; 
+    width: 260px;
+    border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
 
     .right-page {
@@ -196,12 +207,12 @@ nav {
     }
 
     .teck {
-        transform: translate(5px,-5px);
-        
+        transform: translate(5px, -5px);
+
         top: 0px;
         right: -15px;
     }
-    
+
 
     .chattow {
         display: flex;
@@ -234,11 +245,11 @@ nav {
         }
 
     }
+
     .chattowminit {
         display: flex;
         align-items: center;
-        gap:5px
-    
+        gap: 5px
     }
 
     .chattrueminit {
@@ -252,13 +263,16 @@ nav {
     }
 
 }
+
 .teckone {
-    transform: translate(5px,-10px);
+    transform: translate(5px, -10px);
 
 }
+
 .list::-webkit-scrollbar {
     display: none;
-  }
-  .all::-webkit-scrollbar {
+}
+
+.all::-webkit-scrollbar {
     display: none;
-  }
+}

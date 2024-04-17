@@ -33,24 +33,24 @@ const SlideRight = () => {
         <div>
           <div className="right-page">
             <p>Trò chuyện</p>
-            <div className="sting">
+            <div className="sting ">
               <img src="/image-left/caidat.png" alt="" />
               <img src="/image-left/usercong.png" alt="" />
             </div>
           </div>
-          <div className="">
-            <ul className="useres">
-              <li>
-                <a className="one" href="">
-                  <img src="/image-left/usereys.png" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <img src="/image-left/useres.png" alt="" />
-                </a>
-              </li>
-            </ul>
+          <div className="grid grid-cols-2  pt-4">
+            <a
+              className="justify-center items-center flex border-b-2 border-[#4284F3]"
+              href=""
+            >
+              <img className="mb-1" src="/image-left/usereys.png" alt="" />
+            </a>
+            <a
+              className="justify-center items-center flex border-2-b border-[#4284F3]"
+              href=""
+            >
+              <img className="mb-1" src="/image-left/useres.png" alt="" />
+            </a>
           </div>
         </div>
         {chatpage.map((chat) => (

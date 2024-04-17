@@ -1,5 +1,3 @@
-import React from "react";
-
 const seach = [
   {
     id: 1,
@@ -41,7 +39,7 @@ const Header = () => {
       <header className="shadow-md px-6 w-full">
         <div className="logo">
           <ul>
-            <li className="max-[1024px]:hidden ">
+            <li className="pt-3">
               <a href="">
                 <img src="/image/ngang.png" alt="user photo" />
               </a>
@@ -100,11 +98,14 @@ const Header = () => {
               </div>
             </div>
           </form>
-          <div className="flex items-center gap-4 pl-4">
+          <div className="flex items-center gap-4 pl-4 max-[1024px]:hidden">
             {seach.map((seac) => (
-              <ul key={seac.id}>
-                <li>
-                  <a href="">
+              <ul
+                className="hover:bg-[#3498DB33] w-10 h-10 items-center flex justify-center rounded-lg"
+                key={seac.id}
+              >
+                <li className="">
+                  <a className="" href="">
                     <img src={seac.img} alt="" />
                   </a>
                 </li>

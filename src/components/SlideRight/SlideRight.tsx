@@ -1,32 +1,74 @@
 import React from "react";
+import SlideRightChat from "../SlideRightChat/SlideRightChat";
+
 const chatpage = [
   {
     id: 1,
     img: "/image/userone.png",
     name: "Huyền Thương",
     tatel: "Trò chuyện",
+    minute: "5 phút trước",
+    active: false,
   },
   {
     id: 2,
     img: "/image/userone.png",
     name: " Xuân Hái",
-    tatel: "5 phút trước",
+    tatel: "Trò chuyện",
+    minute: "5 phút trước",
+    active: true,
   },
   {
     id: 3,
     img: "/image/userone.png",
     name: " Thanh Huyền",
-    tatel: "5 phút trước",
+    tatel: "Trò chuyện",
+    minute: "5 phút trước",
+    active: false,
   },
   {
     id: 4,
     img: "/image/userone.png",
     name: "Hà My",
     tatel: "Trò chuyện",
+    minute: "5 phút trước",
+    active: false,
+  },
+  {
+    id: 5,
+    img: "/image/userone.png",
+    name: "Huyền Trâm",
+    tatel: "Trò chuyện",
+    minute: "5 phút trước",
+    active: true,
+  },
+  {
+    id: 6,
+    img: "/image/userone.png",
+    name: " Hải My",
+    tatel: "Trò chuyện",
+    minute: "5 phút trước",
+    active: true,
+  },
+  {
+    id: 7,
+    img: "/image/userone.png",
+    name: " Hà Nhi",
+    tatel: "Trò chuyện",
+    minute: "5 phút trước",
+    active: false,
+  },
+  {
+    id: 8,
+    img: "/image/userone.png",
+    name: "Linh Anh",
+    tatel: "Trò chuyện",
+    minute: "5 phút trước",
+    active: true,
   },
 ];
 
-const SlideRight = () => {
+const SlideRight = (props: any) => {
   return (
     <div>
       <div className="right max-[1024px]:hidden ">
@@ -54,27 +96,7 @@ const SlideRight = () => {
           </div>
         </div>
         {chatpage.map((chat) => (
-          <div className="">
-            <div className="userone">
-              <a href="">
-                <img className="onemo" src={chat.img} alt="" />
-                <img className="towmo" src="/image-left/Ensign.png" alt="" />
-              </a>
-              <div>
-                <div className="chatone">
-                  {chat.name}
-                  <img className="teck" src="/image-left/teck.png" alt="" />
-                </div>
-                <div className="chattow">
-                  <img className="sys" src="/image-left/tim.png" alt="" />
-                  <div className="chattrue">
-                    <img src="/image/chat.png" alt="" />
-                    <p>{chat.tatel}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <SlideRightChat chat={chat} />
         ))}
       </div>
     </div>

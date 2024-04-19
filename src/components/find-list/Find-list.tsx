@@ -89,7 +89,7 @@ const list = [
   },
   {
     id: 13,
-    name: "B1",
+    name: "B13",
     img: "/image/rating1.png",
     table: "/image/lietsi1.png",
     active: false,
@@ -97,11 +97,6 @@ const list = [
 ];
 
 const FindList = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
   return (
     <div className="mx-auto max-w-5xl pt-2">
       <div className="all  bg-white px-6 py-3 rounded-lg flex justify-between overflow-x-scroll items-center  whitespace-nowrap">
@@ -205,19 +200,27 @@ const FindList = () => {
           <p className="text-[#1F1F1F] text-sm font-medium">1.000.000.000đ</p>
         </div>
       </div>
-      <div className="bg-white w-full p-4 rounded-lg mt-2">
-        <div className="">
+      <div className="bg-white w-full rounded-lg mt-2 bg-[url('/image/ablietsi.png')]">
+        <div className=" p-2 bg-[#0a06068e]">
           <a className="flex justify-center" href="">
             <img src="/image/lietsi.png" alt="" />
           </a>
-          <p className="font-normal text-[#1F1F1F] text-sm text-center py-4">
+          <p className="font-normal text-white text-sm text-center py-4 ">
             Nghĩa trang liệt sĩ Tân Xuân, Xã Đông Thạnh, Huyện Hóc Môn, TP. Hồ
             Chí Minh
           </p>
-          <div className="flex justify-center ">
-            <button className="flex items-center gap-2 border border-[#4284F3] rounded-[18px] px-4 py-1.5 ">
+          <div className="flex whitespace-nowrap justify-center gap-4">
+            <button className="flex items-center gap-2 border border-[#4284F3] rounded-[18px] px-4 py-1.5 bg-white">
               <img src="/image/huong.png" alt="" />
               <p className="text-[#4284F3] font-medium text-sm"> Dâng hương</p>
+            </button>
+            <button className="flex items-center gap-2 border border-[#4284F3] rounded-[18px] px-4 py-1.5 bg-white">
+              <img src="/image/hoa.ico" alt="" />
+              <p className="text-[#4284F3] font-medium text-sm"> Dâng hoa</p>
+            </button>
+            <button className="flex items-center gap-2 border border-[#4284F3] rounded-[18px] px-4 py-1.5 bg-white">
+              <img src="/image/qualietsi.png" alt="" />
+              <p className="text-[#4284F3] font-medium text-sm"> Dâng quả</p>
             </button>
           </div>
         </div>

@@ -18,7 +18,7 @@ const HeadstoneItem = (props: any) => {
       }`}
     >
       {isOpen && (
-        <div className="absolute -top-1/2   border  bg-white ro0unded-lg z-10 w-[232px] max-[640px]:fixed max-[640px]:top-1/2 max-[640px]:left-1/4">
+        <div className="absolute -top-1/2   border  bg-white rounded-lg z-10 w-[232px] max-[640px]:fixed max-[640px]:top-1/2 max-[640px]:left-1/4">
           <div className=" p-4  ">
             <div>
               <img src="/image/bialietsi.png" alt="" />
@@ -87,10 +87,10 @@ const HeadstoneItem = (props: any) => {
         </div>
       )}
       <div
-        className={`p-2 mx-2 cursor-pointer  ${
+        className={`flex items-center w-[34px] h-[24px]  justify-center cursor-pointer font-normal text-sm rounded-[4px] ${
           props.lis.active
-            ? "bg-[#00000033]   rounded-lg px-4 py-1  text-white"
-            : "bg-[#CAD0D7]    rounded-lg p-2  px-4 py-1"
+            ? "bg-[#00000033]  text-white"
+            : "bg-[#CAD0D7] text-[#1F1F1F]"
         }`}
       >
         {props?.lis.name}

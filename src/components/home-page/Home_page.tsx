@@ -317,49 +317,10 @@ const Home_page = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
+    nextArrow: <></>,
   };
   return (
-    <div className="font-roboto lg:max-w-screen-xl  mx-auto w-full max-w-screen-xl bg-[#fafafa]">
-      <div>
-        <ul className="flex gap-4 ">
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/page">Màn thống kê truy cập</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/orderdetails">Màn thanh toán</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/populartopic">Màn đặt câu hỏi</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/contribute">Màn bạn cần giúp đỡ gì</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/details">Màn mua hàng</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/newbranch">Màn thêm nhánh mới</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/quotations">Màn danh ngôn</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/user">Màn người dùng</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/utilities">Màn tiện ích</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/suggest">Màn gợi ý kết bạn</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/suggest">Màn niêm yết</a>
-          </li>
-          <li className="bg-blue-500 text-white p-3">
-            <a href="/findList">Màn tìm liệt sĩ</a>
-          </li>
-        </ul>
-      </div>
+    <div className="font-roboto  mx-auto w-full max-w-[1240px] bg-[#fafafa] ">
       <div className=" justify-between items-center p-4 lg:grid lg:grid-cols-5  grid-cols-1 gap-4 bg-white flex">
         <div>
           <img
@@ -404,24 +365,24 @@ const Home_page = () => {
         </div>
       </div>
       <div className="bg-white">
-        <div className="mt-5">
+        <div className="mt-2">
           <div className="text-sm font-normal text-center text-[#2f80ed] border-b border-[#2f80ed] uppercase flex bg-white">
-            {nabar.map((nab) => (
-              <ul key={nab.id} className="flex flex-wrap  pt-[0.6rem]">
-                <li className="me-2">
+            <ul className="flex flex-wrap   pt-[0.6rem]">
+              {nabar.map((nab) => (
+                <li key={nab.id} className="">
                   <a
                     href="/page"
-                    className="inline-block  pl-[1.6rem] border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 "
+                    className=" whitespace-nowrap pl-[1.6rem] border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 "
                   >
                     {nab.tabel}
                   </a>
                 </li>
-              </ul>
-            ))}
+              ))}
+            </ul>
           </div>
         </div>
         <div className="md:grid md:grid-cols-3 md:gap-4  grid-cols-1 gap-4  pt-3 bg-white">
-          <div className="col-span-2 ">
+          <div className="col-span-2 w-full">
             <Slider {...settings}>
               <div>
                 <img
@@ -464,7 +425,6 @@ const Home_page = () => {
             </div>
           </div>
         </div>
-
         <div className="flex  p-2 bg-white">
           <div className="w-[65%] flex justify-between py-[15px]">
             <div className="text-[#2f80ed] font-semibold text-[17px] flex items-center justify-center">
@@ -495,11 +455,11 @@ const Home_page = () => {
             </div>
           </div>
         </div>
-        <div className="w-full flex  bg-white border  overflow-scroll object-none">
+        <div className="catego w-full flex  bg-white border  overflow-scroll object-none">
           {autor.map((item) => (
             <div
               key={item.id}
-              className="lg:px-2 px-0.5 bg-white border-l  h-[154px] w-[154px] min-w-[154px] "
+              className=" lg:px-2 px-0.5 bg-white border-l  h-[154px] w-[154px] min-w-[154px] "
             >
               <div className=" flex items-center justify-center p-[10px] ">
                 <a href="">
@@ -519,10 +479,10 @@ const Home_page = () => {
           ))}
         </div>
       </div>
-      <div className="mt-5 w-full bg-white h-[80px] pb-[16px] overflow-scroll">
-        <div className="grid grid-cols-9 border-b-2 items-center">
+      <div className="catego  mt-5 w-full  bg-white h-[80px] pb-[16px] overflow-x-scroll ">
+        <div className="flex justify-between border-b-2 items-center">
           <div className="bg-[#4284f3]  px-4 w-32 h-16   flex justify-center items-center relative">
-            <div className=" text-white text-[15px] font-medium uppercase relative">
+            <div className=" text-white text-[15px] font-medium uppercase relative ">
               Sản phẩm hot
             </div>
             <div className=" ">
@@ -548,7 +508,7 @@ const Home_page = () => {
       <p className="text-[#2f80ed] font-semibold text-[1.06rem] ">
         SẢN PHẨM VIP
       </p>
-      <div className="lg:grid lg:grid-cols-6 grid-w-fullcols-2 gap-2  w-full pt-5">
+      <div className="lg:grid lg:grid-cols-6 grid grid-cols-2 gap-2  w-full pt-5">
         <div className="col-span-2  ">
           <img
             className="h-[23rem] w-full"
@@ -613,16 +573,21 @@ const Home_page = () => {
             Xu hướng tìm kiếm
           </p>
         </div>
-        <div className="grid grid-cols-10 gap-2 bg-white">
+        <ul className="flex justify-between gap-2 bg-white overflow-x-scroll items-center">
           {trend.map((tren) => (
-            <div key={tren.id} className="relative ">
-              <img src={tren.img} alt="" />
-              <h3 className="bg-black bg-opacity-40 w-full line-clamp-1 absolute text-white font-normal text-[13px] h-[26px] left-0 right-0 bottom-0 text-center py-[5px]">
+            <li key={tren.id} className="relative ">
+              <a href="">
+                <img className="w-full h-auto" src={tren.img} alt="" />
+              </a>
+              <a
+                href=""
+                className="bg-black bg-opacity-40 w-full line-clamp-1 absolute text-white font-normal text-[13px] h-[26px] left-0 right-0 bottom-0 text-center py-[5px]"
+              >
                 {tren.brand}
-              </h3>
-            </div>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
       <div className="lg:grid lg:grid-cols-4  grid-cols-1 gap-5 pt-5">
         <div className="col-span-2 bg-white">
@@ -744,8 +709,7 @@ const Home_page = () => {
               <ul className="text-[#333] font-normal text-sm">
                 <li className="mt-[3px]">
                   <a className="hover:text-[#2f80ed]" href="">
-                    {" "}
-                    QUY CHẾ HOẠT ĐỘNG{" "}
+                    QUY CHẾ HOẠT ĐỘNG
                   </a>
                 </li>
                 <li className="mt-[3px]">
@@ -787,7 +751,6 @@ const Home_page = () => {
                     className="text-[#2f80ed] font-bold text-sm"
                     href="0986.29.00.22"
                   >
-                    {" "}
                     0986.29.00.22
                   </a>
                 </div>
@@ -892,7 +855,7 @@ const Home_page = () => {
             </div>
           </div>
         </div>
-        <div className="border-t-2 py-[30px]">
+        <div className="border-t-2 py-[30px] p-[15px]">
           <h2 className="uppercase font-medium text-base text-[#333] mb-5 ">
             Danh mục sản phẩm
           </h2>

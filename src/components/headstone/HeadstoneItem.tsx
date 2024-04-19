@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const HeadstoneItem = (props: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,14 +7,28 @@ const HeadstoneItem = (props: any) => {
     setIsOpen(!isOpen);
   };
 
+  const ref = React.useRef<any>();
+  const handleClick = (e: any) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+  React.useEffect(() => {
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  });
+
   return (
     <div
+      ref={ref}
       onClick={toggleModal}
       key={props?.lis.id}
-      className={`p-2 mx-2 cursor-pointer ${
+      className={`p-1  px-2 py-2 w-fit  border-transparent border-4 rounded-lg ${
         props.lis.active
-          ? "bg-[#DD2B17] relative h-auto  rounded-lg p-2 border-transparent border-4 hover:border-[#4284F3] "
-          : "bg-[#0000000D] relative h-auto rounded-lg p-2 border-dashed border-2"
+          ? "bg-[#DD2B17] relative  p-2  hover:border-[#4284F3] "
+          : "bg-[#0000000D] relative h-auto  p-2 border-dashed border "
       }`}
     >
       {isOpen && (
@@ -87,7 +101,7 @@ const HeadstoneItem = (props: any) => {
         </div>
       )}
       <div
-        className={`flex items-center w-[34px] h-[24px]  justify-center cursor-pointer font-normal text-sm rounded-[4px] ${
+        className={`flex items-center w-[34px] py-1 px-2  justify-center cursor-pointer font-normal text-sm rounded-[4px] ${
           props.lis.active
             ? "bg-[#00000033]  text-white"
             : "bg-[#CAD0D7] text-[#1F1F1F]"
@@ -99,7 +113,7 @@ const HeadstoneItem = (props: any) => {
       {props.lis.active && (
         <>
           <div className="flex justify-center ">
-            <button className=" py-3">
+            <button className=" py-2">
               <img src={props?.lis.img} alt="" />
             </button>
           </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import HierarchySlide from "../hierarchy/HierarchySlide";
+import { Link } from "react-router-dom";
 
 const functions = [
   {
@@ -123,7 +124,63 @@ const pages = [
     name: "Trang sắp ra mắt",
   },
 ];
-
+const linkpage = [
+  {
+    id: 1,
+    page: "Màn thống kê truy cập",
+    link: "/page",
+  },
+  {
+    id: 2,
+    page: "Màn thanh toán",
+    link: "/orderdetails",
+  },
+  {
+    id: 3,
+    page: "Màn đặt câu hỏi",
+    link: "/populartopic",
+  },
+  {
+    id: 4,
+    page: "Màn bạn cần giúp đỡ gì",
+    link: "/contribute",
+  },
+  {
+    id: 5,
+    page: "Màn thêm nhánh mới",
+    link: "/details",
+  },
+  {
+    id: 6,
+    page: "Màn danh ngôn",
+    link: "/quotations",
+  },
+  {
+    id: 7,
+    page: "Màn người dùng",
+    link: "/user",
+  },
+  {
+    id: 8,
+    page: "Màn tiện ích",
+    link: "/utilities",
+  },
+  {
+    id: 9,
+    page: "Màn gợi ý kết bạn",
+    link: "/suggest",
+  },
+  {
+    id: 8,
+    page: "Màn niêm yết",
+    link: "/mana",
+  },
+  {
+    id: 9,
+    page: "Màn tìm liệt sĩ",
+    link: "/findList",
+  },
+];
 const SlidebarLfet = () => {
   return (
     <div>
@@ -135,6 +192,15 @@ const SlidebarLfet = () => {
             </p>
             <p className="text-[#636363] font-normal text-sm ">Shop feed</p>
           </div>
+          {linkpage.map((link) => (
+            <div>
+              <ul>
+                <li className="font-normal text-[#1F1F1F] text-sm p-2">
+                  <a href={link.link}>{link.page}</a>
+                </li>
+              </ul>
+            </div>
+          ))}
           <p className="py-2 text-sm text-[#1F1F1F] font-semibold leading-[22px]">
             MẠNG XÃ HỘI
           </p>
@@ -142,6 +208,7 @@ const SlidebarLfet = () => {
             <HierarchySlide net={net} />
           ))}
         </div>
+
         <div className="pt-2">
           <div>
             <p>CHỨC NĂNG</p>
@@ -157,6 +224,7 @@ const SlidebarLfet = () => {
             </ul>
           ))}
         </div>
+
         <div className=" relative pt-2">
           <div>
             <p>NHỮNG TRANG KHÁC</p>

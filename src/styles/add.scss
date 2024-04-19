@@ -139,7 +139,7 @@ nav {
     position: absolute;
     right: 0px;
     top: 70px;
-    width: 260px;
+    width: 300px;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
 
@@ -265,5 +265,12 @@ nav {
 }
 
 .all::-webkit-scrollbar {
+    display: none;
+}
+
+.catego::-webkit-scrollbar {
+    display: none;
+}
+.slick-arrow slick-next {
     display: none;
 }

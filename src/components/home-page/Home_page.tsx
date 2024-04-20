@@ -320,7 +320,7 @@ const Home_page = () => {
     nextArrow: <></>,
   };
   return (
-    <div className="font-roboto  mx-auto w-full max-w-[1240px] bg-[#fafafa] ">
+    <div className="font-roboto  mx-auto w-full max-w-[1024px] bg-[#fafafa] ">
       <div className=" justify-between items-center p-4 lg:grid lg:grid-cols-5  grid-cols-1 gap-4 bg-white flex">
         <div>
           <img

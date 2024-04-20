@@ -12,7 +12,7 @@ const tabs = [
 ];
 
 const Contribute = () => {
-  const [activeTab, setActiveTab] = useState();
+  const [activeTab, setActiveTab] = useState(2);
 
   const handleTabClick = (tabIndex: any) => {
     setActiveTab(tabIndex);
@@ -50,8 +50,8 @@ const Contribute = () => {
   };
 
   return (
-    <div className=" mt-10   mx-auto w-full max-w-[848px] font-inter">
-      <div className="bg-white rounded-md w-full h-auto p-4 border">
+    <div className=" mx-auto w-full max-w-[1024px] font-inter">
+      <div className="bg-white rounded-lg w-full h-auto p-4 border">
         <div className="flex justify-center">
           <h1 className="text-[1.7rem] text-[#4284f3] font-normal font-inter ">
             Chúng tôi có thể giúp gì cho bạn?
@@ -84,13 +84,13 @@ const Contribute = () => {
             </form>
           </div>
           <div className="absolute right-0 bottom-0">
-            <button className="bg-[#4284f3] rounded-md w-auto h-auto px-[15px] py-[5px]">
+            <button className="bg-[#4284f3] rounded-lg w-auto h-auto px-[15px] py-[5px]">
               <p className="text-white text-sm p-1">Đặt câu hỏi </p>
             </button>
           </div>
         </div>
       </div>
-      <div className="flex border-b border-gray-200 mt-4 overflow-x-scroll overflow-hidden">
+      <div className="catego  flex border-b border-gray-200 mt-4 overflow-x-scroll ">
         {tabs.map((tab, a) => (
           <button
             key={a}
@@ -109,7 +109,7 @@ const Contribute = () => {
         {activeTab === 1 && <div></div>}
         {activeTab === 2 && (
           <div className="">
-            <div className="relative font-serif max-w-4xl  mx-auto w-full duration-1000 border rounded-md drop-shadow-md">
+            <div className="relative font-serif max-w-[1024px]  mx-auto w-full duration-1000 border rounded-md drop-shadow-md">
               <div className="relative">
                 <button
                   type="button"
@@ -118,7 +118,11 @@ const Contribute = () => {
                 >
                   {selectedOption ? selectedOption : "Bạn cần giúp đỡ?"}
                   <img
-                    className="absolute right-5"
+                    className={`absolute right-5  ${
+                      isOpen
+                        ? "transform rotate-0 delay-75 decoration-slate-100"
+                        : "transform -rotate-180"
+                    }`}
                     src="https://vdiarybook.com/assets/icons/default/dropdown.svg"
                     alt=""
                   />

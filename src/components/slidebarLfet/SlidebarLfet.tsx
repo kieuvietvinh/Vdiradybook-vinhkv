@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import HierarchySlide from "../hierarchy/HierarchySlide";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const functions = [
   {
@@ -128,7 +128,7 @@ const linkpage = [
   {
     id: 1,
     page: "Màn thống kê truy cập",
-    link: "/page",
+    link: "/statistical",
   },
   {
     id: 2,
@@ -173,7 +173,7 @@ const linkpage = [
   {
     id: 8,
     page: "Màn niêm yết",
-    link: "/mana",
+    link: "/listed",
   },
   {
     id: 9,
@@ -182,6 +182,10 @@ const linkpage = [
   },
 ];
 const SlidebarLfet = () => {
+  const [activeTab, setActiveTab] = useState(1);
+  const handleTabClick = (tabIndex: any) => {
+    setActiveTab(tabIndex);
+  };
   return (
     <div>
       <div className="left absolute left-0 top-[70px] z-10 max-[1024px]:hidden ">
@@ -195,8 +199,15 @@ const SlidebarLfet = () => {
           {linkpage.map((link) => (
             <div>
               <ul>
-                <li className="font-normal text-[#1F1F1F] text-sm p-2">
-                  <a href={link.link}>{link.page}</a>
+                <li
+                  className={` border-b-[3px] border font-normal text-[#1F1F1F] text-sm p-2 border-transparent  hover:text-[#4284F3] hover:rounded sm:px-4 sm:py-2  ${
+                    activeTab === link.id
+                      ? "inline-block p-4 !border-b-[#4284F3]  text-[#4284F3] w-auto font-bold"
+                      : ""
+                  }`}
+                  onClick={() => handleTabClick(link.id)}
+                >
+                  <Link href={link.link}>{link.page}</Link>
                 </li>
               </ul>
             </div>

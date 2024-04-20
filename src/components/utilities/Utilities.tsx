@@ -223,7 +223,7 @@ const Utilitie = () => {
     setActiveTab(tabIndex);
   };
   return (
-    <div className=" mt-10   mx-auto w-full max-w-[952px] font-roboto bg-white p-4">
+    <div className="rounded-lg mx-auto w-full max-w-[1024px] font-roboto bg-white p-4">
       <div className=" border-b border-gray-200 mt-4 sm:w-auto bg-white shadow-sm sm:grid sm:grid-cols-2 sm:gap-2  ">
         {tabs.map((tab) => (
           <button

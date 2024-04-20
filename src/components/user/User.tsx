@@ -8,8 +8,8 @@ const User = () => {
   };
 
   return (
-    <div className="font-sans mt-10 ">
-      <div className="bg-white shadow-lg max-w-screen-lg  mx-auto w-full border p-3 rounded-md">
+    <div className="font-sans ">
+      <div className="bg-white shadow-lg max-w-screen-lg  mx-auto w-full border p-3 rounded-lg">
         <div className="flex border-b border-gray-200  ">
           <button
             className={`w-1/3  hover:bg-gray-200 hover:rounded-md  text-[#777d74] text-xs px-4 py-2 ${
@@ -119,8 +119,7 @@ const User = () => {
                       />
                     </div>
                     <div className="text-[#ef4444] text-sm">
-                      {" "}
-                      Trần Thị Vân Anh{" "}
+                      Trần Thị Vân Anh
                     </div>
                   </div>
                   <div className="w-2/12">

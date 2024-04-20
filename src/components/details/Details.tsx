@@ -14,10 +14,10 @@ const Details = () => {
   };
 
   return (
-    <div className="font-roboto lg:max-w-screen-lg  mx-auto w-full max-w-screen-lg bg-white ">
-      <div className="relative md:grid gap-3 grid-cols-2 mt-10 ">
+    <div className="font-roboto lg:max-w-screen-lg  mx-auto w-full max-w-screen-lg bg-white rounded-lg">
+      <div className="relative md:grid gap-3 grid-cols-2  ">
         <div className="px-[0.95rem] ">
-          <div className="w-full">
+          <div className="w-full pt-4">
             <img
               src="https://ocopmart.org/static/media/images/news/bnao-1624812115-1636964564.jpg"
               alt=""

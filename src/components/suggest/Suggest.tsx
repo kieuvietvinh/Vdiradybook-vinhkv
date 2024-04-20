@@ -19,13 +19,13 @@ const Suggest = () => {
   ///
 
   return (
-    <div className="font-sans mt-10">
-      <div className="flex border-b border-gray-200 lg:max-w-screen-md  mx-auto w-full max-w-screen-lg ">
+    <div className="bg-white mx-auto w-full max-w-screen-lg rounded-lg">
+      <div className="flex border-b border-gray-200    ">
         <button
           className={`w-1/3 hover:bg-gray-200 hover:rounded  text-[#777d74] text-xs px-4 py-2 ${
             activeTab === 1
               ? "inline-block p-4 border-b-4 border-transparent  rounded-t-lg text-blue-600 border-blue-600 "
-              : "bg-white"
+              : ""
           }`}
           onClick={() => handleTabClick(1)}
         >
@@ -45,7 +45,7 @@ const Suggest = () => {
           className={`w-1/3 hover:bg-gray-200 hover:rounded text-[#777d74] text-xs px-4 py-2 ${
             activeTab === 3
               ? "inline-block p-4 border-b-4 border-transparent rounded-t-lg text-blue-600 border-blue-600 "
-              : "bg-white"
+              : ""
           }`}
           onClick={() => handleTabClick(3)}
         >
@@ -55,7 +55,7 @@ const Suggest = () => {
       <div className="mt-4  ">
         {activeTab === 1 && <div className=""></div>}
         {activeTab === 2 && (
-          <div className="lg:max-w-screen-md  mx-auto w-full max-w-screen-lg p-2">
+          <div className="  mx-auto w-full max-w-screen-lg p-2">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
               <div className="bg-white shadow-md border rounded-md w-full h-auto">
                 <div className="">
@@ -255,7 +255,7 @@ const Suggest = () => {
             </div>
           </div>
         )}
-        ;{activeTab === 3 && <div className=""></div>}
+        {activeTab === 3 && <div className=""></div>}
       </div>
     </div>
   );

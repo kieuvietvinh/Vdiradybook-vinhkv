@@ -119,7 +119,7 @@ const list = [
 
 const FindList = () => {
   return (
-    <div className="mx-auto max-w-5xl pt-2">
+    <div className="mx-auto max-w-5xl ">
       <div className="all  bg-white px-6 py-3 rounded-lg flex justify-between overflow-x-scroll items-center  whitespace-nowrap">
         <ul className="flex items-center   ">
           <li className="gap-1 flex items-center">

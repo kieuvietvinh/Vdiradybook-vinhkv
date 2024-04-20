@@ -57,8 +57,8 @@ const OrderDetails = () => {
     }
   };
   return (
-    <div className="bg-[#F2F2F2] h-full">
-      <div className="font-inter mx-auto w-full max-w-5xl p-5 ">
+    <div className="bg-[#F2F2F2] h-full max-w-5xl mx-auto rounded-lg">
+      <div className="font-inter  w-full  ">
         <div className=" bg-white p-3 rounded-2xl">
           <div className="flex item relative ">
             <div>
@@ -125,7 +125,7 @@ const OrderDetails = () => {
             <p className="font-bold text-[#1F1F1F] text-xl leading-[26px]">
               Địa chỉ nhận hàng
             </p>
-            <img className="absolute right-3" src="/image/Pen.png" alt="" />
+            <img className="absolute right-0" src="/image/Pen.png" alt="" />
           </div>
           <div className="flex mb-2">
             <p className="font-normal text-sm text-[#1F1F1F] leading-[22px]">
@@ -201,7 +201,7 @@ const OrderDetails = () => {
                         Hộp vàng
                       </p>
                     </div>
-                    <div className="flex items-center absolute right-2 gap-4">
+                    <div className="flex items-center absolute right-0 gap-4">
                       <p className="text-[#8E8E93] font-normal text-sm">
                         đ650,000
                       </p>

@@ -84,8 +84,8 @@ const PopularTopic = () => {
     "radial-gradient(50% 50% at 50% 50%,rgba(26,188,156,.4) 0,rgba(52,152,219,0) 100%) ";
 
   return (
-    <div className=" mt-10   mx-auto w-full max-w-[848px] font-roboto">
-      <div className="bg-white rounded-md w-full h-auto p-4 border">
+    <div className="  mx-auto w-full max-w-[1024px] font-roboto">
+      <div className="bg-white rounded-lg w-full h-auto p-4 border">
         <div className="flex justify-center">
           <h1 className="text-[1.7rem] text-[#4284f3] font-normal ">
             Chúng tôi có thể giúp gì cho bạn?
@@ -131,7 +131,7 @@ const PopularTopic = () => {
           </div>
         </div>
       </div>
-      <div className="flex border-b border-gray-200 mt-4 overflow-x-scroll">
+      <div className="catego flex border-b border-gray-200 mt-4 overflow-x-scroll">
         {tabs.map((tab, a) => (
           <button
             key={a}

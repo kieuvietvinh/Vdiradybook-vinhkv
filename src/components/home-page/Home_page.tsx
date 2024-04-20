@@ -320,8 +320,8 @@ const Home_page = () => {
     nextArrow: <></>,
   };
   return (
-    <div className="font-roboto  mx-auto w-full max-w-[1024px] bg-[#fafafa] ">
-      <div className=" justify-between items-center p-4 lg:grid lg:grid-cols-5  grid-cols-1 gap-4 bg-white flex">
+    <div className="  mx-auto w-full max-w-[1024px] bg-[#fafafa] rounded-lg">
+      <div className=" justify-between items-center p-4 lg:grid lg:grid-cols-5  grid-cols-1 gap-4 bg-white flex rounded-lg">
         <div>
           <img
             src="https://ocopmart.org/static/media/images/siteinfo/2021_07_30/s150_150/logo-web-1627642464.png"
@@ -408,17 +408,17 @@ const Home_page = () => {
             </Slider>
           </div>
           <div className="">
-            <div className="pb-[5px] overflow-hidden">
+            <div className="pb-[5px] overflow-hidden  relative">
               <img
-                className="w-full rounded-md hover:scale-110 hover:delay-75 hover:duration-150"
+                className="w-full rounded-md transform hover:scale-125 transition-transform duration-500"
                 src="https://ocopmart.org/static/media/files/banners/s800_800/874_1672725493_90363b3c3f5e2b85.jpg"
                 alt=""
               />
             </div>
 
-            <div className=" overflow-hidden">
+            <div className=" overflow-hidden relative">
               <img
-                className="w-full rounded-md hover:scale-110 hover:delay-75 hover:duration-150"
+                className="w-full rounded-md transform hover:scale-125 transition-transform duration-500"
                 src="https://ocopmart.org/static/media/files/banners/s800_800/848_1634452050_979616bc252a0d32.png"
                 alt=""
               />
@@ -446,9 +446,9 @@ const Home_page = () => {
             </div>
           </div>
           <div className="w-[35%] pl-[5px] pt-[5px] ">
-            <div className="overflow-hidden float-right">
+            <div className="overflow-hidden relative float-right">
               <img
-                className="max-w-full max-h-[122px]  rounded-md hover:scale-110 hover:delay-75 hover:duration-150"
+                className="max-w-full max-h-[122px]  rounded-md transform hover:scale-125 transition-transform duration-500"
                 src="https://ocopmart.org/static/media/files/banners/s800_800/953_1657167413_39562c65e35cfad6.png"
                 alt=""
               />
@@ -518,9 +518,9 @@ const Home_page = () => {
         </div>
         {product.map((ocop) => (
           <div key={ocop.id} className="bg-white shadow-md  ">
-            <div className="w-full h-auto bg-white  overflow-hidden">
+            <div className="w-full h-auto bg-white  overflow-hidden relative">
               <img
-                className="hover:scale-110 hover:delay-300 hover:duration-300"
+                className="transform hover:scale-125 transition-transform duration-500"
                 src={ocop.img}
                 alt=""
               />
@@ -592,10 +592,10 @@ const Home_page = () => {
       <div className="lg:grid lg:grid-cols-4  grid-cols-1 gap-5 pt-5">
         <div className="col-span-2 bg-white">
           <div>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden relative">
               <a href="">
                 <img
-                  className="hover:scale-110 hover:delay-100 hover:duration-300"
+                  className="transform hover:scale-125 transition-transform duration-500"
                   src="https://ocopmart.org/static/media/images/news/2022_05_18/s700_700/z3422643372693b31c1498dadfaef561cb10691b2f8a48-1652844702.jpg"
                   alt=""
                 />
@@ -616,10 +616,10 @@ const Home_page = () => {
         </div>
         <div className="">
           <div className="bg-white">
-            <div className="overflow-hidden">
+            <div className="overflow-hidden relative">
               <a href="">
                 <img
-                  className="hover:scale-110 hover:delay-100 hover:duration-300 w-full"
+                  className="transform hover:scale-125 transition-transform duration-500 w-full"
                   src="https://ocopmart.org/static/media/images/news/2022_06_17/s300_300/ocop-1655474327.jpg"
                   alt=""
                 />
@@ -659,10 +659,10 @@ const Home_page = () => {
           </div>
         </div>
         <div className="lg:col-span-3 flex bg-white ">
-          <div className="overflow-hidden">
+          <div className="overflow-hidden relative">
             <a href="">
               <img
-                className="hover:scale-110 hover:delay-100 hover:duration-300 "
+                className="transform hover:scale-125 transition-transform duration-500 "
                 src="https://ocopmart.org/static/media/images/news/2022_06_14/s300_300/thiet-ke-chua-co-ten-10-1655212196.png"
                 alt=""
               />

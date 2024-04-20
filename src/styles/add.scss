@@ -259,6 +259,9 @@ nav {
     transform: translate(5px, -10px);
 
 }
+.tecktwo {
+    transform: translate(-98px, -42px);
+}
 
 .list::-webkit-scrollbar {
     display: none;
@@ -269,8 +272,5 @@ nav {
 }
 
 .catego::-webkit-scrollbar {
-    display: none;
-}
-.slick-arrow slick-next {
     display: none;
 }

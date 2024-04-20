@@ -98,6 +98,22 @@ const SlideRight = (props: any) => {
         {chatpage.map((chat) => (
           <SlideRightChat chat={chat} />
         ))}
+        <div className="mt-10">
+          <form className="flex items-center max-w-sm mx-auto">
+            <div className="relative w-full">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <img className="w-5 h-5" src="/image/Search1.png" alt="" />
+              </div>
+              <input
+                type="text"
+                id="simple-search"
+                className="bg-white outline-none border border-[#007AFF] text-[#95A5A6] text-base rounded-full block w-full ps-10 p-2  "
+                placeholder="Tìm kiếm"
+                required
+              />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

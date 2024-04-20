@@ -50,10 +50,10 @@ const Contribute = () => {
   };
 
   return (
-    <div className=" mx-auto w-full max-w-[1024px] font-inter">
+    <div className=" mx-auto w-full max-w-[1024px] ">
       <div className="bg-white rounded-lg w-full h-auto p-4 border">
         <div className="flex justify-center">
-          <h1 className="text-[1.7rem] text-[#4284f3] font-normal font-inter ">
+          <h1 className="text-[1.7rem] text-[#4284f3] font-normal  ">
             Chúng tôi có thể giúp gì cho bạn?
           </h1>
         </div>
@@ -67,7 +67,7 @@ const Contribute = () => {
                   required
                 />
                 <div className="bg-white w-14 h-5 absolute top-[-9px] left-2"></div>
-                <div className="absolute top-[-9px] text-[#8d8a8a] text-xs left-3 font-inter">
+                <div className="absolute top-[-9px] text-[#8d8a8a] text-xs left-3 ">
                   Tim kiếm
                 </div>
                 <button
@@ -109,11 +109,11 @@ const Contribute = () => {
         {activeTab === 1 && <div></div>}
         {activeTab === 2 && (
           <div className="">
-            <div className="relative font-serif max-w-[1024px]  mx-auto w-full duration-1000 border rounded-md drop-shadow-md">
+            <div className="relative max-w-[1024px]  mx-auto w-full duration-1000 border rounded-md drop-shadow-md">
               <div className="relative">
                 <button
                   type="button"
-                  className="inline-flex  w-full rounded-t-sm  p-[15px]  bg-white text-xl font-medium font-inter"
+                  className="inline-flex  w-full rounded-t-sm  p-[15px]  bg-white text-xl font-medium "
                   onClick={toggleDropdown}
                 >
                   {selectedOption ? selectedOption : "Bạn cần giúp đỡ?"}
@@ -131,7 +131,7 @@ const Contribute = () => {
               {isOpen && (
                 <div className="p-[14px]  w-full rounded-b-sm shadow-lg h-auto bg-white ring-1  ring-opacity-5 transform scale-100 delay-1000 duration-1000">
                   <div className="flex justify-center">
-                    <h1 className="text-[#3f414d] font-normal text-4xl font-inter ">
+                    <h1 className="text-[#3f414d] font-normal text-4xl  ">
                       Bạn cần giúp đỡ?
                     </h1>
                   </div>
@@ -175,13 +175,13 @@ const Contribute = () => {
                         className="block outline-none p-2.5 w-full text-sm text-gray-900 bg-white rounded-md border border-gray-300  "
                       ></textarea>
                       <div className="bg-white w-auto rounded-sm h-auto p-1 absolute top-[-12px] left-2 flex justify-center items-center">
-                        <div className=" text-[#8d8a8a] text-xs font-inter">
+                        <div className=" text-[#8d8a8a] text-xs ">
                           Nội dung cần hỗ trợ
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="pt-4 text-sm font-inter text-[#555770]">
+                  <div className="pt-4 text-sm  text-[#555770]">
                     File/Hình ảnh đi kèm
                   </div>
                   <div className=" pt-5 flex gap-2 flex-wrap ">

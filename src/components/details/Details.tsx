@@ -1,6 +1,19 @@
 import { useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Details = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    nextArrow: <></>,
+  };
   const [count, setCount] = useState(1);
 
   const handleIncrease = () => {
@@ -17,11 +30,30 @@ const Details = () => {
     <div className="font-roboto lg:max-w-screen-lg  mx-auto w-full max-w-screen-lg bg-white rounded-lg">
       <div className="relative md:grid gap-3 grid-cols-2  ">
         <div className="px-[0.95rem] ">
-          <div className="w-full pt-4">
-            <img
-              src="https://ocopmart.org/static/media/images/news/bnao-1624812115-1636964564.jpg"
-              alt=""
-            />
+          <div className="w-full pt-4 relative overflow-hidden ">
+            <Slider {...settings}>
+              <div>
+                <img
+                  className="w-full rounded-md"
+                  src="https://ocopmart.org/static/media/images/news/bnao-1624812115-1636964564.jpg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  className="w-full rounded-md"
+                  src="https://ocopmart.org/static/media/images/news/s200_200/lavenza1-1649844023-1654338983.jpg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  className="w-full rounded-md"
+                  src="https://ocopmart.org/static/media/images/news/s200_200/360x240cdg-1649390776-1654337888.jpg"
+                  alt=""
+                />
+              </div>
+            </Slider>
           </div>
           <div className="lg:max-w-screen-xl  mx-auto w-full max-w-screen-xl pt-5">
             <div className="my-[1.88rem] ">

@@ -171,12 +171,12 @@ const linkpage = [
     link: "/suggest",
   },
   {
-    id: 8,
+    id: 10,
     page: "Màn niêm yết",
     link: "/listed",
   },
   {
-    id: 9,
+    id: 11,
     page: "Màn tìm liệt sĩ",
     link: "/findList",
   },
@@ -219,7 +219,6 @@ const SlidebarLfet = () => {
             <HierarchySlide net={net} />
           ))}
         </div>
-
         <div className="pt-2">
           <div>
             <p>CHỨC NĂNG</p>

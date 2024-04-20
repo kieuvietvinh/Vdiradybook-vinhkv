@@ -56,14 +56,9 @@ const Suggest = () => {
         {activeTab === 1 && <div className=""></div>}
         {activeTab === 2 && (
           <div className="  mx-auto w-full max-w-screen-lg p-2">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-white shadow-md border rounded-md w-full h-auto">
                 <div className="">
-                  <img
-                    className="w-10 h-10 absolute mt-5 ml-5"
-                    src="https://file.vdiarybook.com/api/files/admin/00b90518-a482-49a9-9abe-023c15d97a87--300.png"
-                    alt=""
-                  />
                   {isModalOpen && (
                     <div className="fixed inset-0 flex items-center justify-center z-50">
                       <div className="absolute inset-0 bg-black opacity-75"></div>
@@ -91,10 +86,15 @@ const Suggest = () => {
                     onClick={openModal}
                   />
                 </div>
-                <div className="flex items-center justify-center mt-[-1.55rem]">
+                <div className="flex items-center justify-center mt-[-1.55rem] relative">
                   <img
                     className="w-20 h-20 rounded-full"
                     src="https://file.vdiarybook.com/api/files/users/8579b872-944d-4a4d-a6fa-9a8f7a3d1ad7--150.jpg"
+                    alt=""
+                  />
+                  <img
+                    className="tecktwo w-10 h-10 "
+                    src="https://file.vdiarybook.com/api/files/admin/00b90518-a482-49a9-9abe-023c15d97a87--300.png"
                     alt=""
                   />
                 </div>
@@ -121,13 +121,6 @@ const Suggest = () => {
                 </div>
               </div>
               <div className="bg-white shadow-md border rounded-md w-full h-auto">
-                <div className="">
-                  <img
-                    className="w-10 h-10 absolute mt-5 ml-5"
-                    src="https://file.vdiarybook.com/api/files/admin/00b90518-a482-49a9-9abe-023c15d97a87--300.png"
-                    alt=""
-                  />
-                </div>
                 <div>
                   <div className="">
                     <img
@@ -137,22 +130,27 @@ const Suggest = () => {
                     />
                   </div>
                 </div>
-                <div className="flex items-center justify-center mt-[-1.55rem]">
+                <div className="flex items-center justify-center mt-[-1.55rem] relative">
                   <img
                     className="w-20 h-20 rounded-full"
                     src="https://file.vdiarybook.com/api/files/users/5346bccd-c64c-4962-a244-28eb35bcc2b1--150.jpg"
                     alt=""
                   />
+                  <img
+                    className="tecktwo w-10 h-10 "
+                    src="https://file.vdiarybook.com/api/files/admin/00b90518-a482-49a9-9abe-023c15d97a87--300.png"
+                    alt=""
+                  />
                 </div>
                 <div className="p-2">
                   <div className="text-[1rem] font-medium text-center text-[#3f414d]">
-                    PGC SÀI GÒN{" "}
+                    PGC SÀI GÒN
                   </div>
                   <div className="text-xs text-center pb-2">
                     <p className="line-clamp-2">
                       PGC BÌNH DƯƠNG luôn luôn sẵn sàng hổ trợ DN chuyển đổi số,
                       tiếp thị số, thương mại số, cùng nhau hợp tác cùng nhau
-                      thành công{" "}
+                      thành công
                     </p>
                   </div>
                   <div className="text-xs text-center pb-2">
@@ -169,24 +167,22 @@ const Suggest = () => {
               <div className="bg-white shadow-md border rounded-md w-full h-auto">
                 <div className="">
                   <img
-                    className="w-10 h-10 absolute mt-5 ml-5"
-                    src="https://file.vdiarybook.com/api/files/admin/00b90518-a482-49a9-9abe-023c15d97a87--300.png"
-                    alt=""
-                  />
-                </div>
-                <div className="">
-                  <img
                     className="rounded-t-md"
                     src="https://file.vdiarybook.com/api/files/admin/2a3a8393-4e09-49e2-892e-af10b0c215c1.jpg"
                     alt=""
                   />
                 </div>
-                <div className="flex items-center justify-center mt-[-1.55rem]">
+                <div className=" flex items-center justify-center mt-[-1.55rem] relative">
                   <img
                     className="w-20 h-20 rounded-full"
                     src="https://file.vdiarybook.com/api/files/users/8579b872-944d-4a4d-a6fa-9a8f7a3d1ad7--150.jpg"
                     alt=""
                   />
+                  <img
+                    className="tecktwo w-10 h-10 "
+                    src="https://file.vdiarybook.com/api/files/admin/00b90518-a482-49a9-9abe-023c15d97a87--300.png"
+                    alt=""
+                  />
                 </div>
                 <div className="p-2">
                   <div className="text-[1rem] font-medium text-center text-[#3f414d]">
@@ -213,22 +209,20 @@ const Suggest = () => {
               <div className="bg-white shadow-md border rounded-md w-full h-auto">
                 <div className="">
                   <img
-                    className="w-10 h-10 absolute mt-5 ml-5"
-                    src="https://file.vdiarybook.com/api/files/admin/00b90518-a482-49a9-9abe-023c15d97a87--300.png"
-                    alt=""
-                  />
-                </div>
-                <div className="">
-                  <img
                     className="rounded-t-md"
                     src="https://file.vdiarybook.com/api/files/admin/2a3a8393-4e09-49e2-892e-af10b0c215c1.jpg"
                     alt=""
                   />
                 </div>
-                <div className="flex items-center justify-center mt-[-1.55rem]">
+                <div className="flex items-center justify-center mt-[-1.55rem] relative">
                   <img
                     className="w-20 h-20 rounded-full"
                     src="https://file.vdiarybook.com/api/files/users/5346bccd-c64c-4962-a244-28eb35bcc2b1--150.jpg"
+                    alt=""
+                  />
+                  <img
+                    className="tecktwo w-10 h-10 "
+                    src="https://file.vdiarybook.com/api/files/admin/00b90518-a482-49a9-9abe-023c15d97a87--300.png"
                     alt=""
                   />
                 </div>

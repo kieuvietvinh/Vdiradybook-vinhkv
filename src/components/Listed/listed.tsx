@@ -15,11 +15,11 @@ const Listed = () => {
   };
   return (
     <div className="font-inter mx-auto w-full max-w-5xl rounded-lg bg-white p-2">
-      <div className=" border-b border-[#ECF0F1] sm:w-auto border  shadow grid grid-cols-5 gap-2  ">
+      <div className=" border-b border-[#ECF0F1] sm:w-auto   shadow grid grid-cols-5 gap-2  ">
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            className={` border-b-[3px] border  border-transparent whitespace-nowrap leading-[22px] hover:bg-gray-100 hover:rounded   text-[#1F1F1F] text-sm sm:px-4 sm:py-2 p-[7px] ${
+            className={` border-b-[3px]   border-transparent whitespace-nowrap leading-[22px] hover:bg-gray-100 hover:rounded   text-[#1F1F1F] text-sm sm:px-4 sm:py-2 p-[7px] ${
               activeTab === tab.id
                 ? "inline-block p-4 !border-b-[#4284F3]  text-[#4284F3] w-auto font-bold"
                 : ""

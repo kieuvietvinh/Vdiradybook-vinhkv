@@ -32,10 +32,10 @@ const HeadstoneItem = (props: any) => {
       }`}
     >
       {isOpen && (
-        <div className="absolute -top-1/2   border  bg-white rounded-lg z-10 w-[232px] max-[640px]:fixed max-[640px]:top-1/2 max-[640px]:left-1/4">
-          <div className=" p-4  ">
+        <div className="absolute -top-[20%]  left-[120%] border  bg-white rounded-lg z-10 w-[232px] max-[640px]:fixed max-[640px]:top-1/2 max-[640px]:left-1/4">
+          <div className=" p-3">
             <div>
-              <img src="/image/bialietsi.png" alt="" />
+              <img className="w-full" src="/image/bialietsi.png" alt="" />
               <div className="flex justify-between text-[#1F1F1F] font-semibold text-sm pt-2">
                 <p>TRẦN VĂN ĐỨC</p>
                 <p>B1</p>
@@ -77,7 +77,7 @@ const HeadstoneItem = (props: any) => {
                 </div>
               </div>
             </div>
-            <button
+            {/* <button
               className="absolute top-[1px] right-[1px] border border-[#1F1F1F] rounded-full w-4 h-4 flex justify-center items-center p-1"
               onClick={toggleModal}
             >
@@ -96,7 +96,7 @@ const HeadstoneItem = (props: any) => {
                   d="m6 5.293 4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"
                 ></path>
               </svg>
-            </button>
+            </button> */}
           </div>
         </div>
       )}

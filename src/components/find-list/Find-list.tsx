@@ -120,108 +120,14 @@ const list = [
 const FindList = () => {
   return (
     <div className="mx-auto max-w-5xl ">
-      <div className="all  bg-white px-6 py-3 rounded-lg flex justify-between overflow-x-scroll items-center  whitespace-nowrap">
-        <ul className="flex items-center   ">
-          <li className="gap-1 flex items-center">
-            <a className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex ">
-              <img src="/image/tatca.png" alt="" />
-              <p className="pr-1"> Tất cả</p>
-            </a>
-          </li>
-          <li className="pl-1 ">
-            <a
-              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border  gap-1"
-              href=""
-            >
-              <img src="/image/cuuhoa.png" alt="" />
-              <p className="pr-1">Cứu hỏa</p>
-            </a>
-          </li>
-          <li className="pl-1">
-            <a
-              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border gap-1  "
-              href=""
-            >
-              <img src="/image/cuunan.png" alt="" />
-              <p className="pr-1"> Cứu nạn</p>
-            </a>
-          </li>
-          <li className="pl-1">
-            <a
-              className="text-white bg-[#4284F3] font-normal text-sm rounded-2xl px-4 py-1 flex border gap-1 "
-              href=""
-            >
-              <img src="/image/thannhan.png" alt="" />
-              <p className="pl-1">Tìm nhân thân</p>
-            </a>
-          </li>
-          <li className="pl-1">
-            <a
-              className="text-[#636363] bg-white font-normal text-sm rounded-2xl px-4 py-1 flex border gap-1 "
-              href=""
-            >
-              <img src="/image/bando.png" alt="" />
-              <p className="pl-1">Xem trên bản đồ</p>
-            </a>
-          </li>
-        </ul>
-        <ul className="flex gap-4 items-center">
-          <li className="pl-1">
-            <a
-              className="text-[#4284F3] font-medium text-sm flex  items-center gap-1"
-              href=""
-            >
-              <img src="/image/quanhday.png" alt="" />
-              <p>Tìm quanh đây</p>
-            </a>
-          </li>
-          <li className="border-l-2 border-[#4284F3] h-4 pl-1 text-center"></li>
-          <li className="pl-1">
-            <a
-              className="text-[#4284F3] font-medium text-sm flex items-center gap-1"
-              href=""
-            >
-              <img src="/image/boloc.png" alt="" />
-              <p className="pr-1"> Bộ lọc</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div className="flex justify-between items-center py-4">
-        <div className="relative md:w-[400px] w-[250px] h-9 ">
-          <input
-            type="search"
-            className=" p-2.5 w-full text-xs text-[#A89E9F]  rounded-2xl  border border-[#CAD0D7] pl-12 font-normal"
-            placeholder="Tìm kiếm thân nhân..."
-            required
-          />
-          <button
-            type="submit"
-            className="absolute top-0 left-1 end-0 p-2.5 text-sm font-medium h-full text-[#838383] items-center flex"
-          >
-            <img className="w-5 h-5" src="/image/Search1.png" alt="" />
-          </button>
-        </div>
-        <div className="">
-          <button className="text-white bg-[#4284F3] rounded-[18px] px-4 py-1.5 font-medium text-sm flex items-center gap-1">
-            <img src="/image/cong.png" alt="" />
-            <p> Tạo SOS</p>
-          </button>
-        </div>
-      </div>
-      <div className="flex gap-4">
-        <div className="flex gap-1">
-          <p className="text-[#636363] font-normal text-sm">Ghé thăm:</p>
-          <p className="text-[#1F1F1F] text-sm font-semibold">1.000</p>
-        </div>
-        <div className="border-l-2 border-[#CAD0D7]"></div>
-        <div className="flex gap-1">
-          <p className="text-[#636363] font-normal text-sm">Đã dâng hương:</p>
-          <p className="text-[#1F1F1F] text-sm font-semibold">1.000.000.000đ</p>
-        </div>
+      <div className="flex items-center gap-2">
+        <button>
+          <img src="/image/tenvo.png" alt="" />
+        </button>
+        <p className="text-base font-semibold leading-5">Tìm thân nhân</p>
       </div>
       <div className="bg-white w-full rounded-lg mt-2 bg-[url('/image/ablietsi.png')]">
-        <div className=" p-2 bg-[#0a06068e]">
+        <div className=" p-2 w-full bg-[#0a06068e] rounded-lg">
           <a className="flex justify-center" href="">
             <img src="/image/lietsi.png" alt="" />
           </a>
@@ -229,7 +135,7 @@ const FindList = () => {
             Nghĩa trang liệt sĩ Tân Xuân, Xã Đông Thạnh, Huyện Hóc Môn, TP. Hồ
             Chí Minh
           </p>
-          <div className="flex whitespace-nowrap justify-center gap-4">
+          <div className=" flex-wrap flex whitespace-nowrap justify-center gap-4">
             <button className="flex items-center gap-2 border border-[#4284F3] rounded-[18px] px-4 py-1 bg-white">
               <img src="/image/huong.png" alt="" />
               <p className="text-[#4284F3] font-medium text-sm"> Dâng hương</p>
@@ -245,17 +151,49 @@ const FindList = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-4 pt-4">
-        <button className="flex items-center gap-2 border border-[#4284F3] rounded-[18px] px-4 py-1 bg-[#4284F3]">
+      <div className="catego flex items-center gap-4 pt-4 justify-between overflow-x-scroll whitespace-nowrap">
+        <button className="flex items-center gap-2 border border-[#4284F3] rounded-[18px] px-4 py-1 bg-[#4284F3] justify-center">
           <img src="/image/nghiatrang.png" alt="" />
           <p className="text-white font-medium text-sm"> Nghĩa trang</p>
         </button>
-        <button className="flex items-center gap-2 border border-[#0000001A] rounded-[18px] px-4 py-1 bg-white">
+        <button className="flex items-center gap-2 border border-[#0000001A] rounded-[18px] px-4 py-1 bg-white justify-center">
           <img src="/image/sukien.png" alt="" />
           <p className="text-[#636363] font-medium text-sm">
             Sự kiện quan trọng
           </p>
         </button>
+        <div className="flex gap-4">
+          <div className="flex gap-1">
+            <p className="text-[#636363] font-normal text-sm">Ghé thăm:</p>
+            <p className="text-[#1F1F1F] text-sm font-medium">1.000</p>
+          </div>
+          <div className="border-l-2 border-[#CAD0D7]"></div>
+          <div className="flex gap-1">
+            <p className="text-[#636363] font-normal text-sm">Đã dâng hương:</p>
+            <p className="text-[#4284F3] text-sm font-extrabold">
+              1.000.000.000đ
+            </p>
+          </div>
+        </div>
+        <div className="">
+          <button className="text-[#4284F3] bg-white border border-[#4284F3] rounded-[18px] px-4 py-1.5 font-medium text-sm flex items-center gap-1 justify-center">
+            <img src="/image/cong.png" alt="" />
+            <p> Tạo sự kiện</p>
+          </button>
+        </div>
+        <div>
+          <ul>
+            <li className="pl-1">
+              <a
+                className="text-[#4284F3] font-medium text-sm flex items-center gap-1"
+                href=""
+              >
+                <img src="/image/boloc.png" alt="" />
+                <p className="pr-1"> Bộ lọc</p>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="list flex gap-3 bg-white mt-4 p-6 rounded-lg flex-wrap ">
         {list.map((lis) => (

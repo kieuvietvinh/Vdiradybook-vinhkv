@@ -48,12 +48,12 @@ const Quotations = () => {
     <div className="mx-auto w-full max-w-[1024px] font-inter">
       <ul className="bg-white rounded-lg relative ">
         <li
-          className="cursor-pointer px-4 py-2 font-normal text-xl"
+          className="cursor-pointer px-4 py-2 font-normal text-lg text-[#1F1F1F]"
           onClick={toggleMenu}
         >
           <a>Đừng bao giờ xem thường người khác</a>
           <img
-            className={`absolute top-3 right-2  ${
+            className={`absolute top-4 right-4  ${
               isOpen
                 ? "transform rotate-90 delay-75 decoration-slate-100"
                 : "transform -rotate-90"
@@ -66,7 +66,10 @@ const Quotations = () => {
         {isOpen && (
           <ul className="ml-4 ">
             {quotati.map((quota) => (
-              <li key={quota.id} className="p-2 font-normal text-sm">
+              <li
+                key={quota.id}
+                className="p-2 font-normal text-sm text-[#1F1F1F]"
+              >
                 {quota.tabel}
               </li>
             ))}

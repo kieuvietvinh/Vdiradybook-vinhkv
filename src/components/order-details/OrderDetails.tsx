@@ -57,7 +57,7 @@ const OrderDetails = () => {
     }
   };
   return (
-    <div className="bg-[#F2F2F2] h-full max-w-5xl mx-auto rounded-lg">
+    <div className=" h-full max-w-5xl mx-auto rounded-lg">
       <div className="font-inter  w-full  ">
         <div className=" bg-white p-3 rounded-2xl">
           <div className="flex item relative ">
@@ -295,8 +295,8 @@ const OrderDetails = () => {
             </div>
           </div>
         </div>
-        <div className="relative pt-3">
-          <div className="flex gap-2 absolute right-1">
+        <div className="relative   mt-3 ">
+          <div className="flex gap-2 float-right right-1 top-10 p-2 bg-white">
             <button className="text-white flex items-center rounded-2xl bg-[#DD2B17] px-3 py-1 text-sm font-normal gap-2">
               <img
                 className="w-[13.33px] h-[13.33px]"

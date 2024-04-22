@@ -147,7 +147,7 @@ const linkpage = [
   },
   {
     id: 5,
-    page: "Màn thêm nhánh mới",
+    page: "Màn chi tiết sản phẩm",
     link: "/details",
   },
   {
@@ -179,6 +179,16 @@ const linkpage = [
     id: 11,
     page: "Màn tìm liệt sĩ",
     link: "/findList",
+  },
+  {
+    id: 12,
+    page: "Màn đóng góp ý kiến",
+    link: "/contributeIdeas",
+  },
+  {
+    id: 13,
+    page: "Màn thêm chi nhánh mới",
+    link: "/newbranch",
   },
 ];
 const SlidebarLfet = () => {

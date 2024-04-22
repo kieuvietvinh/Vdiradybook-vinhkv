@@ -339,12 +339,12 @@ const Home_page = () => {
           <input
             type="text"
             placeholder="Nhập từ khóa tìm kiếm"
-            className="border-l lg:w-[255px] h-[40px] px-2  text-[13px] text-[#dedede]"
+            className="border-l w-[240px] h-[40px] px-2  text-[13px] text-[#dedede]"
           />
           <input
             type="text"
             placeholder=" Nhập vị trí của bạn"
-            className="border-l lg:w-[255px] h-[40px] px-2  text-[13px] text-[#dedede]"
+            className="border-l w-[240px] h-[40px] px-2  text-[13px] text-[#dedede]"
           />
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold h-[40px] px-4 ">
             Tìm kiếm

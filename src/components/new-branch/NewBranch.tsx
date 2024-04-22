@@ -24,9 +24,9 @@ const NewBranch = () => {
   //editor
 
   return (
-    <div className="font-inter max-w-[50rem] mx-auto w-full p-3">
+    <div className="font-inter max-w-[1024px] mx-auto w-full  bg-white rounded-lg p-4">
       <div className="border-b">
-        <h2 className="text-[#4284F3] font-bold text-[22px] text-center leading-7">
+        <h2 className="text-[#4284F3] font-bold text-[22px] text-center leading-7 mb-5">
           Thêm mới chi nhánh
         </h2>
       </div>
@@ -88,7 +88,7 @@ const NewBranch = () => {
                 </label>
                 <input
                   type="text"
-                  className="bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
                   placeholder="Nhập tên "
                   required
                 />
@@ -102,7 +102,7 @@ const NewBranch = () => {
                 </label>
                 <input
                   type="phone"
-                  className="bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
                   placeholder="Nhập số điện thoại"
                   pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                   required
@@ -125,7 +125,7 @@ const NewBranch = () => {
                 </label>
                 <input
                   type="text"
-                  className="bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
                   placeholder="Flowbite"
                   required
                 />
@@ -139,7 +139,7 @@ const NewBranch = () => {
                 </label>
                 <input
                   type="tel"
-                  className="bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
                   placeholder="chọn tỉnh/thành"
                   required
                 />
@@ -153,7 +153,7 @@ const NewBranch = () => {
                 </label>
                 <input
                   type="text"
-                  className="bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
                   placeholder="chọn quận/huyện"
                   required
                 />
@@ -167,7 +167,7 @@ const NewBranch = () => {
                 </label>
                 <input
                   type="number"
-                  className="bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
                   placeholder="chọn phường/xã"
                   required
                 />
@@ -182,7 +182,7 @@ const NewBranch = () => {
               </label>
               <input
                 type="Nhập địa chỉ"
-                className="bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
                 placeholder="Nhập địa chỉ"
                 required
               />
@@ -218,7 +218,6 @@ const NewBranch = () => {
             <p className="text-2xl">+</p>
 
             <p className="pl-2 text-sm font-normal text-[#1F1F1F] leading-[22px]">
-              {" "}
               Thêm thời gian làm việc
             </p>
           </button>
@@ -229,7 +228,7 @@ const NewBranch = () => {
               onChange={handleDateChange}
               value={selectedDate}
               type="datetime-local"
-              className="bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+              className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
               placeholder="Nhập tên "
               required
             />
@@ -245,27 +244,30 @@ const NewBranch = () => {
         <div className="mb-6">
           <label
             form="password"
-            className="block mb-2 text-sm font-medium text-gray-900 "
+            className="block mb-2 text-sm font-normal text-[#1F1F1F] "
           >
             Webiste
           </label>
           <input
             type="Nhập địa chỉ"
-            className="bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+            className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
             placeholder="Nhập địa chỉ trang web"
             required
           />
         </div>
       </div>
-      <div className="flex relative">
-        <div className="absolute right-1 gap-2 ">
-          <button className="bg-[#0000000D] rounded-2xl text-[#0F0F0F] px-4">
-            Hủy
-          </button>
-          <button className="bg-[#4284F3] text-white rounded-2xl px-4 ">
-            Lưu
-          </button>
-        </div>
+      <div className="">
+        <p className="font-normal text-sm text-[#1F1F1F]">Mô tả</p>
+      </div>
+      <div className="flex gap-2 float-right">
+        <button className="bg-[#0000000D] rounded-[18px] text-[#0F0F0F] px-4 flex items-center gap-2 py-2 font-normal text-sm">
+          <img src="/image/huy.png" alt="" />
+          <p>Hủy</p>
+        </button>
+        <button className="bg-[#4284F3] text-white rounded-[18px] px-4 flex items-center gap-2 py-2 font-normal text-sm">
+          <img src="/image/save.png" alt="" />
+          <p> Lưu</p>
+        </button>
       </div>
     </div>
   );

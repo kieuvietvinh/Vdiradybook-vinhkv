@@ -97,7 +97,7 @@ const PopularTopic = () => {
               <div className="relative ">
                 <input
                   type="search"
-                  className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white"
+                  className="outline-none block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white"
                   required
                 />
                 <div className="bg-white w-14 h-5 absolute top-[-9px] left-2"></div>

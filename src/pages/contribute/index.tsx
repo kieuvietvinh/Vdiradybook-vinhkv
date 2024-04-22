@@ -1,4 +1,4 @@
-import Contribute from "@/components/contribute/Contribute";
+import Contribute from "@/components/contribute/ContributeIdeas";
 import React from "react";
 
 const NewContribute = () => {

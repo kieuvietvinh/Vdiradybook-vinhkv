@@ -48,7 +48,7 @@ const Quotations = () => {
     <div className="mx-auto w-full max-w-[1024px] font-inter">
       <ul className="bg-white rounded-lg relative ">
         <li
-          className="cursor-pointer px-4 py-2 font-normal text-lg text-[#1F1F1F]"
+          className="cursor-pointer p-2.5 font-normal text-lg text-[#1F1F1F]"
           onClick={toggleMenu}
         >
           <a>Đừng bao giờ xem thường người khác</a>

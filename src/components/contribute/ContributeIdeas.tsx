@@ -63,7 +63,7 @@ const Contribute = () => {
               <div className="relative ">
                 <input
                   type="search"
-                  className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white"
+                  className="outline-none block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white"
                   required
                 />
                 <div className="bg-white w-14 h-5 absolute top-[-9px] left-2"></div>
@@ -109,11 +109,11 @@ const Contribute = () => {
         {activeTab === 1 && <div></div>}
         {activeTab === 2 && (
           <div className="">
-            <div className="relative max-w-[1024px]  mx-auto w-full duration-1000 border rounded-md drop-shadow-md">
+            <div className="relative max-w-[1024px]  mx-auto w-full duration-1000 border drop-shadow-md">
               <div className="relative">
                 <button
                   type="button"
-                  className="inline-flex  w-full rounded-t-sm  p-[15px]  bg-white text-xl font-medium "
+                  className="inline-flex  w-full rounded-t-sm  p-[15px]  bg-white text-xl font-medium rounded-tr-lg rounded-tl-lg"
                   onClick={toggleDropdown}
                 >
                   {selectedOption ? selectedOption : "Bạn cần giúp đỡ?"}
@@ -129,7 +129,7 @@ const Contribute = () => {
                 </button>
               </div>
               {isOpen && (
-                <div className="p-[14px]  w-full rounded-b-sm shadow-lg h-auto bg-white ring-1  ring-opacity-5 transform scale-100 delay-1000 duration-1000">
+                <div className="p-[14px]  w-full rounded-b-sm shadow-lg h-auto bg-white ring-1  ring-opacity-5 transform scale-100 delay-1000 duration-1000 rounded-bl-lg rounded-br-lg">
                   <div className="flex justify-center">
                     <h1 className="text-[#3f414d] font-normal text-4xl  ">
                       Bạn cần giúp đỡ?

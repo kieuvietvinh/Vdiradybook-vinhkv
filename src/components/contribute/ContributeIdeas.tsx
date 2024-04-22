@@ -188,6 +188,7 @@ const Contribute = () => {
                     <div className="flex items-center  justify-center w-fit gap-2">
                       {elements.map((element: any) => (
                         <label
+                          key={element.id}
                           form="dropzone-file"
                           className="flex relative flex-col items-center justify-center min-w-24 min-h-24  border border-[#3a3f51] border-dashed rounded-lg cursor-pointer bg-gray-50 "
                         >

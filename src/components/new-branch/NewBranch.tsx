@@ -39,7 +39,10 @@ const NewBranch = () => {
             <div className=" pt-5 flex gap-2 flex-wrap ">
               <div className="flex items-center  justify-center w-fit gap-2">
                 {elements.map((element) => (
-                  <label className="flex relative flex-col items-center justify-center min-w-36 min-h-36  border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50 ">
+                  <label
+                    key={element.id}
+                    className="flex relative flex-col items-center justify-center min-w-36 min-h-36  border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50 "
+                  >
                     <div className="flex flex-col items-center justify-center">
                       <p className="text-xs text-gray-500 dark:text-gray-400">
                         Tải lên

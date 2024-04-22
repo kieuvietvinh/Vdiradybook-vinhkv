@@ -197,7 +197,7 @@ const FindList = () => {
       </div>
       <div className="list flex gap-3 bg-white mt-4 p-6 rounded-lg flex-wrap ">
         {list.map((lis) => (
-          <HeadstoneItem lis={lis} />
+          <HeadstoneItem key={lis.id} lis={lis} />
         ))}
       </div>
     </div>

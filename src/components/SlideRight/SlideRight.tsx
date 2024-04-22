@@ -96,7 +96,7 @@ const SlideRight = (props: any) => {
           </div>
         </div>
         {chatpage.map((chat) => (
-          <SlideRightChat chat={chat} />
+          <SlideRightChat key={chat.id} chat={chat} />
         ))}
         <div className="mt-10">
           <form className="flex items-center max-w-sm mx-auto">

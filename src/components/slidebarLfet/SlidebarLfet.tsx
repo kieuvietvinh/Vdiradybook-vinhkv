@@ -207,7 +207,7 @@ const SlidebarLfet = () => {
             <p className="text-[#636363] font-normal text-sm ">Shop feed</p>
           </div>
           {linkpage.map((link) => (
-            <div>
+            <div key={link.id}>
               <ul>
                 <li
                   className={` border-b-[3px] border font-normal text-[#1F1F1F] text-sm p-2 border-transparent  hover:text-[#4284F3] hover:rounded sm:px-4 sm:py-2  ${
@@ -226,7 +226,7 @@ const SlidebarLfet = () => {
             MẠNG XÃ HỘI
           </p>
           {network.map((net) => (
-            <HierarchySlide net={net} />
+            <HierarchySlide key={net.id} net={net} />
           ))}
         </div>
         <div className="pt-2">

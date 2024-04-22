@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "next/link";
 
 const autor = [
   {
@@ -865,12 +866,12 @@ const Home_page = () => {
                 key={catary.id}
                 className="uppercase text-[#7d7d7d] font-normal  hover:border-b "
               >
-                <a
+                <Link
                   className="hover:border-b hover:border-blue-600 hover:text-[#2f80ed] whitespace-nowrap text-[13px]"
                   href="/"
                 >
                   {catary.name},
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -905,13 +906,13 @@ const Home_page = () => {
               </h2>
               <ul>
                 <li>
-                  <a href="/" title="Viettel Post">
+                  <Link href="" title="Viettel Post">
                     <img
                       className="max-h-[50px] max-w-full"
                       src="https://ocopmart.org/static/media/images/menu/2021_10_05/fotpayment2logo3adeaafb66a984ecf9070f8f10d934158-1633405060.png"
                       alt="Viettel Post"
                     />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

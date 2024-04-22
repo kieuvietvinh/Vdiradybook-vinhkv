@@ -155,7 +155,7 @@ const Statistical = () => {
               <p className="text-[#DD2B17] text-sm font-normal italic justify-end max-[700px]:justify-center flex">
                 Nhận hiệu cuộc sống
               </p>
-              <li className="flex pt-2 justify-end max-[700px]:justify-center">
+              <li className="flflexex pt-2 justify-end max-[700px]:justify-center">
                 <a href="">
                   <img src="/image/sos2.png" alt="" />
                 </a>
@@ -170,7 +170,7 @@ const Statistical = () => {
           </div>
         </div>
       </div>
-      <div className="crooll bg-white mt-2 flex justify-between overflow-x-auto ">
+      <div className="crooll bg-white mt-2 flex justify-between overflow-x-auto rounded-lg">
         {tabs.map((tab, a) => (
           <a
             key={a}

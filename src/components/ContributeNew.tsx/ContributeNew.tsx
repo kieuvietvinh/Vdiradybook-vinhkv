@@ -302,7 +302,7 @@ const Contribute = () => {
                     nhất.
                   </div>
                   <div className=" pt-4 flex gap-2 flex-wrap ">
-                    <div className="flex items-center  justify-center w-fit gap-2">
+                    <div className=" items-center  justify-center w-fit gap-2 contents">
                       {elements1?.map((element: any, index: number) => (
                         <label
                           key={index}
@@ -358,7 +358,7 @@ const Contribute = () => {
                     Ảnh mô tả ý tưởng của bạn về chức năng (nếu có)
                   </div>
                   <div className=" pt-4 flex gap-2 flex-wrap ">
-                    <div className="flex items-center  justify-center w-fit gap-2">
+                    <div className=" items-center  justify-center w-fit gap-2 contents">
                       {elements2?.map((element: any, index: number) => (
                         <label
                           key={index}

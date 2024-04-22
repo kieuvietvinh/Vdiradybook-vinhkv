@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const seach = [
   {
     id: 1,
@@ -36,36 +38,36 @@ const seach = [
 const Header = () => {
   return (
     <div>
-      <header className="shadow-md px-6 w-full">
+      <header className="shadow-md px-6 w-full fixed z-[2] ">
         <div className="logo">
           <ul>
             <li className="pt-3">
-              <a href="">
+              <Link href="">
                 <img src="/image/ngang.png" alt="user photo" />
-              </a>
+              </Link>
             </li>
             <li className="farm ">
-              <a className="max-[1024px]:hidden" href="">
+              <Link className="max-[1024px]:hidden" href="">
                 <img src="/image/may.png" alt="user photo" />
-              </a>
-              <a className="max-[1024px]:hidden" href="">
+              </Link>
+              <Link className="max-[1024px]:hidden" href="">
                 <p className="degree">Hà Nội, 24 độ C</p>
                 <p className="cloud">Trời nắng</p>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
         <div className="containerSeach  max-w-5xl flex  justify-between gap-6">
           <div>
-            <a href=" ">
+            <Link href=" ">
               <img
                 className="w-full h-auto"
                 src="/image/logo.png"
                 alt="Flowbite Logo"
               />
-            </a>
+            </Link>
           </div>
-          <form className="w-[498.22px]  max-[1024px]:hidden">
+          <form className="w-[498.22px]  max-[1120px]:hidden">
             <div className="flex">
               <button
                 id="dropdown-button"
@@ -98,54 +100,54 @@ const Header = () => {
               </div>
             </div>
           </form>
-          <div className="flex items-center gap-4 pl-4 max-[1024px]:hidden">
+          <div className="flex items-center gap-4 pl-4 max-[1570px]:hidden w-[432px]">
             {seach.map((seac) => (
               <ul
                 className="hover:bg-[#3498DB33] w-10 h-10 items-center flex justify-center rounded-lg"
                 key={seac.id}
               >
                 <li className="">
-                  <a className="" href="">
+                  <Link className="" href="">
                     <img src={seac.img} alt="" />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             ))}
           </div>
         </div>
         <div className="user ">
-          <div className="max-[1024px]:hidden">
-            <ul className="">
+          <div className="max-[1024px]:hidden w-[280px]">
+            <ul className="gap-4">
               <li>
-                <a href="">
+                <Link href="">
                   <img src="/image/home.png" alt="" />
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="">
+                <Link href="">
                   <img src="/image/user.png" alt="" />
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="">
+                <Link href="">
                   <img src="/image/chat.png" alt="" />
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="">
+                <Link href="">
                   <img src="/image/sos.png" alt="" />
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="">
+                <Link href="">
                   <img src="/image/userone.png" alt="" />
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="">
+                <Link href="">
                   <img src="/image/muiduoi.png" alt="" />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

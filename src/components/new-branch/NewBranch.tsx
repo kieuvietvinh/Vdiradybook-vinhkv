@@ -37,11 +37,11 @@ const NewBranch = () => {
           </p>
           <div>
             <div className=" pt-5 flex gap-2 flex-wrap ">
-              <div className="flex items-center  justify-center w-fit gap-2">
+              <div className=" items-center  justify-center w-fit gap-2 contents">
                 {elements.map((element) => (
                   <label
                     key={element.id}
-                    className="flex relative flex-col items-center justify-center min-w-36 min-h-36  border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50 "
+                    className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36  border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50 "
                   >
                     <div className="flex flex-col items-center justify-center">
                       <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -204,11 +204,11 @@ const NewBranch = () => {
             alt=""
           />
         </div>
-        <div className="flex pt-3 relative">
-          <p className="text-sm font-normal text-[#1F1F1F] leading-[22px]">
-            Thời gian làm việc
-          </p>
-          <div className="pl-2">
+        <div className="flex pt-3 gap-2 justify-between items-center flex-wrap">
+          <div className="flex gap-2">
+            <p className="text-sm font-normal text-[#1F1F1F] leading-[22px]">
+              Thời gian làm việc
+            </p>
             <label className="inline-flex items-center cursor-pointer">
               <input type="checkbox" value="" className="sr-only peer" />
               <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
@@ -216,10 +216,9 @@ const NewBranch = () => {
           </div>
           <button
             onClick={handleTogglePicker}
-            className="flex bg-[#0000000D] rounded-2xl absolute right-0 items-center p-1"
+            className="flex bg-[#0000000D] rounded-2xl  items-center p-1"
           >
             <p className="text-2xl">+</p>
-
             <p className="pl-2 text-sm font-normal text-[#1F1F1F] leading-[22px]">
               Thêm thời gian làm việc
             </p>

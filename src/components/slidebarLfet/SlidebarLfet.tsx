@@ -197,8 +197,8 @@ const SlidebarLfet = () => {
     setActiveTab(tabIndex);
   };
   return (
-    <div>
-      <div className="left absolute left-0 top-[70px] z-10 max-[1024px]:hidden ">
+    <div className="">
+      <div className="left fixed left-0 top-[70px] z-10 max-[1024px]:hidden ">
         <div className="leftone">
           <div className=" py-2 gap-2  text-center grid grid-cols-2 ">
             <p className="text-[#4284F3] font-normal text-sm border-b-2 border-[#4284F3]">

@@ -10,8 +10,9 @@ const inter = Inter({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={inter.className}>
-      <Mainlayout></Mainlayout>
-      <Component {...pageProps} />
+      <Mainlayout>
+        <Component {...pageProps} />
+      </Mainlayout>
     </main>
   );
 }

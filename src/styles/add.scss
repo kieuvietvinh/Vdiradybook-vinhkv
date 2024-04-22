@@ -14,7 +14,6 @@ header {
     display: flex;
     padding: 10px 0;
     width: 100%;
-    position: relative;
 
 
     justify-content: space-between;
@@ -136,7 +135,6 @@ nav {
     flex: 2;
     background-color: #FFFFFF;
     padding: 10px;
-    position: absolute;
     right: 0px;
     top: 70px;
     width: 300px;
@@ -277,3 +275,7 @@ nav {
 .contri::-webkit-scrollbar {
     display: none;
 }
+.tabs::-webkit-scrollbar {
+    display: none;
+}
+

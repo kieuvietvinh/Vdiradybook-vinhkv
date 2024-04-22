@@ -60,7 +60,7 @@ const OrderDetails = () => {
     <div className=" h-full max-w-5xl mx-auto rounded-lg">
       <div className="font-inter  w-full  ">
         <div className=" bg-white p-3 rounded-2xl">
-          <div className="flex item relative ">
+          <div className="flex item relative whitespace-nowrap justify-between flex-wrap">
             <div>
               <div className="flex  gap-2 items-center">
                 <img
@@ -73,7 +73,7 @@ const OrderDetails = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center absolute right-1 gap-3">
+            <div className="flex items-center  gap-3">
               <div>
                 <img src="/image/hop.png" alt="" />
               </div>
@@ -95,9 +95,9 @@ const OrderDetails = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-7 pt-10 pb-[38px] pl-20">
+          <div className="flex flex-wrap pt-10 pb-[38px] pl-10 whitespace-nowrap">
             {list.map((all, index) => (
-              <div key={all.id} className=" ">
+              <div key={all.id} className="mb-10">
                 <div className="flex items-center ">
                   <div className="relative">
                     <div className="border border-[#CAD0D7] rounded-full w-16 h-16  flex items-center justify-center">
@@ -152,7 +152,7 @@ const OrderDetails = () => {
             </p>
           </div>
           <div className="flex mb-2">
-            <p className="font-normal text-sm text-[#1F1F1F] leading-[22px]">
+            <p className="font-normal text-sm text-[#1F1F1F] leading-[22px] whitespace-nowrap">
               Địa chỉ:
             </p>
             <p className="font-bold text-sm text-[#1F1F1F] leading-[22px]">
@@ -168,7 +168,7 @@ const OrderDetails = () => {
                 Chi tiết đơn hàng
               </p>
             </div>
-            <div className="flex items-center gap-4 relative ">
+            <div className="flex flex-wrap items-center gap-4 relative ">
               <img className="w-[84px] h-[84px]" src="/image/dgoi.png" alt="" />
               <div className="font-medium dark:text-white ">
                 <div className="flex ">
@@ -184,13 +184,12 @@ const OrderDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400 py-1">
-                  <div className="flex items-center gap-4">
-                    <p className="text-[#1F1F1F] font-normal text-sm">
-                      {" "}
-                      Đặc điểm:
-                    </p>
+                <div className="text-sm text-gray-500 dark:text-gray-400 py-1 ">
+                  <div className=" items-center gap-4 flex flex-wrap  justify-between">
                     <div className="flex gap-4">
+                      <p className="text-[#1F1F1F] font-normal text-sm">
+                        Đặc điểm:
+                      </p>
                       <p className="text-[#4284F3] border border-[#4284F3] text-xs font-normal w-auto p-1 rounded-2xl">
                         Dung tích 500ml
                       </p>
@@ -201,7 +200,7 @@ const OrderDetails = () => {
                         Hộp vàng
                       </p>
                     </div>
-                    <div className="flex items-center absolute right-0 gap-4">
+                    <div className="flex items-center  gap-4 ">
                       <p className="text-[#8E8E93] font-normal text-sm">
                         đ650,000
                       </p>
@@ -236,7 +235,7 @@ const OrderDetails = () => {
               </div>
             </div>
           </div>
-          <div className="border-t pt-3">
+          <div className="border-t pt-3 whitespace-nowrap">
             <div>
               <p className="text-[#1F1F1F] text-sm font-bold">
                 Voucher đã áp dụng
@@ -250,9 +249,11 @@ const OrderDetails = () => {
                   <div className="border-2 w-[10.27px] h-[10.27px] rounded-full absolute -top-1.5 bg-white -left-[5px]"></div>
                   <div className="border-2 w-[10.27px] h-[10.27px] rounded-full absolute -bottom-1.5 bg-white -left-[5px]"></div>
                 </div>
-                <p className="font-medium text-xs text-[#1F1F1F]">
-                  Giảm giá 30% cho đơn từ 1000 Vnex
-                </p>
+                <div>
+                  <p className="font-medium text-xs text-[#1F1F1F]">
+                    Giảm giá 30% cho đơn từ 1000 Vnex
+                  </p>
+                </div>
                 <div className="flex items-center ">
                   <input
                     id="default-checkbox"
@@ -296,8 +297,8 @@ const OrderDetails = () => {
           </div>
         </div>
         <div className="relative   mt-3 ">
-          <div className="flex gap-2 float-right right-1 top-10 p-2 bg-white">
-            <button className="text-white flex items-center rounded-2xl bg-[#DD2B17] px-3 py-1 text-sm font-normal gap-2">
+          <div className="flex gap-2 float-right right-1 top-10 whitespace-nowrap">
+            <button className="text-white flex items-center rounded-2xl bg-[#DD2B17] px-3 py-1 text-sm font-normal gap-2 justify-center">
               <img
                 className="w-[13.33px] h-[13.33px]"
                 src="/image/hdon.png"
@@ -305,7 +306,7 @@ const OrderDetails = () => {
               />
               Huỷ đơn hàng
             </button>
-            <button className="text-[#4284F3] border-[#4284F3] flex items-center border rounded-2xl px-3 py-1 text-sm font-normal gap-2">
+            <button className="text-[#4284F3] border-[#4284F3] flex items-center border rounded-2xl px-3 py-1 text-sm font-normal gap-2 justify-center">
               <img
                 className="w-[15px] h-[15px]"
                 src="/image/mhang.png"
@@ -313,12 +314,12 @@ const OrderDetails = () => {
               />
               Tiếp tục mua hàng
             </button>
-            <button className="bg-[#4284F3] text-white flex items-center rounded-2xl px-3 py-1 text-sm font-normal gap-2">
+            <button className="bg-[#4284F3] text-white flex items-center rounded-2xl px-3 py-1 text-sm font-normal gap-2 justify-center">
               <img
                 className="w-[13.99px] h-[10px]"
                 src="/image/check.png"
                 alt=""
-              />{" "}
+              />
               Xác nhận
             </button>
           </div>

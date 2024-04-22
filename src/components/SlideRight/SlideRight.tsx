@@ -71,7 +71,7 @@ const chatpage = [
 const SlideRight = (props: any) => {
   return (
     <div>
-      <div className="right max-[1024px]:hidden ">
+      <div className="right max-[1024px]:hidden fixed">
         <div>
           <div className="right-page">
             <p>Trò chuyện</p>

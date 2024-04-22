@@ -10,7 +10,7 @@ const Mainlayout = ({ children }: any) => {
       <div>
         <Header />
         <SlidebarLfet />
-        <main className="mx-auto max-w-5xl pt-2">{children}</main>
+        <main style={{ paddingTop: "70px" }}>{children}</main>
         <SlideRight />
       </div>
     </>

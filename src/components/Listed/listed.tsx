@@ -15,7 +15,7 @@ const Listed = () => {
   };
   return (
     <div className="font-inter mx-auto w-full max-w-5xl rounded-lg bg-white p-2">
-      <div className=" border-b border-[#ECF0F1] sm:w-auto   shadow grid grid-cols-5 gap-2  ">
+      <div className="tabs border-b border-[#ECF0F1] sm:w-auto   shadow flex justify-between gap-2 overflow-x-scroll whitespace-nowrap ">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -30,27 +30,13 @@ const Listed = () => {
           </button>
         ))}
       </div>
-      <div className=" pt-5 grid grid-cols-2 gap-2 ">
-        <div className="grid grid-cols-2 gap-2">
+      <div className=" flex justify-between items-center flex-wrap gap-2 pt-2">
+        <div className="flex gap-2">
           <div>
             <form className="max-w-[250px] mx-auto h-[38px] ">
               <div className="relative">
                 <div className="absolute  right-2 top-3 ">
-                  <svg
-                    className="w-4 h-4 text-[#4284F3]  "
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                    />
-                  </svg>
+                  <img src="/image/timkiem.png" alt="" />
                 </div>
                 <input
                   type="search"
@@ -75,29 +61,30 @@ const Listed = () => {
             </form>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2">
-          <div></div>
-          <div className="rounded-2xl bg-white border border-[#4284F3] flex items-center justify-center">
-            <button className="text-[#4284F3] font-normal text-sm leading-[22px]   ">
+        <div className="flex gap-2">
+          <div className="rounded-full bg-white border border-[#4284F3] flex items-center justify-center py-2 px-4">
+            <button className="text-[#4284F3] font-normal text-sm leading-[22px] flex items-center gap-2">
+              <img src="/image/quangcao.png" alt="" />
               Đăng kí quảng cáo
             </button>
           </div>
-          <div className="rounded-2xl bg-[#4284F3]  flex items-center justify-center">
-            <button className="text-white font-normal text-sm leading-[22px]">
+          <div className="rounded-full bg-[#4284F3]  flex items-center justify-center py-2 px-4">
+            <button className="text-white font-normal text-sm leading-[22px] flex items-center gap-2">
+              <img src="/image/congone.png" alt="" />
               Tạo niêm yết
             </button>
           </div>
         </div>
       </div>
 
-      <div className="pt-5">
+      <div className="tabs pt-5 overflow-x-scroll gap-5">
         <table className="table-auto w-full ">
-          <thead className="text-justify">
-            <tr className="text-sm font-bold text-[#1F1F1F] uppercase leading-[22px] bg-[#0000000D]">
-              <th className="py-2">TẠO NIÊM YẾT</th>
-              <th>DANH MỤC</th>
-              <th>HÌNH THỨC BÁN</th>
-              <th>LOẠI NIÊM YẾT</th>
+          <thead className="text-justify ">
+            <tr className="text-sm font-bold text-[#1F1F1F] uppercase leading-[22px] bg-[#0000000D] whitespace-nowrap">
+              <th className="py-2 min-w-[240px]">TẠO NIÊM YẾT</th>
+              <th className="min-w-[190px]">DANH MỤC</th>
+              <th className="min-w-[140px]">HÌNH THỨC BÁN</th>
+              <th className="min-w-[140px]">LOẠI NIÊM YẾT</th>
               <th>NGÀY TẠO</th>
               <th> CÔNG KHAI</th>
             </tr>
@@ -105,28 +92,28 @@ const Listed = () => {
           <tbody className="w-full">
             <tr className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] ">
               <td>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <img
+                    className="rounded-full w-10 h-10 flex"
+                    src="image/iphone.jpeg"
+                    alt=""
+                  />
+                  <p className="">Iphone 13 promax</p>
+                </div>
+              </td>
+              <td className="uppercase ">
+                <div className="flex items-center gap-2 whitespace-nowrap">
                   <img
                     className="rounded-full w-10 h-10 flex"
                     src="image/iphone.jpeg"
                     alt=""
                   />{" "}
-                  Iphone 13 promax{" "}
+                  <p>pgc market</p>
                 </div>
               </td>
-              <td className="uppercase">
-                <div className="flex items-center gap-2">
-                  <img
-                    className="rounded-full w-10 h-10 flex"
-                    src="image/iphone.jpeg"
-                    alt=""
-                  />{" "}
-                  pgc market
-                </div>
-              </td>
-              <td className="uppercase">retail</td>
-              <td className="uppercase">normal </td>
-              <td className="uppercase">
+              <td className="uppercase whitespace-nowrap">retail</td>
+              <td className="uppercase whitespace-nowrap">normal </td>
+              <td className="uppercase whitespace-nowrap">
                 <p>1/24/102</p>
                 <p>10:22:35PM</p>
               </td>

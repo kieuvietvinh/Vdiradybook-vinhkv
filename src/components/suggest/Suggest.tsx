@@ -86,9 +86,9 @@ const Suggest = () => {
                     onClick={openModal}
                   />
                 </div>
-                <div className="flex items-center justify-center mt-[-1.55rem] relative">
+                <div className="flex items-center justify-center mt-[-1.55rem] ml-10">
                   <img
-                    className="w-20 h-20 rounded-full"
+                    className="w-20 h-20 rounded-full "
                     src="https://file.vdiarybook.com/api/files/users/8579b872-944d-4a4d-a6fa-9a8f7a3d1ad7--150.jpg"
                     alt=""
                   />
@@ -130,7 +130,7 @@ const Suggest = () => {
                     />
                   </div>
                 </div>
-                <div className="flex items-center justify-center mt-[-1.55rem] relative">
+                <div className="flex items-center justify-center mt-[-1.55rem] ml-10 relative">
                   <img
                     className="w-20 h-20 rounded-full"
                     src="https://file.vdiarybook.com/api/files/users/5346bccd-c64c-4962-a244-28eb35bcc2b1--150.jpg"
@@ -172,7 +172,7 @@ const Suggest = () => {
                     alt=""
                   />
                 </div>
-                <div className=" flex items-center justify-center mt-[-1.55rem] relative">
+                <div className=" flex items-center justify-center mt-[-1.55rem] ml-10 relative">
                   <img
                     className="w-20 h-20 rounded-full"
                     src="https://file.vdiarybook.com/api/files/users/8579b872-944d-4a4d-a6fa-9a8f7a3d1ad7--150.jpg"
@@ -186,13 +186,13 @@ const Suggest = () => {
                 </div>
                 <div className="p-2">
                   <div className="text-[1rem] font-medium text-center text-[#3f414d]">
-                    PGC SÀI GÒN{" "}
+                    PGC SÀI GÒN
                   </div>
                   <div className="text-xs text-center pb-2">
                     <p className="line-clamp-2">
                       PGC BÌNH DƯƠNG luôn luôn sẵn sàng hổ trợ DN chuyển đổi số,
                       tiếp thị số, thương mại số, cùng nhau hợp tác cùng nhau
-                      thành công{" "}
+                      thành công
                     </p>
                   </div>
                   <div className="text-xs text-center pb-2">
@@ -214,7 +214,7 @@ const Suggest = () => {
                     alt=""
                   />
                 </div>
-                <div className="flex items-center justify-center mt-[-1.55rem] relative">
+                <div className="flex items-center justify-center mt-[-1.55rem] ml-10 relative">
                   <img
                     className="w-20 h-20 rounded-full"
                     src="https://file.vdiarybook.com/api/files/users/5346bccd-c64c-4962-a244-28eb35bcc2b1--150.jpg"

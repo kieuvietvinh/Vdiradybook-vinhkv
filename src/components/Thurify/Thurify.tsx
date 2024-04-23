@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 
+const tabs = [
+  {
+    id: 1,
+    img: "/image/nghiatrang.png",
+    name: "Nghĩa trang",
+  },
+  {
+    id: 2,
+    img: "/image/sukien.png",
+    name: "Sự kiện quan trọng",
+  },
+];
+
 const Thurify = () => {
+  const [activeTab, setActiveTab] = useState();
   const router = useRouter();
   const handleClick = (index: any) => {
+    setActiveTab(index);
     router.push({
       query: { id: index },
       pathname: router.pathname,
@@ -12,14 +27,21 @@ const Thurify = () => {
   return (
     <div>
       <div className="catego flex items-center gap-4 pt-4 justify-between overflow-x-scroll whitespace-nowrap">
-        <button
-          onClick={() => handleClick(1)}
-          className="flex items-center gap-2 border border-[#4284F3] rounded-[18px] px-4 py-1 bg-[#4284F3] justify-center"
-        >
-          <img src="/image/nghiatrang.png" alt="" />
-          <p className="text-white font-medium text-sm"> Nghĩa trang</p>
-        </button>
-        <button
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            className={` flex items-center gap-2  rounded-[18px] px-4 py-1  justify-center ${
+              activeTab === tab.id
+                ? "  bg-[#4284f3]  text-white"
+                : " bg-white border text-[#636363]"
+            }`}
+            onClick={() => handleClick(tab.id)}
+          >
+            <img src={tab.img} alt="" />
+            <p className=" font-medium text-sm"> {tab.name}</p>
+          </button>
+        ))}
+        {/* <button
           onClick={() => handleClick(2)}
           className="flex items-center gap-2 border border-[#0000001A] rounded-[18px] px-4 py-1 bg-white justify-center"
         >
@@ -27,7 +49,7 @@ const Thurify = () => {
           <p className="text-[#636363] font-medium text-sm">
             Sự kiện quan trọng
           </p>
-        </button>
+        </button> */}
         <div className="flex gap-4">
           <div className="flex gap-1">
             <p className="text-[#636363] font-normal text-sm">Ghé thăm:</p>

@@ -1,30 +1,36 @@
 import React, { useState } from "react";
 
 const Thu = () => {
-  const [activeButton, setActiveButton] = useState(null);
-
-  const handleButtonClick = (buttonId: any) => {
-    setActiveButton(activeButton === buttonId ? null : buttonId);
-  };
-
-  const data = [
-    { id: 1, content: "Nội dung của Button 1" },
-    { id: 2, content: "Nội dung của Button 2" },
-    { id: 3, content: "Nội dung của Button 3" },
-  ];
-
   return (
-    <div>
-      {data.map((item) => (
-        <div key={item.id}>
-          <button onClick={() => handleButtonClick(item.id)} className="btn">
-            Button {item.id}
-          </button>
-          {activeButton === item.id && (
-            <div className="bg-gray-200 p-4 mt-4">{item.content}</div>
-          )}
-        </div>
-      ))}
+    <div className="relative overflow-hidden">
+      <div className="w-full h-full flex transition-transform duration-700 ease-in-out">
+        <img
+          src="https://ocopmart.org/static/media/files/banners/s800_800/953_1657167413_39562c65e35cfad6.png"
+          alt=""
+        />
+        <img
+          src="https://ocopmart.org/static/media/files/banners/s800_800/953_1657167413_39562c65e35cfad6.png"
+          alt=""
+        />
+        <img
+          src="https://ocopmart.org/static/media/files/banners/s800_800/953_1657167413_39562c65e35cfad6.png"
+          alt=""
+        />
+      </div>
+
+      <button
+        className="absolute top-1/2 -translate-y-1/2 left-0 z-10 px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-l"
+        data-carousel-prev
+      >
+        Prev
+      </button>
+
+      <button
+        className="absolute top-1/2 -translate-y-1/2 right-0 z-10 px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-r"
+        data-carousel-next
+      >
+        Next
+      </button>
     </div>
   );
 };

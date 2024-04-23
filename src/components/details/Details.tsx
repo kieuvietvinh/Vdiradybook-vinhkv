@@ -34,29 +34,29 @@ const Details = () => {
             <Slider {...settings}>
               <div>
                 <img
-                  className="w-full rounded-md"
+                  className="w-full h-[400px] rounded-md"
                   src="https://ocopmart.org/static/media/images/news/bnao-1624812115-1636964564.jpg"
                   alt=""
                 />
               </div>
               <div>
                 <img
-                  className="w-full rounded-md"
+                  className="w-full  h-[400px] rounded-md"
                   src="https://ocopmart.org/static/media/images/news/s200_200/lavenza1-1649844023-1654338983.jpg"
                   alt=""
                 />
               </div>
               <div>
                 <img
-                  className="w-full rounded-md"
+                  className="w-full  h-[400px] rounded-md"
                   src="https://ocopmart.org/static/media/images/news/s200_200/360x240cdg-1649390776-1654337888.jpg"
                   alt=""
                 />
               </div>
             </Slider>
           </div>
-          <div className="lg:max-w-screen-xl  mx-auto w-full max-w-screen-xl pt-5">
-            <div className="my-[1.88rem] ">
+          <div className="lg:max-w-screen-xl  mx-auto w-full max-w-screen-xl ">
+            <div className="mb-[1.88rem] ">
               <img
                 className="w-20 h-20 border border-black"
                 src="https://ocopmart.org/static/media/images/news/bnao-1624812115-1636964564.jpg"

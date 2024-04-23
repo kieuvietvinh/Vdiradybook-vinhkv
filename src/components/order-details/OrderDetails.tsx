@@ -95,7 +95,7 @@ const OrderDetails = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap pt-10 pb-[38px] pl-10 whitespace-nowrap">
+          <div className="catego flex overflow-x-scroll pt-10 pb-[38px] pl-10 whitespace-nowrap">
             {list.map((all, index) => (
               <div key={all.id} className="mb-10">
                 <div className="flex items-center ">

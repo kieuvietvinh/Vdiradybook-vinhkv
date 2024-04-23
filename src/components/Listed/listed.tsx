@@ -8,6 +8,86 @@ const tabs = [
   { id: 5, name: "QR dịch vụ" },
 ];
 
+const ListNumber = [
+  {
+    id: 1,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+  {
+    id: 2,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+  {
+    id: 3,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+  {
+    id: 4,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+  {
+    id: 5,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+  {
+    id: 6,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+  {
+    id: 7,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+  {
+    id: 8,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+  {
+    id: 9,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+  {
+    id: 10,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+  {
+    id: 11,
+    listingName: "Iphone 13 promax",
+    category: "pgc market",
+    formSale: "retail",
+    listingType: "normal",
+  },
+];
+
 const Listed = () => {
   const [activeTab, setActiveTab] = useState(2);
   const handleTabClick = (tabIndex: any) => {
@@ -49,10 +129,10 @@ const Listed = () => {
             </form>
           </div>
           <div>
-            <form className="max-w-[250px] mx-auto h-[38px]">
+            <form className=" mx-auto h-[38px]">
               <select
                 id="countries"
-                className="block w-full p-[0.6rem] text-sm text-[#8E8E93] border border-gray-300 rounded-lg bg-white font-normal leading-[22px] "
+                className="block w-[250px] p-[0.6rem] text-sm text-[#8E8E93] border border-gray-300 rounded-lg bg-white font-normal leading-[22px] "
               >
                 <option selected>Danh mục</option>
                 <option value="US">United States</option>
@@ -61,7 +141,7 @@ const Listed = () => {
             </form>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 pt-2">
           <div className="rounded-full bg-white border border-[#4284F3] flex items-center justify-center py-2 px-4">
             <button className="text-[#4284F3] font-normal text-sm leading-[22px] flex items-center gap-2">
               <img src="/image/quangcao.png" alt="" />
@@ -76,7 +156,6 @@ const Listed = () => {
           </div>
         </div>
       </div>
-
       <div className="tabs pt-5 overflow-x-scroll gap-5">
         <table className="table-auto w-full ">
           <thead className="text-justify ">
@@ -89,48 +168,58 @@ const Listed = () => {
               <th> CÔNG KHAI</th>
             </tr>
           </thead>
-          <tbody className="w-full">
-            <tr className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] ">
-              <td>
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <img
-                    className="rounded-full w-10 h-10 flex"
-                    src="image/iphone.jpeg"
-                    alt=""
-                  />
-                  <p className="">Iphone 13 promax</p>
-                </div>
-              </td>
-              <td className="uppercase ">
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <img
-                    className="rounded-full w-10 h-10 flex"
-                    src="image/iphone.jpeg"
-                    alt=""
-                  />{" "}
-                  <p>pgc market</p>
-                </div>
-              </td>
-              <td className="uppercase whitespace-nowrap">retail</td>
-              <td className="uppercase whitespace-nowrap">normal </td>
-              <td className="uppercase whitespace-nowrap">
-                <p>1/24/102</p>
-                <p>10:22:35PM</p>
-              </td>
-              <td>
-                <div className="flex relative">
-                  <label className="inline-flex items-center cursor-pointer">
-                    <input type="checkbox" value="" className="sr-only peer" />
-                    <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
-                  </label>
-                  <div className="absolute right-0">
-                    {" "}
-                    <img src="/image/Pen.png" alt="" />
+          {ListNumber.map((list) => (
+            <tbody className="w-full ">
+              <tr
+                style={{ padding: "10px" }}
+                className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "
+              >
+                <td>
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <img
+                      className="rounded-full w-10 h-10 flex"
+                      src="image/iphone.jpeg"
+                      alt=""
+                    />
+                    <p className="">{list.listingName}</p>
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
+                </td>
+                <td className="uppercase ">
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <img
+                      className="rounded-full w-10 h-10 flex"
+                      src="image/iphone.jpeg"
+                      alt=""
+                    />{" "}
+                    <p>{list.category}</p>
+                  </div>
+                </td>
+                <td className="uppercase whitespace-nowrap">{list.formSale}</td>
+                <td className="uppercase whitespace-nowrap">
+                  {list.listingType}{" "}
+                </td>
+                <td className="uppercase whitespace-nowrap">
+                  <p>1/24/102</p>
+                  <p>10:22:35PM</p>
+                </td>
+                <td>
+                  <div className="flex relative">
+                    <label className="inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        value=""
+                        className="sr-only peer"
+                      />
+                      <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
+                    </label>
+                    <div className="absolute right-0">
+                      <img src="/image/Pen.png" alt="" />
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          ))}
         </table>
       </div>
     </div>

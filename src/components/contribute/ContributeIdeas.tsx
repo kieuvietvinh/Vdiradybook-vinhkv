@@ -53,7 +53,7 @@ const Contribute = () => {
     <div className=" mx-auto w-full max-w-[1024px] ">
       <div className="bg-white rounded-lg w-full h-auto p-4 border">
         <div className="flex justify-center">
-          <h1 className="text-[1.7rem] text-[#4284f3] font-normal  ">
+          <h1 className="md:text-[1.7rem] text-base text-[#4284f3] font-normal  ">
             Chúng tôi có thể giúp gì cho bạn?
           </h1>
         </div>
@@ -113,7 +113,7 @@ const Contribute = () => {
               <div className="relative">
                 <button
                   type="button"
-                  className="inline-flex  w-full rounded-t-sm  p-[15px]  bg-white text-xl font-medium rounded-tr-lg rounded-tl-lg"
+                  className="inline-flex  w-full rounded-t-sm  p-[15px]  bg-white md:text-xl text-base  font-medium rounded-tr-lg rounded-tl-lg"
                   onClick={toggleDropdown}
                 >
                   {selectedOption ? selectedOption : "Bạn cần giúp đỡ?"}
@@ -131,7 +131,7 @@ const Contribute = () => {
               {isOpen && (
                 <div className="p-[14px]  w-full rounded-b-sm shadow-lg h-auto bg-white ring-1  ring-opacity-5 transform scale-100 delay-1000 duration-1000 rounded-bl-lg rounded-br-lg">
                   <div className="flex justify-center">
-                    <h1 className="text-[#3f414d] font-normal text-4xl  ">
+                    <h1 className="text-[#3f414d] font-normal md:text-4xl  text-base">
                       Bạn cần giúp đỡ?
                     </h1>
                   </div>

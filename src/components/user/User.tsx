@@ -45,7 +45,7 @@ const User = () => {
         <div className="mt-4  ">
           {activeTab === 1 && (
             <div className="font-extrabold ">
-              <ul className="flex flex-wrap text-xs  text-center text-[#555770]  ">
+              <ul className="contri flex flex-wrap text-xs  text-center text-[#555770]  whitespace-nowrap overflow-x-scroll">
                 <li className="w-1/12">
                   <a
                     aria-current="page"

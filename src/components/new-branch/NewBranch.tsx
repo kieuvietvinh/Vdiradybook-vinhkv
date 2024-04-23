@@ -258,10 +258,10 @@ const NewBranch = () => {
           />
         </div>
       </div>
-      <div className="">
+      <div className="py-2">
         <p className="font-normal text-sm text-[#1F1F1F]">Mô tả</p>
       </div>
-      <div className="flex gap-2 float-right">
+      <div className="flex gap-2 float-right p-4">
         <button className="bg-[#0000000D] rounded-[18px] text-[#0F0F0F] px-4 flex items-center gap-2 py-2 font-normal text-sm">
           <img src="/image/huy.png" alt="" />
           <p>Hủy</p>

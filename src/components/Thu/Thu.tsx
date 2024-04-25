@@ -14,7 +14,7 @@ const Thu = () => {
   useEffect(() => {
     axios
       .get(
-        "https://partner.viettelpost.vn/v2/categories/listProvinceById?provinceId=1"
+        "https://partner.viettelpost.vn/v2/categories/listProvinceById?provinceId="
       )
       .then((response) => {
         console.log("response :", response);

@@ -19,7 +19,6 @@ const NewBranch = () => {
     fetch("https://api.vdiarybook.net/api/locations/getAll").then(
       async (data: any) => {
         const array = await data.json();
-
         const country = array.data.filter((i: any) => i.type === "country");
         const province = array.data.filter((i: any) => i.type === "province");
         const district = array.data.filter((i: any) => i.type === "district");

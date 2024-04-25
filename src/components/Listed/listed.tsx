@@ -169,7 +169,7 @@ const Listed = () => {
             </tr>
           </thead>
           {ListNumber.map((list) => (
-            <tbody className="w-full border-b">
+            <tbody key={list.id} className="w-full border-b">
               <tr
                 style={{ padding: "10px" }}
                 className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "

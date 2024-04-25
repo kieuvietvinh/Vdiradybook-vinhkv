@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const tabs = [
   {
@@ -14,7 +15,85 @@ const tabs = [
   },
 ];
 
+const provinces = [
+  {
+    id: 1,
+    name: "Quảng Nam",
+    districts: [
+      {
+        id: 1,
+        name: "Hội An",
+        wards: [
+          {
+            id: 1,
+            name: "Cẩm Hà",
+          },
+          {
+            id: 2,
+            name: "Cẩm Châu",
+          },
+        ],
+      },
+      {
+        id: 2,
+        name: "Điện Bàn",
+        wards: [
+          {
+            id: 3,
+            name: "Điện An",
+          },
+          {
+            id: 4,
+            name: "Vĩnh Điện",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Đà Nẵng",
+    districts: [
+      {
+        id: 3,
+        name: "Hải Châu",
+        wards: [
+          {
+            id: 5,
+            name: "Hải Châu 1",
+          },
+          {
+            id: 6,
+            name: "Hải Châu 2",
+          },
+        ],
+      },
+      {
+        id: 4,
+        name: "Thanh Khê",
+        wards: [
+          {
+            id: 7,
+            name: "Thanh Khê Đông",
+          },
+          {
+            id: 8,
+            name: "Thanh Khê Tây",
+          },
+        ],
+      },
+    ],
+  },
+];
+
 const Thurify = () => {
+  const [location, setLocation] = useState<any[]>([]);
+  const [targetLocation, setTargetLocation] = useState({
+    province: "",
+    district: "",
+    ward: "",
+  });
+
   const [activeTab, setActiveTab] = useState();
   const router = useRouter();
   const handleClick = (index: any) => {
@@ -41,15 +120,6 @@ const Thurify = () => {
             <p className=" font-medium text-sm"> {tab.name}</p>
           </button>
         ))}
-        {/* <button
-          onClick={() => handleClick(2)}
-          className="flex items-center gap-2 border border-[#0000001A] rounded-[18px] px-4 py-1 bg-white justify-center"
-        >
-          <img src="/image/sukien.png" alt="" />
-          <p className="text-[#636363] font-medium text-sm">
-            Sự kiện quan trọng
-          </p>
-        </button> */}
         <div className="flex gap-4">
           <div className="flex gap-1">
             <p className="text-[#636363] font-normal text-sm">Ghé thăm:</p>
@@ -88,3 +158,6 @@ const Thurify = () => {
 };
 
 export default Thurify;
+function nanoid(arg0: number) {
+  throw new Error("Function not implemented.");
+}

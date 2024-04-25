@@ -1,36 +1,101 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Thu = () => {
+  const [provinces, setProvinces] = useState<any>([]);
+  const [districts, setDistricts] = useState<any>([]);
+  const [wards, setWards] = useState<any>([]);
+  console.log("wards :", wards);
+
+  const [selectedProvince, setSelectedProvince] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [selectedWard, setSelectedWard] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://partner.viettelpost.vn/v2/categories/listProvinceById?provinceId=1"
+      )
+      .then((response) => {
+        console.log("response :", response);
+        setProvinces(response.data);
+        console.log("setProvinces :", setProvinces);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (selectedProvince) {
+      axios
+        .get(
+          `https://partner.viettelpost.vn/v2/categories/listDistrict?provinceId=1`
+        )
+        .then((response) => {
+          setDistricts(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      setDistricts([]);
+    }
+  }, [selectedProvince]);
+
+  useEffect(() => {
+    if (selectedDistrict) {
+      axios
+        .get(
+          `https://partner.viettelpost.vn/v2/categories/listWards?districtId=1`
+        )
+        .then((response) => {
+          setWards(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      setWards([]);
+    }
+  }, [selectedDistrict]);
+
   return (
-    <div className="relative overflow-hidden">
-      <div className="w-full h-full flex transition-transform duration-700 ease-in-out">
-        <img
-          src="https://ocopmart.org/static/media/files/banners/s800_800/953_1657167413_39562c65e35cfad6.png"
-          alt=""
-        />
-        <img
-          src="https://ocopmart.org/static/media/files/banners/s800_800/953_1657167413_39562c65e35cfad6.png"
-          alt=""
-        />
-        <img
-          src="https://ocopmart.org/static/media/files/banners/s800_800/953_1657167413_39562c65e35cfad6.png"
-          alt=""
-        />
-      </div>
-
-      <button
-        className="absolute top-1/2 -translate-y-1/2 left-0 z-10 px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-l"
-        data-carousel-prev
+    <div>
+      <select
+        value={selectedProvince}
+        onChange={(event) => setSelectedProvince(event.target.value)}
       >
-        Prev
-      </button>
+        {provinces.map((province: any) => (
+          <option key={province.PROVINCE_ID} value={province.PROVINCE_ID}>
+            {province.PROVINCE_NAME}
+          </option>
+        ))}
+      </select>
 
-      <button
-        className="absolute top-1/2 -translate-y-1/2 right-0 z-10 px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-r"
-        data-carousel-next
+      <select
+        value={selectedDistrict}
+        onChange={(event) => setSelectedDistrict(event.target.value)}
+        disabled={!selectedProvince}
       >
-        Next
-      </button>
+        {districts.map((district: any) => (
+          <option key={district.DISTRICT_ID} value={district.DISTRICT_ID}>
+            {district.WARDS_NAME}
+          </option>
+        ))}
+      </select>
+
+      <select
+        value={selectedWard}
+        onChange={(event) => setSelectedWard(event.target.value)}
+        disabled={!selectedWard}
+      >
+        {wards.map((ward: any) => (
+          <option key={ward.WARDS_ID} value={ward.WARDS_ID}>
+            {ward.WARDS_NAME}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

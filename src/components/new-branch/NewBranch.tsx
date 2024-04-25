@@ -1,6 +1,40 @@
 import React, { useState, useEffect } from "react";
 
 const NewBranch = () => {
+  const [location, setLocation] = useState<any>({
+    country: [],
+    province: [],
+    district: [],
+    ward: [],
+  });
+
+  const [select, setSelect] = useState<any>({
+    country: "",
+    province: "",
+    district: "",
+    ward: "",
+  });
+
+  useEffect(() => {
+    fetch("https://api.vdiarybook.net/api/locations/getAll").then(
+      async (data: any) => {
+        const array = await data.json();
+
+        const country = array.data.filter((i: any) => i.type === "country");
+        const province = array.data.filter((i: any) => i.type === "province");
+        const district = array.data.filter((i: any) => i.type === "district");
+        const ward = array.data.filter((i: any) => i.type === "ward");
+
+        setLocation({
+          country,
+          province,
+          district,
+          ward,
+        });
+      }
+    );
+  }, []);
+
   const [elements, setElements] = useState<any[]>([]);
   const [count, setCount] = useState(1);
 
@@ -21,7 +55,6 @@ const NewBranch = () => {
   const handleDateChange = (event: any) => {
     setSelectedDate(event.target.value);
   };
-  //editor
 
   return (
     <div className="font-inter max-w-[1024px] mx-auto w-full  bg-white rounded-lg p-4">
@@ -126,12 +159,22 @@ const NewBranch = () => {
                 >
                   Quốc gia
                 </label>
-                <input
-                  type="text"
-                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
-                  placeholder="Flowbite"
-                  required
-                />
+                <select
+                  value={select.country}
+                  onChange={(e) =>
+                    setSelect((state: any) => ({
+                      ...state,
+                      country: e.target.value,
+                    }))
+                  }
+                  className="p-2 border border-[#CAD0D7] text-[#1F1F1F] rounded-md bg-white w-full outline-none"
+                >
+                  {location.country?.map((item: any) => (
+                    <option key={item._id} value={item._id}>
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label
@@ -140,12 +183,24 @@ const NewBranch = () => {
                 >
                   Tỉnh/Thành phố
                 </label>
-                <input
-                  type="tel"
-                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
-                  placeholder="chọn tỉnh/thành"
-                  required
-                />
+                <select
+                  value={select.province}
+                  onChange={(e) =>
+                    setSelect((state: any) => ({
+                      ...state,
+                      province: e.target.value,
+                    }))
+                  }
+                  className="p-2 border border-[#CAD0D7] text-[#1F1F1F] rounded-md bg-white w-full outline-none"
+                >
+                  {location.province
+                    .filter((item: any) => item.parent === select.country)
+                    .map((item: any) => (
+                      <option key={item._id} value={item._id}>
+                        {item.name}
+                      </option>
+                    ))}
+                </select>
               </div>
               <div>
                 <label
@@ -154,12 +209,24 @@ const NewBranch = () => {
                 >
                   Quận/Huyện
                 </label>
-                <input
-                  type="text"
-                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
-                  placeholder="chọn quận/huyện"
-                  required
-                />
+                <select
+                  value={select.district}
+                  onChange={(e) =>
+                    setSelect((state: any) => ({
+                      ...state,
+                      district: e.target.value,
+                    }))
+                  }
+                  className="p-2 border border-[#CAD0D7] text-[#1F1F1F] rounded-md bg-white w-full outline-none"
+                >
+                  {location.district
+                    .filter((item: any) => item.parent === select.province)
+                    .map((item: any) => (
+                      <option key={item._id} value={item._id}>
+                        {item.name}
+                      </option>
+                    ))}
+                </select>
               </div>
               <div>
                 <label
@@ -168,12 +235,24 @@ const NewBranch = () => {
                 >
                   Phường/Xã
                 </label>
-                <input
-                  type="number"
-                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
-                  placeholder="chọn phường/xã"
-                  required
-                />
+                <select
+                  value={select.ward}
+                  onChange={(e) =>
+                    setSelect((state: any) => ({
+                      ...state,
+                      ward: e.target.value,
+                    }))
+                  }
+                  className="p-2 border border-[#CAD0D7] text-[#1F1F1F] rounded-md bg-white w-full outline-none"
+                >
+                  {location.ward
+                    .filter((item: any) => item.parent === select.district)
+                    .map((item: any) => (
+                      <option key={item._id} value={item._id}>
+                        {item.name}
+                      </option>
+                    ))}
+                </select>
               </div>
             </div>
             <div className="mb-6">

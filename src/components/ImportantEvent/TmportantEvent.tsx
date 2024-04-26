@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 const Listurgent = [
@@ -129,10 +130,13 @@ const TmportantEvent = () => {
                 <img src="/image/chiduong.png" alt="" />
                 <p>Chỉ đường</p>
               </button>
-              <button className="w-full h-[36px] bg-[#4284F3] rounded-[18px] flex justify-center items-center text-sm text-white font-medium gap-2">
+              <Link
+                href="/detailsMartyrs"
+                className="w-full h-[36px] bg-[#4284F3] rounded-[18px] flex justify-center items-center text-sm text-white font-medium gap-2"
+              >
                 <p>Chi tiết</p>
                 <img src="/image/chitiet.png" alt="" />
-              </button>
+              </Link>
               <button className="min-w-9 h-9 bg-[#0000000D] rounded-full flex justify-center items-center">
                 <img src="/image/chiase.png" alt="" />
               </button>

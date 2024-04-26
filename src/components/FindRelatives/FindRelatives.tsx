@@ -3,7 +3,7 @@ import React from "react";
 const FindRelatives = () => {
   return (
     <div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 p-2">
         <button>
           <img src="/image/tenvo.png" alt="" />
         </button>

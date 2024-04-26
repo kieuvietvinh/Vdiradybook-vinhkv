@@ -77,12 +77,12 @@ const network = [
     name: "Sổ nhật Ký",
   },
   {
-    id: 1,
+    id: 6,
     img: "/image-left/donvi.png",
     name: "Đơn vị, Chi nhánh",
   },
   {
-    id: 1,
+    id: 7,
     img: "/image-left/thongbao.png",
     name: "Thông báo",
   },

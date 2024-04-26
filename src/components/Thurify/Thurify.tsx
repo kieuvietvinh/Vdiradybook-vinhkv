@@ -87,13 +87,6 @@ const provinces = [
 ];
 
 const Thurify = () => {
-  const [location, setLocation] = useState<any[]>([]);
-  const [targetLocation, setTargetLocation] = useState({
-    province: "",
-    district: "",
-    ward: "",
-  });
-
   const [activeTab, setActiveTab] = useState();
   const router = useRouter();
   const handleClick = (index: any) => {

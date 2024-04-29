@@ -110,20 +110,20 @@ const Contribute = () => {
         {activeTab === 2 && (
           <div className="">
             <div className="relative max-w-[1024px]  mx-auto w-full duration-1000 border drop-shadow-md">
-              <div className="relative">
+              <div className="relative ">
                 <button
                   type="button"
-                  className="inline-flex  w-full rounded-t-sm  p-[15px]  bg-white md:text-xl text-base  font-medium rounded-tr-lg rounded-tl-lg"
+                  className="inline-flex  w-full  p-[15px]  bg-white md:text-xl text-base  font-medium rounded-lg"
                   onClick={toggleDropdown}
                 >
                   {selectedOption ? selectedOption : "Bạn cần giúp đỡ?"}
                   <img
-                    className={`absolute right-5  ${
+                    className={`absolute top-4 right-4 py-2 ${
                       isOpen
-                        ? "transform rotate-0 delay-75 decoration-slate-100"
-                        : "transform -rotate-180"
+                        ? "transform rotate-90 delay-75 decoration-slate-100 "
+                        : "transform -rotate-90"
                     }`}
-                    src="https://vdiarybook.com/assets/icons/default/dropdown.svg"
+                    src="/image-left/muiten.png"
                     alt=""
                   />
                 </button>

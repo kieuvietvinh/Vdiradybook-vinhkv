@@ -93,6 +93,66 @@ const Listed = () => {
   const handleTabClick = (tabIndex: any) => {
     setActiveTab(tabIndex);
   };
+
+  const [data, setData] = useState<any>([]);
+  const [inputValue, setInputValue] = useState("");
+  const [editItemId, setEditItemId] = useState(null);
+  const [isAdding, setIsAdding] = useState(false);
+
+  const handleInputChange = (event: any) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleAdd = (event: any) => {
+    event.preventDefault();
+
+    if (inputValue) {
+      const newItem = {
+        id: Date.now(),
+        value: inputValue,
+      };
+
+      setData([...data, newItem]);
+      setInputValue("");
+      setIsAdding(false);
+    }
+  };
+
+  const handleEdit = (itemId: any) => {
+    const editedItem = data.find((item: any) => item.id === itemId);
+
+    if (editedItem) {
+      setInputValue(editedItem.value);
+      setEditItemId(itemId);
+      setIsAdding(false);
+    }
+  };
+
+  const handleUpdate = (event: any) => {
+    event.preventDefault();
+
+    if (editItemId !== null && inputValue) {
+      const updatedData = data.map((item: any) =>
+        item.id === editItemId ? { ...item, value: inputValue } : item
+      );
+
+      setData(updatedData);
+      setInputValue("");
+      setEditItemId(null);
+    }
+  };
+
+  const handleDelete = (itemId: any) => {
+    const filteredData = data.filter((item: any) => item.id !== itemId);
+    setData(filteredData);
+  };
+
+  const handleCancel = () => {
+    setInputValue("");
+    setEditItemId(null);
+    setIsAdding(false);
+  };
+
   return (
     <div className="font-inter mx-auto w-full max-w-5xl rounded-lg bg-white p-2">
       <div className="tabs border-b border-[#ECF0F1] sm:w-auto   shadow flex justify-between gap-2 overflow-x-scroll whitespace-nowrap ">
@@ -149,11 +209,67 @@ const Listed = () => {
             </button>
           </div>
           <div className="rounded-full bg-[#4284F3]  flex items-center justify-center py-2 px-4">
-            <button className="text-white font-normal text-sm leading-[22px] flex items-center gap-2">
+            <button
+              onClick={() => setIsAdding(true)}
+              className="text-white font-normal text-sm leading-[22px] flex items-center gap-2"
+            >
               <img src="/image/congone.png" alt="" />
               Tạo niêm yết
             </button>
           </div>
+          <form
+            onSubmit={editItemId !== null ? handleUpdate : handleAdd}
+            className="mb-4"
+          >
+            <tbody className="w-full border-b">
+              <tr
+                style={{ padding: "10px" }}
+                className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "
+              >
+                <td>
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <img
+                      className="rounded-full w-10 h-10 flex"
+                      src="image/iphone.jpeg"
+                      alt=""
+                    />
+                    <p className=""></p>
+                  </div>
+                </td>
+                <td className="uppercase ">
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <img
+                      className="rounded-full w-10 h-10 flex"
+                      src="image/iphone.jpeg"
+                      alt=""
+                    />
+                    <p></p>
+                  </div>
+                </td>
+                <td className="uppercase whitespace-nowrap"></td>
+                <td className="uppercase whitespace-nowrap"></td>
+                <td className="uppercase whitespace-nowrap">
+                  <p>1/24/102</p>
+                  <p>10:22:35PM</p>
+                </td>
+                <td>
+                  <div className="flex relative">
+                    <label className="inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        value=""
+                        className="sr-only peer"
+                      />
+                      <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
+                    </label>
+                    <div className="absolute right-0">
+                      <img src="/image/Pen.png" alt="" />
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </form>
         </div>
       </div>
       <div className="tabs pt-5 overflow-x-scroll gap-5">

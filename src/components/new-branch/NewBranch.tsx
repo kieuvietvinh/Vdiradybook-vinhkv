@@ -149,7 +149,6 @@ const NewBranch = () => {
                 Địa chỉ
               </p>
             </div>
-
             <div className="grid gap-2 mb-6 md:grid-cols-2">
               <div>
                 <label

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 const tabs = [
   { id: 1, name: "Cài đặt shop " },
@@ -8,151 +9,75 @@ const tabs = [
   { id: 5, name: "QR dịch vụ" },
 ];
 
-const ListNumber = [
-  {
-    id: 1,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-  {
-    id: 2,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-  {
-    id: 3,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-  {
-    id: 4,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-  {
-    id: 5,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-  {
-    id: 6,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-  {
-    id: 7,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-  {
-    id: 8,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-  {
-    id: 9,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-  {
-    id: 10,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-  {
-    id: 11,
-    listingName: "Iphone 13 promax",
-    category: "pgc market",
-    formSale: "retail",
-    listingType: "normal",
-  },
-];
-
 const Listed = () => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
+  const [inputValues, setInputValues] = useState({
+    input1: "",
+    input2: "",
+    input3: "",
+    input4: "",
+    input5: "",
+  });
+  const [data, setData] = useState<any[]>([]);
   const [activeTab, setActiveTab] = useState(2);
   const handleTabClick = (tabIndex: any) => {
     setActiveTab(tabIndex);
   };
+  const handleEdit = (index: any) => {
+    const editedItem = data[index];
 
-  const [data, setData] = useState<any>([]);
-  const [inputValue, setInputValue] = useState("");
-  const [editItemId, setEditItemId] = useState(null);
-  const [isAdding, setIsAdding] = useState(false);
-
-  const handleInputChange = (event: any) => {
-    setInputValue(event.target.value);
+    if (editedItem) {
+      setInputValues({ ...editedItem });
+      setIsEditing(true);
+      setEditIndex(index);
+    }
   };
-
   const handleAdd = (event: any) => {
     event.preventDefault();
 
-    if (inputValue) {
-      const newItem = {
-        id: Date.now(),
-        value: inputValue,
-      };
+    const newEntry = {
+      id: Date.now(),
+      ...inputValues,
+    };
 
-      setData([...data, newItem]);
-      setInputValue("");
-      setIsAdding(false);
-    }
+    setData([...data, newEntry]);
+    setInputValues({
+      input1: "",
+      input2: "",
+      input3: "",
+      input4: "",
+      input5: "",
+    });
   };
-
-  const handleEdit = (itemId: any) => {
-    const editedItem = data.find((item: any) => item.id === itemId);
-
-    if (editedItem) {
-      setInputValue(editedItem.value);
-      setEditItemId(itemId);
-      setIsAdding(false);
-    }
-  };
-
   const handleUpdate = (event: any) => {
     event.preventDefault();
 
-    if (editItemId !== null && inputValue) {
-      const updatedData = data.map((item: any) =>
-        item.id === editItemId ? { ...item, value: inputValue } : item
-      );
-
-      setData(updatedData);
-      setInputValue("");
-      setEditItemId(null);
+    if (editIndex === null) {
+      return;
     }
+
+    const updatedData = [...data];
+    updatedData[editIndex] = { ...inputValues };
+    setData(updatedData);
+    setInputValues({
+      input1: "",
+      input2: "",
+      input3: "",
+      input4: "",
+      input5: "",
+    });
+    setIsEditing(false);
+    setEditIndex(null);
   };
 
-  const handleDelete = (itemId: any) => {
-    const filteredData = data.filter((item: any) => item.id !== itemId);
-    setData(filteredData);
-  };
-
-  const handleCancel = () => {
-    setInputValue("");
-    setEditItemId(null);
-    setIsAdding(false);
-  };
-
+  useEffect(() => {
+    const storedData = localStorage.getItem("productsList");
+    if (storedData) {
+      console.log("storedData :", storedData);
+      setData(JSON.parse(storedData));
+    }
+  }, []);
   return (
     <div className="font-inter mx-auto w-full max-w-5xl rounded-lg bg-white p-2">
       <div className="tabs border-b border-[#ECF0F1] sm:w-auto   shadow flex justify-between gap-2 overflow-x-scroll whitespace-nowrap ">
@@ -201,7 +126,7 @@ const Listed = () => {
             </form>
           </div>
         </div>
-        <div className="flex gap-2 pt-2">
+        <div className="flex gap-2 ">
           <div className="rounded-full bg-white border border-[#4284F3] flex items-center justify-center py-2 px-4">
             <button className="text-[#4284F3] font-normal text-sm leading-[22px] flex items-center gap-2">
               <img src="/image/quangcao.png" alt="" />
@@ -209,134 +134,95 @@ const Listed = () => {
             </button>
           </div>
           <div className="rounded-full bg-[#4284F3]  flex items-center justify-center py-2 px-4">
-            <button
-              onClick={() => setIsAdding(true)}
+            <Link
+              href="/products"
               className="text-white font-normal text-sm leading-[22px] flex items-center gap-2"
             >
               <img src="/image/congone.png" alt="" />
               Tạo niêm yết
-            </button>
+            </Link>
           </div>
-          <form
-            onSubmit={editItemId !== null ? handleUpdate : handleAdd}
-            className="mb-4"
-          >
-            <tbody className="w-full border-b">
-              <tr
-                style={{ padding: "10px" }}
-                className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "
-              >
-                <td>
-                  <div className="flex items-center gap-2 whitespace-nowrap">
-                    <img
-                      className="rounded-full w-10 h-10 flex"
-                      src="image/iphone.jpeg"
-                      alt=""
-                    />
-                    <p className=""></p>
-                  </div>
-                </td>
-                <td className="uppercase ">
-                  <div className="flex items-center gap-2 whitespace-nowrap">
-                    <img
-                      className="rounded-full w-10 h-10 flex"
-                      src="image/iphone.jpeg"
-                      alt=""
-                    />
-                    <p></p>
-                  </div>
-                </td>
-                <td className="uppercase whitespace-nowrap"></td>
-                <td className="uppercase whitespace-nowrap"></td>
-                <td className="uppercase whitespace-nowrap">
-                  <p>1/24/102</p>
-                  <p>10:22:35PM</p>
-                </td>
-                <td>
-                  <div className="flex relative">
-                    <label className="inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        value=""
-                        className="sr-only peer"
-                      />
-                      <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
-                    </label>
-                    <div className="absolute right-0">
-                      <img src="/image/Pen.png" alt="" />
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </form>
         </div>
       </div>
-      <div className="tabs pt-5 overflow-x-scroll gap-5">
-        <table className="table-auto w-full ">
-          <thead className="text-justify ">
-            <tr className="text-sm font-bold text-[#1F1F1F] uppercase leading-[22px] bg-[#0000000D] whitespace-nowrap">
-              <th className="py-2 min-w-[240px]">TẠO NIÊM YẾT</th>
-              <th className="min-w-[190px]">DANH MỤC</th>
-              <th className="min-w-[140px]">HÌNH THỨC BÁN</th>
-              <th className="min-w-[140px]">LOẠI NIÊM YẾT</th>
-              <th>NGÀY TẠO</th>
-              <th> CÔNG KHAI</th>
-            </tr>
-          </thead>
-          {ListNumber.map((list) => (
-            <tbody key={list.id} className="w-full border-b">
-              <tr
-                style={{ padding: "10px" }}
-                className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "
-              >
-                <td>
-                  <div className="flex items-center gap-2 whitespace-nowrap">
-                    <img
-                      className="rounded-full w-10 h-10 flex"
-                      src="image/iphone.jpeg"
-                      alt=""
-                    />
-                    <p className="">{list.listingName}</p>
-                  </div>
-                </td>
-                <td className="uppercase ">
-                  <div className="flex items-center gap-2 whitespace-nowrap">
-                    <img
-                      className="rounded-full w-10 h-10 flex"
-                      src="image/iphone.jpeg"
-                      alt=""
-                    />{" "}
-                    <p>{list.category}</p>
-                  </div>
-                </td>
-                <td className="uppercase whitespace-nowrap">{list.formSale}</td>
-                <td className="uppercase whitespace-nowrap">
-                  {list.listingType}{" "}
-                </td>
-                <td className="uppercase whitespace-nowrap">
-                  <p>1/24/102</p>
-                  <p>10:22:35PM</p>
-                </td>
-                <td>
-                  <div className="flex relative">
-                    <label className="inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        value=""
-                        className="sr-only peer"
-                      />
-                      <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
-                    </label>
-                    <div className="absolute right-0">
-                      <img src="/image/Pen.png" alt="" />
-                    </div>
-                  </div>
-                </td>
+      <div className="max-w-5xl mx-auto p-2">
+        <form>
+          <table className="table-auto w-full ">
+            <thead className="text-justify ">
+              <tr className="text-sm font-bold text-[#1F1F1F] uppercase leading-[22px] bg-[#0000000D] whitespace-nowrap">
+                <th className="py-2 min-w-[240px]">TẠO NIÊM YẾT</th>
+                <th className="min-w-[190px]">DANH MỤC</th>
+                <th className="min-w-[140px]">HÌNH THỨC BÁN</th>
+                <th className="min-w-[140px]">LOẠI NIÊM YẾT</th>
+                <th>NGÀY TẠO</th>
+                <th> CÔNG KHAI</th>
               </tr>
-            </tbody>
-          ))}
-        </table>
+            </thead>
+            {data.map((entry: any, index: any) => (
+              <tbody key={entry.id} className="w-full ">
+                <tr
+                  style={{ padding: "10px" }}
+                  className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "
+                >
+                  <td>
+                    <div className="flex items-center gap-2 whitespace-nowrap">
+                      <img
+                        className="rounded-full w-10 h-10 flex"
+                        src="image/iphone.jpeg"
+                        alt=""
+                      />
+                      <p className="">{entry.input1}</p>
+                    </div>
+                  </td>
+                  <td className="uppercase ">
+                    <div className="flex items-center gap-2 whitespace-nowrap">
+                      <img
+                        className="rounded-full w-10 h-10 flex"
+                        src="image/iphone.jpeg"
+                        alt=""
+                      />
+                      <p>{entry.input2}</p>
+                    </div>
+                  </td>
+                  <td className="uppercase whitespace-nowrap">
+                    {entry.input3}
+                  </td>
+                  <td className="uppercase whitespace-nowrap">
+                    {entry.input4}
+                  </td>
+                  <td className="uppercase whitespace-nowrap">
+                    <p>{entry.input5}</p>
+                    <p>10:22:35PM</p>
+                  </td>
+                  <td>
+                    <div className="flex  items-center gap-2">
+                      <label className="inline-flex items-center cursor-pointer">
+                        <input
+                          type="checkbox"
+                          value=""
+                          className="sr-only peer"
+                        />
+                        <div className="relative w-11 h-6 bg-black peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
+                      </label>
+                      <div className=" cursor-pointer">
+                        <img
+                          // onClick={() => handleEdit(index)}
+                          src="/image/Pen.png"
+                          alt=""
+                        />
+                      </div>
+                      <img
+                        className="cursor-pointer"
+                        // onClick={() => handleDelete(index)}
+                        src="image/delete.png"
+                        alt=""
+                      />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
+        </form>
       </div>
     </div>
   );

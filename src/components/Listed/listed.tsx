@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 const tabs = [
@@ -10,10 +11,12 @@ const tabs = [
 ];
 
 const Listed = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editIndex, setEditIndex] = useState(null);
+  const router = useRouter();
+
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [selectedItemId, setSelectedItemId] = useState(null);
   const [inputValues, setInputValues] = useState({
-    image: "",
+    fileInput: null,
     nameList: "",
     parentCategory: "",
     icon: "",
@@ -22,19 +25,24 @@ const Listed = () => {
     status: "",
   });
   const [data, setData] = useState<any[]>([]);
+  console.log("data :", data);
   const [activeTab, setActiveTab] = useState(2);
   const handleTabClick = (tabIndex: any) => {
     setActiveTab(tabIndex);
   };
-  const handleEdit = (index: any) => {
-    const editedItem = data[index];
-
-    if (editedItem) {
-      setInputValues({ ...editedItem });
-      setIsEditing(true);
-      setEditIndex(index);
-    }
+  const handleInputChange = (event: any) => {
+    const { name, value } = event.target;
+    setInputValues((prevState) => ({ ...prevState, [name]: value }));
   };
+
+  const handleFileInputChange = (event: any) => {
+    const file = event.target.files[0];
+    setInputValues((prevState: any) => ({
+      ...prevState,
+      fileInput: URL.createObjectURL(file),
+    }));
+  };
+
   const handleAdd = (event: any) => {
     event.preventDefault();
 
@@ -45,7 +53,7 @@ const Listed = () => {
 
     setData([...data, newEntry]);
     setInputValues({
-      image: "",
+      fileInput: null,
       nameList: "",
       parentCategory: "",
       icon: "",
@@ -54,36 +62,48 @@ const Listed = () => {
       status: "",
     });
   };
-  const handleUpdate = (event: any) => {
-    event.preventDefault();
+  const handleEdit = (itemId: any) => {
+    const selectedItem = data.find((item: any) => item.id === itemId);
+    console.log("selectedItem :", selectedItem);
 
-    if (editIndex === null) {
-      return;
-    }
-
-    const updatedData = [...data];
-    updatedData[editIndex] = { ...inputValues };
-    setData(updatedData);
     setInputValues({
-      image: "",
-      nameList: "",
-      parentCategory: "",
-      icon: "",
-      dateCreated: "",
-      creationHours: "",
-      status: "",
+      fileInput: selectedItem.fileInput,
+      nameList: selectedItem.nameList,
+      parentCategory: selectedItem.parentCategory,
+      icon: selectedItem.icon,
+      dateCreated: selectedItem.dateCreated,
+      creationHours: selectedItem.creationHours,
+      status: selectedItem.status,
     });
-    setIsEditing(false);
-    setEditIndex(null);
+    router.push({
+      pathname: "/products/" + itemId,
+    });
+
+    setIsEditMode(true);
+    setSelectedItemId(itemId);
   };
 
   useEffect(() => {
     const storedData = localStorage.getItem("productsList");
     if (storedData) {
-      console.log("storedData :", storedData);
       setData(JSON.parse(storedData));
     }
   }, []);
+
+  useEffect(() => {
+    console.log("data :", data);
+    if (data.length === 0) return;
+    localStorage.setItem("productsList", JSON.stringify(data));
+  }, [data]);
+
+  const handleDelete = (itemId: any) => {
+    const confirmDelete = window.confirm("Bạn có chắc chắn muốn xóa?");
+    if (confirmDelete) {
+      const updatedData = data.filter((item: any) => item.id !== itemId);
+      setData(updatedData);
+      localStorage.setItem("productsList", JSON.stringify(updatedData));
+    }
+  };
   return (
     <div className="font-inter mx-auto w-full max-w-5xl rounded-lg bg-white p-2">
       <div className="tabs border-b border-[#ECF0F1] sm:w-auto   shadow flex justify-between gap-2 overflow-x-scroll whitespace-nowrap ">
@@ -163,7 +183,7 @@ const Listed = () => {
                 <th> CÔNG KHAI</th>
               </tr>
             </thead>
-            {data.map((entry: any, index: any) => (
+            {data.map((entry: any) => (
               <tbody key={entry.id} className="w-full ">
                 <tr
                   style={{ padding: "10px" }}
@@ -172,16 +192,20 @@ const Listed = () => {
                   <td>
                     <div className="flex items-center gap-2 whitespace-nowrap">
                       <img
-                        className="rounded-full w-10 h-10 flex"
-                        src={entry.image}
-                        alt=""
+                        className="rounded-full w-12 h-12"
+                        src={entry.fileInput}
+                        alt="Uploaded"
                       />
                       <p className="">{entry.nameList}</p>
                     </div>
                   </td>
                   <td className="uppercase ">
                     <div className="flex items-center gap-2 whitespace-nowrap">
-                      <img className="" src={entry.image} alt="" />
+                      <img
+                        className="rounded-full w-12 h-12"
+                        src={entry.fileInput}
+                        alt=""
+                      />
                       <p>{entry.parentCategory}</p>
                     </div>
                   </td>
@@ -205,14 +229,14 @@ const Listed = () => {
                       </label>
                       <div className=" cursor-pointer">
                         <img
-                          // onClick={() => handleEdit(index)}
+                          onClick={() => handleEdit(entry.id)}
                           src="/image/Pen.png"
                           alt=""
                         />
                       </div>
                       <img
                         className="cursor-pointer"
-                        // onClick={() => handleDelete(index)}
+                        onClick={() => handleDelete(entry.id)}
                         src="image/delete.png"
                         alt=""
                       />

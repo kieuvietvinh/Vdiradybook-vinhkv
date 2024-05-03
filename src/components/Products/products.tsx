@@ -3,10 +3,9 @@ import React, { useState, useEffect } from "react";
 
 const ProductsList = () => {
   const router = useRouter();
-
   const [data, setData] = useState<any[]>([]);
-  const [inputValues, setInputValues] = useState({
-    image: "",
+  const [inputValues, setInputValues] = useState<any>({
+    fileInput: null,
     nameList: "",
     parentCategory: "",
     icon: "",
@@ -14,12 +13,22 @@ const ProductsList = () => {
     creationHours: "",
     status: "",
   });
-  const [isEditing, setIsEditing] = useState(false);
-  const [editIndex, setEditIndex] = useState(null);
+
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [selectedItemId, setSelectedItemId] = useState(null);
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
-    setInputValues((prevState) => ({ ...prevState, [name]: value }));
+
+    setInputValues((prevState: any) => ({ ...prevState, [name]: value }));
+  };
+
+  const handleFileInputChange = (event: any) => {
+    const file = event.target.files[0];
+    setInputValues((prevState: any) => ({
+      ...prevState,
+      fileInput: URL.createObjectURL(file),
+    }));
   };
 
   const handleAdd = (event: any) => {
@@ -32,7 +41,7 @@ const ProductsList = () => {
 
     setData([...data, newEntry]);
     setInputValues({
-      image: "",
+      fileInput: null,
       nameList: "",
       parentCategory: "",
       icon: "",
@@ -45,27 +54,36 @@ const ProductsList = () => {
     });
   };
 
-  const handleEdit = (index: any) => {
-    const editedItem = data[index];
+  const handleEdit = (itemId: any) => {
+    const selectedItem = data.find((item: any) => item.id === itemId);
 
-    if (editedItem) {
-      setInputValues({ ...editedItem });
-      setIsEditing(true);
-      setEditIndex(index);
-    }
+    setInputValues({
+      fileInput: null,
+      nameList: selectedItem.nameList,
+      parentCategory: selectedItem.parentCategory,
+      icon: selectedItem.icon,
+      dateCreated: selectedItem.dateCreated,
+      creationHours: selectedItem.creationHours,
+      status: selectedItem.status,
+    });
+
+    setIsEditMode(true);
+    setSelectedItemId(itemId);
   };
-
   const handleUpdate = (event: any) => {
     event.preventDefault();
-    if (editIndex === null) {
-      return;
-    }
-
-    const updatedData = [...data];
-    updatedData[editIndex] = { ...inputValues };
+    const updatedData = data.map((item: any) => {
+      if (item.id === selectedItemId) {
+        return {
+          ...item,
+          ...inputValues,
+        };
+      }
+      return item;
+    });
     setData(updatedData);
     setInputValues({
-      image: "",
+      fileInput: null,
       nameList: "",
       parentCategory: "",
       icon: "",
@@ -73,36 +91,32 @@ const ProductsList = () => {
       creationHours: "",
       status: "",
     });
-    setIsEditing(false);
-    setEditIndex(null);
+    setIsEditMode(true);
+    setSelectedItemId(null);
   };
 
   useEffect(() => {
     const storedData = localStorage.getItem("productsList");
+    console.log("storedData :", storedData);
     if (storedData) {
-      console.log("storedData :", storedData);
       setData(JSON.parse(storedData));
     }
   }, []);
 
   useEffect(() => {
     if (data.length === 0) return;
+    console.log("data :", data);
     localStorage.setItem("productsList", JSON.stringify(data));
   }, [data]);
 
   return (
     <div className="max-w-5xl mx-auto">
-      <form
-        onSubmit={isEditing ? handleUpdate : handleAdd}
-        className="mb-4 grid-cols-2 grid gap-4"
-      >
+      <form onSubmit={handleAdd} className="mb-4 grid-cols-2 grid gap-4">
         <input
           type="file"
-          name="image"
-          value={inputValues.image}
-          onChange={handleInputChange}
-          placeholder="ảnh danh mục"
-          className="p-2 border border-gray-300 rounded-lg"
+          name="fileInput"
+          onChange={handleFileInputChange}
+          className="p-1 border border-gray-300 bg-white rounded-lg"
         />
         <input
           type="text"
@@ -155,9 +169,9 @@ const ProductsList = () => {
 
         <button
           type="submit"
-          className="px-4 py-2 mt-2 text-white bg-green-500 rounded-lg hover:bg-green-600"
+          className="p-2 text-white bg-green-500 rounded-lg hover:bg-green-600"
         >
-          {isEditing ? "Update" : "Add"}
+          add
         </button>
       </form>
     </div>

@@ -13,11 +13,13 @@ const Listed = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const [inputValues, setInputValues] = useState({
-    input1: "",
-    input2: "",
-    input3: "",
-    input4: "",
-    input5: "",
+    image: "",
+    nameList: "",
+    parentCategory: "",
+    icon: "",
+    dateCreated: "",
+    creationHours: "",
+    status: "",
   });
   const [data, setData] = useState<any[]>([]);
   const [activeTab, setActiveTab] = useState(2);
@@ -43,11 +45,13 @@ const Listed = () => {
 
     setData([...data, newEntry]);
     setInputValues({
-      input1: "",
-      input2: "",
-      input3: "",
-      input4: "",
-      input5: "",
+      image: "",
+      nameList: "",
+      parentCategory: "",
+      icon: "",
+      dateCreated: "",
+      creationHours: "",
+      status: "",
     });
   };
   const handleUpdate = (event: any) => {
@@ -61,11 +65,13 @@ const Listed = () => {
     updatedData[editIndex] = { ...inputValues };
     setData(updatedData);
     setInputValues({
-      input1: "",
-      input2: "",
-      input3: "",
-      input4: "",
-      input5: "",
+      image: "",
+      nameList: "",
+      parentCategory: "",
+      icon: "",
+      dateCreated: "",
+      creationHours: "",
+      status: "",
     });
     setIsEditing(false);
     setEditIndex(null);
@@ -167,31 +173,25 @@ const Listed = () => {
                     <div className="flex items-center gap-2 whitespace-nowrap">
                       <img
                         className="rounded-full w-10 h-10 flex"
-                        src="image/iphone.jpeg"
+                        src={entry.image}
                         alt=""
                       />
-                      <p className="">{entry.input1}</p>
+                      <p className="">{entry.nameList}</p>
                     </div>
                   </td>
                   <td className="uppercase ">
                     <div className="flex items-center gap-2 whitespace-nowrap">
-                      <img
-                        className="rounded-full w-10 h-10 flex"
-                        src="image/iphone.jpeg"
-                        alt=""
-                      />
-                      <p>{entry.input2}</p>
+                      <img className="" src={entry.image} alt="" />
+                      <p>{entry.parentCategory}</p>
                     </div>
                   </td>
+                  <td className="uppercase whitespace-nowrap">{entry.icon}</td>
                   <td className="uppercase whitespace-nowrap">
-                    {entry.input3}
+                    {entry.status}
                   </td>
                   <td className="uppercase whitespace-nowrap">
-                    {entry.input4}
-                  </td>
-                  <td className="uppercase whitespace-nowrap">
-                    <p>{entry.input5}</p>
-                    <p>10:22:35PM</p>
+                    <p>{entry.dateCreated}</p>
+                    <p>{entry.creationHours}</p>
                   </td>
                   <td>
                     <div className="flex  items-center gap-2">
@@ -201,7 +201,7 @@ const Listed = () => {
                           value=""
                           className="sr-only peer"
                         />
-                        <div className="relative w-11 h-6 bg-black peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
+                        <div className="relative w-11 h-6 bg-slate-400 peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
                       </label>
                       <div className=" cursor-pointer">
                         <img

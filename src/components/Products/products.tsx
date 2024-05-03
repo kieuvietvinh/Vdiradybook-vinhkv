@@ -1,18 +1,18 @@
 import router, { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import { Route } from "react-router-dom";
 
 const ProductsList = () => {
   const router = useRouter();
-    
-  };
+
   const [data, setData] = useState<any[]>([]);
   const [inputValues, setInputValues] = useState({
-    input1: "",
-    input2: "",
-    input3: "",
-    input4: "",
-    input5: "",
+    image: "",
+    nameList: "",
+    parentCategory: "",
+    icon: "",
+    dateCreated: "",
+    creationHours: "",
+    status: "",
   });
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
@@ -32,15 +32,17 @@ const ProductsList = () => {
 
     setData([...data, newEntry]);
     setInputValues({
-      input1: "",
-      input2: "",
-      input3: "",
-      input4: "",
-      input5: "",
+      image: "",
+      nameList: "",
+      parentCategory: "",
+      icon: "",
+      dateCreated: "",
+      creationHours: "",
+      status: "",
     });
     router.push({
-        pathname: "/listed",
-      });
+      pathname: "/listed",
+    });
   };
 
   const handleEdit = (index: any) => {
@@ -55,7 +57,6 @@ const ProductsList = () => {
 
   const handleUpdate = (event: any) => {
     event.preventDefault();
-
     if (editIndex === null) {
       return;
     }
@@ -64,11 +65,13 @@ const ProductsList = () => {
     updatedData[editIndex] = { ...inputValues };
     setData(updatedData);
     setInputValues({
-      input1: "",
-      input2: "",
-      input3: "",
-      input4: "",
-      input5: "",
+      image: "",
+      nameList: "",
+      parentCategory: "",
+      icon: "",
+      dateCreated: "",
+      creationHours: "",
+      status: "",
     });
     setIsEditing(false);
     setEditIndex(null);
@@ -94,41 +97,57 @@ const ProductsList = () => {
         className="mb-4 grid-cols-2 grid gap-4"
       >
         <input
+          type="file"
+          name="image"
+          value={inputValues.image}
+          onChange={handleInputChange}
+          placeholder="ảnh danh mục"
+          className="p-2 border border-gray-300 rounded-lg"
+        />
+        <input
           type="text"
-          name="input1"
-          value={inputValues.input1}
+          name="nameList"
+          value={inputValues.nameList}
           onChange={handleInputChange}
           placeholder="Tên danh mục"
           className="p-2 border border-gray-300 rounded-lg"
         />
         <input
           type="text"
-          name="input2"
-          value={inputValues.input2}
+          name="parentCategory"
+          value={inputValues.parentCategory}
           onChange={handleInputChange}
           placeholder="Danh mục cha"
           className="p-2 border border-gray-300 rounded-lg"
         />
         <input
           type="text"
-          name="input3"
-          value={inputValues.input3}
+          name="icon"
+          value={inputValues.icon}
           onChange={handleInputChange}
           placeholder="Icon"
           className="p-2 border border-gray-300 rounded-lg"
         />
         <input
           type="text"
-          name="input4"
-          value={inputValues.input4}
+          name="dateCreated"
+          value={inputValues.dateCreated}
           onChange={handleInputChange}
           placeholder="Ngày tạo"
           className="p-2 border border-gray-300 rounded-lg"
         />
         <input
+          type="text  "
+          name="creationHours"
+          value={inputValues.creationHours}
+          onChange={handleInputChange}
+          placeholder="Giờ tạo"
+          className="p-2 border border-gray-300 rounded-lg"
+        />
+        <input
           type="text"
-          name="input5"
-          value={inputValues.input5}
+          name="status"
+          value={inputValues.status}
           onChange={handleInputChange}
           placeholder="Trạng thái"
           className="p-2 border border-gray-300 rounded-lg"

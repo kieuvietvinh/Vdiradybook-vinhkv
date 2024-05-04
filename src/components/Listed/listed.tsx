@@ -91,7 +91,6 @@ const Listed = () => {
   }, []);
 
   useEffect(() => {
-    console.log("data :", data);
     if (data.length === 0) return;
     localStorage.setItem("productsList", JSON.stringify(data));
   }, [data]);
@@ -145,7 +144,7 @@ const Listed = () => {
                 id="countries"
                 className="block w-[250px] p-[0.6rem] text-sm text-[#8E8E93] border border-gray-300 rounded-lg bg-white font-normal leading-[22px] "
               >
-                <option selected>Danh mục</option>
+                <option value="DM">Danh mục</option>
                 <option value="US">United States</option>
                 <option value="CA">Canada</option>
               </select>

@@ -15,7 +15,7 @@ const ProductsList = (props: any) => {
   });
 
   const [isEditMode, setIsEditMode] = useState(false);
-  const [selectedItemId, setSelectedItemId] = useState(null);
+  console.log("isEditMode :", isEditMode);
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
@@ -31,68 +31,56 @@ const ProductsList = (props: any) => {
     }));
   };
 
-  const handleAdd = (event: any) => {
+  const handleAddOrUpdate = (event: any) => {
     event.preventDefault();
 
-    const newEntry = {
-      id: Date.now(),
-      ...inputValues,
-    };
+    if (props.product) {
+      console.log("isEditMode :", isEditMode);
+      const updatedData = data.map((item: any) => {
+        if (item.id === props.product.id) {
+          return {
+            ...data,
+            ...item,
+            ...inputValues,
+          };
+        }
+        return item;
+      });
 
-    setData([...data, newEntry]);
-    setInputValues({
-      fileInput: null,
-      nameList: "",
-      parentCategory: "",
-      icon: "",
-      dateCreated: "",
-      creationHours: "",
-      status: "",
-    });
+      setData(updatedData);
+      console.log("updatedData :", updatedData);
+      setInputValues({
+        fileInput: null,
+        nameList: "",
+        parentCategory: "",
+        icon: "",
+        dateCreated: "",
+        creationHours: "",
+        status: "",
+      });
+      setIsEditMode(false);
+    } else {
+      const newEntry = {
+        id: Date.now(),
+        ...inputValues,
+      };
+
+      setData([...data, newEntry]);
+      setInputValues((prevState: any) => ({
+        ...prevState,
+        fileInput: null,
+        nameList: "",
+        parentCategory: "",
+        icon: "",
+        dateCreated: "",
+        creationHours: "",
+        status: "",
+      }));
+    }
+
     router.push({
       pathname: "/listed",
     });
-  };
-
-  const handleEdit = (itemId: any) => {
-    const selectedItem = data.find((item: any) => item.id === itemId);
-
-    setInputValues({
-      fileInput: null,
-      nameList: selectedItem.nameList,
-      parentCategory: selectedItem.parentCategory,
-      icon: selectedItem.icon,
-      dateCreated: selectedItem.dateCreated,
-      creationHours: selectedItem.creationHours,
-      status: selectedItem.status,
-    });
-
-    setIsEditMode(true);
-    setSelectedItemId(itemId);
-  };
-  const handleUpdate = (event: any) => {
-    event.preventDefault();
-    const updatedData = data.map((item: any) => {
-      if (item.id === selectedItemId) {
-        return {
-          ...item,
-          ...inputValues,
-        };
-      }
-      return item;
-    });
-    setData(updatedData);
-    setInputValues({
-      fileInput: null,
-      nameList: "",
-      parentCategory: "",
-      icon: "",
-      dateCreated: "",
-      creationHours: "",
-      status: "",
-    });
-    setIsEditMode(true);
-    setSelectedItemId(null);
   };
 
   useEffect(() => {
@@ -118,13 +106,16 @@ const ProductsList = (props: any) => {
   }, [data]);
 
   return (
-    <div className="max-w-5xl mx-auto">
-      <form onSubmit={handleAdd} className="mb-4 grid-cols-2 grid gap-4">
+    <div className="max-w-5xl mx-auto bg-white p-4 rounded-lg">
+      <form
+        onSubmit={handleAddOrUpdate}
+        className="mb-4 grid-cols-2 grid gap-4"
+      >
         <input
           type="file"
           name="fileInput"
           onChange={handleFileInputChange}
-          className="p-1 border border-gray-300 bg-white rounded-lg"
+          className="p-1 border border-[#1F1F1F] rounded-lg"
         />
         <input
           type="text"
@@ -132,7 +123,7 @@ const ProductsList = (props: any) => {
           value={inputValues.nameList}
           onChange={handleInputChange}
           placeholder="Tên danh mục"
-          className="p-2 border border-gray-300 rounded-lg"
+          className="p-2 border border-[#1F1F1F] rounded-lg"
         />
         <input
           type="text"
@@ -140,7 +131,7 @@ const ProductsList = (props: any) => {
           value={inputValues.parentCategory}
           onChange={handleInputChange}
           placeholder="Danh mục cha"
-          className="p-2 border border-gray-300 rounded-lg"
+          className="p-2 border border-[#1F1F1F] rounded-lg"
         />
         <input
           type="text"
@@ -148,7 +139,7 @@ const ProductsList = (props: any) => {
           value={inputValues.icon}
           onChange={handleInputChange}
           placeholder="Icon"
-          className="p-2 border border-gray-300 rounded-lg"
+          className="p-2 border border-[#1F1F1F] rounded-lg"
         />
         <input
           type="text"
@@ -156,7 +147,7 @@ const ProductsList = (props: any) => {
           value={inputValues.dateCreated}
           onChange={handleInputChange}
           placeholder="Ngày tạo"
-          className="p-2 border border-gray-300 rounded-lg"
+          className="p-2 border border-[#1F1F1F] rounded-lg"
         />
         <input
           type="text  "
@@ -164,7 +155,7 @@ const ProductsList = (props: any) => {
           value={inputValues.creationHours}
           onChange={handleInputChange}
           placeholder="Giờ tạo"
-          className="p-2 border border-gray-300 rounded-lg"
+          className="p-2 border border-[#1F1F1F] rounded-lg"
         />
         <input
           type="text"
@@ -172,14 +163,14 @@ const ProductsList = (props: any) => {
           value={inputValues.status}
           onChange={handleInputChange}
           placeholder="Trạng thái"
-          className="p-2 border border-gray-300 rounded-lg"
+          className="p-2 border border-[#1F1F1F] rounded-lg"
         />
 
         <button
           type="submit"
           className="p-2 text-white bg-green-500 rounded-lg hover:bg-green-600"
         >
-          add
+          {props.product ? "Update" : "Add"}
         </button>
       </form>
     </div>

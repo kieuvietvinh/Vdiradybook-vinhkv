@@ -1,12 +1,12 @@
-import router, { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
-const ProductsList = () => {
+const ProductsList = (props: any) => {
   const router = useRouter();
   const [data, setData] = useState<any[]>([]);
   const [inputValues, setInputValues] = useState<any>({
     fileInput: null,
-    nameList: "",
+    nameList: props.product?.nameList || "",
     parentCategory: "",
     icon: "",
     dateCreated: "",
@@ -101,11 +101,19 @@ const ProductsList = () => {
     if (storedData) {
       setData(JSON.parse(storedData));
     }
-  }, []);
+    setInputValues({
+      fileInput: props.product?.fileInput || null,
+      nameList: props.product?.nameList || "",
+      parentCategory: props.product?.parentCategory || "",
+      icon: props.product?.icon || "",
+      dateCreated: props.product?.dateCreated || "",
+      creationHours: props.product?.creationHours || "",
+      status: props.product?.status || "",
+    });
+  }, [props]);
 
   useEffect(() => {
     if (data.length === 0) return;
-    console.log("data :", data);
     localStorage.setItem("productsList", JSON.stringify(data));
   }, [data]);
 

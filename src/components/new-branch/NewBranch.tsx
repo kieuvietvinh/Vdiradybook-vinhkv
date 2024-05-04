@@ -14,6 +14,7 @@ const NewBranch = () => {
     district: "",
     ward: "",
   });
+  console.log("select :", select);
 
   useEffect(() => {
     fetch("https://api.vdiarybook.net/api/locations/getAll").then(

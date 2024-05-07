@@ -1,280 +1,129 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { fetchData, addData, updateData, deleteData } from "../api/Api";
 
 const Thu = () => {
   const [data, setData] = useState<any>([]);
-  const [inputValues, setInputValues] = useState({
-    input1: "",
-    input2: "",
-    input3: "",
-    input4: "",
-    input5: "",
-    input6: "",
-    input7: "",
-    fileInput: null,
-  });
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [selectedItemId, setSelectedItemId] = useState(null);
+  console.log("data :", data);
+  const [newData, setNewData] = useState("");
+  console.log("newData :", newData);
+  const [editedData, setEditedData] = useState("");
 
-  const handleInputChange = (event: any) => {
-    const { name, value } = event.target;
-    setInputValues((prevState) => ({ ...prevState, [name]: value }));
-  };
-
-  const handleFileInputChange = (event: any) => {
-    const file = event.target.files[0];
-    setInputValues((prevState) => ({ ...prevState, fileInput: file }));
-  };
-
-  const handleAdd = (event: any) => {
-    event.preventDefault();
-
-    const newEntry = {
-      id: Date.now(),
-      ...inputValues,
+  useEffect(() => {
+    const getData = async () => {
+      const responseData = await fetchData();
+      setData(responseData);
     };
+    getData();
+  }, []);
 
-    setData([...data, newEntry]);
-    setInputValues({
-      input1: "",
-      input2: "",
-      input3: "",
-      input4: "",
-      input5: "",
-      input6: "",
-      input7: "",
-      fileInput: null,
-    });
+  const handleAddData = async () => {
+    const response = await addData({ data: newData });
+    setData([...data, response]);
+    setNewData("");
   };
 
-  const handleEdit = (itemId: any) => {
-    const selectedItem = data.find((item: any) => item.id === itemId);
-
-    setInputValues({
-      input1: selectedItem.input1,
-      input2: selectedItem.input2,
-      input3: selectedItem.input3,
-      input4: selectedItem.input4,
-      input5: selectedItem.input5,
-      input6: selectedItem.input6,
-      input7: selectedItem.input7,
-      fileInput: null,
-    });
-
-    setIsEditMode(true);
-    setSelectedItemId(itemId);
+  const handleUpdateData = async (id: any) => {
+    const response = await updateData(id, { data: editedData });
+    setData(data.map((item: any) => (item.id === id ? response : item)));
+    setEditedData("");
   };
 
-  const handleUpdate = (event: any) => {
-    event.preventDefault();
-
-    const updatedData = data.map((item: any) => {
-      if (item.id === selectedItemId) {
-        return {
-          ...item,
-          ...inputValues,
-        };
-      }
-      return item;
-    });
-
-    setData(updatedData);
-    setInputValues({
-      input1: "",
-      input2: "",
-      input3: "",
-      input4: "",
-      input5: "",
-      input6: "",
-      input7: "",
-      fileInput: null,
-    });
-    setIsEditMode(false);
-    setSelectedItemId(null);
-  };
-
-  const handleDelete = (itemId: any) => {
-    const updatedData = data.filter((item: any) => item.id !== itemId);
-    setData(updatedData);
+  const handleDeleteData = async (id: any) => {
+    await deleteData(id);
+    setData(data.filter((item: any) => item.id !== id));
   };
 
   return (
-    <div className="max-w-5xl mx-auto">
-      {isEditMode ? (
-        <form onSubmit={handleUpdate} className="mb-4">
-          <input
-            type="text"
-            name="input1"
-            value={inputValues.input1}
-            onChange={handleInputChange}
-            placeholder="Enter value 1"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input2"
-            value={inputValues.input2}
-            onChange={handleInputChange}
-            placeholder="Enter value 2"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input3"
-            value={inputValues.input3}
-            onChange={handleInputChange}
-            placeholder="Enter value 3"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input4"
-            value={inputValues.input4}
-            onChange={handleInputChange}
-            placeholder="Enter value 4"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input5"
-            value={inputValues.input5}
-            onChange={handleInputChange}
-            placeholder="Enter value 5"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input6"
-            value={inputValues.input6}
-            onChange={handleInputChange}
-            placeholder="Enter value 6"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input7"
-            value={inputValues.input7}
-            onChange={handleInputChange}
-            placeholder="Enter value 7"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="file"
-            name="fileInput"
-            onChange={handleFileInputChange}
-            className="mt-2"
-          />
-          <button
-            type="submit"
-            className="px-4 py-2 mt-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
-          >
-            Update
-          </button>
-        </form>
-      ) : (
-        <form onSubmit={handleAdd} className="mb-4">
-          <input
-            type="text"
-            name="input1"
-            value={inputValues.input1}
-            onChange={handleInputChange}
-            placeholder="Enter value 1"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input2"
-            value={inputValues.input2}
-            onChange={handleInputChange}
-            placeholder="Enter value 2"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input3"
-            value={inputValues.input3}
-            onChange={handleInputChange}
-            placeholder="Enter value 3"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input4"
-            value={inputValues.input4}
-            onChange={handleInputChange}
-            placeholder="Enter value 4"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input5"
-            value={inputValues.input5}
-            onChange={handleInputChange}
-            placeholder="Enter value 5"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input6"
-            value={inputValues.input6}
-            onChange={handleInputChange}
-            placeholder="Enter value 6"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="text"
-            name="input7"
-            value={inputValues.input7}
-            onChange={handleInputChange}
-            placeholder="Enter value 7"
-            className="p-2 border border-gray-300 rounded-lg"
-          />
-          <input
-            type="file"
-            name="fileInput"
-            onChange={handleFileInputChange}
-            className="mt-2"
-          />
-          <button
-            type="submit"
-            className="px-4 py-2 mt-2 text-white bg-green-500 rounded-lg hover:bg-green-600"
-          >
-            Add
-          </button>
-        </form>
-      )}
-
+    <div>
+      <h1>Quản lý sản phẩm</h1>
       <ul>
-        {data.map((entry: any) => (
-          <li key={entry.id} className="border-b border-gray-300 py-2">
-            <span>{entry.input1}</span>
-            <span>{entry.input2}</span>
-            <span>{entry.input3}</span>
-            <span>{entry.input4}</span>
-            <span>{entry.input5}</span>
-            <span>{entry.input6}</span>
-            <span>{entry.input7}</span>
-            <img
-              src={URL.createObjectURL(entry.fileInput)}
-              alt="Uploaded"
-              className="mt-2 h-16 w-16"
-            />
-            <div>
-              <button
-                onClick={() => handleEdit(entry.id)}
-                className="px-4 py-2 mr-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+        <table className="table-auto w-full ">
+          <thead className="text-justify ">
+            <tr className="text-sm font-bold text-[#1F1F1F] uppercase leading-[22px] bg-[#0000000D] whitespace-nowrap">
+              <th className="py-2 min-w-[240px]">TẠO NIÊM YẾT</th>
+              <th className="min-w-[190px]">DANH MỤC</th>
+              <th className="min-w-[140px]">HÌNH THỨC BÁN</th>
+              <th className="min-w-[140px]">LOẠI NIÊM YẾT</th>
+              <th>NGÀY TẠO</th>
+              <th> CÔNG KHAI</th>
+            </tr>
+          </thead>
+          {data.map((item: any) => (
+            <tbody key={item.id} className="w-full ">
+              <tr
+                style={{ padding: "10px" }}
+                className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "
               >
-                Edit
-              </button>
-              <button
-                onClick={() => handleDelete(entry.id)}
-                className="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600"
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
+                <td>
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <img
+                      className="rounded-full w-12 h-12"
+                      src={item.date}
+                      alt="Uploaded"
+                    />
+                    <p className="">{item.name}</p>
+                  </div>
+                </td>
+                <td className="uppercase ">
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <img
+                      className="rounded-full w-12 h-12"
+                      src={item.fileInput}
+                      alt=""
+                    />
+                    <p>{item.username}</p>
+                  </div>
+                </td>
+                <td className="uppercase whitespace-nowrap">{item.icon}</td>
+                <td className="uppercase whitespace-nowrap">{item.email}</td>
+                <td className="uppercase whitespace-nowrap">
+                  <p>{item.date}</p>
+                  <p>{item.time}</p>
+                </td>
+                <td>
+                  <div className="flex  items-center gap-2">
+                    <label className="inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        value=""
+                        className="sr-only peer"
+                      />
+                      <div className="relative w-11 h-6 bg-slate-400 peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
+                    </label>
+                    <li>
+                      <button onClick={() => handleUpdateData(item.id)}>
+                        Sửa
+                      </button>
+                      <button onClick={() => handleDeleteData(item.id)}>
+                        Xóa
+                      </button>
+                    </li>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          ))}
+        </table>
       </ul>
+
+      <div>
+        <input
+          type="text"
+          placeholder="Tên sản phẩm mới"
+          value={newData}
+          onChange={(e) => setNewData(e.target.value)}
+        />
+        <button onClick={addData}>Thêm sản phẩm</button>
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Tên sản phẩm cần sửa"
+          value={editedData}
+          onChange={(e) => setEditedData(e.target.value)}
+        />
+      </div>
     </div>
   );
 };

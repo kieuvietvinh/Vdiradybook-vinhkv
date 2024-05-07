@@ -1,3 +1,4 @@
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -20,12 +21,15 @@ const Listed = () => {
     nameList: "",
     parentCategory: "",
     icon: "",
-    dateCreated: "",
-    creationHours: "",
+    date: "",
+    time: "",
     status: "",
   });
   const [data, setData] = useState<any[]>([]);
   console.log("data :", data);
+  const [newItem, setNewItem] = useState("");
+  console.log("newItem :", newItem);
+
   const [activeTab, setActiveTab] = useState(2);
   const handleTabClick = (tabIndex: any) => {
     setActiveTab(tabIndex);
@@ -35,20 +39,13 @@ const Listed = () => {
     setInputValues((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleFileInputChange = (event: any) => {
-    const file = event.target.files[0];
-    setInputValues((prevState: any) => ({
-      ...prevState,
-      fileInput: URL.createObjectURL(file),
-    }));
-  };
-
   const handleAdd = (event: any) => {
     event.preventDefault();
 
     const newEntry = {
-      id: Date.now(),
+      _id: Date.now(),
       ...inputValues,
+      ...data,
     };
 
     setData([...data, newEntry]);
@@ -57,13 +54,13 @@ const Listed = () => {
       nameList: "",
       parentCategory: "",
       icon: "",
-      dateCreated: "",
-      creationHours: "",
+      date: "",
+      time: "",
       status: "",
     });
   };
   const handleEdit = (itemId: any) => {
-    const selectedItem = data.find((item: any) => item.id === itemId);
+    const selectedItem = data.find((item: any) => item._id === itemId);
     console.log("selectedItem :", selectedItem);
 
     setInputValues({
@@ -71,8 +68,8 @@ const Listed = () => {
       nameList: selectedItem.nameList,
       parentCategory: selectedItem.parentCategory,
       icon: selectedItem.icon,
-      dateCreated: selectedItem.dateCreated,
-      creationHours: selectedItem.creationHours,
+      date: selectedItem.date,
+      time: selectedItem.time,
       status: selectedItem.status,
     });
     router.push({
@@ -84,31 +81,49 @@ const Listed = () => {
   };
 
   useEffect(() => {
-    const storedData = localStorage.getItem("productsList");
-    if (storedData) {
-      setData(JSON.parse(storedData));
-    }
+    fetchData();
   }, []);
 
-  useEffect(() => {
-    if (data.length === 0) return;
-    localStorage.setItem("productsList", JSON.stringify(data));
-  }, [data]);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/getProducts");
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  // const updateData = async (_id: any, updatedItem: any) => {
+  //   try {
+  //     await axios.put(`http://localhost:8000/getProducts/${_id}`, {
+  //       item: updatedItem,
+  //     });
+
+  //     const updatedData = data.map((item) => {
+  //       if (item._id === _id) {
+  //         return { ...item, item: updatedItem };
+  //       }
+  //       return item;
+  //     });
+  //     setData(updatedData);
+  //   } catch (error) {
+  //     console.error("Error updating data:", error);
+  //   }
+  // };
 
   const handleDelete = (itemId: any) => {
     const confirmDelete = window.confirm("Bạn có chắc chắn muốn xóa?");
     if (confirmDelete) {
-      const updatedData = data.filter((item: any) => item.id !== itemId);
+      const updatedData = data.filter((item: any) => item._id !== itemId);
       setData(updatedData);
-      localStorage.setItem("productsList", JSON.stringify(updatedData));
     }
   };
   return (
     <div className="font-inter mx-auto w-full max-w-5xl rounded-lg bg-white p-2">
       <div className="tabs border-b border-[#ECF0F1] sm:w-auto   shadow flex justify-between gap-2 overflow-x-scroll whitespace-nowrap ">
-        {tabs.map((tab) => (
+        {tabs.map((tab, index) => (
           <button
-            key={tab.id}
+            key={index}
             className={` border-b-[3px]   border-transparent whitespace-nowrap leading-[22px] hover:bg-gray-100 hover:rounded   text-[#1F1F1F] text-sm sm:px-4 sm:py-2 p-[7px] ${
               activeTab === tab.id
                 ? "inline-block p-4 !border-b-[#4284F3]  text-[#4284F3] w-auto font-bold"
@@ -182,8 +197,8 @@ const Listed = () => {
                 <th> CÔNG KHAI</th>
               </tr>
             </thead>
-            {data.map((entry: any) => (
-              <tbody key={entry.id} className="w-full ">
+            {data.map((entry: any, index) => (
+              <tbody key={index} className="w-full ">
                 <tr
                   style={{ padding: "10px" }}
                   className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "
@@ -205,16 +220,16 @@ const Listed = () => {
                         src={entry.fileInput}
                         alt=""
                       />
-                      <p>{entry.parentCategory}</p>
+                      <p>{entry.status}</p>
                     </div>
                   </td>
                   <td className="uppercase whitespace-nowrap">{entry.icon}</td>
                   <td className="uppercase whitespace-nowrap">
-                    {entry.status}
+                    {entry.parentCategory}
                   </td>
                   <td className="uppercase whitespace-nowrap">
-                    <p>{entry.dateCreated}</p>
-                    <p>{entry.creationHours}</p>
+                    <p>{entry.date}</p>
+                    <p>{entry.time}</p>
                   </td>
                   <td>
                     <div className="flex  items-center gap-2">
@@ -228,14 +243,14 @@ const Listed = () => {
                       </label>
                       <div className=" cursor-pointer">
                         <img
-                          onClick={() => handleEdit(entry.id)}
+                          onClick={() => handleEdit(entry._id)}
                           src="/image/Pen.png"
                           alt=""
                         />
                       </div>
                       <img
                         className="cursor-pointer"
-                        onClick={() => handleDelete(entry.id)}
+                        onClick={() => handleDelete(entry._id)}
                         src="image/delete.png"
                         alt=""
                       />

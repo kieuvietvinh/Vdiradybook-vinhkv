@@ -23,6 +23,7 @@ const Listed = () => {
     icon: "",
     date: "",
     time: "",
+    form: "",
     status: "",
   });
   const [data, setData] = useState<any[]>([]);
@@ -56,6 +57,7 @@ const Listed = () => {
       icon: "",
       date: "",
       time: "",
+      form: "",
       status: "",
     });
   };
@@ -70,6 +72,7 @@ const Listed = () => {
       icon: selectedItem.icon,
       date: selectedItem.date,
       time: selectedItem.time,
+      form: selectedItem.form,
       status: selectedItem.status,
     });
     router.push({
@@ -86,36 +89,39 @@ const Listed = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/getProducts");
+      const response = await axios.get("http://localhost:8000/products");
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  // const updateData = async (_id: any, updatedItem: any) => {
-  //   try {
-  //     await axios.put(`http://localhost:8000/getProducts/${_id}`, {
-  //       item: updatedItem,
-  //     });
+  const updateData = async (_id: any, updatedItem: any) => {
+    try {
+      await axios.put(`http://localhost:8000/products/${_id}`, {
+        inputValues,
+      });
 
-  //     const updatedData = data.map((item) => {
-  //       if (item._id === _id) {
-  //         return { ...item, item: updatedItem };
-  //       }
-  //       return item;
-  //     });
-  //     setData(updatedData);
-  //   } catch (error) {
-  //     console.error("Error updating data:", error);
-  //   }
-  // };
-
-  const handleDelete = (itemId: any) => {
-    const confirmDelete = window.confirm("Bạn có chắc chắn muốn xóa?");
-    if (confirmDelete) {
-      const updatedData = data.filter((item: any) => item._id !== itemId);
+      const updatedData = data.map((item) => {
+        console.log("updatedData :", updatedData);
+        if (item._id === _id) {
+          return { ...item, item: updatedItem };
+        }
+        return item;
+      });
       setData(updatedData);
+    } catch (error) {
+      console.error("Error updating data:", error);
+    }
+  };
+
+  const deleteData = async (_id: any) => {
+    if (window.confirm("Bạn có chắc chắn muốn xóa khóa học này?")) {
+      try {
+        await axios.delete(`http://localhost:8000/products/${_id}`);
+        setData(data.filter((data) => data._id !== _id));
+        console.log("data :", data);
+      } catch (error) {}
     }
   };
   return (
@@ -223,7 +229,7 @@ const Listed = () => {
                       <p>{entry.status}</p>
                     </div>
                   </td>
-                  <td className="uppercase whitespace-nowrap">{entry.icon}</td>
+                  <td className="uppercase whitespace-nowrap">{entry.form}</td>
                   <td className="uppercase whitespace-nowrap">
                     {entry.parentCategory}
                   </td>
@@ -243,14 +249,14 @@ const Listed = () => {
                       </label>
                       <div className=" cursor-pointer">
                         <img
-                          onClick={() => handleEdit(entry._id)}
+                          onClick={() => updateData(entry._id, selectedItemId)}
                           src="/image/Pen.png"
                           alt=""
                         />
                       </div>
                       <img
                         className="cursor-pointer"
-                        onClick={() => handleDelete(entry._id)}
+                        onClick={() => deleteData(entry._id)}
                         src="image/delete.png"
                         alt=""
                       />

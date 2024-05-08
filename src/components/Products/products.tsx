@@ -14,6 +14,7 @@ const ProductsList = (props: any) => {
     date: "",
     time: "",
     status: "",
+    form: "",
   });
   console.log("inputValues :", inputValues);
 
@@ -40,20 +41,22 @@ const ProductsList = (props: any) => {
     }));
   };
 
-  const handleAddOrUpdate = (event: any) => {
+  const handleAddOrUpdate = async (event: any) => {
     event.preventDefault();
-    const addData = async () => {
-      try {
-        const response = await axios.post("http://localhost:8000/getProducts", {
-          item: newItem,
-        });
-        setData([...data, response.data]);
-        setNewItem("");
-      } catch (error) {
-        console.error("Error adding data:", error);
-      }
-    };
-    console.log("addData", addData);
+    // const addData = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/products",
+        inputValues
+      );
+      const newItemData = { id: response.data.id, item: newItem };
+      console.log("newItemData :", newItemData);
+      setData([...data, newItemData]);
+      setNewItem("");
+    } catch (error) {
+      console.error("Error adding data:", error);
+    }
+    // };
 
     if (props.data) {
       console.log("isEditMode :", isEditMode);
@@ -78,6 +81,7 @@ const ProductsList = (props: any) => {
         date: "",
         time: "",
         status: "",
+        form: "",
       });
       setIsEditMode(false);
     } else {
@@ -95,6 +99,7 @@ const ProductsList = (props: any) => {
         icon: "",
         date: "",
         time: "",
+        form: "",
         status: "",
       }));
     }
@@ -110,7 +115,7 @@ const ProductsList = (props: any) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/getProducts");
+      const response = await axios.get("http://localhost:8000/products");
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -132,15 +137,19 @@ const ProductsList = (props: any) => {
         onSubmit={handleAddOrUpdate}
         className="mb-4 grid-cols-2 grid gap-4"
       >
-        <div className="flex">
+        <div className="flex relative">
           <input
             type="file"
             name="fileInput"
             onChange={handleFileInputChange}
-            className="border-dashed border-2 border-[#1F1F1F] w-full p-2 rounded-lg"
+            className=" border-dashed border-2 border-[#1F1F1F] w-full p-2 rounded-lg"
           />
 
-          <img src={inputValues.fileInput} alt="image" className="max-w-20 " />
+          <img
+            src={inputValues.fileInput}
+            alt="image"
+            className="max-w-12 absolute right-1 "
+          />
         </div>
 
         <input
@@ -162,13 +171,20 @@ const ProductsList = (props: any) => {
           <option value="option 3">option 3</option>
         </select>
 
-        <input
-          type="file"
-          name="icon"
-          onChange={handleInputChange}
-          placeholder="Icon"
-          className="p-2 border-dashed border-2 border-[#1F1F1F] rounded-lg"
-        />
+        <div className="flex relative">
+          <input
+            type="file"
+            name="fileInput"
+            onChange={handleFileInputChange}
+            className=" border-dashed border-2 border-[#1F1F1F] w-full p-2 rounded-lg"
+          />
+
+          <img
+            src={inputValues.fileInput}
+            alt="image"
+            className="max-w-12 absolute right-1"
+          />
+        </div>
         <div>
           <div className="flex ">
             <input
@@ -187,6 +203,14 @@ const ProductsList = (props: any) => {
             />
           </div>
         </div>
+        <input
+          type="text"
+          name="form"
+          value={inputValues.form}
+          onChange={handleInputChange}
+          placeholder="Hình thức bán"
+          className="p-2 border border-[#1F1F1F] rounded-lg"
+        />
 
         <select
           name="status"

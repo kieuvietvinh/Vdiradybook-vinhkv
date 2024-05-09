@@ -10,11 +10,10 @@ const ProductsList = (props: any) => {
     fileInput: null,
     nameList: "",
     parentCategory: "",
-    icon: "",
+    icon: null,
     date: "",
     time: "",
     status: "",
-    form: "",
   });
   console.log("inputValues :", inputValues);
 
@@ -40,10 +39,18 @@ const ProductsList = (props: any) => {
       fileInput: URL.createObjectURL(file),
     }));
   };
+  //
+  const handleFileInputChange1 = (event: any) => {
+    const file = event.target.files[0];
+    console.log("file :", file);
+    setInputValues((prevState: any) => ({
+      ...prevState,
+      icon: URL.createObjectURL(file),
+    }));
+  };
 
   const handleAddOrUpdate = async (event: any) => {
     event.preventDefault();
-    // const addData = async () => {
     try {
       const response = await axios.post(
         "http://localhost:8000/products",
@@ -81,7 +88,6 @@ const ProductsList = (props: any) => {
         date: "",
         time: "",
         status: "",
-        form: "",
       });
       setIsEditMode(false);
     } else {
@@ -99,11 +105,9 @@ const ProductsList = (props: any) => {
         icon: "",
         date: "",
         time: "",
-        form: "",
         status: "",
       }));
     }
-
     router.push({
       pathname: "/listed",
     });
@@ -131,27 +135,122 @@ const ProductsList = (props: any) => {
     setSelectedTime(event.target.value);
   };
 
+  const [element1, setElement1] = useState<string | null>(null);
+
+  const handleImageUpload1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    handleFileInputChange(event);
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setElement1(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  //
+  const [element, setElement] = useState<string | null>(null);
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    handleFileInputChange1(event);
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setElement(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div className="max-w-5xl mx-auto bg-white p-4 rounded-lg">
       <form
         onSubmit={handleAddOrUpdate}
         className="mb-4 grid-cols-2 grid gap-4"
       >
-        <div className="flex relative">
-          <input
-            type="file"
-            name="fileInput"
-            onChange={handleFileInputChange}
-            className=" border-dashed border-2 border-[#1F1F1F] w-full p-2 rounded-lg"
-          />
-
-          <img
-            src={inputValues.fileInput}
-            alt="image"
-            className="max-w-12 absolute right-1 "
-          />
+        <div>
+          <div className="pt-5 flex gap-2 flex-wrap">
+            <div className="items-center justify-center w-fit gap-2 contents">
+              {element1 && (
+                <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+                  <img
+                    className="w-24 h-24 object-cover"
+                    src={element1}
+                    alt=""
+                  />
+                  <input
+                    id="dropzone-file-1"
+                    type="file"
+                    className="hidden"
+                    onChange={handleImageUpload1}
+                  />
+                  <button
+                    className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-2 top-2 text-sm text-stone-700"
+                    onClick={() => setElement1(null)}
+                  >
+                    x
+                  </button>
+                </label>
+              )}
+              {!element1 && (
+                <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border-2 border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+                  <div className="flex flex-col items-center justify-center">
+                    <p className="text-md text-[#1F1F1F] ">Tải lên</p>
+                  </div>
+                  <input
+                    id="dropzone-file-1"
+                    name="fileInput"
+                    type="file"
+                    className="hidden"
+                    onChange={handleImageUpload1}
+                  />
+                </label>
+              )}
+            </div>
+          </div>
         </div>
-
+        <div>
+          <div className="pt-5 flex gap-2 flex-wrap">
+            <div className="items-center justify-center w-fit gap-2 contents">
+              {element && (
+                <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+                  <img
+                    className="w-24 h-24 object-cover"
+                    src={element}
+                    alt=""
+                  />
+                  <input
+                    id="dropzone-file-1"
+                    type="file"
+                    className="hidden"
+                    onChange={handleImageUpload}
+                  />
+                  <button
+                    className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-2 top-2 text-sm text-stone-700"
+                    onClick={() => setElement(null)}
+                  >
+                    x
+                  </button>
+                </label>
+              )}
+              {!element && (
+                <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border-2 border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+                  <div className="flex flex-col items-center justify-center">
+                    <p className="ext-md text-[#1F1F1F]">Tải lên</p>
+                  </div>
+                  <input
+                    id="dropzone-file-1"
+                    name="icon"
+                    type="file"
+                    className="hidden"
+                    onChange={handleImageUpload}
+                  />
+                </label>
+              )}
+            </div>
+          </div>
+        </div>
         <input
           type="text"
           name="nameList"
@@ -170,21 +269,6 @@ const ProductsList = (props: any) => {
           <option value="option 2">option 2</option>
           <option value="option 3">option 3</option>
         </select>
-
-        <div className="flex relative">
-          <input
-            type="file"
-            name="fileInput"
-            onChange={handleFileInputChange}
-            className=" border-dashed border-2 border-[#1F1F1F] w-full p-2 rounded-lg"
-          />
-
-          <img
-            src={inputValues.fileInput}
-            alt="image"
-            className="max-w-12 absolute right-1"
-          />
-        </div>
         <div>
           <div className="flex ">
             <input
@@ -203,15 +287,6 @@ const ProductsList = (props: any) => {
             />
           </div>
         </div>
-        <input
-          type="text"
-          name="form"
-          value={inputValues.form}
-          onChange={handleInputChange}
-          placeholder="Hình thức bán"
-          className="p-2 border border-[#1F1F1F] rounded-lg"
-        />
-
         <select
           name="status"
           value={inputValues.status}
@@ -222,7 +297,6 @@ const ProductsList = (props: any) => {
           <option value="Hiển thị">Hiển thị</option>
           <option value="Ẩn">Ẩn </option>
         </select>
-
         <button
           type="submit"
           className="p-2 text-white bg-green-500 rounded-lg hover:bg-green-600"

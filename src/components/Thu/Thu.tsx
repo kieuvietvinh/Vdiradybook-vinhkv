@@ -1,128 +1,111 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { fetchData, addData, updateData, deleteData } from "../api/Api";
+import React, { useState } from "react";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 const Thu = () => {
-  const [data, setData] = useState<any>([]);
-  console.log("data :", data);
-  const [newData, setNewData] = useState("");
-  console.log("newData :", newData);
-  const [editedData, setEditedData] = useState("");
+  const [element1, setElement1] = useState<string | null>(null);
+  const [element2, setElement2] = useState<string | null>(null);
 
-  useEffect(() => {
-    const getData = async () => {
-      const responseData = await fetchData();
-      setData(responseData);
-    };
-    getData();
-  }, []);
-
-  const handleAddData = async () => {
-    const response = await addData({ data: newData });
-    setData([...data, response]);
-    setNewData("");
+  const handleImageUpload1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setElement1(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
-  const handleUpdateData = async (id: any) => {
-    const response = await updateData(id, { data: editedData });
-    setData(data.map((item: any) => (item.id === id ? response : item)));
-    setEditedData("");
-  };
-
-  const handleDeleteData = async (id: any) => {
-    await deleteData(id);
-    setData(data.filter((item: any) => item.id !== id));
+  const handleImageUpload2 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setElement2(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
     <div>
-      <h1>Quản lý sản phẩm</h1>
-      <ul>
-        <table className="table-auto w-full ">
-          <thead className="text-justify ">
-            <tr className="text-sm font-bold text-[#1F1F1F] uppercase leading-[22px] bg-[#0000000D] whitespace-nowrap">
-              <th className="py-2 min-w-[240px]">TẠO NIÊM YẾT</th>
-              <th className="min-w-[190px]">DANH MỤC</th>
-              <th className="min-w-[140px]">HÌNH THỨC BÁN</th>
-              <th className="min-w-[140px]">LOẠI NIÊM YẾT</th>
-              <th>NGÀY TẠO</th>
-              <th> CÔNG KHAI</th>
-            </tr>
-          </thead>
-          {data.map((item: any) => (
-            <tbody key={item.id} className="w-full ">
-              <tr
-                style={{ padding: "10px" }}
-                className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "
+      <div className="pt-5 flex gap-2 flex-wrap">
+        <div className="items-center justify-center w-fit gap-2 contents">
+          {element1 && (
+            <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+              <img className="w-32 h-32 object-cover" src={element1} alt="" />
+              <input
+                id="dropzone-file-1"
+                type="file"
+                className="hidden"
+                onChange={handleImageUpload1}
+              />
+              <button
+                className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-2 top-2 text-sm text-stone-700"
+                onClick={() => setElement1(null)}
               >
-                <td>
-                  <div className="flex items-center gap-2 whitespace-nowrap">
-                    <img
-                      className="rounded-full w-12 h-12"
-                      src={item.date}
-                      alt="Uploaded"
-                    />
-                    <p className="">{item.name}</p>
-                  </div>
-                </td>
-                <td className="uppercase ">
-                  <div className="flex items-center gap-2 whitespace-nowrap">
-                    <img
-                      className="rounded-full w-12 h-12"
-                      src={item.fileInput}
-                      alt=""
-                    />
-                    <p>{item.username}</p>
-                  </div>
-                </td>
-                <td className="uppercase whitespace-nowrap">{item.icon}</td>
-                <td className="uppercase whitespace-nowrap">{item.email}</td>
-                <td className="uppercase whitespace-nowrap">
-                  <p>{item.date}</p>
-                  <p>{item.time}</p>
-                </td>
-                <td>
-                  <div className="flex  items-center gap-2">
-                    <label className="inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        value=""
-                        className="sr-only peer"
-                      />
-                      <div className="relative w-11 h-6 bg-slate-400 peer-focus:outline-none   rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
-                    </label>
-                    <li>
-                      <button onClick={() => handleUpdateData(item.id)}>
-                        Sửa
-                      </button>
-                      <button onClick={() => handleDeleteData(item.id)}>
-                        Xóa
-                      </button>
-                    </li>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
-      </ul>
-
-      <div>
-        <input
-          type="text"
-          placeholder="Tên sản phẩm mới"
-          value={newData}
-          onChange={(e) => setNewData(e.target.value)}
-        />
-        <button onClick={addData}>Thêm sản phẩm</button>
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Tên sản phẩm cần sửa"
-          value={editedData}
-          onChange={(e) => setEditedData(e.target.value)}
-        />
+                x
+              </button>
+            </label>
+          )}
+          {!element1 && (
+            <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+              <div className="flex flex-col items-center justify-center">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Tải lên
+                </p>
+                <img
+                  className="w-5 h-5"
+                  src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
+                  alt=""
+                />
+              </div>
+              <input
+                id="dropzone-file-1"
+                type="file"
+                className="hidden"
+                onChange={handleImageUpload1}
+              />
+            </label>
+          )}
+          {element2 && (
+            <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+              <img className="w-32 h-32 object-cover" src={element2} alt="" />
+              <input
+                id="dropzone-file-2"
+                type="file"
+                className="hidden"
+                onChange={handleImageUpload2}
+              />
+              <button
+                className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-2 top-2 text-sm text-stone-700"
+                onClick={() => setElement2(null)}
+              >
+                x
+              </button>
+            </label>
+          )}
+          {!element2 && (
+            <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+              <div className="flex flex-col items-center justify-center">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Tải lên
+                </p>
+                <img
+                  className="w-5 h-5"
+                  src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
+                  alt=""
+                />
+              </div>
+              <input
+                id="dropzone-file-2"
+                type="file"
+                className="hidden"
+                onChange={handleImageUpload2}
+              />
+            </label>
+          )}
+        </div>
       </div>
     </div>
   );

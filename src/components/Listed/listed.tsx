@@ -16,20 +16,18 @@ const Listed = () => {
 
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
+  console.log("selectedItemId :", selectedItemId);
   const [inputValues, setInputValues] = useState({
     fileInput: null,
     nameList: "",
     parentCategory: "",
-    icon: "",
+    icon: null,
     date: "",
     time: "",
-    form: "",
     status: "",
   });
   const [data, setData] = useState<any[]>([]);
-  console.log("data :", data);
   const [newItem, setNewItem] = useState("");
-  console.log("newItem :", newItem);
 
   const [activeTab, setActiveTab] = useState(2);
   const handleTabClick = (tabIndex: any) => {
@@ -54,10 +52,9 @@ const Listed = () => {
       fileInput: null,
       nameList: "",
       parentCategory: "",
-      icon: "",
+      icon: null,
       date: "",
       time: "",
-      form: "",
       status: "",
     });
   };
@@ -72,7 +69,6 @@ const Listed = () => {
       icon: selectedItem.icon,
       date: selectedItem.date,
       time: selectedItem.time,
-      form: selectedItem.form,
       status: selectedItem.status,
     });
     router.push({
@@ -98,9 +94,7 @@ const Listed = () => {
 
   const updateData = async (_id: any, updatedItem: any) => {
     try {
-      await axios.put(`http://localhost:8000/products/${_id}`, {
-        inputValues,
-      });
+      await axios.put(`http://localhost:8000/products/${_id}`, {});
 
       const updatedData = data.map((item) => {
         console.log("updatedData :", updatedData);
@@ -226,12 +220,20 @@ const Listed = () => {
                         src={entry.fileInput}
                         alt=""
                       />
-                      <p>{entry.status}</p>
+                      <p>{entry.parentCategory}</p>
                     </div>
                   </td>
-                  <td className="uppercase whitespace-nowrap">{entry.form}</td>
+                  <td className="uppercase ">
+                    <div className="flex items-center gap-2 whitespace-nowrap">
+                      <img
+                        className="rounded-full w-12 h-12"
+                        src={entry.icon}
+                        alt=""
+                      />
+                    </div>
+                  </td>
                   <td className="uppercase whitespace-nowrap">
-                    {entry.parentCategory}
+                    {entry.status}
                   </td>
                   <td className="uppercase whitespace-nowrap">
                     <p>{entry.date}</p>
@@ -271,5 +273,4 @@ const Listed = () => {
     </div>
   );
 };
-
 export default Listed;

@@ -45,6 +45,21 @@ const NewBranch = () => {
   const removeElement = (index: any) => {
     setElements(elements.filter((element) => element !== index));
   };
+  const handleImageUpload = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const newElements = [...elements];
+        newElements[index] = reader.result;
+        setElements(newElements);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   const [showPicker, setShowPicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
 
@@ -69,30 +84,45 @@ const NewBranch = () => {
             Ảnh đại diện
           </p>
           <div>
-            <div className=" pt-5 flex gap-2 flex-wrap ">
-              <div className=" items-center  justify-center w-fit gap-2 contents">
-                {elements.map((element) => (
+            <div className="pt-5 flex gap-2 flex-wrap">
+              <div className="items-center justify-center w-fit gap-2 contents">
+                {elements.map((element, index) => (
                   <label
-                    key={element.id}
-                    className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36  border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50 "
+                    key={index}
+                    className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50"
                   >
-                    <div className="flex flex-col items-center justify-center">
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
-                        Tải lên
-                      </p>
+                    {typeof element === "string" ? (
                       <img
-                        className="w-5 h-5"
-                        src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
+                        className="w-32 h-32 object-cover rounded-lg"
+                        src={element}
                         alt=""
                       />
-                    </div>
-                    <input id="dropzone-file" type="file" className="hidden" />
-                    <button
-                      className=" w-6 h-6 bg-[#D9D9D9]  rounded-full flex items-center justify-center absolute right-2 top-2 text-sm text-stone-700"
-                      onClick={() => removeElement(element)}
-                    >
-                      x
-                    </button>
+                    ) : (
+                      <div className="flex flex-col items-center justify-center">
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                          Tải lên
+                        </p>
+                        <img
+                          className="w-5 h-5"
+                          src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
+                          alt=""
+                        />
+                      </div>
+                    )}
+                    <input
+                      id={`dropzone-file-${index}`}
+                      type="file"
+                      className="hidden"
+                      onChange={(event) => handleImageUpload(event, index)}
+                    />
+                    {typeof element === "string" && (
+                      <button
+                        className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-2 top-2 text-sm text-stone-700"
+                        onClick={() => removeElement(element)}
+                      >
+                        x
+                      </button>
+                    )}
                   </label>
                 ))}
               </div>

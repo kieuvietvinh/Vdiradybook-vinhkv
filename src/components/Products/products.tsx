@@ -84,7 +84,7 @@ const ProductsList = (props: any) => {
         fileInput: null,
         nameList: "",
         parentCategory: "",
-        icon: "",
+        icon: null,
         date: "",
         time: "",
         status: "",
@@ -102,7 +102,7 @@ const ProductsList = (props: any) => {
         fileInput: null,
         nameList: "",
         parentCategory: "",
-        icon: "",
+        icon: null,
         date: "",
         time: "",
         status: "",
@@ -114,17 +114,17 @@ const ProductsList = (props: any) => {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/products");
-      setData(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+    setInputValues({
+      ...inputValues,
+      nameList: props?.product?.nameList,
+      parentCategory: props?.product?.parentCategory,
+      date: props?.product?.date,
+      time: props?.product?.time,
+      status: props?.product?.status,
+      fileInput: props?.product?.fileInput,
+      icon: props?.product?.icon,
+    });
+  }, [props.product]);
 
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
@@ -136,6 +136,7 @@ const ProductsList = (props: any) => {
   };
 
   const [element1, setElement1] = useState<string | null>(null);
+  console.log("element1 :", element1);
 
   const handleImageUpload1 = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleFileInputChange(event);
@@ -150,6 +151,7 @@ const ProductsList = (props: any) => {
   };
   //
   const [element, setElement] = useState<string | null>(null);
+  console.log("element :", element);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleFileInputChange1(event);
@@ -170,17 +172,17 @@ const ProductsList = (props: any) => {
         className="mb-4 grid-cols-2 grid gap-4"
       >
         <div>
-          <div className="pt-5 flex gap-2 flex-wrap">
+          <p>Ảnh niêm yết , danh mục</p>
+          <div className=" flex gap-2 flex-wrap">
             <div className="items-center justify-center w-fit gap-2 contents">
-              {element1 && (
+              {(element1 || inputValues.fileInput) && (
                 <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
                   <img
-                    className="w-24 h-24 object-cover"
-                    src={element1}
+                    className="w-36 h-36 object-cover"
+                    src={element1 || inputValues.fileInput}
                     alt=""
                   />
                   <input
-                    id="dropzone-file-1"
                     type="file"
                     className="hidden"
                     onChange={handleImageUpload1}
@@ -199,7 +201,6 @@ const ProductsList = (props: any) => {
                     <p className="text-md text-[#1F1F1F] ">Tải lên</p>
                   </div>
                   <input
-                    id="dropzone-file-1"
                     name="fileInput"
                     type="file"
                     className="hidden"
@@ -211,17 +212,17 @@ const ProductsList = (props: any) => {
           </div>
         </div>
         <div>
-          <div className="pt-5 flex gap-2 flex-wrap">
+          <p>Icon</p>
+          <div className=" flex gap-2 flex-wrap">
             <div className="items-center justify-center w-fit gap-2 contents">
-              {element && (
+              {(element || inputValues.icon) && (
                 <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
                   <img
-                    className="w-24 h-24 object-cover"
-                    src={element}
+                    className="w-36 h-36 object-cover"
+                    src={element || inputValues.fileInput}
                     alt=""
                   />
                   <input
-                    id="dropzone-file-1"
                     type="file"
                     className="hidden"
                     onChange={handleImageUpload}
@@ -240,7 +241,6 @@ const ProductsList = (props: any) => {
                     <p className="ext-md text-[#1F1F1F]">Tải lên</p>
                   </div>
                   <input
-                    id="dropzone-file-1"
                     name="icon"
                     type="file"
                     className="hidden"
@@ -265,7 +265,7 @@ const ProductsList = (props: any) => {
           onChange={handleInputChange}
           className="p-2 border border-[#1F1F1F] rounded-lg bg-white"
         >
-          <option selected>Danh mục cha</option>
+          <option selected>Danh mục sản phẩm</option>
           <option value="option 2">option 2</option>
           <option value="option 3">option 3</option>
         </select>
@@ -276,14 +276,14 @@ const ProductsList = (props: any) => {
               name="date"
               value={inputValues.date}
               onChange={handleInputChange}
-              className="border border-[#1F1F1F] rounded w-full px-3 py-2 mr-2"
+              className="border border-[#1F1F1F] rounded-lg w-full px-3 py-2 mr-2"
             />
             <input
               type="time"
               name="time"
               value={inputValues.time}
               onChange={handleInputChange}
-              className="border border-[#1F1F1F] rounded px-3 py-2 w-full"
+              className="border border-[#1F1F1F] rounded-lg px-3 py-2 w-full"
             />
           </div>
         </div>

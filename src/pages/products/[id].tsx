@@ -1,20 +1,39 @@
 import ProductsList from "@/components/Products/products";
+import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const ProductDetsil = (props: any) => {
+const ProductDetail = (props: any) => {
   const router = useRouter();
-  const [product, setProduct] = useState();
-
+  const [product, setProduct] = useState<any>(null);
+  const { id } = router.query;
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8000/products/${id}`);
+      const jsonData = response.data;
+      console.log("jsonData :", jsonData);
+      setProduct(jsonData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   useEffect(() => {
-    const { id } = router.query;
-    const storedData = localStorage.getItem("productsList");
-    const item = JSON.parse(storedData as string).find(
-      (product: any) => product.id.toString() === id
-    );
-    setProduct(item);
-  }, [router]);
-
+    if (id) {
+      fetchData();
+    }
+  }, [id]);
+  const convertBlobToURL = (blob: Blob) => {
+    return URL.createObjectURL(blob);
+  };
+  useEffect(() => {
+    if (product && product.image) {
+      const imageUrl = convertBlobToURL(product.image);
+      setProduct((prevProduct: any) => ({
+        ...prevProduct,
+        imageUrl: imageUrl,
+      }));
+    }
+  }, [product]);
   return (
     <div>
       <ProductsList product={product} />
@@ -22,4 +41,4 @@ const ProductDetsil = (props: any) => {
   );
 };
 
-export default ProductDetsil;
+export default ProductDetail;

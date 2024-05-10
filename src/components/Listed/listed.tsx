@@ -26,7 +26,9 @@ const Listed = () => {
     time: "",
     status: "",
   });
+  console.log("inputValues :", inputValues);
   const [data, setData] = useState<any[]>([]);
+  console.log("data :", data);
   const [newItem, setNewItem] = useState("");
 
   const [activeTab, setActiveTab] = useState(2);
@@ -46,6 +48,7 @@ const Listed = () => {
       ...inputValues,
       ...data,
     };
+    console.log("newEntry :", newEntry);
 
     setData([...data, newEntry]);
     setInputValues({
@@ -80,17 +83,16 @@ const Listed = () => {
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/products");
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
     fetchData();
   }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/products");
-      setData(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
   const updateData = async (_id: any, updatedItem: any) => {
     try {
@@ -108,7 +110,7 @@ const Listed = () => {
       console.error("Error updating data:", error);
     }
   };
-
+  //
   const deleteData = async (_id: any) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa khóa học này?")) {
       try {
@@ -118,6 +120,7 @@ const Listed = () => {
       } catch (error) {}
     }
   };
+
   return (
     <div className="font-inter mx-auto w-full max-w-5xl rounded-lg bg-white p-2">
       <div className="tabs border-b border-[#ECF0F1] sm:w-auto   shadow flex justify-between gap-2 overflow-x-scroll whitespace-nowrap ">
@@ -239,6 +242,7 @@ const Listed = () => {
                     <p>{entry.date}</p>
                     <p>{entry.time}</p>
                   </td>
+
                   <td>
                     <div className="flex  items-center gap-2">
                       <label className="inline-flex items-center cursor-pointer">
@@ -251,7 +255,7 @@ const Listed = () => {
                       </label>
                       <div className=" cursor-pointer">
                         <img
-                          onClick={() => updateData(entry._id, selectedItemId)}
+                          onClick={() => handleEdit(entry._id)}
                           src="/image/Pen.png"
                           alt=""
                         />

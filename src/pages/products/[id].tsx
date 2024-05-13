@@ -7,6 +7,7 @@ const ProductDetail = (props: any) => {
   const router = useRouter();
   const [product, setProduct] = useState<any>(null);
   const { id } = router.query;
+  console.log("id :", id);
   const fetchData = async () => {
     try {
       const response = await axios.get(`http://localhost:8000/products/${id}`);

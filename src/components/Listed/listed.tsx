@@ -16,7 +16,6 @@ const Listed = () => {
 
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
-  console.log("selectedItemId :", selectedItemId);
   const [inputValues, setInputValues] = useState({
     fileInput: null,
     nameList: "",
@@ -26,10 +25,8 @@ const Listed = () => {
     time: "",
     status: "",
   });
-  console.log("inputValues :", inputValues);
   const [data, setData] = useState<any[]>([]);
-  console.log("data :", data);
-  const [newItem, setNewItem] = useState("");
+  // const [newItem, setNewItem] = useState("");
 
   const [activeTab, setActiveTab] = useState(2);
   const handleTabClick = (tabIndex: any) => {
@@ -48,7 +45,6 @@ const Listed = () => {
       ...inputValues,
       ...data,
     };
-    console.log("newEntry :", newEntry);
 
     setData([...data, newEntry]);
     setInputValues({
@@ -63,7 +59,6 @@ const Listed = () => {
   };
   const handleEdit = (itemId: any) => {
     const selectedItem = data.find((item: any) => item._id === itemId);
-    console.log("selectedItem :", selectedItem);
 
     setInputValues({
       fileInput: selectedItem.fileInput,
@@ -94,22 +89,6 @@ const Listed = () => {
     fetchData();
   }, []);
 
-  const updateData = async (_id: any, updatedItem: any) => {
-    try {
-      await axios.put(`http://localhost:8000/products/${_id}`, {});
-
-      const updatedData = data.map((item) => {
-        console.log("updatedData :", updatedData);
-        if (item._id === _id) {
-          return { ...item, item: updatedItem };
-        }
-        return item;
-      });
-      setData(updatedData);
-    } catch (error) {
-      console.error("Error updating data:", error);
-    }
-  };
   //
   const deleteData = async (_id: any) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa khóa học này?")) {
@@ -160,6 +139,7 @@ const Listed = () => {
             <form className=" mx-auto h-[38px]">
               <select
                 id="countries"
+                name="countries"
                 className="block w-[250px] p-[0.6rem] text-sm text-[#8E8E93] border border-gray-300 rounded-lg bg-white font-normal leading-[22px] "
               >
                 <option value="DM">Danh mục</option>

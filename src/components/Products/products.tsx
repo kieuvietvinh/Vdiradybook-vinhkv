@@ -4,8 +4,8 @@ import axios from "axios";
 
 const ProductsList = (props: any) => {
   const router = useRouter();
+  const { id } = router.query;
   const [data, setData] = useState<any[]>([]);
-  console.log("data :", data);
   const [inputValues, setInputValues] = useState<any>({
     fileInput: null,
     nameList: "",
@@ -15,25 +15,17 @@ const ProductsList = (props: any) => {
     time: "",
     status: "",
   });
-  console.log("inputValues :", inputValues);
-
   const [isEditMode, setIsEditMode] = useState(false);
-  console.log("isEditMode :", isEditMode);
   const [newItem, setNewItem] = useState("");
-  console.log("newItem :", newItem);
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
-    console.log("value :", value);
-    console.log("name :", name);
-
     setInputValues((prevState: any) => ({ ...prevState, [name]: value }));
     setSelectedDate(event.target.value);
   };
 
   const handleFileInputChange = (event: any) => {
     const file = event.target.files[0];
-    console.log("file :", file);
     setInputValues((prevState: any) => ({
       ...prevState,
       fileInput: URL.createObjectURL(file),
@@ -42,7 +34,6 @@ const ProductsList = (props: any) => {
   //
   const handleFileInputChange1 = (event: any) => {
     const file = event.target.files[0];
-    console.log("file :", file);
     setInputValues((prevState: any) => ({
       ...prevState,
       icon: URL.createObjectURL(file),
@@ -51,24 +42,46 @@ const ProductsList = (props: any) => {
 
   const handleAddOrUpdate = async (event: any) => {
     event.preventDefault();
+    const isAdding = !id;
+    console.log("isEditMode :", isEditMode);
+    console.log("isAdding :", isAdding);
+
     try {
-      const response = await axios.post(
-        "http://localhost:8000/products",
-        inputValues
-      );
+      let response: any;
+      if (isAdding) {
+        response = await axios.post(
+          "http://localhost:8000/products",
+          inputValues
+        );
+      } else {
+        response = await axios.put(
+          `http://localhost:8000/products/${id}`,
+          inputValues
+        );
+      }
       const newItemData = { id: response.data.id, item: newItem };
-      console.log("newItemData :", newItemData);
-      setData([...data, newItemData]);
+      if (isAdding) {
+        setData([...data, newItemData]);
+      } else {
+        const updatedData = data.map((item) =>
+          item.id === response.data.id ? newItemData : item
+        );
+        setData(updatedData);
+      }
+
       setNewItem("");
     } catch (error) {
-      console.error("Error adding data:", error);
+      if (isAdding) {
+        console.error("Error adding data:", error);
+      } else {
+        console.error("Error updating data:", error);
+      }
     }
-    // };
-
+    //
     if (props.data) {
       console.log("isEditMode :", isEditMode);
       const updatedData = data.map((item: any) => {
-        if (item._id === props.data._id) {
+        if (item.id === props.data.id) {
           return {
             ...data,
             ...item,
@@ -79,7 +92,6 @@ const ProductsList = (props: any) => {
       });
 
       setData(updatedData);
-      console.log("updatedData :", updatedData);
       setInputValues({
         fileInput: null,
         nameList: "",
@@ -89,7 +101,7 @@ const ProductsList = (props: any) => {
         time: "",
         status: "",
       });
-      setIsEditMode(false);
+      setIsEditMode(true);
     } else {
       const newEntry = {
         id: Date.now(),
@@ -136,8 +148,6 @@ const ProductsList = (props: any) => {
   };
 
   const [element1, setElement1] = useState<string | null>(null);
-  console.log("element1 :", element1);
-
   const handleImageUpload1 = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleFileInputChange(event);
     const file = event.target.files?.[0];
@@ -151,8 +161,6 @@ const ProductsList = (props: any) => {
   };
   //
   const [element, setElement] = useState<string | null>(null);
-  console.log("element :", element);
-
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleFileInputChange1(event);
     const file = event.target.files?.[0];
@@ -188,7 +196,8 @@ const ProductsList = (props: any) => {
                     onChange={handleImageUpload1}
                   />
                   <button
-                    className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-2 top-2 text-sm text-stone-700"
+                    type="button"
+                    className="w-4 h-4 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-1 top-1 text-sm text-stone-700"
                     onClick={() => setElement1(null)}
                   >
                     x
@@ -219,7 +228,7 @@ const ProductsList = (props: any) => {
                 <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
                   <img
                     className="w-36 h-36 object-cover"
-                    src={element || inputValues.fileInput}
+                    src={element || inputValues.icon}
                     alt=""
                   />
                   <input
@@ -228,7 +237,8 @@ const ProductsList = (props: any) => {
                     onChange={handleImageUpload}
                   />
                   <button
-                    className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-2 top-2 text-sm text-stone-700"
+                    type="button"
+                    className="w-4 h-4 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-1 top-1 text-sm text-stone-700"
                     onClick={() => setElement(null)}
                   >
                     x
@@ -265,7 +275,7 @@ const ProductsList = (props: any) => {
           onChange={handleInputChange}
           className="p-2 border border-[#1F1F1F] rounded-lg bg-white"
         >
-          <option selected>Danh mục sản phẩm</option>
+          <option value="Danh mục sản phẩm">Danh mục sản phẩm</option>
           <option value="option 2">option 2</option>
           <option value="option 3">option 3</option>
         </select>
@@ -293,7 +303,7 @@ const ProductsList = (props: any) => {
           onChange={handleInputChange}
           className="p-2 border border-[#1F1F1F] rounded-lg bg-white"
         >
-          <option selected>Trạng thái</option>
+          <option value="Trạng thái">Trạng thái</option>
           <option value="Hiển thị">Hiển thị</option>
           <option value="Ẩn">Ẩn </option>
         </select>
@@ -301,7 +311,7 @@ const ProductsList = (props: any) => {
           type="submit"
           className="p-2 text-white bg-green-500 rounded-lg hover:bg-green-600"
         >
-          {props.data ? "Update" : "Add"}
+          {props.product ? "Update" : "Add"}
         </button>
       </form>
     </div>

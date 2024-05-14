@@ -1,186 +1,434 @@
+import axios from "axios";
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 
-const NewBranch = () => {
-  const [location, setLocation] = useState<any>({
-    country: [],
-    province: [],
-    district: [],
-    ward: [],
+const NewBranch = (props: any) => {
+  // const [location, setLocation] = useState<any>({
+  //   country: [],
+  //   province: [],
+  //   district: [],
+  //   ward: [],
+  // });
+
+  // const [select, setSelect] = useState<any>({
+  //   country: "",
+  //   province: "",
+  //   district: "",
+  //   ward: "",
+  // });
+  // console.log("select :", select);
+
+  // useEffect(() => {
+  //   fetch("https://api.vdiarybook.net/api/locations/getAll").then(
+  //     async (data: any) => {
+  //       const array = await data.json();
+  //       const country = array.data.filter((i: any) => i.type === "country");
+  //       const province = array.data.filter((i: any) => i.type === "province");
+  //       const district = array.data.filter((i: any) => i.type === "district");
+  //       const ward = array.data.filter((i: any) => i.type === "ward");
+
+  //       setLocation({
+  //         country,
+  //         province,
+  //         district,
+  //         ward,
+  //       });
+  //     }
+  //   );
+  // }, []);
+
+  // const [elements, setElements] = useState<any[]>([]);
+  // const [count, setCount] = useState(1);
+
+  // const addElement = () => {
+  //   setElements([...elements, count]);
+  //   setCount(count + 1);
+  // };
+  // const removeElement = (index: any) => {
+  //   setElements(elements.filter((element) => element !== index));
+  // };
+  // const handleImageUpload = (
+  //   event: React.ChangeEvent<HTMLInputElement>,
+  //   index: number
+  // ) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       const newElements = [...elements];
+  //       newElements[index] = reader.result;
+  //       setElements(newElements);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
+  // const [showPicker, setShowPicker] = useState(false);
+  // const [selectedDate, setSelectedDate] = useState("");
+
+  // const handleTogglePicker = () => {
+  //   setShowPicker(!showPicker);
+  // };
+
+  // const handleDateChange = (event: any) => {
+  //   setSelectedDate(event.target.value);
+  // }; //
+
+  const router = useRouter();
+  const { id } = router.query;
+  const [data, setData] = useState<any[]>([]);
+  console.log("data :", data);
+  const [inputValues, setInputValues] = useState<any>({
+    fileInput: null,
+    nameList: "",
+    parentCategory: "",
+    icon: null,
+    date: "",
+    time: "",
+    status: "",
   });
 
-  const [select, setSelect] = useState<any>({
-    country: "",
-    province: "",
-    district: "",
-    ward: "",
-  });
-  console.log("select :", select);
+  console.log("inputValues :", inputValues);
+
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [newItem, setNewItem] = useState("");
+
+  const handleInputChange = (event: any) => {
+    const { name, value } = event.target;
+    console.log("name :", name);
+    console.log("value :", value);
+    setInputValues((prevState: any) => ({ ...prevState, [name]: value }));
+    setSelectedDate(event.target.value);
+  };
+
+  const handleFileInputChange = (event: any) => {
+    const file = event.target.files[0];
+    setInputValues((prevState: any) => ({
+      ...prevState,
+      fileInput: URL.createObjectURL(file),
+    }));
+  };
+  //
+  const handleFileInputChange1 = (event: any) => {
+    const file = event.target.files[0];
+    setInputValues((prevState: any) => ({
+      ...prevState,
+      icon: URL.createObjectURL(file),
+    }));
+  };
+
+  const handleAddOrUpdate = async (event: any) => {
+    event.preventDefault();
+    const isAdding = !id;
+    console.log("isAdding :", isAdding);
+
+    try {
+      let response: any;
+      if (isAdding) {
+        response = await axios.post(
+          "http://localhost:8000/products",
+          inputValues
+        );
+      } else {
+        response = await axios.put(
+          `http://localhost:8000/products/${id}`,
+          inputValues
+        );
+      }
+      const newItemData = { id: response.data.id, item: newItem };
+      if (isAdding) {
+        setData([...data, newItemData]);
+      } else {
+        const updatedData = data.map((item) =>
+          item.id === response.data.id ? newItemData : item
+        );
+        setData(updatedData);
+      }
+
+      setNewItem("");
+    } catch (error) {
+      if (isAdding) {
+        console.error("Error adding data:", error);
+      } else {
+        console.error("Error updating data:", error);
+      }
+    }
+    //
+    if (props.data) {
+      console.log("isEditMode :", isEditMode);
+      const updatedData = data.map((item: any) => {
+        if (item.id === props.data.id) {
+          return {
+            ...data,
+            ...item,
+            ...inputValues,
+          };
+        }
+        return item;
+      });
+
+      setData(updatedData);
+      setInputValues({
+        fileInput: null,
+        nameList: "",
+        parentCategory: "",
+        icon: null,
+        date: "",
+        time: "",
+        status: "",
+      });
+      setIsEditMode(true);
+    } else {
+      const newEntry = {
+        id: Date.now(),
+        ...inputValues,
+      };
+
+      setData([...data, newEntry]);
+      setInputValues((prevState: any) => ({
+        ...prevState,
+        fileInput: null,
+        nameList: "",
+        parentCategory: "",
+        icon: null,
+        date: "",
+        time: "",
+        status: "",
+      }));
+    }
+    router.push({
+      pathname: "/productListed",
+    });
+  };
 
   useEffect(() => {
-    fetch("https://api.vdiarybook.net/api/locations/getAll").then(
-      async (data: any) => {
-        const array = await data.json();
-        const country = array.data.filter((i: any) => i.type === "country");
-        const province = array.data.filter((i: any) => i.type === "province");
-        const district = array.data.filter((i: any) => i.type === "district");
-        const ward = array.data.filter((i: any) => i.type === "ward");
+    setInputValues({
+      ...inputValues,
+      nameList: props?.product?.nameList,
+      parentCategory: props?.product?.parentCategory,
+      date: props?.product?.date,
+      time: props?.product?.time,
+      status: props?.product?.status,
+      fileInput: props?.product?.fileInput,
+      icon: props?.product?.icon,
+    });
+  }, [props.product]);
 
-        setLocation({
-          country,
-          province,
-          district,
-          ward,
-        });
-      }
-    );
-  }, []);
-
-  const [elements, setElements] = useState<any[]>([]);
-  const [count, setCount] = useState(1);
-
-  const addElement = () => {
-    setElements([...elements, count]);
-    setCount(count + 1);
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+  const handleDateChange = (event: any) => {
+    setSelectedDate(event.target.value);
   };
-  const removeElement = (index: any) => {
-    setElements(elements.filter((element) => element !== index));
+  const handleTimeChange = (event: any) => {
+    setSelectedTime(event.target.value);
   };
-  const handleImageUpload = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
+
+  const [element1, setElement1] = useState<string | null>(null);
+  const handleImageUpload1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    handleFileInputChange(event);
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        const newElements = [...elements];
-        newElements[index] = reader.result;
-        setElements(newElements);
+        setElement1(reader.result as string);
       };
       reader.readAsDataURL(file);
     }
   };
-  const [showPicker, setShowPicker] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("");
-
-  const handleTogglePicker = () => {
-    setShowPicker(!showPicker);
-  };
-
-  const handleDateChange = (event: any) => {
-    setSelectedDate(event.target.value);
+  //
+  const [element, setElement] = useState<string | null>(null);
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    handleFileInputChange1(event);
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setElement(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
     <div className="font-inter max-w-[1024px] mx-auto w-full  bg-white rounded-lg p-4">
       <div className="border-b">
         <h2 className="text-[#4284F3] font-bold text-[22px] text-center leading-7 mb-5">
-          Thêm mới chi nhánh
+          Danh mục sản phẩm
         </h2>
       </div>
-      <div className="border-b pb-3">
-        <div className="pt-3">
-          <p className="font-bold text-sm text-[#1F1F1F] leading-[22px]">
-            Ảnh đại diện
+
+      <div>
+        {/* <div>
+          <p className="text-[#1F1F1F] font-bold text-sm leading-[22px] py-3">
+            Danh mục sản phẩm
           </p>
-          <div>
-            <div className="pt-5 flex gap-2 flex-wrap">
-              <div className="items-center justify-center w-fit gap-2 contents">
-                {elements.map((element, index) => (
-                  <label
-                    key={index}
-                    className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50"
-                  >
-                    {typeof element === "string" ? (
-                      <img
-                        className="w-32 h-32 object-cover rounded-lg"
-                        src={element}
-                        alt=""
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center justify-center">
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          Tải lên
-                        </p>
+        </div> */}
+        <div>
+          <form onSubmit={handleAddOrUpdate}>
+            <div className="grid mb-6 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block mb-2 text-sm font-medium text-[#1F1F1F] leading-[22px] ">
+                  Image Niêm yết
+                </label>
+                <div className=" flex gap-2 flex-wrap">
+                  <div className="items-center justify-center w-fit gap-2 contents">
+                    {(element1 || inputValues.fileInput) && (
+                      <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
                         <img
-                          className="w-5 h-5"
-                          src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
+                          className="w-36 h-36 object-cover"
+                          src={element1 || inputValues.fileInput}
                           alt=""
                         />
-                      </div>
+                        <input
+                          type="file"
+                          className="hidden"
+                          onChange={handleImageUpload1}
+                        />
+                        <button
+                          type="button"
+                          className="w-4 h-4 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-1 top-1 text-sm text-stone-700"
+                          onClick={() => setElement1(null)}
+                        >
+                          x
+                        </button>
+                      </label>
                     )}
-                    <input
-                      id={`dropzone-file-${index}`}
-                      type="file"
-                      className="hidden"
-                      onChange={(event) => handleImageUpload(event, index)}
-                    />
-                    {typeof element === "string" && (
-                      <button
-                        className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-2 top-2 text-sm text-stone-700"
-                        onClick={() => removeElement(element)}
-                      >
-                        x
-                      </button>
+                    {!element1 && (
+                      <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+                        <div className="flex flex-col items-center justify-center">
+                          <p className="text-md text-[#1F1F1F] ">Tải lên</p>
+                        </div>
+                        <input
+                          name="fileInput"
+                          type="file"
+                          className="hidden"
+                          onChange={handleImageUpload1}
+                        />
+                      </label>
                     )}
-                  </label>
-                ))}
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium text-[#1F1F1F] leading-[22px] ">
+                  Image icon
+                </label>
+                <div className=" flex gap-2 flex-wrap">
+                  <div className="items-center justify-center w-fit gap-2 contents">
+                    {(element || inputValues.icon) && (
+                      <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+                        <img
+                          className="w-36 h-36 object-cover"
+                          src={element || inputValues.icon}
+                          alt=""
+                        />
+                        <input
+                          name="icon"
+                          type="file"
+                          className="hidden"
+                          onChange={handleImageUpload}
+                        />
+                        <button
+                          type="button"
+                          className="w-4 h-4 bg-[#D9D9D9] rounded-full flex items-center justify-center absolute right-1 top-1 text-sm text-stone-700"
+                          onClick={() => setElement(null)}
+                        >
+                          x
+                        </button>
+                      </label>
+                    )}
+                    {!element && (
+                      <label className="flex relative flex-wrap flex-col items-center justify-center min-w-36 min-h-36 border border-[#4284f3] border-dashed rounded-lg cursor-pointer bg-gray-50">
+                        <div className="flex flex-col items-center justify-center">
+                          <p className="ext-md text-[#1F1F1F]">Tải lên</p>
+                        </div>
+                        <input
+                          name="icon"
+                          type="file"
+                          className="hidden"
+                          onChange={handleImageUpload}
+                        />
+                      </label>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium text-[#1F1F1F] leading-[22px]">
+                  Tên danh mục
+                </label>
+                <input
+                  name="nameList"
+                  type="text"
+                  value={inputValues.nameList}
+                  onChange={handleInputChange}
+                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                  placeholder="Nhập Tên danh mục"
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium text-[#1F1F1F] leading-[22px] ">
+                  Danh mục sản phẩm
+                </label>
+                <select
+                  name="parentCategory"
+                  value={inputValues.parentCategory}
+                  onChange={handleInputChange}
+                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                >
+                  <option value="Danh mục sản phẩm">Danh mục sản phẩm</option>
+                  <option value="option 2">option 2</option>
+                  <option value="option 3">option 3</option>
+                </select>
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium text-[#1F1F1F] leading-[22px] ">
+                  Ngày giờ
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    name="date"
+                    type="date"
+                    value={inputValues.date}
+                    onChange={handleInputChange}
+                    className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                  />
+                  <input
+                    name="time"
+                    type="time"
+                    value={inputValues.time}
+                    onChange={handleInputChange}
+                    className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                  />
+                </div>
+              </div>
+              <div className="">
+                <label className="block mb-2 text-sm font-medium text-[#1F1F1F] leading-[22px] ">
+                  Trạng thái
+                </label>
+                <select
+                  name="status"
+                  value={inputValues.status}
+                  onChange={handleInputChange}
+                  className="outline-none  bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
+                >
+                  <option value="Trạng thái">Trạng thái</option>
+                  <option value="Hiển thị">Hiển thị</option>
+                  <option value="Ẩn">Ẩn </option>
+                </select>
               </div>
               <button
-                className="border border-[#4284f3] border-dashed min-w-36 min-h-36 rounded-[8px] text-[#4284f3] text-2xl"
-                onClick={addElement}
+                type="submit"
+                className="p-2 text-white bg-green-500 rounded-lg hover:bg-green-600"
               >
-                +
+                {props.product ? "Update" : "Add"}
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div>
-          <p className="text-[#1F1F1F] font-bold text-sm leading-[22px] py-3">
-            Thông tin liên hiện
-          </p>
-        </div>
-        <div>
-          <form>
-            <div className="grid mb-6 md:grid-cols-2 gap-2">
-              <div>
-                <label
-                  form="branch_name"
-                  className="block mb-2 text-sm font-normal text-[#1F1F1F] leading-[22px] "
-                >
-                  Tên chi nhánh
-                </label>
-                <input
-                  type="text"
-                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
-                  placeholder="Nhập tên "
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  form="phone"
-                  className="block mb-2 text-sm font-normal text-[#1F1F1F] leading-[22px]"
-                >
-                  Số điện thoại
-                </label>
-                <input
-                  type="phone"
-                  className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
-                  placeholder="Nhập số điện thoại"
-                  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                  required
-                />
-              </div>
-            </div>
-            <div>
+            {/* <div>
               <p className="text-[#1F1F1F] font-bold text-sm leading-[22px] pb-3">
                 Địa chỉ
               </p>
-            </div>
-            <div className="grid gap-2 mb-6 md:grid-cols-2">
+            </div> */}
+            {/* <div className="grid gap-2 mb-6 md:grid-cols-2">
               <div>
                 <label
                   form="company"
@@ -283,8 +531,8 @@ const NewBranch = () => {
                     ))}
                 </select>
               </div>
-            </div>
-            <div className="mb-6">
+            </div> */}
+            {/* <div className="mb-6">
               <label
                 form="password"
                 className="block mb-2 text-sm font-medium text-gray-900 "
@@ -297,11 +545,11 @@ const NewBranch = () => {
                 placeholder="Nhập địa chỉ"
                 required
               />
-            </div>
+            </div> */}
           </form>
         </div>
       </div>
-      <div>
+      {/* <div>
         <p className="font-bold text-sm text-[#1F1F1F] leading-[22px]">
           Chọn trên bản đồ
         </p>
@@ -344,8 +592,8 @@ const NewBranch = () => {
             />
           )}
         </div>
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <div>
           <p className="text-[#1F1F1F] font-bold text-sm leading-[22px] pb-3">
             Thông tin khác
@@ -365,11 +613,11 @@ const NewBranch = () => {
             required
           />
         </div>
-      </div>
-      <div className="py-2">
+      </div> */}
+      {/* <div className="py-2">
         <p className="font-normal text-sm text-[#1F1F1F]">Mô tả</p>
-      </div>
-      <div className="flex gap-2 float-right p-4">
+      </div> */}
+      {/* <div className="flex gap-2 float-right p-4">
         <button className="bg-[#0000000D] rounded-[18px] text-[#0F0F0F] px-4 flex items-center gap-2 py-2 font-normal text-sm">
           <img src="/image/huy.png" alt="" />
           <p>Hủy</p>
@@ -378,7 +626,7 @@ const NewBranch = () => {
           <img src="/image/save.png" alt="" />
           <p> Lưu</p>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -173,7 +173,7 @@ const linkpage = [
   {
     id: 10,
     page: "Màn niêm yết",
-    link: "/listed",
+    link: "/productListed",
   },
   {
     id: 11,
@@ -190,11 +190,6 @@ const linkpage = [
     page: "Màn thêm chi nhánh mới",
     link: "/newbranch",
   },
-  // {
-  //   id: 14,
-  //   page: "Màn sự kiện quan trọng",
-  //   link: "/importantEvent",
-  // },
 ];
 const SlidebarLfet = () => {
   const [activeTab, setActiveTab] = useState(1);

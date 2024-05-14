@@ -1,19 +1,21 @@
-import NewBranch from "@/components/new-branch/NewBranch";
+import Categories from "@/components/Categories/categories";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const ProductDetail = (props: any) => {
+const CategorieDetail = (props: any) => {
   const router = useRouter();
-  const [product, setProduct] = useState<any>(null);
+  const [categorie, setCategorie] = useState<any>(null);
   const { id } = router.query;
   console.log("id :", id);
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/products/${id}`);
+      const response = await axios.get(
+        `http://localhost:8000/categories/${id}`
+      );
       const jsonData = response.data;
       console.log("jsonData :", jsonData);
-      setProduct(jsonData);
+      setCategorie(jsonData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -26,20 +28,22 @@ const ProductDetail = (props: any) => {
   const convertBlobToURL = (blob: Blob) => {
     return URL.createObjectURL(blob);
   };
+
   useEffect(() => {
-    if (product && product.image) {
-      const imageUrl = convertBlobToURL(product.image);
-      setProduct((prevProduct: any) => ({
-        ...prevProduct,
+    if (categorie && categorie.imageone) {
+      const imageUrl = convertBlobToURL(categorie.imageone);
+      console.log("imageUrl :", imageUrl);
+      setCategorie((prevCategorie: any) => ({
+        ...prevCategorie,
         imageUrl: imageUrl,
       }));
     }
-  }, [product]);
+  }, [categorie]);
   return (
     <div>
-      <NewBranch product={product} />
+      <Categories categorie={categorie} />
     </div>
   );
 };
 
-export default ProductDetail;
+export default CategorieDetail;

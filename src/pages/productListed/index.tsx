@@ -1,4 +1,4 @@
-import Listed from "@/components/Listed/listed";
+import Listed from "@/components/productListed/listed";
 import React from "react";
 
 const NewListed = () => {

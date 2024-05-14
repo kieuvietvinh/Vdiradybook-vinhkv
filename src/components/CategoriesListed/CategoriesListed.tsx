@@ -11,23 +11,22 @@ const tabs = [
   { id: 5, name: "QR dịch vụ" },
 ];
 
-const Listed = () => {
+const CategoriesListed = () => {
   const router = useRouter();
 
   const [isEditMode, setIsEditMode] = useState(false);
-  const [selectedItemId, setSelectedItemId] = useState(null);
+  const [selectedItemId, setSelectedItemId] = useState();
   const [inputValues, setInputValues] = useState({
-    fileInput: null,
-    nameList: "",
-    parentCategory: "",
-    icon: null,
-    date: "",
-    time: "",
-    status: "",
+    productsName: "",
+    idCategory: "",
+    productCode: "",
+    priceField: "",
+    listedPrice: "",
+    image: "",
+    describe: "",
+    dateCreated: "",
   });
   const [data, setData] = useState<any[]>([]);
-  // const [newItem, setNewItem] = useState("");
-
   const [activeTab, setActiveTab] = useState(2);
   const handleTabClick = (tabIndex: any) => {
     setActiveTab(tabIndex);
@@ -48,29 +47,31 @@ const Listed = () => {
 
     setData([...data, newEntry]);
     setInputValues({
-      fileInput: null,
-      nameList: "",
-      parentCategory: "",
-      icon: null,
-      date: "",
-      time: "",
-      status: "",
+      productsName: "",
+      idCategory: "",
+      productCode: "",
+      priceField: "",
+      listedPrice: "",
+      image: "",
+      describe: "",
+      dateCreated: "",
     });
   };
   const handleEdit = (itemId: any) => {
     const selectedItem = data.find((item: any) => item._id === itemId);
 
     setInputValues({
-      fileInput: selectedItem.fileInput,
-      nameList: selectedItem.nameList,
-      parentCategory: selectedItem.parentCategory,
-      icon: selectedItem.icon,
-      date: selectedItem.date,
-      time: selectedItem.time,
-      status: selectedItem.status,
+      productsName: selectedItem.productsName,
+      idCategory: selectedItem.idCategory,
+      productCode: selectedItem.productCode,
+      priceField: selectedItem.priceField,
+      dateCreated: selectedItem.dateCreated,
+      listedPrice: selectedItem.listedPrice,
+      image: selectedItem.image,
+      describe: selectedItem.describe,
     });
     router.push({
-      pathname: "/products/" + itemId,
+      pathname: "/categories/" + itemId,
     });
 
     setIsEditMode(true);
@@ -80,7 +81,7 @@ const Listed = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/products");
+        const response = await axios.get("http://localhost:8000/categories");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -93,7 +94,7 @@ const Listed = () => {
   const deleteData = async (_id: any) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa khóa học này?")) {
       try {
-        await axios.delete(`http://localhost:8000/products/${_id}`);
+        await axios.delete(`http://localhost:8000/categories/${_id}`);
         setData(data.filter((data) => data._id !== _id));
         console.log("data :", data);
       } catch (error) {}
@@ -158,7 +159,7 @@ const Listed = () => {
           </div>
           <div className="rounded-full bg-[#4284F3]  flex items-center justify-center py-2 px-4">
             <Link
-              href="/products"
+              href="/categories"
               className="text-white font-normal text-sm leading-[22px] flex items-center gap-2"
             >
               <img src="/image/congone.png" alt="" />
@@ -172,12 +173,14 @@ const Listed = () => {
           <table className="table-auto w-full ">
             <thead className="text-justify ">
               <tr className="text-sm font-bold text-[#1F1F1F] uppercase leading-[22px] bg-[#0000000D] whitespace-nowrap">
-                <th className="py-2 min-w-[240px]">TẠO NIÊM YẾT</th>
-                <th className="min-w-[190px]">DANH MỤC</th>
-                <th className="min-w-[140px]">HÌNH THỨC BÁN</th>
-                <th className="min-w-[140px]">LOẠI NIÊM YẾT</th>
-                <th>NGÀY TẠO</th>
-                <th> CÔNG KHAI</th>
+                <th className="py-2 ">Tên sản phẩm</th>
+                <th className="">ID danh mục</th>
+                <th className="">mã sản phẩm</th>
+                <th className="">Giá thị trường</th>
+                <th>giá niêm yết</th>
+                <th> Hình ảnh</th>
+                <th> mô tả</th>
+                <th> Ngày tạo</th>
               </tr>
             </thead>
             {data.map((entry: any, index) => (
@@ -186,44 +189,28 @@ const Listed = () => {
                   style={{ padding: "10px" }}
                   className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "
                 >
+                  <td>{entry.productsName}</td>
+                  <td className="uppercase ">{entry.idCategory}</td>
+                  <td className="uppercase ">{entry.productCode}</td>
+                  <td className="uppercase whitespace-nowrap">
+                    {entry.priceField}
+                  </td>
+                  <td className="uppercase whitespace-nowrap">
+                    {entry.listedPrice}
+                  </td>
                   <td>
                     <div className="flex items-center gap-2 whitespace-nowrap">
                       <img
                         className="rounded-full w-12 h-12"
-                        src={entry.fileInput}
+                        src={entry.image}
                         alt="Uploaded"
                       />
-                      <p className="">{entry.nameList}</p>
-                    </div>
-                  </td>
-                  <td className="uppercase ">
-                    <div className="flex items-center gap-2 whitespace-nowrap">
-                      <img
-                        className="rounded-full w-12 h-12"
-                        src={entry.fileInput}
-                        alt=""
-                      />
-                      <p>{entry.parentCategory}</p>
-                    </div>
-                  </td>
-                  <td className="uppercase ">
-                    <div className="flex items-center gap-2 whitespace-nowrap">
-                      <img
-                        className="rounded-full w-12 h-12"
-                        src={entry.icon}
-                        alt=""
-                      />
                     </div>
                   </td>
                   <td className="uppercase whitespace-nowrap">
-                    {entry.status}
+                    {entry.describe}
                   </td>
                   <td className="uppercase whitespace-nowrap">
-                    <p>{entry.date}</p>
-                    <p>{entry.time}</p>
-                  </td>
-
-                  <td>
                     <div className="flex  items-center gap-2">
                       <label className="inline-flex items-center cursor-pointer">
                         <input
@@ -257,4 +244,4 @@ const Listed = () => {
     </div>
   );
 };
-export default Listed;
+export default CategoriesListed;

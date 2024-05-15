@@ -1,10 +1,10 @@
-import NewBranch from "@/components/new-branch/NewBranch";
+import ProductsList from "@/components/Products/products";
 import React from "react";
 
 const Products = () => {
   return (
     <div>
-      <NewBranch />
+      <ProductsList />
     </div>
   );
 };

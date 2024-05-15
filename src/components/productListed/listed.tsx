@@ -59,7 +59,6 @@ const Listed = () => {
   };
   const handleEdit = (itemId: any) => {
     const selectedItem = data.find((item: any) => item._id === itemId);
-
     setInputValues({
       fileInput: selectedItem.fileInput,
       nameList: selectedItem.nameList,
@@ -72,7 +71,6 @@ const Listed = () => {
     router.push({
       pathname: "/products/" + itemId,
     });
-
     setIsEditMode(true);
     setSelectedItemId(itemId);
   };
@@ -88,7 +86,6 @@ const Listed = () => {
     };
     fetchData();
   }, []);
-
   //
   const deleteData = async (_id: any) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa khóa học này?")) {
@@ -170,7 +167,7 @@ const Listed = () => {
       <div className="max-w-5xl mx-auto p-2">
         <form>
           <table className=" w-full ">
-            <thead className="text-justify ">
+            <thead className="text-justify overflow-scroll">
               <tr className="text-sm font-bold text-[#1F1F1F] uppercase leading-[22px] bg-[#0000000D] whitespace-nowrap">
                 <th className="py-2 min-w-[240px]">TẠO NIÊM YẾT</th>
                 <th className="min-w-[190px]">DANH MỤC</th>
@@ -181,7 +178,7 @@ const Listed = () => {
               </tr>
             </thead>
             {data.map((entry: any, index) => (
-              <tbody key={index} className="w-full h-14">
+              <tbody key={index} className="w-full h-14 overflow-scroll">
                 <tr
                   style={{ padding: "10px" }}
                   className=" text-[#1F1F1F]  font-normal text-sm leading-[22px] "

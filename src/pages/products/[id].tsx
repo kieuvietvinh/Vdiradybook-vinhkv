@@ -41,5 +41,4 @@ const ProductDetail = (props: any) => {
     </div>
   );
 };
-
 export default ProductDetail;

@@ -171,9 +171,9 @@ const Listed = () => {
               <tr className="text-sm font-bold text-[#1F1F1F] uppercase leading-[22px] bg-[#0000000D] whitespace-nowrap">
                 <th className="py-2 min-w-[240px]">TẠO NIÊM YẾT</th>
                 <th className="min-w-[190px]">DANH MỤC</th>
-                <th className="min-w-[140px]">HÌNH THỨC BÁN</th>
-                <th className="min-w-[140px]">LOẠI NIÊM YẾT</th>
-                <th>NGÀY TẠO</th>
+                <th className="min-w-[140px]">ICON</th>
+                <th className="min-w-[140px]">MÔ TẢ</th>
+                <th>MÃ SẢN PHẨM</th>
                 <th> CÔNG KHAI</th>
               </tr>
             </thead>

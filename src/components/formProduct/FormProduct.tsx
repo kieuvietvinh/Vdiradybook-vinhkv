@@ -393,7 +393,7 @@ const FormProducts = (props: any) => {
                 name="productcode"
                 value={inputValues.productcode}
                 onChange={handleInputChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                className="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               />
             </div>
             <div className="pt-2">
@@ -408,7 +408,7 @@ const FormProducts = (props: any) => {
                   name="status"
                   value={inputValues.status}
                   onChange={handleInputChange}
-                  className="block p-2 w-full text-xs text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+                  className="block p-2 w-full text-xs text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
                   placeholder="Nhập mô tả..."
                 ></textarea>
               </div>

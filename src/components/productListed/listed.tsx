@@ -21,7 +21,7 @@ const Listed = () => {
     nameList: "",
     parentCategory: "",
     icon: null,
-    date: "",
+    productcode: "",
     time: "",
     status: "",
   });
@@ -52,7 +52,7 @@ const Listed = () => {
       nameList: "",
       parentCategory: "",
       icon: null,
-      date: "",
+      productcode: "",
       time: "",
       status: "",
     });
@@ -64,7 +64,7 @@ const Listed = () => {
       nameList: selectedItem.nameList,
       parentCategory: selectedItem.parentCategory,
       icon: selectedItem.icon,
-      date: selectedItem.date,
+      productcode: selectedItem.productcode,
       time: selectedItem.time,
       status: selectedItem.status,
     });
@@ -216,8 +216,7 @@ const Listed = () => {
                     {entry.status}
                   </td>
                   <td className="uppercase whitespace-nowrap">
-                    <p>{entry.date}</p>
-                    <p>{entry.time}</p>
+                    <p>{entry.productcode}</p>
                   </td>
 
                   <td>

@@ -82,7 +82,7 @@ const FormProducts = (props: any) => {
     nameList: "",
     parentCategory: "",
     icon: null,
-    date: "",
+    productcode: "",
     time: "",
     status: "",
   });
@@ -171,7 +171,8 @@ const FormProducts = (props: any) => {
         nameList: "",
         parentCategory: "",
         icon: null,
-        date: "",
+        productcode: "",
+
         time: "",
         status: "",
       });
@@ -189,7 +190,8 @@ const FormProducts = (props: any) => {
         nameList: "",
         parentCategory: "",
         icon: null,
-        date: "",
+        productcode: "",
+
         time: "",
         status: "",
       }));
@@ -204,7 +206,7 @@ const FormProducts = (props: any) => {
       ...inputValues,
       nameList: props?.product?.nameList,
       parentCategory: props?.product?.parentCategory,
-      date: props?.product?.date,
+      productcode: props?.product?.productcode,
       time: props?.product?.time,
       status: props?.product?.status,
       fileInput: props?.product?.fileInput,
@@ -252,7 +254,7 @@ const FormProducts = (props: any) => {
       <form onSubmit={handleAddOrUpdate}>
         <div className="border-b">
           <h2 className="text-[#4284F3] font-bold text-[22px] text-center leading-7 mb-5">
-            Thêm mới chi nhánh
+            {props.product ? "Thêm mới chi nhánh" : "Thêm sản phẩm"}
           </h2>
         </div>
 
@@ -266,7 +268,7 @@ const FormProducts = (props: any) => {
             <div className="grid mb-6 md:grid-cols-2 gap-4">
               <div>
                 <label className="block mb-2 text-sm font-normal text-[#1F1F1F] leading-[22px] ">
-                  Danh mục sản phẩm
+                  Ảnh đại diện
                 </label>
                 <div className=" flex gap-2 flex-wrap">
                   <div className="items-center justify-center w-fit gap-2 contents">
@@ -309,7 +311,7 @@ const FormProducts = (props: any) => {
               </div>
               <div>
                 <label className="block mb-2 text-sm font-normal text-[#1F1F1F] leading-[22px] ">
-                  Image icon
+                  Biểu tượng
                 </label>
                 <div className=" flex gap-2 flex-wrap">
                   <div className="items-center justify-center w-fit gap-2 contents">
@@ -379,41 +381,36 @@ const FormProducts = (props: any) => {
                   <option value="option 3">option 3</option>
                 </select>
               </div>
-              <div>
-                <label className="block mb-2 text-sm font-normal text-[#1F1F1F] leading-[22px] ">
-                  Ngày giờ
+            </div>
+
+            <div>
+              <label className="block mb-2 text-sm font-normal text-[#1F1F1F] leading-[22px] ">
+                Mã sản phẩm
+              </label>
+
+              <input
+                type="text"
+                name="productcode"
+                value={inputValues.productcode}
+                onChange={handleInputChange}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+              />
+            </div>
+            <div className="pt-2">
+              <div className="mb-6">
+                <label
+                  form="message"
+                  className="block mb-2 text-sm font-normal text-[#1F1F1F] leading-[22px]"
+                >
+                  Chi tiết sản phẩm
                 </label>
-                <div className="flex gap-2">
-                  <input
-                    name="date"
-                    type="date"
-                    value={inputValues.date}
-                    onChange={handleInputChange}
-                    className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
-                  />
-                  <input
-                    name="time"
-                    type="time"
-                    value={inputValues.time}
-                    onChange={handleInputChange}
-                    className="outline-none bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
-                  />
-                </div>
-              </div>
-              <div className="">
-                <label className="block mb-2 text-sm font-normal text-[#1F1F1F] leading-[22px] ">
-                  Trạng thái
-                </label>
-                <select
+                <textarea
                   name="status"
                   value={inputValues.status}
                   onChange={handleInputChange}
-                  className="outline-none  bg-white border border-[#CAD0D7] text-[#8E8E93] text-xs rounded-lg  block w-full p-2.5 font-normal"
-                >
-                  <option value="Trạng thái">Trạng thái</option>
-                  <option value="Hiển thị">Hiển thị</option>
-                  <option value="Ẩn">Ẩn </option>
-                </select>
+                  className="block p-2 w-full text-xs text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+                  placeholder="Nhập mô tả..."
+                ></textarea>
               </div>
             </div>
             {props.product && (

@@ -4,90 +4,19 @@ import axios from "axios";
 
 const tabs = [
   {
-    id: 1,
+    id: 664570,
     img: "/image/nghiatrang.png",
     name: "Nghĩa trang",
   },
   {
-    id: 2,
+    id: 664574,
     img: "/image/sukien.png",
     name: "Sự kiện quan trọng",
   },
 ];
 
-const provinces = [
-  {
-    id: 1,
-    name: "Quảng Nam",
-    districts: [
-      {
-        id: 1,
-        name: "Hội An",
-        wards: [
-          {
-            id: 1,
-            name: "Cẩm Hà",
-          },
-          {
-            id: 2,
-            name: "Cẩm Châu",
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: "Điện Bàn",
-        wards: [
-          {
-            id: 3,
-            name: "Điện An",
-          },
-          {
-            id: 4,
-            name: "Vĩnh Điện",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: "Đà Nẵng",
-    districts: [
-      {
-        id: 3,
-        name: "Hải Châu",
-        wards: [
-          {
-            id: 5,
-            name: "Hải Châu 1",
-          },
-          {
-            id: 6,
-            name: "Hải Châu 2",
-          },
-        ],
-      },
-      {
-        id: 4,
-        name: "Thanh Khê",
-        wards: [
-          {
-            id: 7,
-            name: "Thanh Khê Đông",
-          },
-          {
-            id: 8,
-            name: "Thanh Khê Tây",
-          },
-        ],
-      },
-    ],
-  },
-];
-
 const Thurify = () => {
-  const [activeTab, setActiveTab] = useState();
+  const [activeTab, setActiveTab] = useState(664570);
   const router = useRouter();
   const handleClick = (index: any) => {
     setActiveTab(index);

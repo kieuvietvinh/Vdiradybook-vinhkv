@@ -120,7 +120,7 @@ const list = [
 const Cemetery = () => {
   return (
     <div>
-      <div className="list flex gap-4 bg-white mt-4 p-6 rounded-lg flex-wrap ml-5">
+      <div className="list flex gap-4 bg-white mt-4 p-6 rounded-lg flex-wrap ">
         {list.map((lis) => (
           <HeadstoneItem key={lis.id} lis={lis} />
         ))}

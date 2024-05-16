@@ -204,12 +204,7 @@ nav {
 
     }
 
-    .teck {
-        transform: translate(5px, -5px);
-
-        top: 0px;
-        right: -15px;
-    }
+  
 
 
     
@@ -252,6 +247,9 @@ nav {
     }
 
 }
+.teck {
+    transform: translate(5px, -5px);
+}
 
 .teckone {
     transform: translate(5px, -10px);
@@ -261,7 +259,7 @@ nav {
     transform: translate(-98px, -42px);
 }
 .rescue {
-    transform: translate(-13px, -41px);
+    transform: translate(-6px, -46px);
 }
 .ensign {
     transform: translate(0px, -65px);

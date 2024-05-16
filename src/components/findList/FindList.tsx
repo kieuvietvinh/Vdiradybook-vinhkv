@@ -12,8 +12,8 @@ const FindList = () => {
     <div className="mx-auto max-w-5xl ">
       <FindRelatives />
       <Thurify />
-      {router.query.id === `1` && <Cemetery />}
-      {(router.query.id === `2` || !router.query.id) && <TmportantEvent />}
+      {router.query.id === `664570` && <Cemetery />}
+      {(router.query.id === `664574` || !router.query.id) && <TmportantEvent />}
     </div>
   );
 };

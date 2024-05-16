@@ -1,4 +1,4 @@
-import FindList from "@/components/find-list/Find-list";
+import FindList from "@/components/findList/FindList";
 import React from "react";
 
 const FindListPage = () => {

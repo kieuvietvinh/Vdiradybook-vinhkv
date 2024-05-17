@@ -164,7 +164,7 @@ const Listed = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-5xl mx-auto p-2">
+      <div className="-w-5xl mx-auto p-2">
         <form>
           <table className=" w-full ">
             <thead className="text-justify overflow-scroll">

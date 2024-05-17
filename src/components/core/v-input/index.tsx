@@ -42,14 +42,14 @@ const Input = ({
   return (
     <div
       className={twMerge(
-        direction === "horizontal" && "flex items-center",
+        direction === "horizontal" && "flex items-center ",
         containerClassName
       )}
     >
       {label && (
         <label
           htmlFor={id}
-          className="block text-sm font-medium leading-6 text-gray-900 mb-1"
+          className="block text-sm font-medium leading-6 text-gray-900 mb-1 "
         >
           {label}
         </label>
@@ -61,7 +61,7 @@ const Input = ({
           name={name}
           id={id}
           className={twMerge(
-            "block w-full rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-primary-blue sm:text-sm sm:leading-6 px-2",
+            "block rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-primary-blue sm:text-sm sm:leading-6 px-2",
             className
           )}
           placeholder={placeholder}
@@ -72,7 +72,7 @@ const Input = ({
         />
       </div>
       {prefix && (
-        <div className="absolute left-0 top-[-1px] h-full flex items-center">
+        <div className="absolute left-0 top-[-1px] h-full flex items-center ">
           {prefix}
         </div>
       )}

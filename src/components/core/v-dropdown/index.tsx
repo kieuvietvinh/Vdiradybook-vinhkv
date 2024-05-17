@@ -90,7 +90,7 @@ const VDropdownModal = ({ label, menu, className = "", id }: IProps) => {
                           as="div"
                           onClick={() => onClick()}
                           className={twMerge(
-                            "flex cursor-pointer gap-2 rounded-md items-center border-[#f1f1f1] px-5 py-2.5 hover:bg-[#e9ecef] hover:text-[#3870cf] transition-all"
+                            "flex cursor-pointer gap-2 rounded-md items-center border-[#f1f1f1] px-5 py-2.5 hover:text-[#e9ecef] hover:bg-[#3870cf] transition-all"
                           )}
                           disabled={disabled}
                         >

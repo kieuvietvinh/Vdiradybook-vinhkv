@@ -105,20 +105,13 @@ const Birthday = () => {
   const [year, setYear] = useState(2024);
 
   const handleNextMonth = () => {
-    if (month === 12) {
-      setMonth(1);
-      setYear(year + 1);
-    } else {
-      setMonth(month + 1);
-    }
+    setMonth((prevMonth) => (prevMonth === 12 ? 1 : prevMonth + 1));
+    setYear((prevYear) => (month === 12 ? prevYear + 1 : prevYear));
   };
+
   const handlePreviousMonth = () => {
-    if (month === 1) {
-      setMonth(12);
-      setYear(year - 1);
-    } else {
-      setMonth(month - 1);
-    }
+    setMonth((prevMonth) => (prevMonth === 1 ? 12 : prevMonth - 1));
+    setYear((prevYear) => (month === 1 ? prevYear - 1 : prevYear));
   };
   return (
     <div className="max-w-5xl mx-auto">

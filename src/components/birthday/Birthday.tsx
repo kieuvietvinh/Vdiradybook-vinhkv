@@ -119,7 +119,7 @@ const Birthday = () => {
         <img className="" src="/image/birthday.png" alt="" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  h-9 flex  items-center">
           <Input
-            className="sm:w-[400px] md:w-[600px] w-[300px]  px-10 rounded-2xl border  py-[6px] relative  font-normal text-xs text-[#A89E9F] bg-white outline-none"
+            className="sm:w-[400px] md:w-[600px] w-[300px]  px-10 rounded-2xl  py-[6px] relative  font-normal text-xs text-[#A89E9F] bg-white outline-none"
             placeholder="Tìm kiếm"
           />
           <img

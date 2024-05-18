@@ -42,7 +42,7 @@ const VButton = ({
           onClick();
         }
       }}
-      className={`flex   border border-solid border-[#4284f3] leading-[25.2px] text-[white] items-center justify-center text-[14px] w-full py-[4px]  hover:opacity-[.9] h-[37.19px] ${
+      className={`flex   border border-solid border-[#4284f3] leading-[25.2px] text-[white] items-center justify-center text-[14px] w-full py-[4px]  hover:opacity-[.9] h-[36px] ${
         className || ""
       }`}
       disabled={loading || disabled}

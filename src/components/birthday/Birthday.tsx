@@ -114,7 +114,7 @@ const Birthday = () => {
     setYear((prevYear) => (month === 1 ? prevYear - 1 : prevYear));
   };
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl mx-auto max-[900px]:px-2">
       <div className="relative">
         <img className="" src="/image/birthday.png" alt="" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  h-9 flex  items-center">
@@ -137,7 +137,7 @@ const Birthday = () => {
           className=""
           menu={[{ key: "string" }]}
           label={
-            <div className="border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-1 text-xs font-normal">
+            <div className="border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-1 text-xs font-normal h-6">
               Hôm nay
             </div>
           }
@@ -159,7 +159,7 @@ const Birthday = () => {
             { key: "Tháng 12", onClick: () => handleClick("Tháng 12") },
           ]}
           label={
-            <div className="flex  items-center gap-2 border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-[2px] text-xs font-normal">
+            <div className="flex  items-center gap-2 border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-[2px] h-6 text-xs font-normal">
               {label}
               <img className="h-5 w-5" src="/images/dropdown.svg" alt="" />
             </div>
@@ -186,13 +186,16 @@ const Birthday = () => {
       </div>
       <div className="sm:grid sm:grid-cols-2 gap-2 md:grid md:grid-cols-3 grid grid-cols-1 ">
         {giftCard.map((card, index) => (
-          <div key={index} className="bg-white p-4 rounded-lg">
+          <div
+            key={index}
+            className="bg-white h-32 p-4 rounded-lg shadow-md shadow-[#0000001A]"
+          >
             <div className=" flex gap-2 ">
               <div>
                 <img className="onemo" src={card.image} alt="" />
                 <img className="rescue" src="/image-left/Ensign.png" alt="" />
               </div>
-              <div className="pt-2">
+              <div className="pt-[7px]">
                 <div className="flex items-center font-semibold text-sm text-[#4284F3]">
                   {card.name}
                   <img
@@ -211,13 +214,15 @@ const Birthday = () => {
             <div className="flex items-center gap-2">
               <VButton className="rounded-[18px] px-4 flex items-center gap-2">
                 <img src="/images/email.svg" alt="" />
-                <p className="text-sm font-medium text-[#4284f3]">
+                <p className="text-sm font-medium text-[#4284f3] whitespace-nowrap">
                   {card.email}
                 </p>
               </VButton>
               <VButton className="rounded-[18px] bg-[#4284f3] px-4 flex items-center gap-2">
                 <img src="/images/gift.svg" alt="" />
-                <p className=" text-sm text-white font-medium">{card.gift}</p>
+                <p className="whitespace-nowrap text-sm text-white font-medium">
+                  {card.gift}
+                </p>
               </VButton>
             </div>
           </div>

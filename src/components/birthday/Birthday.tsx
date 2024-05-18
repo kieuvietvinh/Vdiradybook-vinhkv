@@ -77,7 +77,7 @@ const giftCard = [
     email: "Gửi thiệp",
   },
   {
-    id: 1,
+    id: 9,
     image: "/images/vdiarybook.svg",
     name: "VdiaryBook Life",
     data: "09/05",
@@ -86,9 +86,27 @@ const giftCard = [
     email: "Gửi thiệp",
   },
   {
-    id: 9,
+    id: 10,
     image: "/images/vdiarybook.svg",
     name: "VdiaryBook Life",
+    data: "09/05",
+    age: "(44 tuổi)",
+    gift: "Tặng quà",
+    email: "Gửi thiệp",
+  },
+  {
+    id: 11,
+    image: "/images/vdiarybook.svg",
+    name: "Điện Biên Phủ",
+    data: "30/04",
+    age: "(75 tuổi)",
+    gift: "Tặng quà",
+    email: "Gửi thiệp",
+  },
+  {
+    id: 12,
+    image: "/images/vdiarybook.svg",
+    name: " Life",
     data: "09/05",
     age: "(44 tuổi)",
     gift: "Tặng quà",
@@ -119,7 +137,7 @@ const Birthday = () => {
         <img className="" src="/image/birthday.png" alt="" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  h-9 flex  items-center">
           <Input
-            className="sm:w-[400px] md:w-[600px] w-[300px]  px-10 rounded-2xl  py-[6px] relative  font-normal text-xs text-[#A89E9F] bg-white outline-none"
+            className="sm:w-[450px] md:w-[600px] w-[320px]  px-10 rounded-2xl  py-[6px] relative  font-normal text-xs text-[#A89E9F] bg-white outline-none"
             placeholder="Tìm kiếm"
           />
           <img
@@ -137,7 +155,7 @@ const Birthday = () => {
           className=""
           menu={[{ key: "string" }]}
           label={
-            <div className="border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-1 text-xs font-normal h-6 leading-[14.52px]">
+            <div className="border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-1 text-xs font-normal h-6 leading-[14.52px] whitespace-nowrap">
               Hôm nay
             </div>
           }
@@ -159,7 +177,7 @@ const Birthday = () => {
             { key: "Tháng 12", onClick: () => handleClick("Tháng 12") },
           ]}
           label={
-            <div className="flex  items-center gap-2 border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-[2px] h-6 text-xs font-normal leading-[14.52px]">
+            <div className="flex whitespace-nowrap items-center gap-2 border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-[2px] h-6 text-xs font-normal leading-[14.52px]">
               {label}
               <img className="h-5 w-5" src="/images/dropdown.svg" alt="" />
             </div>
@@ -172,7 +190,7 @@ const Birthday = () => {
             src="/images/left.svg"
             alt=""
           />
-          <p className="font-semibold text-base text-[#1F1F1F] leading-[19.36px]">
+          <p className="font-semibold text-base text-[#1F1F1F] leading-[19.36px] whitespace-nowrap">
             Tháng {month},
           </p>
           <p className="font-semibold text-base text-[#1F1F1F] leading-[19.36px]">

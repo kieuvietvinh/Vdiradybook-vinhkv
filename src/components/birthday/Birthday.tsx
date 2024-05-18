@@ -137,7 +137,7 @@ const Birthday = () => {
           className=""
           menu={[{ key: "string" }]}
           label={
-            <div className="border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-1 text-xs font-normal h-6">
+            <div className="border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-1 text-xs font-normal h-6 leading-[14.52px]">
               Hôm nay
             </div>
           }
@@ -159,7 +159,7 @@ const Birthday = () => {
             { key: "Tháng 12", onClick: () => handleClick("Tháng 12") },
           ]}
           label={
-            <div className="flex  items-center gap-2 border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-[2px] h-6 text-xs font-normal">
+            <div className="flex  items-center gap-2 border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-[2px] h-6 text-xs font-normal leading-[14.52px]">
               {label}
               <img className="h-5 w-5" src="/images/dropdown.svg" alt="" />
             </div>
@@ -172,10 +172,13 @@ const Birthday = () => {
             src="/images/left.svg"
             alt=""
           />
-          <p className="font-semibold text-base text-[#1F1F1F]">
+          <p className="font-semibold text-base text-[#1F1F1F] leading-[19.36px]">
             Tháng {month},
           </p>
-          <p className="font-semibold text-base text-[#1F1F1F]"> {year}</p>
+          <p className="font-semibold text-base text-[#1F1F1F] leading-[19.36px]">
+            {" "}
+            {year}
+          </p>
           <img
             className="cursor-pointer"
             onClick={handleNextMonth}
@@ -195,8 +198,8 @@ const Birthday = () => {
                 <img className="onemo" src={card.image} alt="" />
                 <img className="rescue" src="/image-left/Ensign.png" alt="" />
               </div>
-              <div className="pt-[7px]">
-                <div className="flex items-center font-semibold text-sm text-[#4284F3]">
+              <div className="pt-2">
+                <div className="flex leading-[16.94px] items-center font-semibold text-sm text-[#4284F3]">
                   {card.name}
                   <img
                     className="teck  w-3 h-3 "
@@ -204,7 +207,7 @@ const Birthday = () => {
                     alt=""
                   />
                 </div>
-                <div className=" flex items-center gap-2 font-normal text-xs text-[#1F1F1F] ">
+                <div className=" flex items-center gap-2 font-normal text-xs text-[#1F1F1F] leading-[14.52px]">
                   <p>{card.data}</p>
                   <p>{card.age}</p>
                 </div>
@@ -214,13 +217,13 @@ const Birthday = () => {
             <div className="flex items-center gap-2">
               <VButton className="rounded-[18px] px-4 flex items-center gap-2">
                 <img src="/images/email.svg" alt="" />
-                <p className="text-sm font-medium text-[#4284f3] whitespace-nowrap">
+                <p className="text-sm font-medium text-[#4284f3] whitespace-nowrap leading-[16.94px]">
                   {card.email}
                 </p>
               </VButton>
               <VButton className="rounded-[18px] bg-[#4284f3] px-4 flex items-center gap-2">
                 <img src="/images/gift.svg" alt="" />
-                <p className="whitespace-nowrap text-sm text-white font-medium">
+                <p className="whitespace-nowrap text-sm text-white font-medium leading-[16.94px]">
                   {card.gift}
                 </p>
               </VButton>

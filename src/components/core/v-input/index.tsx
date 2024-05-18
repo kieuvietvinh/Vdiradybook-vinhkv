@@ -61,7 +61,7 @@ const Input = ({
           name={name}
           id={id}
           className={twMerge(
-            "block rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-[#A89E9F] focus:ring-inset focus:ring-primary-blue sm:text-sm sm:leading-[22.2px] px-2",
+            "block rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-[#A89E9F] placeholder:text-xs placeholder:leading-[14.52px] placeholder:font-normal  focus:ring-inset focus:ring-primary-blue sm:text-sm sm:leading-[22.2px] px-2",
             className
           )}
           placeholder={placeholder}

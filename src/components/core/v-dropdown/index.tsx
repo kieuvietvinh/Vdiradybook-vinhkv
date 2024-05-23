@@ -38,7 +38,7 @@ const VDropdownModal = ({ label, menu, className = "", id }: IProps) => {
         leaveTo=""
       >
         <Menu.Items
-          className={`overflow-hidden p-1 shadow-toolbox bg-white top-full mt-2 right-0 lg:left-auto bottom-auto absolute z-50 leading-normal flex max-w-[400px] max-[991.98px]:max-h-[calc(100vh-175px)] rounded-[10px]
+          className={`overflow-hidden p-1 shadow-toolbox bg-white  mt-2 -right-[178px] lg:left-auto -top-[230px] bottom-auto absolute z-50 leading-normal flex max-w-[400px] max-[991.98px]:max-h-[calc(100vh-175px)] rounded-[10px]
         ${className}`}
         >
           <div className="shadow-none w-full">
@@ -90,14 +90,14 @@ const VDropdownModal = ({ label, menu, className = "", id }: IProps) => {
                           as="div"
                           onClick={() => onClick()}
                           className={twMerge(
-                            "flex cursor-pointer gap-2 rounded-md items-center border-[#f1f1f1] px-5 py-2.5 hover:text-[#e9ecef] hover:bg-[#3870cf] transition-all"
+                            "flex cursor-pointer gap-2 rounded-md items-center border-[#f1f1f1] px-5 py-2 hover:text-[#e9ecef] hover:bg-[#3870cf] transition-all"
                           )}
                           disabled={disabled}
                         >
                           {icon}
                           <div
                             className={twMerge(
-                              "font-medium whitespace-nowrap line-clamp-1",
+                              "font-normal text-[#1F1F1F] text-sm whitespace-nowrap line-clamp-1",
                               disabled ? "text-gray-400" : "",
                               active ? "text-[#3870cf] font-medium" : ""
                             )}

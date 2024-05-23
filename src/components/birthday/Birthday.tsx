@@ -132,7 +132,7 @@ const Birthday = () => {
     setYear((prevYear) => (month === 1 ? prevYear - 1 : prevYear));
   };
   return (
-    <div className="max-w-5xl mx-auto max-[900px]:px-2">
+    <div className="max-w-[51rem] mx-auto max-[900px]:px-2">
       <div className="relative">
         <img className="" src="/image/birthday.png" alt="" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  h-9 flex  items-center">
@@ -233,13 +233,13 @@ const Birthday = () => {
             </div>
 
             <div className="flex items-center gap-2">
-              <VButton className="rounded-[18px] px-4 flex items-center gap-2">
+              <VButton className="rounded-[18px] px-4 flex items-center gap-2 h-[36px] w-full">
                 <img src="/images/email.svg" alt="" />
                 <p className="text-sm font-medium text-[#4284f3] whitespace-nowrap leading-[16.94px]">
                   {card.email}
                 </p>
               </VButton>
-              <VButton className="rounded-[18px] bg-[#4284f3] px-4 flex items-center gap-2">
+              <VButton className="rounded-[18px] bg-[#4284f3] px-4 flex items-center gap-2 h-[36px] w-full">
                 <img src="/images/gift.svg" alt="" />
                 <p className="whitespace-nowrap text-sm text-white font-medium leading-[16.94px]">
                   {card.gift}

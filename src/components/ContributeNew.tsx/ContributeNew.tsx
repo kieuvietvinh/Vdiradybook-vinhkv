@@ -1,3 +1,4 @@
+import { Transition } from "@headlessui/react";
 import { useState } from "react";
 
 const tabs = [
@@ -17,13 +18,9 @@ const Contribute = () => {
   const handleTabClick = (tabIndex: any) => {
     setActiveTab(tabIndex);
   };
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-  //select
+  const [isShowing, setIsShowing] = useState(false);
 
   const [elements1, setElements1] = useState<any>([]);
   const [elements2, setElements2] = useState<any>([]);
@@ -151,7 +148,7 @@ const Contribute = () => {
                 <button
                   type="button"
                   className="inline-flex  w-full rounded-t-sm text-md font-medium "
-                  onClick={toggleDropdown}
+                  onClick={() => setIsShowing((isShowing) => !isShowing)}
                 >
                   {selectedOption
                     ? selectedOption
@@ -159,250 +156,265 @@ const Contribute = () => {
                 </button>
                 <div>
                   <img
-                    className=""
-                    src="https://vdiarybook.com/assets/icons/default/dropdown.svg"
+                    className={`absolute top-4 right-4  ${
+                      isShowing
+                        ? "transform rotate-90 delay-75 decoration-slate-100"
+                        : "transform -rotate-90"
+                    }`}
+                    src="/image-left/muiten.png"
                     alt=""
                   />
                 </div>
               </div>
-              {isOpen && (
-                <div className="p-[14px]  w-full rounded-b-sm shadow-lg h-auto bg-white ring-1  ring-opacity-5 transform scale-100 delay-1000 duration-1000 rounded-bl-lg rounded-br-lg">
-                  <div className="flex justify-center bg-[#ededed] px-[0.6rem] py-[0.32rem] rounded-[0.25rem]">
-                    <h1 className="text-[#3f414d] font-semibold lg:text-sm text-[]  leading-6">
-                      Sản phẩm đang trong giai đoạn nghiên cứu phát triển và
-                      trải nghiệm.Trong quá trình trải nghiệm nếu bạn phát hiện
-                      lỗi hoặc có ý tưởng các chức năng cho sản phẩm hãy gởi
-                      thông tin của bạn đến đội ngũ chúng tôi để hoàn thiện và
-                      cung cấp các chức năng tốt hơn! Trân trọng cảm ơn!
-                    </h1>
-                  </div>
-                  <div className="pt-5">
-                    <div className="relative ">
-                      <textarea
-                        id="message"
-                        className="block outline-none px-2.5 py-[0.33rem] w-full text-sm text-gray-900 bg-white rounded-md border border-gray-300  "
-                      ></textarea>
-                      <div className="bg-white w-auto rounded-sm h-auto px-1 absolute top-[-15px] left-2 flex justify-center items-center gap-1">
-                        <div className=" text-[#8d8a8a] lg:text-sm text-[0.7rem]  fex">
-                          Mô tả lỗi bạn phát hiện
-                        </div>
-                        <div className="text-red-400">*</div>
-                      </div>
+              {
+                <Transition
+                  show={isShowing}
+                  enter="transition all ease-in-out "
+                  enterFrom="translate-y-1/4 opacity-0"
+                  enterTo="-translate-y-5px opacity-100"
+                  leave=""
+                  leaveFrom=""
+                  leaveTo=""
+                >
+                  <div className="p-[14px]  w-full rounded-b-sm shadow-lg h-auto bg-white ring-1  ring-opacity-5 transform scale-100 delay-1000 duration-1000 rounded-bl-lg rounded-br-lg">
+                    <div className="flex justify-center bg-[#ededed] px-[0.6rem] py-[0.32rem] rounded-[0.25rem]">
+                      <h1 className="text-[#3f414d] font-semibold lg:text-sm text-[]  leading-6">
+                        Sản phẩm đang trong giai đoạn nghiên cứu phát triển và
+                        trải nghiệm.Trong quá trình trải nghiệm nếu bạn phát
+                        hiện lỗi hoặc có ý tưởng các chức năng cho sản phẩm hãy
+                        gởi thông tin của bạn đến đội ngũ chúng tôi để hoàn
+                        thiện và cung cấp các chức năng tốt hơn! Trân trọng cảm
+                        ơn!
+                      </h1>
                     </div>
-                  </div>
-                  <div className="">
                     <div className="pt-5">
-                      <div className="flex mb-2 gap-1">
-                        <div className="lg:text-sm text-[0.77rem] font-normal text-[#2a1d33]">
-                          Loại thiết bị đang gặp lỗi
-                        </div>
-                        <div className="text-red-400 text-sm">*</div>
-                      </div>
-                      <div
-                        className="w-full bg-white border border-gray-400 px-4 py-2 rounded text-[0.875rem] font-normal text-[#555770] flex justify-between items-center"
-                        onClick={() => setShowOptions1(!showOptions1)}
-                      >
-                        {selectedOption1 || "Chọn loại"}
-                        <div>
-                          <img
-                            className="h-5 w-5"
-                            src="https://vdiarybook.com/assets/icons/default/dropdown.svg"
-                            alt=""
-                          />
+                      <div className="relative ">
+                        <textarea
+                          id="message"
+                          className="block outline-none px-2.5 py-[0.33rem] w-full text-sm text-gray-900 bg-white rounded-md border border-gray-300  "
+                        ></textarea>
+                        <div className="bg-white w-auto rounded-sm h-auto px-1 absolute top-[-15px] left-2 flex justify-center items-center gap-1">
+                          <div className=" text-[#8d8a8a] lg:text-sm text-[0.7rem]  fex">
+                            Mô tả lỗi bạn phát hiện
+                          </div>
+                          <div className="text-red-400">*</div>
                         </div>
                       </div>
-                      {showOptions1 && (
-                        <div className="w-full bg-white border border-gray-400 rounded shadow-md text-[0.875rem] font-normal text-[#555770] mt-2 ">
-                          {options1.map((option, index) => (
-                            <div
-                              key={index}
-                              className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                              onClick={() => handleSelect1(option)}
-                            >
-                              {option}
-                            </div>
-                          ))}
-                        </div>
-                      )}
                     </div>
-
-                    <div className="pt-5">
-                      <div className="flex mb-2 gap-1">
-                        <div className="lg:text-sm text-[0.77rem] font-normal text-[#2a1d33]">
-                          Hệ điều hành hiện tại bạn đang sử dụng sảy ra lỗi
+                    <div className="">
+                      <div className="pt-5">
+                        <div className="flex mb-2 gap-1">
+                          <div className="lg:text-sm text-[0.77rem] font-normal text-[#2a1d33]">
+                            Loại thiết bị đang gặp lỗi
+                          </div>
+                          <div className="text-red-400 text-sm">*</div>
                         </div>
-                        <div className="text-red-400 text-sm">*</div>
-                      </div>
-                      <div
-                        className="w-full bg-white border border-gray-400 px-4 py-2 rounded text-[0.875rem] font-normal text-[#555770] flex justify-between items-center"
-                        onClick={() => setShowOptions2(!showOptions2)}
-                      >
-                        {selectedOption2 || "Chọn hệ điều hành"}
-                        <div>
-                          <img
-                            className="h-5 w-5"
-                            src="https://vdiarybook.com/assets/icons/default/dropdown.svg"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      {showOptions2 && (
-                        <div className="w-full bg-white border border-gray-400 rounded shadow-md text-[0.875rem] font-normal text-[#555770] mt-2">
-                          {options2.map((option, index) => (
-                            <div
-                              key={index}
-                              className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                              onClick={() => handleSelect2(option)}
-                            >
-                              {option}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="pt-5">
-                      <div className="flex mb-2 gap-1">
-                        <div className="lg:text-sm text-[0.77rem] font-normal text-[#2a1d33]">
-                          Trình duyệt bạn đang truy cập
-                        </div>
-                        <div className="text-red-400 text-sm">*</div>
-                      </div>
-                      <div
-                        className="w-full bg-white border border-gray-400 px-4 py-2 rounded text-[0.875rem] font-normal text-[#555770] flex justify-between items-center"
-                        onClick={() => setShowOptions3(!showOptions3)}
-                      >
-                        {selectedOption3 || "Chọn trình duyệt"}
-                        <div>
-                          <img
-                            className="h-5 w-5"
-                            src="https://vdiarybook.com/assets/icons/default/dropdown.svg"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      {showOptions3 && (
-                        <div className="w-full bg-white border border-gray-400 rounded shadow-md text-[0.875rem] font-normal text-[#555770] mt-2">
-                          {options3.map((option, index) => (
-                            <div
-                              key={index}
-                              className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                              onClick={() => handleSelect3(option)}
-                            >
-                              {option}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="pt-4 lg:text-sm text-[0.77rem]  text-[#555770]">
-                    Ảnh,Video mô tả lỗi hiện tại giúp chúng tôi khắc phục sớm
-                    nhất.
-                  </div>
-                  <div className=" pt-4 flex gap-2 flex-wrap ">
-                    <div className=" items-center  justify-center w-fit gap-2 contents">
-                      {elements1?.map((element: any, index: number) => (
-                        <label
-                          key={index}
-                          form="dropzone-file"
-                          className="flex relative flex-col items-center justify-center min-w-24 min-h-24  border border-[#3a3f51] border-dashed rounded-lg cursor-pointer bg-gray-50 "
+                        <div
+                          className="w-full bg-white border border-gray-400 px-4 py-2 rounded text-[0.875rem] font-normal text-[#555770] flex justify-between items-center"
+                          onClick={() => setShowOptions1(!showOptions1)}
                         >
-                          <div className="flex flex-col items-center justify-center">
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                              Tải lên
-                            </p>
+                          {selectedOption1 || "Chọn loại"}
+                          <div>
                             <img
-                              className="w-5 h-5"
-                              src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
+                              className="h-5 w-5"
+                              src="https://vdiarybook.com/assets/icons/default/dropdown.svg"
                               alt=""
                             />
                           </div>
-                          <input
-                            id="dropzone-file"
-                            type="file"
-                            className="hidden"
-                          />
-                          <button
-                            className=" w-6 h-6 bg-[#4284f3] text-white rounded flex items-center justify-center absolute right-0 top-0"
-                            onClick={() => removeElement1(index)}
-                          >
-                            -
-                          </button>
-                        </label>
-                      ))}
-                    </div>
-                    <button
-                      className="border border-[#3a3f51] border-dashed min-w-24 min-h-24 rounded-md"
-                      onClick={addElement1}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div className="pt-5">
-                    <div className="relative ">
-                      <textarea
-                        id="message"
-                        className="block outline-none p-2.5 w-full text-sm text-gray-900 bg-white rounded-md border border-gray-300  "
-                      ></textarea>
-                      <div className="bg-white w-auto rounded-sm h-auto p-1 absolute top-[-15px] left-2 flex justify-center items-center">
-                        <div className=" text-[#8d8a8a] lg:text-sm text-[0.7rem]  mx-[0.5rem]">
-                          Bạn có ý tưởng về chức năng gì muốn chúng tôi tích hợp
-                          vào sản phẩm ?
                         </div>
+                        {showOptions1 && (
+                          <div className="w-full bg-white border border-gray-400 rounded shadow-md text-[0.875rem] font-normal text-[#555770] mt-2 ">
+                            {options1.map((option, index) => (
+                              <div
+                                key={index}
+                                className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                                onClick={() => handleSelect1(option)}
+                              >
+                                {option}
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  </div>
-                  <div className="pt-4 lg:text-sm text-[0.77rem]  text-[#555770]">
-                    Ảnh mô tả ý tưởng của bạn về chức năng (nếu có)
-                  </div>
-                  <div className=" pt-4 flex gap-2 flex-wrap ">
-                    <div className=" items-center  justify-center w-fit gap-2 contents">
-                      {elements2?.map((element: any, index: number) => (
-                        <label
-                          key={index}
-                          form="dropzone-file"
-                          className="flex relative flex-col items-center justify-center min-w-24 min-h-24  border border-[#3a3f51] border-dashed rounded-lg cursor-pointer bg-gray-50 "
+
+                      <div className="pt-5">
+                        <div className="flex mb-2 gap-1">
+                          <div className="lg:text-sm text-[0.77rem] font-normal text-[#2a1d33]">
+                            Hệ điều hành hiện tại bạn đang sử dụng sảy ra lỗi
+                          </div>
+                          <div className="text-red-400 text-sm">*</div>
+                        </div>
+                        <div
+                          className="w-full bg-white border border-gray-400 px-4 py-2 rounded text-[0.875rem] font-normal text-[#555770] flex justify-between items-center"
+                          onClick={() => setShowOptions2(!showOptions2)}
                         >
-                          <div className="flex flex-col items-center justify-center">
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                              Tải lên
-                            </p>
+                          {selectedOption2 || "Chọn hệ điều hành"}
+                          <div>
                             <img
-                              className="w-5 h-5"
-                              src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
+                              className="h-5 w-5"
+                              src="https://vdiarybook.com/assets/icons/default/dropdown.svg"
                               alt=""
                             />
                           </div>
-                          <input
-                            id="dropzone-file"
-                            type="file"
-                            className="hidden"
-                          />
-                          <button
-                            className=" w-6 h-6 bg-[#4284f3] text-white rounded flex items-center justify-center absolute right-0 top-0"
-                            onClick={() => removeElement2(index)}
-                          >
-                            -
-                          </button>
-                        </label>
-                      ))}
+                        </div>
+                        {showOptions2 && (
+                          <div className="w-full bg-white border border-gray-400 rounded shadow-md text-[0.875rem] font-normal text-[#555770] mt-2">
+                            {options2.map((option, index) => (
+                              <div
+                                key={index}
+                                className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                                onClick={() => handleSelect2(option)}
+                              >
+                                {option}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="pt-5">
+                        <div className="flex mb-2 gap-1">
+                          <div className="lg:text-sm text-[0.77rem] font-normal text-[#2a1d33]">
+                            Trình duyệt bạn đang truy cập
+                          </div>
+                          <div className="text-red-400 text-sm">*</div>
+                        </div>
+                        <div
+                          className="w-full bg-white border border-gray-400 px-4 py-2 rounded text-[0.875rem] font-normal text-[#555770] flex justify-between items-center"
+                          onClick={() => setShowOptions3(!showOptions3)}
+                        >
+                          {selectedOption3 || "Chọn trình duyệt"}
+                          <div>
+                            <img
+                              className="h-5 w-5"
+                              src="https://vdiarybook.com/assets/icons/default/dropdown.svg"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        {showOptions3 && (
+                          <div className="w-full bg-white border border-gray-400 rounded shadow-md text-[0.875rem] font-normal text-[#555770] mt-2">
+                            {options3.map((option, index) => (
+                              <div
+                                key={index}
+                                className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                                onClick={() => handleSelect3(option)}
+                              >
+                                {option}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <button
-                      className="border border-[#3a3f51] border-dashed min-w-24 min-h-24 rounded-md"
-                      onClick={addElement2}
-                    >
-                      +
-                    </button>
+
+                    <div className="pt-4 lg:text-sm text-[0.77rem]  text-[#555770]">
+                      Ảnh,Video mô tả lỗi hiện tại giúp chúng tôi khắc phục sớm
+                      nhất.
+                    </div>
+                    <div className=" pt-4 flex gap-2 flex-wrap ">
+                      <div className=" items-center  justify-center w-fit gap-2 contents">
+                        {elements1?.map((element: any, index: number) => (
+                          <label
+                            key={index}
+                            form="dropzone-file"
+                            className="flex relative flex-col items-center justify-center min-w-24 min-h-24  border border-[#3a3f51] border-dashed rounded-lg cursor-pointer bg-gray-50 "
+                          >
+                            <div className="flex flex-col items-center justify-center">
+                              <p className="text-xs text-gray-500 dark:text-gray-400">
+                                Tải lên
+                              </p>
+                              <img
+                                className="w-5 h-5"
+                                src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
+                                alt=""
+                              />
+                            </div>
+                            <input
+                              id="dropzone-file"
+                              type="file"
+                              className="hidden"
+                            />
+                            <button
+                              className=" w-6 h-6 bg-[#4284f3] text-white rounded flex items-center justify-center absolute right-0 top-0"
+                              onClick={() => removeElement1(index)}
+                            >
+                              -
+                            </button>
+                          </label>
+                        ))}
+                      </div>
+                      <button
+                        className="border border-[#3a3f51] border-dashed min-w-24 min-h-24 rounded-md"
+                        onClick={addElement1}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div className="pt-5">
+                      <div className="relative ">
+                        <textarea
+                          id="message"
+                          className="block outline-none p-2.5 w-full text-sm text-gray-900 bg-white rounded-md border border-gray-300  "
+                        ></textarea>
+                        <div className="bg-white w-auto rounded-sm h-auto p-1 absolute top-[-15px] left-2 flex justify-center items-center">
+                          <div className=" text-[#8d8a8a] lg:text-sm text-[0.7rem]  mx-[0.5rem]">
+                            Bạn có ý tưởng về chức năng gì muốn chúng tôi tích
+                            hợp vào sản phẩm ?
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pt-4 lg:text-sm text-[0.77rem]  text-[#555770]">
+                      Ảnh mô tả ý tưởng của bạn về chức năng (nếu có)
+                    </div>
+                    <div className=" pt-4 flex gap-2 flex-wrap ">
+                      <div className=" items-center  justify-center w-fit gap-2 contents">
+                        {elements2?.map((element: any, index: number) => (
+                          <label
+                            key={index}
+                            form="dropzone-file"
+                            className="flex relative flex-col items-center justify-center min-w-24 min-h-24  border border-[#3a3f51] border-dashed rounded-lg cursor-pointer bg-gray-50 "
+                          >
+                            <div className="flex flex-col items-center justify-center">
+                              <p className="text-xs text-gray-500 dark:text-gray-400">
+                                Tải lên
+                              </p>
+                              <img
+                                className="w-5 h-5"
+                                src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
+                                alt=""
+                              />
+                            </div>
+                            <input
+                              id="dropzone-file"
+                              type="file"
+                              className="hidden"
+                            />
+                            <button
+                              className=" w-6 h-6 bg-[#4284f3] text-white rounded flex items-center justify-center absolute right-0 top-0"
+                              onClick={() => removeElement2(index)}
+                            >
+                              -
+                            </button>
+                          </label>
+                        ))}
+                      </div>
+                      <button
+                        className="border border-[#3a3f51] border-dashed min-w-24 min-h-24 rounded-md"
+                        onClick={addElement2}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div className=" flex  justify-center pt-4">
+                      <button className="py-[6px] px-5 rounded bg-[#4284f3] text-white opacity-65 ">
+                        Gửi
+                      </button>
+                    </div>
                   </div>
-                  <div className=" flex  justify-center pt-4">
-                    <button className="py-[6px] px-5 rounded bg-[#4284f3] text-white opacity-65 ">
-                      Gửi
-                    </button>
-                  </div>
-                </div>
-              )}
+                </Transition>
+              }
             </div>
           </div>
         )}

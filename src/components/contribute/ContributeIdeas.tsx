@@ -1,3 +1,4 @@
+import { Transition } from "@headlessui/react";
 import React, { useState } from "react";
 
 const tabs = [
@@ -128,116 +129,128 @@ const Contribute = () => {
                   />
                 </button>
               </div>
-              {isOpen && (
-                <div className="p-[14px]  w-full rounded-b-sm shadow-lg h-auto bg-white ring-1  ring-opacity-5 transform scale-100 delay-1000 duration-1000 rounded-bl-lg rounded-br-lg">
-                  <div className="flex justify-center">
-                    <h1 className="text-[#3f414d] font-normal md:text-4xl  text-base">
-                      Bạn cần giúp đỡ?
-                    </h1>
-                  </div>
-                  <div className="">
-                    <form className="pt-5" onSubmit={handleSubmit}>
-                      <div className="relative ">
-                        <input
-                          type="search"
-                          className="block w-full px-3 py-[6px] text-sm text-gray-900 border border-gray-300 rounded-[5px] bg-white outline-none"
-                          required
-                          onChange={handleInputChange}
-                        />
-                        <div className="bg-white w-auto rounded-[5px] h-auto p-1 absolute top-[-12px] left-2 flex justify-center items-center">
-                          <div className=" text-[#8d8a8a] text-xs ">
-                            Nhập tên của bạn
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="">
-                    <form className="pt-5 ">
-                      <div className="relative ">
-                        <input
-                          type="email"
-                          id="email"
-                          className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-[5px]  block w-full px-3 py-[6px] outline-none"
-                          placeholder="name@gmail.com"
-                          required
-                        />
-                        <div className="bg-white w-auto rounded-sm h-auto px-1 absolute top-[-12px] left-2 flex justify-center items-center ">
-                          <div className=" text-[#8d8a8a] text-xs ">E-mail</div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="pt-5">
-                    <div className="relative ">
-                      <textarea
-                        id="message"
-                        className="block outline-none p-2.5 w-full text-sm text-gray-900 bg-white rounded-md border border-gray-300  "
-                      ></textarea>
-                      <div className="bg-white w-auto rounded-sm h-auto p-1 absolute top-[-12px] left-2 flex justify-center items-center">
-                        <div className=" text-[#8d8a8a] text-xs ">
-                          Nội dung cần hỗ trợ
-                        </div>
-                      </div>
+              {
+                <Transition
+                  show={isOpen}
+                  enter="transition all ease-in-out duration-[.2s] transform"
+                  enterFrom="translate-y-1/4 opacity-0"
+                  enterTo="-translate-y-5px opacity-100"
+                  leave=""
+                  leaveFrom=""
+                  leaveTo=""
+                >
+                  <div className="p-[14px]  w-full rounded-b-sm shadow-lg h-auto bg-white ring-1  ring-opacity-5 transform scale-100 delay-1000 duration-1000 rounded-bl-lg rounded-br-lg">
+                    <div className="flex justify-center">
+                      <h1 className="text-[#3f414d] font-normal md:text-4xl  text-base">
+                        Bạn cần giúp đỡ?
+                      </h1>
                     </div>
-                  </div>
-                  <div className="pt-4 text-sm  text-[#555770]">
-                    File/Hình ảnh đi kèm
-                  </div>
-                  <div className=" pt-5 flex gap-2 flex-wrap ">
-                    <div className="flex items-center  justify-center w-fit gap-2">
-                      {elements.map((element: any) => (
-                        <label
-                          key={element.id}
-                          form="dropzone-file"
-                          className="flex relative flex-col items-center justify-center min-w-24 min-h-24  border border-[#3a3f51] border-dashed rounded-lg cursor-pointer bg-gray-50 "
-                        >
-                          <div className="flex flex-col items-center justify-center">
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                              Tải lên
-                            </p>
-                            <img
-                              className="w-5 h-5"
-                              src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
-                              alt=""
-                            />
-                          </div>
+                    <div className="">
+                      <form className="pt-5" onSubmit={handleSubmit}>
+                        <div className="relative ">
                           <input
-                            id="dropzone-file"
-                            type="file"
-                            className="hidden"
+                            type="search"
+                            className="block w-full px-3 py-[6px] text-sm text-gray-900 border border-gray-300 rounded-[5px] bg-white outline-none"
+                            required
+                            onChange={handleInputChange}
                           />
-                          <button
-                            className=" w-6 h-6 bg-[#4284f3] text-white rounded flex items-center justify-center absolute right-0 top-0"
-                            onClick={() => removeElement(element)}
-                          >
-                            -
-                          </button>
-                        </label>
-                      ))}
+                          <div className="bg-white w-auto rounded-[5px] h-auto p-1 absolute top-[-12px] left-2 flex justify-center items-center">
+                            <div className=" text-[#8d8a8a] text-xs ">
+                              Nhập tên của bạn
+                            </div>
+                          </div>
+                        </div>
+                      </form>
                     </div>
-                    <button
-                      className="border border-[#3a3f51] border-dashed min-w-24 min-h-24 rounded-md"
-                      onClick={addElement}
-                    >
-                      +
-                    </button>
+                    <div className="">
+                      <form className="pt-5 ">
+                        <div className="relative ">
+                          <input
+                            type="email"
+                            id="email"
+                            className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-[5px]  block w-full px-3 py-[6px] outline-none"
+                            placeholder="name@gmail.com"
+                            required
+                          />
+                          <div className="bg-white w-auto rounded-sm h-auto px-1 absolute top-[-12px] left-2 flex justify-center items-center ">
+                            <div className=" text-[#8d8a8a] text-xs ">
+                              E-mail
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div className="pt-5">
+                      <div className="relative ">
+                        <textarea
+                          id="message"
+                          className="block outline-none p-2.5 w-full text-sm text-gray-900 bg-white rounded-md border border-gray-300  "
+                        ></textarea>
+                        <div className="bg-white w-auto rounded-sm h-auto p-1 absolute top-[-12px] left-2 flex justify-center items-center">
+                          <div className=" text-[#8d8a8a] text-xs ">
+                            Nội dung cần hỗ trợ
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pt-4 text-sm  text-[#555770]">
+                      File/Hình ảnh đi kèm
+                    </div>
+                    <div className=" pt-5 flex gap-2 flex-wrap ">
+                      <div className="flex items-center  justify-center w-fit gap-2">
+                        {elements.map((element: any) => (
+                          <label
+                            key={element.id}
+                            form="dropzone-file"
+                            className="flex relative flex-col items-center justify-center min-w-24 min-h-24  border border-[#3a3f51] border-dashed rounded-lg cursor-pointer bg-gray-50 "
+                          >
+                            <div className="flex flex-col items-center justify-center">
+                              <p className="text-xs text-gray-500 dark:text-gray-400">
+                                Tải lên
+                              </p>
+                              <img
+                                className="w-5 h-5"
+                                src="https://vdiarybook.com/assets/icons/default/add_blue.svg"
+                                alt=""
+                              />
+                            </div>
+                            <input
+                              id="dropzone-file"
+                              type="file"
+                              className="hidden"
+                            />
+                            <button
+                              className=" w-6 h-6 bg-[#4284f3] text-white rounded flex items-center justify-center absolute right-0 top-0"
+                              onClick={() => removeElement(element)}
+                            >
+                              -
+                            </button>
+                          </label>
+                        ))}
+                      </div>
+                      <button
+                        className="border border-[#3a3f51] border-dashed min-w-24 min-h-24 rounded-md"
+                        onClick={addElement}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div className=" flex  justify-center pt-4">
+                      <button
+                        type="submit"
+                        className={`py-[6px] px-5 rounded ${
+                          buttonActive
+                            ? "bg-blue-500 text-white"
+                            : "bg-blue-300 text-white"
+                        }`}
+                        disabled={!buttonActive}
+                      >
+                        Gửi
+                      </button>
+                    </div>
                   </div>
-                  <div className=" flex  justify-center pt-4">
-                    <button
-                      type="submit"
-                      className={`py-[6px] px-5 rounded ${
-                        buttonActive
-                          ? "bg-blue-500 text-white"
-                          : "bg-blue-300 text-white"
-                      }`}
-                      disabled={!buttonActive}
-                    >
-                      Gửi
-                    </button>
-                  </div>
-                </div>
-              )}
+                </Transition>
+              }
             </div>
           </div>
         )}

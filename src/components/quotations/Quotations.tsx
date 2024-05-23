@@ -1,3 +1,4 @@
+import { Transition } from "@headlessui/react";
 import { useState } from "react";
 
 const quotati = [
@@ -63,18 +64,28 @@ const Quotations = () => {
           />
         </li>
 
-        {isOpen && (
-          <ul className="ml-4 ">
-            {quotati.map((quota) => (
-              <li
-                key={quota.id}
-                className="p-2 font-normal text-sm text-[#1F1F1F]"
-              >
-                {quota.tabel}
-              </li>
-            ))}
-          </ul>
-        )}
+        {
+          <Transition
+            show={isOpen}
+            enter="transition all ease-in-out duration-[.2s] transform"
+            enterFrom="translate-y-1/4 opacity-0"
+            enterTo="-translate-y-5px opacity-100"
+            leave=""
+            leaveFrom=""
+            leaveTo=""
+          >
+            <ul className="ml-4 ">
+              {quotati.map((quota) => (
+                <li
+                  key={quota.id}
+                  className="p-2 font-normal text-sm text-[#1F1F1F]"
+                >
+                  {quota.tabel}
+                </li>
+              ))}
+            </ul>
+          </Transition>
+        }
       </ul>
     </div>
   );

@@ -1,36 +1,85 @@
-import { Button, Transition } from "@headlessui/react";
-import { ArrowPathIcon } from "@heroicons/react/16/solid";
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function Example() {
-  let [isShowing, setIsShowing] = useState(true);
+const images = [
+  { id: 1, img: "/images/dang.svg" },
+  { id: 2, img: "/images/thuoc.svg" },
+  { id: 3, img: "/images/thanhnien.svg" },
+
+  { id: 4, img: "/images/dang.svg" },
+];
+
+const Thu = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrevClick = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNextClick = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   return (
-    <div className="mt-8 flex flex-col items-center">
-      <div className="size-[6.25rem]">
-        <Transition
-          show={isShowing}
-          enter="transition duration-[400ms]"
-          enterFrom="rotate-[-120deg] scale-50 opacity-0"
-          enterTo="rotate-0 scale-100 opacity-100"
-          leave="transition duration-200 ease-in-out"
-          leaveFrom="rotate-0 scale-100 opacity-100"
-          leaveTo="scale-95 opacity-0"
+    <div className="relative">
+      <div className="w-full h-64 overflow-hidden">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          <div className="size-full rounded-xl bg-white shadow-lg" />
-        </Transition>
+          {images.map((image: any, index: any) => (
+            <div
+              key={index}
+              className="w-full h-full flex-shrink-0 bg-cover bg-center"
+            >
+              <img src={image.img} alt="" />
+            </div>
+          ))}
+        </div>
       </div>
-
-      <Button
-        onClick={() => {
-          setIsShowing(false);
-          setTimeout(() => setIsShowing(true), 500);
-        }}
-        className="mt-10 flex items-center gap-2 rounded-full bg-white/10 py-1 px-3 text-sm/6 font-semibold text-white transition data-[hover]:scale-105 data-[hover]:bg-white/15"
-      >
-        <ArrowPathIcon className="size-4 fill-white/50" />
-        <span>Click to transition</span>
-      </Button>
+      <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between px-4">
+        <button
+          className="bg-white rounded-full w-8 h-8 shadow-md focus:outline-none"
+          onClick={handlePrevClick}
+        >
+          <svg
+            className="w-4 h-4 text-gray-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+        <button
+          className="bg-white rounded-full w-8 h-8 shadow-md focus:outline-none"
+          onClick={handleNextClick}
+        >
+          <svg
+            className="w-4 h-4 text-gray-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   );
-}
+};
+
+export default Thu;

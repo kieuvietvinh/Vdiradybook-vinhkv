@@ -115,21 +115,33 @@ const giftCard = [
 ];
 
 const Birthday = () => {
-  const [label, setLabel] = useState("Tháng 4");
-  const handleClick = (key: any) => {
-    setLabel(key);
-  };
-  const [month, setMonth] = useState(4);
+  const [month, setMonth] = useState<number>(4);
   const [year, setYear] = useState(2024);
 
+  const handleClick = (key: any) => {
+    setMonth(key);
+  };
+
   const handleNextMonth = () => {
-    setMonth((prevMonth) => (prevMonth === 12 ? 1 : prevMonth + 1));
-    setYear((prevYear) => (month === 12 ? prevYear + 1 : prevYear));
+    setMonth((prevMonth) => {
+      if (prevMonth === 12) {
+        setYear((prevYear) => prevYear + 1);
+        return 1;
+      } else {
+        return prevMonth + 1;
+      }
+    });
   };
 
   const handlePreviousMonth = () => {
-    setMonth((prevMonth) => (prevMonth === 1 ? 12 : prevMonth - 1));
-    setYear((prevYear) => (month === 1 ? prevYear - 1 : prevYear));
+    setMonth((prevMonth) => {
+      if (prevMonth === 1) {
+        setYear((prevYear) => prevYear - 1);
+        return 12;
+      } else {
+        return prevMonth - 1;
+      }
+    });
   };
   return (
     <div className="max-w-[51rem] mx-auto max-[900px]:px-2">
@@ -161,24 +173,24 @@ const Birthday = () => {
           }
         />
         <VDropdownModal
-          className=""
+          className="right-0 top-4"
           menu={[
-            { key: "Tháng 1", onClick: () => handleClick("Tháng 1") },
-            { key: "Tháng 2", onClick: () => handleClick("Tháng 2") },
-            { key: "Tháng 3", onClick: () => handleClick("Tháng 3") },
-            { key: "Tháng 4", onClick: () => handleClick("Tháng 4") },
-            { key: "Tháng 5", onClick: () => handleClick("Tháng 5") },
-            { key: "Tháng 6", onClick: () => handleClick("Tháng 6") },
-            { key: "Tháng 7", onClick: () => handleClick("Tháng 7") },
-            { key: "Tháng 8", onClick: () => handleClick("Tháng 8") },
-            { key: "Tháng 9", onClick: () => handleClick("Tháng 9") },
-            { key: "Tháng 10", onClick: () => handleClick("Tháng 10") },
-            { key: "Tháng 11", onClick: () => handleClick("Tháng 11") },
-            { key: "Tháng 12", onClick: () => handleClick("Tháng 12") },
+            { key: "Tháng 1", onClick: () => handleClick(1) },
+            { key: "Tháng 2", onClick: () => handleClick(2) },
+            { key: "Tháng 3", onClick: () => handleClick(3) },
+            { key: "Tháng 4", onClick: () => handleClick(4) },
+            { key: "Tháng 5", onClick: () => handleClick(5) },
+            { key: "Tháng 6", onClick: () => handleClick(6) },
+            { key: "Tháng 7", onClick: () => handleClick(7) },
+            { key: "Tháng 8", onClick: () => handleClick(8) },
+            { key: "Tháng 9", onClick: () => handleClick(9) },
+            { key: "Tháng 10", onClick: () => handleClick(10) },
+            { key: "Tháng 11", onClick: () => handleClick(11) },
+            { key: "Tháng 12", onClick: () => handleClick(12) },
           ]}
           label={
             <div className="flex whitespace-nowrap items-center gap-2 border border-[#4284F3] rounded-2xl text-[#4284F3] px-3 py-[2px] h-6 text-xs font-normal leading-[14.52px]">
-              {label}
+              Tháng {month}
               <img className="h-5 w-5" src="/images/dropdown.svg" alt="" />
             </div>
           }
@@ -194,7 +206,6 @@ const Birthday = () => {
             Tháng {month},
           </p>
           <p className="font-semibold text-base text-[#1F1F1F] leading-[19.36px]">
-            {" "}
             {year}
           </p>
           <img
@@ -233,7 +244,7 @@ const Birthday = () => {
             </div>
 
             <div className="flex items-center gap-2">
-              <VButton className="rounded-[18px] px-4 flex items-center gap-2 h-[36px] w-full">
+              <VButton className="rounded-[18px] px-4 flex items-center border border-[#4284f3] gap-2 h-[36px] w-full">
                 <img src="/images/email.svg" alt="" />
                 <p className="text-sm font-medium text-[#4284f3] whitespace-nowrap leading-[16.94px]">
                   {card.email}

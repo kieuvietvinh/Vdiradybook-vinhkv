@@ -4,12 +4,12 @@ const images = [
   { id: 1, img: "/images/dang.svg" },
   { id: 2, img: "/images/thuoc.svg" },
   { id: 3, img: "/images/thanhnien.svg" },
-
   { id: 4, img: "/images/dang.svg" },
 ];
 
 const Thu = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const handlePrevClick = () => {
     setCurrentIndex((prevIndex) =>
@@ -23,17 +23,28 @@ const Thu = () => {
     );
   };
 
+  const handleImageClick = () => {
+    setIsZoomed(!isZoomed);
+  };
+
   return (
     <div className="relative">
-      <div className="w-full h-64 overflow-hidden">
+      <div
+        className={`w-full h-64 overflow-hidden ${
+          isZoomed ? "h-[90vh] w-[90vw] mx-auto my-8" : ""
+        }`}
+      >
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {images.map((image: any, index: any) => (
+          {images.map((image, index) => (
             <div
               key={index}
-              className="w-full h-full flex-shrink-0 bg-cover bg-center"
+              className={`w-full h-full flex-shrink-0 bg-cover bg-center cursor-pointer ${
+                isZoomed ? "h-[90vh] w-[90vw]" : ""
+              }`}
+              onClick={handleImageClick}
             >
               <img src={image.img} alt="" />
             </div>

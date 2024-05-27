@@ -49,7 +49,7 @@ const Holiday = (props: any) => {
               <p>Tham gia</p>
             </button>
             <VDropdownModal
-              className="text-sm  "
+              className="text-sm   !right-0 !-top-[280px]"
               menu={[
                 {
                   icon: (

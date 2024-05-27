@@ -25,6 +25,7 @@ const Thurify = () => {
       pathname: router.pathname,
     });
   };
+
   return (
     <div>
       <div className="catego flex items-center gap-4 pt-4 justify-between overflow-x-scroll whitespace-nowrap">

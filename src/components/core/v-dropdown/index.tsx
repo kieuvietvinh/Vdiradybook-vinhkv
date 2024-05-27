@@ -38,7 +38,7 @@ const VDropdownModal = ({ label, menu, className = "", id }: IProps) => {
         leaveTo=""
       >
         <Menu.Items
-          className={`overflow-hidden outline-none border border-[#4284F3]  p-2 shadow-toolbox bg-white  mt-2 -right-[207px] lg:left-auto -top-[243px] bottom-auto absolute z-50 leading-normal flex max-w-[400px] max-[991.98px]:max-h-[calc(100vh-175px)] rounded-[10px]
+          className={`overflow-hidden outline-none border border-[#4284F3]  p-2 shadow-toolbox bg-white  mt-2 right-0 top-4 lg:left-auto  bottom-auto absolute z-50 leading-normal flex max-w-[400px] max-[991.98px]:max-h-[calc(100vh-175px)] rounded-[10px]
         ${className}`}
         >
           <div className="shadow-none w-full">

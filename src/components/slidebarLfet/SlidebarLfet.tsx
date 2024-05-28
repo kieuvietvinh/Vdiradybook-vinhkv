@@ -195,6 +195,11 @@ const linkpage = [
     page: "Màn sinh nhật",
     link: "/birthday",
   },
+  {
+    id: 15,
+    page: "Màn ngày lễ",
+    link: "/traditional",
+  },
 ];
 const SlidebarLfet = () => {
   const [activeTab, setActiveTab] = useState(1);

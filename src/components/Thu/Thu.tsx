@@ -1,96 +1,54 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const images = [
-  { id: 1, img: "/images/dang.svg" },
-  { id: 2, img: "/images/thuoc.svg" },
-  { id: 3, img: "/images/thanhnien.svg" },
-  { id: 4, img: "/images/dang.svg" },
-];
+const UploadMediaFile = () => {
+  const [mediaFile, setMediaFile] = useState<any>(null);
+  const [previewUrl, setPreviewUrl] = useState<any>(null);
 
-const Thu = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isZoomed, setIsZoomed] = useState(false);
-
-  const handlePrevClick = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNextClick = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const handleImageClick = () => {
-    setIsZoomed(!isZoomed);
+  const handleMediaUpload = (event: any) => {
+    const file = event.target.files[0];
+    setMediaFile(file);
+    setPreviewUrl(URL.createObjectURL(file));
   };
 
   return (
-    <div className="relative">
-      <div
-        className={`w-full h-64 overflow-hidden ${
-          isZoomed ? "h-[90vh] w-[90vw] mx-auto my-8" : ""
-        }`}
-      >
-        <div
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={`w-full h-full flex-shrink-0 bg-cover bg-center cursor-pointer ${
-                isZoomed ? "h-[90vh] w-[90vw]" : ""
-              }`}
-              onClick={handleImageClick}
-            >
-              <img src={image.img} alt="" />
-            </div>
-          ))}
-        </div>
+    <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="">
+        {previewUrl && (
+          <div>
+            {mediaFile.type.startsWith("image/") ? (
+              <img
+                src={previewUrl}
+                alt="Preview"
+                className="max-w-[200px] max-h-[200px] rounded-lg"
+              />
+            ) : (
+              <video
+                controls
+                className="max-w-[200px] max-h-[200px] rounded-lg"
+              >
+                <source src={previewUrl} type={mediaFile.type} />
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </div>
+        )}
       </div>
-      <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between px-4">
-        <button
-          className="bg-white rounded-full w-8 h-8 shadow-md focus:outline-none"
-          onClick={handlePrevClick}
+      <div className="mt-4">
+        <label
+          htmlFor="media-upload"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
         >
-          <svg
-            className="w-4 h-4 text-gray-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-        <button
-          className="bg-white rounded-full w-8 h-8 shadow-md focus:outline-none"
-          onClick={handleNextClick}
-        >
-          <svg
-            className="w-4 h-4 text-gray-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
+          Choose Media File
+        </label>
+        <input
+          id="media-upload"
+          type="file"
+          className="hidden"
+          onChange={handleMediaUpload}
+        />
       </div>
     </div>
   );
 };
 
-export default Thu;
+export default UploadMediaFile;

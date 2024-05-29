@@ -1,54 +1,42 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const UploadMediaFile = () => {
-  const [mediaFile, setMediaFile] = useState<any>(null);
-  const [previewUrl, setPreviewUrl] = useState<any>(null);
+function MediaUploader() {
+  const [hasMedia, setHasMedia] = useState(false);
 
   const handleMediaUpload = (event: any) => {
-    const file = event.target.files[0];
-    setMediaFile(file);
-    setPreviewUrl(URL.createObjectURL(file));
+    if (event.target.files.length > 0) {
+      setHasMedia(true);
+    } else {
+      setHasMedia(false);
+    }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <div className="">
-        {previewUrl && (
-          <div>
-            {mediaFile.type.startsWith("image/") ? (
-              <img
-                src={previewUrl}
-                alt="Preview"
-                className="max-w-[200px] max-h-[200px] rounded-lg"
-              />
-            ) : (
-              <video
-                controls
-                className="max-w-[200px] max-h-[200px] rounded-lg"
-              >
-                <source src={previewUrl} type={mediaFile.type} />
-                Your browser does not support the video tag.
-              </video>
-            )}
-          </div>
-        )}
-      </div>
-      <div className="mt-4">
+    <div className="mt-2 absolute bottom-10">
+      {hasMedia && (
         <label
           htmlFor="media-upload"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+          className="bg-[#000000B2] text-white font-medium py-2 px-4 rounded cursor-pointer"
         >
-          Choose Media File
+          Thay đổi
         </label>
-        <input
-          id="media-upload"
-          type="file"
-          className="hidden"
-          onChange={handleMediaUpload}
-        />
-      </div>
+      )}
+      {!hasMedia && (
+        <label
+          htmlFor="media-upload"
+          className="bg-[#000000B2] text-white font-medium py-2 px-4 rounded cursor-pointer"
+        >
+          Tải lên
+        </label>
+      )}
+      <input
+        id="media-upload"
+        type="file"
+        className="hidden"
+        onChange={handleMediaUpload}
+      />
     </div>
   );
-};
+}
 
-export default UploadMediaFile;
+export default MediaUploader;

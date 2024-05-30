@@ -3,10 +3,7 @@ import VDropdownModal from "../core/v-dropdown";
 import VButton from "../core/v-button";
 
 const Holiday = (props: any) => {
-  console.log({ props });
-
   const item = props?.item;
-  console.log("item :", item);
   const [label, setLabel] = useState("");
   const handleClick = (key: any) => {
     setLabel(key);

@@ -9,14 +9,17 @@ const tabs = [
   {
     id: 1,
     category: "Đang sử dụng (12)",
+    key: "using",
   },
   {
     id: 2,
     category: "Đã tải lên (25)",
+    key: "pending",
   },
   {
     id: 3,
     category: "Chờ duyệt (11)",
+    key: "uploaded",
   },
 ];
 const stickers = [
@@ -137,10 +140,12 @@ const StickerManagement = (props: any) => {
   const handleDeleteAll = () => {
     setShowStickers(false);
   };
-  const [transfer, setTransfer] = useState<String>();
-  const handleTransfer = () => {
-    setTransfer("");
+
+  const [transfer, setTransfer] = useState<String>("using");
+  const handleTransfer = (key: any) => {
+    setTransfer(key);
   };
+
   const router = useRouter();
   const list =
     router.query.id === "1" || !router.query.id
@@ -164,10 +169,10 @@ const StickerManagement = (props: any) => {
   };
 
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full  mt-[70px] sm:mt-[0px]">
       {showStickers && (
         <div className="flex  justify-center">
-          <div className=" w-[400px] sm:w-[600px] md:w-[800px] bg-white rounded-2xl p-1 shadow shadow-[#00000026] relative">
+          <div className=" max-w-[800px] w-full   bg-white rounded-2xl px-2 py-4 shadow shadow-[#00000026] relative">
             <div className="text-center py-3">
               <h1 className="font-semibold text-2xl text-[#4284F3] leading-[29.05px]">
                 Quản lý Sticker
@@ -181,47 +186,51 @@ const StickerManagement = (props: any) => {
                 <img className="w-5 h-5" src="/images/Close.svg" alt="" />
               </VButton>
             </div>
-            {transfer === "pending" && <Pending />}
-            {transfer === "uploaded" && <Uploaded />}
-            <div
-              onClick={handleTransfer}
-              className="contri w-full  grid grid-cols-3  items-center border-y overflow-scroll"
-            >
+            <div className="contri w-full whitespace-nowrap  grid grid-cols-3  items-center border-y overflow-x-scroll">
               {tabs.map((tab) => (
-                <VButton key={tab.id} className="  ">
-                  <p className="whitespace-nowrap text-sm text-[#636363] font-normal leading-[16.94px] ">
-                    {tab.category}
-                  </p>
+                <VButton
+                  onClick={() => handleTransfer(tab.key)}
+                  key={tab.id}
+                  className={`whitespace-nowrap  leading-[16.94px] ${
+                    transfer === tab.key
+                      ? "border-b-2 border-[#4284F3] !text-[#4284F3] text-sm font-semibold"
+                      : "text-sm font-normal hover:text-gray-800 !text-[#636363]"
+                  }`}
+                >
+                  {tab.category}
                 </VButton>
               ))}
             </div>
-
-            <>
-              <div className="tabs flex items-center gap-1 overflow-scroll pt-2">
-                {stickers.map((sticker) => (
-                  <VButton
-                    onClick={() => handleClick(sticker)}
-                    key={sticker.id}
-                    className={`flex items-center gap-2 w-auto  rounded-2xl px-4 py-1 border border-[#0000000D] h-8 shadow shadow-[#0000001A]${
-                      sticker.tab === router.query.id ||
-                      (sticker.tab === "1" && !router.query.id)
-                        ? "  bg-[#4284f3]  !text-white "
-                        : " bg-white border !text-[#636363]"
-                    }`}
-                  >
-                    <img src={sticker.image} alt="" />
-                    <p className="whitespace-nowrap text-sm  font-normal leading-[16.94px]">
-                      {sticker.name}
-                    </p>
-                  </VButton>
-                ))}
-              </div>
-              <div className="flex flex-wrap items-center gap-2 pt-2">
-                {list.map((item) => (
-                  <StickerAll item={item} />
-                ))}
-              </div>
-            </>
+            {transfer === "pending" && <Pending />}
+            {transfer === "uploaded" && <Uploaded />}
+            {transfer === "using" && (
+              <>
+                <div className="contri tabs flex items-center gap-1 overflow-scroll pt-2">
+                  {stickers.map((sticker) => (
+                    <VButton
+                      onClick={() => handleClick(sticker)}
+                      key={sticker.id}
+                      className={`flex items-center gap-2 w-auto  rounded-2xl px-4 py-1 border border-[#0000000D] h-8 shadow shadow-[#0000001A]${
+                        sticker.tab === router.query.id ||
+                        (sticker.tab === "1" && !router.query.id)
+                          ? "  bg-[#4284f3]  !text-white "
+                          : " bg-white border !text-[#636363]"
+                      }`}
+                    >
+                      <img src={sticker.image} alt="" />
+                      <p className="whitespace-nowrap text-sm  font-normal leading-[16.94px]">
+                        {sticker.name}
+                      </p>
+                    </VButton>
+                  ))}
+                </div>
+                <div className="contri flex flex-wrap items-center gap-2 pt-2 max-h-[90vh] overflow-y-scroll">
+                  {list.map((item) => (
+                    <StickerAll item={item} />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

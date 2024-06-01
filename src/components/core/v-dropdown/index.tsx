@@ -13,19 +13,31 @@ interface IProps {
     name?: string;
     active?: boolean;
   }[];
+  menuclassName?: String;
+  buttonclassName?: String;
   label: JSX.Element | string;
   className?: string;
   id?: string;
 }
 
-const VDropdownModal = ({ label, menu, className = "", id }: IProps) => {
+const VDropdownModal = ({
+  label,
+  menu,
+  className = "",
+  id,
+  menuclassName,
+  buttonclassName,
+}: IProps) => {
   return (
     <Menu
       as="li"
-      className={"flex w-fit items-center justify-center relative "}
+      className={`flex w-fit items-center justify-center relative ${menuclassName}`}
       id={id}
     >
-      <Menu.Button as="div" className="cursor-pointer relative">
+      <Menu.Button
+        as="div"
+        className={`cursor-pointer  relative ${buttonclassName}`}
+      >
         {label}
       </Menu.Button>
       <Transition

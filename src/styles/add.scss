@@ -282,4 +282,13 @@ nav {
 .tabs::-webkit-scrollbar {
     display: none;
 }
+.imagekvv {
+    background-image: url('/images/stacker.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(21, 91, 112, 0.5); 
+    height: 100vh;
+    width: 100vw;
+  }
 

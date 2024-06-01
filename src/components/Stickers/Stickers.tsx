@@ -4,7 +4,7 @@ import VDropdownModal from "../core/v-dropdown";
 import VButton from "../core/v-button";
 import RegisterSticker from "../RegisterSticker/RegisterSticker";
 
-const Stickers = () => {
+const Stickers = (props: any) => {
   const [mediaFile, setMediaFile] = useState<any>(null);
   const [previewUrl, setPreviewUrl] = useState<any>(null);
   const [register, setRegister] = useState(true);
@@ -25,15 +25,16 @@ const Stickers = () => {
 
   return (
     <div className="">
-      <img
-        className="object-cover h-screen w-full "
-        src="/images/stacker.svg"
-        alt=""
-      />
-      <div className="bg-[#0053E0CC] opacity-75 absolute top-0 w-full object-cover h-screen mt-[70px] "></div>
+      <div className=" bg-[#0053E0CC] absolute top-0 w-[100vw] h-[100vh]  ">
+        <img
+          className="object-cover w-[100vw] h-[100vh] "
+          src="/images/stacker.svg"
+          alt=""
+        />
+      </div>
       <div className="mx-auto max-w-[494px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className="text-center">
-          <h1 className="font-semibold text-3xl text-white leading-[36.31px]">
+          <h1 className="font-semibold text-3xl text-white leading-[36.31px] whitespace-nowrap">
             Đăng ký Sticker
           </h1>
           <p className="font-semibold text-base text-white leading-[19.36px] py-4">
@@ -44,8 +45,8 @@ const Stickers = () => {
         {register ? (
           <>
             <div className="flex  justify-center">
-              <div className="max-w-[416px] bg-white rounded-lg p-4 shadow shadow-[#00000026]">
-                <div className="mb-6">
+              <div className="max-w-[416px] w-full bg-white rounded-lg p-4 shadow shadow-[#00000026]">
+                <div className="mb-4">
                   <label
                     form="large-input"
                     className="block  mb-2 text-sm font-medium text-[#1F1F1F] leading-[16.94px]"
@@ -55,7 +56,7 @@ const Stickers = () => {
                   </label>
                   <Input className="h-[38px] rounded-lg px-3 outline-none border-[#CAD0D7] w-full  " />
                 </div>
-                <div className="mb-6">
+                <div className="mb-4">
                   <label
                     form="default-input"
                     className="block mb-2 text-sm font-medium text-[#1F1F1F] leading-[16.94px]"
@@ -78,8 +79,10 @@ const Stickers = () => {
                         onClick: () => handleClick("option 3"),
                       },
                     ]}
+                    menuclassName="w-full"
+                    buttonclassName="w-full"
                     label={
-                      <div className="justify-between h-[38px] lg:w-[384px] md:w-[300px] sm:w-[250px] w-[200px] flex items-center text-xs px-2 font-normal leading-[14.52px] text-[#636363] rounded-lg  outline-none border border-[#CAD0D7] ">
+                      <div className="justify-between h-[38px] max-w-[400px] flex items-center text-xs px-2 font-normal leading-[14.52px] text-[#636363] rounded-lg  outline-none border border-[#CAD0D7] ">
                         {sticker || "Chọn danh mục"}
                         <img className="" src="/images/dropdown.svg" alt="" />
                       </div>

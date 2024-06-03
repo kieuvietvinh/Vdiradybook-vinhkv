@@ -169,7 +169,7 @@ const StickerManagement = (props: any) => {
   };
 
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full  mt-[70px] sm:mt-[0px]">
+    <div className="w-full  mx-auto max-w-[800px]">
       {showStickers && (
         <div className="flex  justify-center">
           <div className=" max-w-[800px] w-full   bg-white rounded-2xl px-2 py-4 shadow shadow-[#00000026] relative">
@@ -224,7 +224,7 @@ const StickerManagement = (props: any) => {
                     </VButton>
                   ))}
                 </div>
-                <div className="contri flex flex-wrap items-center gap-2 pt-2 max-h-[90vh] overflow-y-scroll">
+                <div className="contri lg:grid lg:grid-cols-4 md:grid md:grid-cols-3  grid grid-cols-2 items-center gap-2 pt-2 max-h-[90vh] overflow-y-scroll">
                   {list.map((item) => (
                     <StickerAll item={item} />
                   ))}

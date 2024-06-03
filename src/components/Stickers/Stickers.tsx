@@ -32,12 +32,12 @@ const Stickers = (props: any) => {
           alt=""
         />
       </div>
-      <div className="mx-auto max-w-[494px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <div className="text-center">
-          <h1 className="font-semibold text-3xl text-white leading-[36.31px] whitespace-nowrap">
+      <div className="mx-auto max-w-[494px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:mt-0 mt-[50px]">
+        <div className="text-center ">
+          <h1 className="font-semibold md:text-3xl text-2xl text-white leading-[36.31px] whitespace-nowrap">
             Đăng ký Sticker
           </h1>
-          <p className="font-semibold text-base text-white leading-[19.36px] py-4">
+          <p className="font-semibold md:text-base text-sm text-white leading-[19.36px] py-4 ">
             Bạn muốn đăng tải bộ sticker của mình trên VdiaryBook Sticker? Hãy
             đăng ký ngay với VdiaryBook nhé!
           </p>

@@ -8,7 +8,7 @@ const Template = () => {
   return (
     <>
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto max-w-[100px] w-full"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -18,7 +18,7 @@ const Template = () => {
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-[800px]">
+            <div className="relative w-auto my-6 mx-auto max-w-[1272px]">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full p-4 bg-white outline-none focus:outline-none">
                 <div className="flex">
                   <div>
@@ -75,6 +75,46 @@ const Template = () => {
                       <VButton className="bg-[#0000000D]  rounded-full h-9 w-9 flex gap-2 items-center px-[12px]">
                         <img src="/images/bacham.svg" alt="" />
                       </VButton>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <p className="text-[#1F1F1F] font-semibold text-base">
+                      Mẫu tương tự
+                    </p>
+                    <span className="font-normal text-sm text-[#636363]">
+                      (10 mẫu)
+                    </span>
+                  </div>
+                  <div>
+                    <img src="/images/templateone.svg" alt="" />
+                    <p className="text-sm font-medium text-[#1F1F1F] ">
+                      Thiệp chúc mừng sinh nhật 1
+                    </p>
+                    <div className="userone  flex ">
+                      <a href="">
+                        <img
+                          className="onemo h-[28px] w-[28px]"
+                          src="/image/userone.png"
+                          alt=""
+                        />
+                        <img
+                          className="towmo"
+                          src="/image-left/Ensign.png"
+                          alt=""
+                        />
+                      </a>
+                      <div>
+                        <span className="flex items-center  leading-[16.94px] text-sm font-normal text-[#1F1F1F]">
+                          Trần Văn Đại
+                          <img
+                            className="teck"
+                            src="/image-left/teck.png"
+                            alt=""
+                          />
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

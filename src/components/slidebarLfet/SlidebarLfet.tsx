@@ -210,6 +210,11 @@ const linkpage = [
     page: "Màn Quản lí Sticker",
     link: "/stickerManagement",
   },
+  {
+    id: 18,
+    page: "Màn bộ lọc",
+    link: "/filter",
+  },
 ];
 const SlidebarLfet = () => {
   const [activeTab, setActiveTab] = useState(1);

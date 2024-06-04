@@ -82,7 +82,7 @@ const Stickers = (props: any) => {
                     menuclassName="w-full"
                     buttonclassName="w-full"
                     label={
-                      <div className="justify-between h-[38px] max-w-[400px] flex items-center text-xs px-2 font-normal leading-[14.52px] text-[#636363] rounded-lg  outline-none border border-[#CAD0D7] ">
+                      <div className="justify-between h-[38px] max-w-[400px] min-w-[340px] flex items-center text-xs px-2 font-normal leading-[14.52px] text-[#636363] rounded-lg  outline-none border border-[#CAD0D7] ">
                         {sticker || "Chọn danh mục"}
                         <img className="" src="/images/dropdown.svg" alt="" />
                       </div>

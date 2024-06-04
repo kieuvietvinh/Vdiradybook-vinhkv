@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 
 interface IProps {
   menu: {
-    key: string;
+    key: any;
     onClick?: Function;
     icon?: JSX.Element;
     disabled?: boolean;

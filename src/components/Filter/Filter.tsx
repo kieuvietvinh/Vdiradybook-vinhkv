@@ -3,6 +3,7 @@ import Input from "../core/v-input";
 import VButton from "../core/v-button";
 import Pending from "../StickerManagement/Pending";
 import Uploaded from "../StickerManagement/Uploaded";
+import VDropdown from "../core/v-drop";
 import VDropdownModal from "../core/v-dropdown";
 
 const tabs = [
@@ -107,47 +108,66 @@ const options = [
     category: "Sắp xếp vào danh mục của bạn",
     image: "/images/dropdown.svg",
     default: "Chọn danh mục",
+    key: "category",
   },
   {
     id: 2,
     category: "Độ tuổi phù hợp với nội dung này *",
     image: "/images/dropdown.svg",
     default: "Chọn độ tuổi",
+    key: "age",
   },
   {
     id: 3,
     category: "Chủ đề",
     image: "/images/dropdown.svg",
     default: "Chọn chủ đề",
+    key: "category_field",
   },
   {
     id: 1,
     category: "Đặt làm thông điệp",
     image: "/images/dropdown.svg",
     default: "Chọn thông điệp",
+    key: "moment",
   },
 ];
+
+const dataDefault = {
+  category: null,
+  age: null,
+  category_field: null,
+  moment: null,
+};
 const Filter = () => {
   const [transfer, setTransfer] = useState<String>("nanager");
   const handleTransfer = (key: any) => {
     setTransfer(key);
   };
   const [showModal, setShowModal] = useState(false);
-  const handleCategoryClick = (key: any, setterFunction: any) => {
-    setterFunction(key);
-  };
-  const [selectedCategory1, setSelectedCategory1] = useState(null);
-  const [selectedCategory2, setSelectedCategory2] = useState(null);
-  const [selectedCategory3, setSelectedCategory3] = useState(null);
-  const [selectedCategory4, setSelectedCategory4] = useState(null);
+  const [data, setData] = useState(dataDefault);
   //
   const [file, setFile] = useState<any>(null);
   const [fileType, setFileType] = useState("");
+
+  const onChange = (key: string, value: string) => {
+    setData((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
 
   const handleFileChange = (event: any) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
     setFileType(selectedFile.type.split("/")[0]);
+  };
+
+  console.log("data", data);
+
+  const getValueDropdown = (key: any) => {
+    const value = data[key];
+    return value || "";
   };
 
   return (
@@ -210,7 +230,7 @@ const Filter = () => {
         {transfer === "suggest" && <Uploaded />}
         {transfer === "approval" && <Pending />}
         {transfer === "nanager" && (
-          <div className=" items-center md:p-0 p-2  lg:grid lg:grid-cols-4 md:grid md:grid-cols-3 grid grid-cols-1 sm:grid sm:grid-cols-2 gap-2 w-full h-auto pt-1">
+          <div className=" items-center md:p-0 p-2  lg:grid lg:grid-cols-4 md:grid md:grid-cols-3 grid grid-cols-2  gap-2 w-full h-auto mt-2">
             {manages.map((manage, index) => (
               <div key={index} className="bg-white shadow-md border rounded-md">
                 <div className="">
@@ -284,79 +304,35 @@ const Filter = () => {
                       >
                         {option.category}
                       </label>
-                      <VDropdownModal
-                        className="w-full !top-8"
-                        menu={[
+                      <VDropdown
+                        className="w-full h-[38px]"
+                        options={[
                           {
-                            key: "option 1",
-                            onClick: () =>
-                              handleCategoryClick(
-                                "option 1",
-                                index === 0
-                                  ? setSelectedCategory1
-                                  : index === 1
-                                  ? setSelectedCategory2
-                                  : index === 2
-                                  ? setSelectedCategory3
-                                  : setSelectedCategory4
-                              ),
+                            label: "option 1",
+                            onClick: () => onChange(option.key, "option 1"),
                           },
                           {
-                            key: "option 2",
-                            onClick: () =>
-                              handleCategoryClick(
-                                "option 2",
-                                index === 0
-                                  ? setSelectedCategory1
-                                  : index === 1
-                                  ? setSelectedCategory2
-                                  : index === 2
-                                  ? setSelectedCategory3
-                                  : setSelectedCategory4
-                              ),
+                            label: "option 2",
+                            onClick: () => onChange(option.key, "option 2"),
                           },
                           {
-                            key: "option 3",
-                            onClick: () =>
-                              handleCategoryClick(
-                                "option 3",
-                                index === 0
-                                  ? setSelectedCategory1
-                                  : index === 1
-                                  ? setSelectedCategory2
-                                  : index === 2
-                                  ? setSelectedCategory3
-                                  : setSelectedCategory4
-                              ),
+                            label: "option 3",
+                            onClick: () => onChange(option.key, "option 3"),
                           },
                           {
-                            key: "option 4",
-                            onClick: () =>
-                              handleCategoryClick(
-                                "option 4",
-                                index === 0
-                                  ? setSelectedCategory1
-                                  : index === 1
-                                  ? setSelectedCategory2
-                                  : index === 2
-                                  ? setSelectedCategory3
-                                  : setSelectedCategory4
-                              ),
+                            label: "option 4",
+                            onClick: () => onChange(option.key, "option 4"),
                           },
                         ]}
+                        placeholder={option.default}
                         menuclassName="w-full"
                         buttonclassName="w-full"
-                        label={
-                          <div className="justify-between h-[38px] min-w-[276px]   flex items-center text-xs px-2 font-normal leading-[14.52px] text-[#A89E9F] rounded-lg  outline-none border border-[#CAD0D7] ">
-                            {[
-                              selectedCategory1,
-                              selectedCategory2,
-                              selectedCategory3,
-                              selectedCategory4,
-                            ][index] || option.default}
-                            <img className="" src={option.image} alt="" />
-                          </div>
-                        }
+                        // label={
+                        //   <div className="justify-between h-[38px] min-w-[276px]   flex items-center text-xs px-2 font-normal leading-[14.52px] text-[#A89E9F] rounded-lg  outline-none border border-[#CAD0D7] ">
+                        //     {getValueDropdown(option.key) || option.default}
+                        //     <img className="" src={option.image} alt="" />
+                        //   </div>
+                        // }
                       />
                     </div>
                   ))}
@@ -394,16 +370,6 @@ const Filter = () => {
                           </p>
                         </div>
                       )}
-                      {/* <VButton className="rounded-[100%] bg-[#D9D9D9] p-[8px] flex items-center gap-2 h-10 w-10 ">
-                        <img
-                          className="w-6 h-6"
-                          src="/images/music.svg"
-                          alt=""
-                        />
-                      </VButton>
-                      <p className="text-[#1F1F1F] font-medium text-sm">
-                        Âm thanh
-                      </p> */}
                     </div>
                     <div className="flex items-center gap-2">
                       <button className="rounded-lg bg-[#D9D9D9] p-2 flex items-center gap-2 h-9 w-[96px]">

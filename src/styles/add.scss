@@ -264,7 +264,14 @@ nav {
 
 }
 .towmo {
+    transform: translate(-6px, -30px);
+}
+.ensign {
     transform: translate(-6px, -38px);
+}
+
+.left::-webkit-scrollbar {
+    display: none;
 }
 
 .list::-webkit-scrollbar {

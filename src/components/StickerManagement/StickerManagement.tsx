@@ -205,7 +205,7 @@ const StickerManagement = (props: any) => {
             {transfer === "uploaded" && <Uploaded />}
             {transfer === "using" && (
               <>
-                <div className="contri tabs flex items-center gap-1 overflow-scroll pt-2">
+                <div className="contri flex items-center gap-1 overflow-scroll pt-2">
                   {stickers.map((sticker) => (
                     <VButton
                       onClick={() => handleClick(sticker)}
@@ -226,7 +226,7 @@ const StickerManagement = (props: any) => {
                 </div>
                 <div className="contri lg:grid lg:grid-cols-4 md:grid md:grid-cols-3  grid grid-cols-2 items-center gap-2 pt-2 max-h-[90vh] overflow-y-scroll">
                   {list.map((item) => (
-                    <StickerAll item={item} />
+                    <StickerAll key={item.id} item={item} />
                   ))}
                 </div>
               </>

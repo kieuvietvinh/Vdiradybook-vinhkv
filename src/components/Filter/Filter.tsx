@@ -191,12 +191,12 @@ const Filter = () => {
         </div>
       </div>
       <div className="bg-white h-auto w-full rounded-lg">
-        <div className="contri w-full   whitespace-nowrap gap-2 overflow-auto  flex justify-around  items-center border-y ">
+        <div className="contri w-full   whitespace-nowrap gap-2 overflow-auto  flex justify-between items-center border-y ">
           {tabs.map((tab) => (
             <VButton
               onClick={() => handleTransfer(tab.key)}
               key={tab.id}
-              className={`  leading-[16.94px] w-1/4  ${
+              className={`  leading-[16.94px] w-1/4 px-10 ${
                 transfer === tab.key
                   ? "border-b-2 border-[#4284F3] !text-[#4284F3] text-sm font-semibold"
                   : "text-sm font-normal hover:text-gray-800 !text-[#636363]"
@@ -260,7 +260,7 @@ const Filter = () => {
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-[600px]">
+            <div className="relative  my-6 mx-auto max-w-[600px] px-2 w-full">
               <div className="border-0 rounded-2xl shadow-lg relative flex flex-col w-full p-4 bg-white outline-none focus:outline-none">
                 <div className="border-b-2">
                   <h1 className="text-[#4284F3] text-2xl pb-4 font-semibold leading-[29.05px] text-center ">
@@ -275,7 +275,7 @@ const Filter = () => {
                     <img className="w-3 h-3" src="/images/Close.svg" alt="" />
                   </VButton>
                 </div>
-                <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="sm:grid sm:grid-cols-2 grid grid-cols-1 gap-4 pt-4">
                   {options.map((option, index) => (
                     <div key={index} className="">
                       <label
@@ -362,7 +362,7 @@ const Filter = () => {
                   ))}
                 </div>
                 <div className="border border-[#CAD0D7] p-4 rounded-lg mt-4">
-                  <div className="grid grid-cols-2">
+                  <div className="sm:grid sm:grid-cols-2 grid grid-cols-1">
                     <div className="flex items-center gap-2">
                       {file && (
                         <div className="mb-4 flex items-center gap-2">
@@ -406,7 +406,7 @@ const Filter = () => {
                       </p> */}
                     </div>
                     <div className="flex items-center gap-2">
-                      <button className="rounded-lg bg-[#D9D9D9] p-2 flex items-center gap-2 h-9 max-w-[96px]">
+                      <button className="rounded-lg bg-[#D9D9D9] p-2 flex items-center gap-2 h-9 w-[96px]">
                         <img
                           className="w-6 h-6"
                           src="/images/file.svg"
@@ -414,7 +414,7 @@ const Filter = () => {
                         />
                         <label
                           htmlFor="file-input"
-                          className="text-[#1F1F1F] font-medium text-sm"
+                          className="text-[#1F1F1F] font-medium text-sm whitespace-nowrap"
                         >
                           Tải lên
                         </label>
@@ -429,13 +429,13 @@ const Filter = () => {
                       <span className="text-[#636363] text-xs font-normal">
                         hoặc
                       </span>
-                      <VButton className="rounded-lg bg-[#D9D9D9] p-[8px] flex items-center gap-2 h-9 max-w-[134px] ">
+                      <VButton className="rounded-lg bg-[#D9D9D9] p-[8px] flex items-center gap-2 h-9 w-[134px] ">
                         <img
                           className="w-6 h-6"
                           src="/images/musicfolder.svg"
                           alt=""
                         />
-                        <p className="text-[#1F1F1F] font-medium text-sm">
+                        <p className="text-[#1F1F1F] font-medium text-sm whitespace-nowrap">
                           Chọn từ kho
                         </p>
                       </VButton>
@@ -443,26 +443,48 @@ const Filter = () => {
                   </div>
                   <div className="flex items-center justify-center mt-2">
                     <VDropdownModal
-                      className="flex items-center gap-2 justify-center -right-[39px]"
+                      className="flex items-center gap-2 justify-center !-right-[45px]"
                       menu={[
                         {
                           disabled: true,
                           key: (
-                            <div>
-                              <input
-                                id="link-checkbox"
-                                type="checkbox"
-                                value=""
-                                className="w-5 h-5 text-blue-600  bg-gray-100 border-gray-300 rounded-[3px] "
+                            <div className="flex items-center gap-2">
+                              <img
+                                className="w-6 h-6"
+                                src="/images/checkbox.svg"
+                                alt=""
                               />
+                              <p className="text-[#1F1F1F]">Đăng lên tường</p>
                             </div>
                           ),
                         },
                         {
-                          key: "Dùng làm quảng cáo",
+                          disabled: true,
+                          key: (
+                            <div className="flex items-center gap-2">
+                              <img
+                                className="w-6 h-6"
+                                src="/images/checkbox.svg"
+                                alt=""
+                              />
+                              <p className="text-[#1F1F1F]">
+                                Dùng làm quảng cáo
+                              </p>
+                            </div>
+                          ),
                         },
                         {
-                          key: "Chọn chủ đề",
+                          disabled: true,
+                          key: (
+                            <div className="flex items-center gap-2">
+                              <img
+                                className="w-6 h-6"
+                                src="/images/checkbox.svg"
+                                alt=""
+                              />
+                              <p className="text-[#1F1F1F]">Chọn chủ đề</p>
+                            </div>
+                          ),
                         },
                       ]}
                       label={
@@ -482,7 +504,7 @@ const Filter = () => {
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className=" fixed inset-0 z-40 bg-[#00000080]"></div>
         </>
       ) : null}
     </div>

@@ -34,10 +34,10 @@ const Stickers = (props: any) => {
       </div>
       <div className="mx-auto max-w-[494px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:mt-0 mt-[50px]">
         <div className="text-center ">
-          <h1 className="font-semibold md:text-3xl text-2xl text-white leading-[36.31px] whitespace-nowrap">
+          <h1 className="font-semibold text-3xl  text-white leading-[36.31px] whitespace-nowrap">
             Đăng ký Sticker
           </h1>
-          <p className="font-semibold md:text-base text-sm text-white leading-[19.36px] py-4 ">
+          <p className="font-semibold text-base  text-white leading-[19.36px] py-4 ">
             Bạn muốn đăng tải bộ sticker của mình trên VdiaryBook Sticker? Hãy
             đăng ký ngay với VdiaryBook nhé!
           </p>
@@ -82,7 +82,7 @@ const Stickers = (props: any) => {
                     menuclassName="w-full"
                     buttonclassName="w-full"
                     label={
-                      <div className="justify-between h-[38px] max-w-[400px] min-w-[340px] flex items-center text-xs px-2 font-normal leading-[14.52px] text-[#636363] rounded-lg  outline-none border border-[#CAD0D7] ">
+                      <div className="justify-between h-[38px] max-w-[400px] min-w-[345px] flex items-center text-xs px-2 font-normal leading-[14.52px] text-[#636363] rounded-lg  outline-none border border-[#CAD0D7] ">
                         {sticker || "Chọn danh mục"}
                         <img className="" src="/images/dropdown.svg" alt="" />
                       </div>

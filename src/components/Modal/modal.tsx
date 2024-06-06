@@ -3,7 +3,7 @@ import React from "react";
 const OffCanvasSidebar = ({ isOpen, onClose, children }) => {
   return (
     <div
-      className={`fixed top-[70px] h-[calc(100vh_-_70px)] rounded-tl-lg right-0 w-[400px] bg-white shadow-lg z-50 transition-all duration-300 ${
+      className={`fixed top-[70px] h-[calc(100vh_-_70px)] rounded-tl-lg right-0 w-[300px] bg-white shadow-lg z-50 transition-all duration-300 ${
         isOpen
           ? "opacity-100 visible translate-x-0"
           : "opacity-0 invisible -translate-x-full"

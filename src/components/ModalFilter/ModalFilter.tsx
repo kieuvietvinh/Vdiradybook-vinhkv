@@ -71,7 +71,7 @@ const ModalFilter = () => {
         </p>
       </VButton>
       <OffCanvasSidebar isOpen={isSidebarOpen} onClose={handleCloseSidebar}>
-        <div className="p-4   w-full justify-between flex h-full flex-col bottom-0 ">
+        <div className="p-4  w-full justify-between flex h-full flex-col bottom-0 ">
           <div className=" grid grid-cols-1 gap-4  ">
             {options.map((option, index) => (
               <div key={index} className="">
@@ -109,7 +109,7 @@ const ModalFilter = () => {
             ))}
           </div>
           <div>
-            <VButton className="flex items-center gap-2 bg-[#4284F3] rounded-2xl justify-center w-full mt-auto ">
+            <VButton className="flex items-center gap-2 bg-[#4284F3] h-9 rounded-2xl justify-center w-full mt-auto ">
               <img className=" pl-2" src="/images/filter.svg" alt="" />
               <p className="text-sm text-white font-medium whitespace-nowrap">
                 Áp dụng

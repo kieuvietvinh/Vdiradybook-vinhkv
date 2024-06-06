@@ -5,6 +5,8 @@ import Pending from "../StickerManagement/Pending";
 import Uploaded from "../StickerManagement/Uploaded";
 import VDropdown from "../core/v-drop";
 import VDropdownModal from "../core/v-dropdown";
+import App from "../Thu/Thu";
+import ModalFilter from "../ModalFilter/ModalFilter";
 
 const tabs = [
   {
@@ -194,17 +196,13 @@ const Filter = () => {
             alt=""
           />
         </div>
-        <div className="flex items-center gap-2 ">
+        <div className="flex items-center gap-3 ">
+          <ModalFilter />
+          <span className="h-6 w-[2px] bg-[#CAD0D7]"></span>
           <VButton
             onClick={() => setShowModal(true)}
-            className="flex items-center gap-2 "
+            className="flex items-center gap-2 bg-[#4284F3] rounded-[18px]  px-4"
           >
-            <img className=" pl-2" src="/images/filter.svg" alt="" />
-            <p className="text-sm text-[#4284F3] font-medium whitespace-nowrap">
-              Bộc lọc
-            </p>
-          </VButton>
-          <VButton className="flex items-center gap-2 bg-[#4284F3] rounded-[18px]  px-4">
             <img className=" pl-2" src="/images/cong.svg" alt="" />
             <p className="text-sm text-white font-medium">Tạo</p>
           </VButton>
@@ -327,12 +325,6 @@ const Filter = () => {
                         placeholder={option.default}
                         menuclassName="w-full"
                         buttonclassName="w-full"
-                        // label={
-                        //   <div className="justify-between h-[38px] min-w-[276px]   flex items-center text-xs px-2 font-normal leading-[14.52px] text-[#A89E9F] rounded-lg  outline-none border border-[#CAD0D7] ">
-                        //     {getValueDropdown(option.key) || option.default}
-                        //     <img className="" src={option.image} alt="" />
-                        //   </div>
-                        // }
                       />
                     </div>
                   ))}

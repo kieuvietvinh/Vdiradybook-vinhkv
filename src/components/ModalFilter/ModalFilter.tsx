@@ -34,7 +34,7 @@ const options = [
   },
 ];
 
-const App = () => {
+const ModalFilter = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleOpenSidebar = () => {
@@ -71,7 +71,7 @@ const App = () => {
         </p>
       </VButton>
       <OffCanvasSidebar isOpen={isSidebarOpen} onClose={handleCloseSidebar}>
-        <div className="p-4  w-full justify-between flex h-full flex-col bottom-0 ">
+        <div className="p-4   w-full justify-between flex h-full flex-col bottom-0 ">
           <div className=" grid grid-cols-1 gap-4  ">
             {options.map((option, index) => (
               <div key={index} className="">
@@ -122,4 +122,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default ModalFilter;

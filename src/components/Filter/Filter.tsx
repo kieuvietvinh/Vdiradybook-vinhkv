@@ -147,13 +147,13 @@ const Filter = () => {
     setTransfer(key);
   };
   const [showModal, setShowModal] = useState(false);
-  const [data, setData] = useState(dataDefault);
+  const [data, setData] = useState<any>(dataDefault);
   //
   const [file, setFile] = useState<any>(null);
   const [fileType, setFileType] = useState("");
 
   const onChange = (key: string, value: string) => {
-    setData((prev) => ({
+    setData((prev: any) => ({
       ...prev,
       [key]: value,
     }));
@@ -198,7 +198,7 @@ const Filter = () => {
         </div>
         <div className="flex items-center gap-3 ">
           <ModalFilter />
-          <span className="h-6 w-[2px] bg-[#CAD0D7]"></span>
+          <span className="h-6 w-[1.5px] bg-[#CAD0D7]"></span>
           <VButton
             onClick={() => setShowModal(true)}
             className="flex items-center gap-2 bg-[#4284F3] rounded-[18px]  px-4"

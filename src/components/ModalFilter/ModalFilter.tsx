@@ -35,7 +35,7 @@ const options = [
 ];
 
 const ModalFilter = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<any>(false);
 
   const handleOpenSidebar = () => {
     setIsSidebarOpen(true);
@@ -50,9 +50,9 @@ const ModalFilter = () => {
     field: null,
     privacy: null,
   };
-  const [data, setData] = useState(dataDefault);
+  const [data, setData] = useState<any>(dataDefault);
   const onChange = (key: string, value: string) => {
-    setData((prev) => ({
+    setData((prev: any) => ({
       ...prev,
       [key]: value,
     }));
@@ -110,7 +110,7 @@ const ModalFilter = () => {
           </div>
           <div>
             <VButton className="flex items-center gap-2 bg-[#4284F3] h-9 rounded-2xl justify-center w-full mt-auto ">
-              <img className=" pl-2" src="/images/filter.svg" alt="" />
+              <img className=" " src="/images/checkone.svg" alt="" />
               <p className="text-sm text-white font-medium whitespace-nowrap">
                 Áp dụng
               </p>

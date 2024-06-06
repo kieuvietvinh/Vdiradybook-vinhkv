@@ -83,6 +83,22 @@ const stickers = [
 
 const Template = () => {
   const [showModal, setShowModal] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const images = [
+    "/images/tampalate.svg",
+    "/images/templateone.svg",
+    "/images/templatetwo.svg",
+  ];
+
+  const handleImageClick = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+  const handlePreviousClick = () => {
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
 
   return (
     <>
@@ -97,8 +113,8 @@ const Template = () => {
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-full my-6 mx-auto max-w-5xl">
-              <div className="border-0 rounded-2xl shadow-lg relative flex flex-col w-full p-4 bg-white outline-none focus:outline-none">
+            <div className="relative w-full my-6 mx-auto max-w-5xl max-h-full">
+              <div className="border-0 rounded-2xl shadow-lg relative flex flex-col w-full p-4 bg-white outline-none focus:outline-none ">
                 <div className="flex justify-end mb-2 absolute -right-9 top-0">
                   <VButton
                     onClick={() => setShowModal(false)}
@@ -107,11 +123,15 @@ const Template = () => {
                     <img className="w-3 h-3" src="/images/Close.svg" alt="" />
                   </VButton>
                 </div>
-                <div className="flex ">
-                  <div>
-                    <img src="/images/tamplate.svg" alt="" />
+                <div className="flex gap-2 max-[768px]:flex-col mb-6">
+                  <div className="w-3/5 max-[768px]:w-full">
+                    <img
+                      className="w-full"
+                      src={images[currentImageIndex]}
+                      alt=""
+                    />
                   </div>
-                  <div className="px-2">
+                  <div className="px-2 w-2/5 max-[768px]:w-full">
                     <h1 className="leading-[29.05px] text-2xl font-semibold text-[#1F1F1F]">
                       Thiệp chúc mừng sinh nhật hiện đại, sang trọng
                     </h1>
@@ -155,7 +175,7 @@ const Template = () => {
                         </p>
                       </VButton>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 border-b pb-2">
                       <VButton className="bg-[#4284F3] w-full px-4 rounded-[18px] flex gap-2 items-center">
                         <img src="/images/pen.svg" alt="" />
                         <p className="whitespace-nowrap">Tùy chỉnh mẫu này</p>
@@ -167,9 +187,37 @@ const Template = () => {
                         <img src="/images/bacham.svg" alt="" />
                       </VButton>
                     </div>
+                    <div className="flex items-center pt-2 w-full relative">
+                      <VButton
+                        onClick={handlePreviousClick}
+                        className="bg-white  rounded-full h-9 w-9 flex gap-2 left-0 items-center px-[8px] absolute"
+                      >
+                        <img src="/images/left.svg" alt="" />
+                      </VButton>
+                      <div className="flex gap-2">
+                        {images.map((image, index) => (
+                          <img
+                            key={index}
+                            src={image}
+                            alt={`Image ${index}`}
+                            className={`w-1/3 object-contain cursor-pointer  ${
+                              index === currentImageIndex
+                                ? "border-4 border-[#4284F3] rounded-2xl"
+                                : ""
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <VButton
+                        onClick={handleImageClick}
+                        className="bg-white -right-4  rounded-full h-9 w-9 flex gap-2 items-center px-[8px] absolute"
+                      >
+                        <img src="/images/right.svg" alt="" />
+                      </VButton>
+                    </div>
                   </div>
                 </div>
-                <div className="pt-4 ">
+                <div className=" ">
                   <div className="flex items-center gap-2 ">
                     <p className="text-[#1F1F1F] font-semibold text-base">
                       Mẫu tương tự
@@ -189,7 +237,7 @@ const Template = () => {
                         <p className="text-sm font-medium text-[#1F1F1F] pt-2">
                           {sample.wish}
                         </p>
-                        <div className="userone  flex items-center gap-2 pt-2">
+                        <div className="userone  flex items-center gap-2 p-2">
                           <a href="">
                             <img
                               className="onemo h-[28px] w-[28px]"
@@ -219,7 +267,7 @@ const Template = () => {
                       Khám phá thêm
                     </p>
                   </div>
-                  <div className="contri flex items-center gap-1  pt-2 overflow-x-scroll max-w">
+                  <div className="contri flex items-center gap-1  pt-2 overflow-x-scroll">
                     {stickers.map((sticker) => (
                       <VButton
                         key={sticker.id}

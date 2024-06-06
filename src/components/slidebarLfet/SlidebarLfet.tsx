@@ -215,6 +215,11 @@ const linkpage = [
     page: "Màn bộ lọc",
     link: "/filter",
   },
+  {
+    id: 19,
+    page: "Màn Tempalate",
+    link: "/template",
+  },
 ];
 const SlidebarLfet = () => {
   const [activeTab, setActiveTab] = useState(1);

@@ -1,52 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const ImageGallery = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const SearchInput = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [suggestions, setSuggestions] = useState<string[]>([]);
 
-  const images = [
-    "/images/tatca.svg",
-    "/images/gautruc.svg",
-    "/images/meo.svg",
+  const names = [
+    "Mangxahoi",
+    "Amthuc",
+    "Chuongtrinh",
+    "Thamgia",
+    "Toquocghicong",
+    "Toquoc",
+    "Trituenhantao",
   ];
 
-  const handleNextClick = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  useEffect(() => {
+    if (searchTerm.trim() !== "") {
+      const filteredNames = names.filter((name) =>
+        name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setSuggestions(filteredNames);
+    } else {
+      setSuggestions([]);
+    }
+  }, [searchTerm]);
+
+  const handleSearch = () => {
+    console.log("Searching for:", searchTerm);
   };
 
-  const handlePreviousClick = () => {
-    setCurrentImageIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+  const handleSuggestionClick = (name: string) => {
+    setSearchTerm(name);
+    setSuggestions([]);
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <button
-        className="mr-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
-        onClick={handlePreviousClick}
-      >
-        Previous
-      </button>
-      <div className="flex">
-        {images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Image ${index}`}
-            className={`max-w-full max-h-full object-contain cursor-pointer mr-4 ${
-              index === currentImageIndex ? "opacity-100" : "opacity-50"
-            }`}
-          />
-        ))}
+    <div className="flex flex-col items-center justify-center my-8">
+      <div className="relative w-full max-w-md">
+        <input
+          type="text"
+          placeholder="Search names..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+        {suggestions.length > 0 && (
+          <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg">
+            {suggestions.map((name, index) => (
+              <div
+                key={index}
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                onClick={() => handleSuggestionClick(name)}
+              >
+                {name}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <button
-        className="ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
-        onClick={handleNextClick}
+        onClick={handleSearch}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mt-4"
       >
-        Next
+        Search
       </button>
     </div>
   );
 };
 
-export default ImageGallery;
+export default SearchInput;

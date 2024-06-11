@@ -2,6 +2,75 @@ import React, { useState } from "react";
 import Input from "../core/v-input";
 import VButton from "../core/v-button";
 
+const users = [
+  {
+    id: 1,
+    image: "/images/vietnam.svg",
+  },
+  {
+    id: 2,
+    image: "/images/vnone.svg",
+  },
+  {
+    id: 3,
+    image: "/images/vntow.svg",
+  },
+
+  {
+    id: 4,
+    image: "/images/vntrue.svg",
+  },
+  {
+    id: 5,
+    image: "/images/vietnam.svg",
+  },
+  {
+    id: 6,
+    image: "/images/vnone.svg",
+  },
+  {
+    id: 7,
+    image: "/images/vntow.svg",
+  },
+
+  {
+    id: 8,
+    image: "/images/vntrue.svg",
+  },
+  {
+    id: 9,
+    image: "/images/vietnam.svg",
+  },
+  {
+    id: 10,
+    image: "/images/vnone.svg",
+  },
+  {
+    id: 11,
+    image: "/images/vntow.svg",
+  },
+
+  {
+    id: 12,
+    image: "/images/vntrue.svg",
+  },
+  {
+    id: 13,
+    image: "/images/vietnam.svg",
+  },
+  {
+    id: 14,
+    image: "/images/vnone.svg",
+  },
+  {
+    id: 15,
+    image: "/images/vnone.svg",
+  },
+  {
+    id: 16,
+    image: "/images/vntow.svg",
+  },
+];
 const topics = [
   {
     id: 1,
@@ -220,6 +289,16 @@ const hashtags = [
     ],
   },
 ];
+const chatpage = [
+  {
+    id: 1,
+    img: "/image/userone.png",
+    name: "Huyền Thương",
+    tatel: "Trò chuyện",
+    minute: "5 phút trước",
+    active: false,
+  },
+];
 
 const Hashtag = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -239,12 +318,19 @@ const Hashtag = () => {
     setSearchQuery(hashtag);
     setShowSuggestions(false);
   };
-  const [myhashtagId, setMyhashtagId] = useState([]);
+  const [myhashtagId, setMyhashtagId] = useState<any>([]);
 
   const handaddId = (e: any) => {
     setMyhashtagId(e.id);
     console.log("e.id :", e.id);
   };
+  const [purchaseButtonClicked, setPurchaseButtonClicked] = useState(false);
+
+  const handlePurchaseButtonClick = (hashtag: any) => {
+    setMyhashtagId(hashtag.id);
+    setPurchaseButtonClicked(true);
+  };
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="max-w-[51rem] mx-auto max-[900px]:px-2">
@@ -252,7 +338,7 @@ const Hashtag = () => {
         <img className="" src="/images/bannerhashtag.svg" alt="" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  h-9 flex  items-center">
           <Input
-            className="sm:w-[350px] md:w-[500px] w-[220px]  px-10 rounded-2xl  py-[6px] relative  font-normal text-sm text-[#1F1F1F] bg-white outline-none"
+            className="sm:w-[350px] md:w-[500px] w-[220px]  px-10 rounded-2xl  py-[6px] relative  font-normal text-xs sm:text-sm text-[#1F1F1F] bg-white outline-none"
             placeholder="Nhập hashtag bạn muốn tìm kiếm,..."
             value={searchQuery}
             onChange={handleSearch}
@@ -281,20 +367,22 @@ const Hashtag = () => {
           </div>
         </div>
       </div>
-      <div className="py-2">
-        <img src="/images/vietnam.svg" alt="" />
+      <div className="tabs py-2 flex items-center gap-4 overflow-x-scroll">
+        {users.map((user) => (
+          <img key={user.id} src={user.image} alt="" />
+        ))}
       </div>
       <div className="tabs flex items-center gap-2 whitespace-nowrap overflow-scroll">
-        <p className="text-[#1F1F1F] font-normal text-sm leading-[16.94px]">
+        <p className="text-[#1F1F1F] font-normal text-xs sm:text-sm leading-[16.94px]">
           Gợi ý chủ đề:
         </p>
         {topics.map((topic) => (
           <VButton
             key={topic.id}
-            className="flex items-center  gap-2 w-auto bg-white rounded-2xl px-4 py-1 border border-[#0000000D] h-8 shadow shadow-[#0000001A]"
+            className="flex items-center  gap-2 w-auto bg-white rounded-2xl px-4 py-1 border border-[#0000000D] sm:h-8 h-7 shadow shadow-[#0000001A]"
           >
             <img src={topic.img} alt="" />
-            <p className=" font-normal leading-[16.94px] text-sm !text-[#636363] text-inherit">
+            <p className=" font-normal leading-[16.94px] text-xs sm:text-sm !text-[#636363] text-inherit">
               {topic.name}
             </p>
           </VButton>
@@ -306,7 +394,7 @@ const Hashtag = () => {
             key={tab.id}
             className={`flex items-center  gap-2 w-auto h-[30px] rounded-2xl px-4 py-1 border border-[#0000000D]  shadow shadow-[#0000001A] ${tab.className}`}
           >
-            <p className=" font-normal leading-[16.94px] text-sm !text-white text-inherit">
+            <p className=" font-normal leading-[16.94px] text-xs sm:text-sm !text-white text-inherit">
               {tab.name}
             </p>
           </VButton>
@@ -315,24 +403,30 @@ const Hashtag = () => {
       {filteredHashtags.map((hashtag) => (
         <div
           key={hashtag.id}
-          className={`bg-white gap-2 rounded-lg p-2 mt-2 ${
+          className={` gap-2 rounded-lg p-2 mt-2 ${
             searchQuery.toLowerCase() === hashtag.hastag.toLowerCase()
               ? "shadow-md shadow-[#4284F3]"
               : "shadow-none"
-          } ${""}`}
+          } ${
+            hashtag.id === 2 &&
+            purchaseButtonClicked &&
+            hashtag.id === myhashtagId
+              ? "bg-[#28CD4133]"
+              : "bg-white"
+          }`}
         >
           <div className="flex justify-between items-center gap-2 flex-wrap">
             <div className="flex items-center">
               <span className="text-[#1F1F1F] text-base font-semibold">#</span>
-              <span className="text-[#1F1F1F] text-base font-semibold">
+              <span className="text-[#1F1F1F] sm:text-base text-sm font-semibold">
                 {hashtag.hastag}
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[#636363] font-normal text-sm whitespace-nowrap">
+              <span className="text-[#636363] font-normal text-xs sm:text-sm whitespace-nowrap">
                 Số lượng sử dụng:
               </span>
-              <span className="text-[#1F1F1F] font-medium text-sm">
+              <span className="text-[#1F1F1F] font-medium text-xs sm:text-sm">
                 {hashtag.comb}
               </span>
               <span className="w-[1.5px] h-5 bg-[#CAD0D7]"></span>
@@ -345,21 +439,122 @@ const Hashtag = () => {
             </div>
           </div>
           <div className="flex items-center gap-2 pt-2">
-            <span className="text-[#636363] font-normal text-base line-through">
-              {hashtag.oldPrice}.000đ
-            </span>
-            <span className="text-[#4284F3] font-semibold text-base">
-              {hashtag.newPrice}.000đ
-            </span>
+            {purchaseButtonClicked &&
+            hashtag.id === myhashtagId &&
+            (hashtag.id === 1 || hashtag.id === 3 || hashtag.id === 4) ? (
+              <div className="flex flex-wrap items-center gap-2">
+                <img src="/images/rattiet.svg" alt="" />
+                <span className="text-[#1F1F1F] font-normal sm:text-sm text-xs">
+                  Rất tiếc, hashtag này đã có người sở hữu.
+                </span>
+                <button
+                  onClick={() => setShowModal(true)}
+                  className="text-[#4284F3] font-medium  sm:text-sm text-xs"
+                >
+                  Xem chủ sở hữu
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <span className="text-[#636363] font-normal sm:text-base text-sm line-through">
+                  {hashtag.oldPrice}.000đ
+                </span>
+                <span className="text-[#4284F3] font-semibold sm:text-base text-sm">
+                  {hashtag.newPrice}.000đ
+                </span>
+              </div>
+            )}
           </div>
-          <div className="tabs pt-4 justify-between flex items-center gap-2 overflow-x-scroll ">
-            <div className="flex items-center gap-2">
+          {showModal ? (
+            <>
+              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                <div className="relative  my-6 mx-auto max-w-[400px] px-2 w-full">
+                  <div className="border-0 rounded-2xl shadow-lg relative flex flex-col w-full p-4 bg-white outline-none focus:outline-none">
+                    <div className="border-b-2">
+                      <h1 className="text-[#4284F3] text-[22px] pb-4 font-bold leading-7 text-center ">
+                        Người sở hữu
+                      </h1>
+                    </div>
+                    <div className="pt-2">
+                      {chatpage.map((chat) => (
+                        <div className="userone flex items-center gap-2">
+                          <div>
+                            <a href="">
+                              <img
+                                className="onemo"
+                                src="/image/userone.png"
+                                alt=""
+                              />
+                              <img
+                                className="towmo"
+                                src="/image-left/Ensign.png"
+                                alt=""
+                              />
+                            </a>
+                          </div>
+                          <div>
+                            <div className="flex items-center font-semibold text-sm text-[#4284F3]">
+                              {chat?.name}
+                              <img
+                                className="teck"
+                                src="/image-left/teck.png"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex justify-end mb-2 absolute right-4 top-4">
+                      <VButton
+                        onClick={() => setShowModal(false)}
+                        className="rounded-full bg-[#D9D9D9] p-[8px] px-[10px] flex items-center gap-2 h-8 w-8 "
+                      >
+                        <img
+                          className="w-3 h-3"
+                          src="/images/Close.svg"
+                          alt=""
+                        />
+                      </VButton>
+                    </div>
+                    <div>
+                      <li className="font-normal text-sm text-[#1F1F1F]">
+                        Đã mua hashtag <b>#toquocghicong </b>vào lúc{" "}
+                        <b>14:45</b> ngày <b>31/05/2024</b>
+                      </li>
+                      <li className="font-normal text-sm text-[#1F1F1F] pt-2">
+                        Thời hạn sở hữu: <b>31/12/2024</b>
+                      </li>
+                    </div>
+                    <VButton className="rounded-[18px] bg-[#4284F3] px-4 flex items-center gap-2 h-9 w-full mt-2">
+                      <img src="/images/tinnhan.svg" alt="" />
+                      <p className="text-white font-medium text-sm">Liên hệ</p>
+                    </VButton>
+                  </div>
+                </div>
+              </div>
+              <div className="opacity-25 fixed inset-0 z-40 bg-[#00000080]"></div>
+            </>
+          ) : null}
+
+          {purchaseButtonClicked &&
+            hashtag.id === myhashtagId &&
+            (hashtag.id === 2 || hashtag.id === 5) && (
+              <div className="flex items-center gap-2 pt-2">
+                <img src="/images/tuyetvoi.svg" alt="" />
+                <span className="text-[#1F1F1F] font-normal sm:text-sm text-xs">
+                  Tuyệt vời! Hashtag của bạn đang khả dụng.
+                </span>
+              </div>
+            )}
+          <div className=" pt-4 justify-between flex flex-wrap items-center gap-2  ">
+            <div className="tabs flex items-center gap-2 overflow-x-scroll">
               {hashtag.tabs.map((tab) => (
                 <VButton
                   key={tab.id}
                   className="  w-auto rounded-2xl px-3 py-1 bg-white border border-[#4284F3] h-[28px] shadow shadow-[#0000001A]"
                 >
-                  <p className=" font-normal leading-[16.94px] text-sm !text-[#4284F3] text-inherit whitespace-nowrap">
+                  <p className=" font-normal leading-[16.94px] text-xs sm:text-sm !text-[#4284F3] text-inherit whitespace-nowrap">
                     {tab.label}
                   </p>
                 </VButton>
@@ -367,11 +562,17 @@ const Hashtag = () => {
             </div>
             <div>
               <VButton
-                onClick={() => handaddId(hashtag)}
-                className="flex items-center  gap-2 w-auto bg-[#4284F3] rounded-2xl px-4 py-1 border border-[#0000000D] h-9 shadow shadow-[#0000001A]"
+                onClick={() => handlePurchaseButtonClick(hashtag)}
+                className={`flex items-center gap-2 w-auto rounded-2xl px-4 py-2 border border-[#0000000D] sm:h-9 h-7 shadow shadow-[#0000001A] ${
+                  purchaseButtonClicked &&
+                  hashtag.id === myhashtagId &&
+                  (hashtag.id === 1 || hashtag.id === 3 || hashtag.id === 4)
+                    ? "bg-[#4284F3] !text-white"
+                    : "bg-[#4284F3] !text-white"
+                }`}
               >
                 <img src="/images/shopping.svg" alt="" />
-                <p className=" font-normal leading-[16.94px] text-sm !text-white text-inherit whitespace-nowrap">
+                <p className="font-normal leading-[16.94px] text-xs sm:text-sm text-inherit whitespace-nowrap">
                   Mua ngay
                 </p>
               </VButton>

@@ -407,7 +407,10 @@ const Hashtag = () => {
             (hashtag.id === 2 || hashtag.id === 5) &&
             purchaseButtonClicked &&
             hashtag.id === myhashtagId
-              ? "bg-[#28CD4133]"
+              ? "bg-[#28CD4133] "
+              : (hashtag.id === 1 || hashtag.id === 3 || hashtag.id === 4) &&
+                hashtag.id === myhashtagId
+              ? "bg-[#0000000D]"
               : "bg-white"
           }`}
         >
@@ -465,31 +468,29 @@ const Hashtag = () => {
             <>
               <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div className="relative  my-6 mx-auto max-w-[400px] px-2 w-full">
-                  <div className="border-0 rounded-2xl shadow-lg relative flex flex-col w-full p-4 bg-white outline-none focus:outline-none">
+                  <div className="border-0 rounded-2xl shadow-lg relative gap-2 flex flex-col w-full p-4 bg-white outline-none focus:outline-none">
                     <div className="border-b-2">
                       <h1 className="text-[#4284F3] text-[22px] pb-4 font-bold leading-7 text-center ">
                         Người sở hữu
                       </h1>
                     </div>
-                    <div className="pt-2">
+                    <div className="">
                       {chatpage.map((chat) => (
                         <div className="userone flex items-center gap-2">
                           <div>
-                            <a href="">
-                              <img
-                                className="onemo"
-                                src="/image/userone.png"
-                                alt=""
-                              />
-                              <img
-                                className="towmo"
-                                src="/image-left/Ensign.png"
-                                alt=""
-                              />
-                            </a>
+                            <img
+                              className="onemo w-12 h-12"
+                              src="/image/userone.png"
+                              alt=""
+                            />
+                            <img
+                              className="towmo w-6 h-[16.94px]"
+                              src="/image-left/Ensign.png"
+                              alt=""
+                            />
                           </div>
                           <div>
-                            <div className="flex items-center font-semibold text-sm text-[#4284F3]">
+                            <div className="flex items-center pb-2 font-semibold text-sm text-[#4284F3]">
                               {chat?.name}
                               <img
                                 className="teck"
@@ -514,15 +515,15 @@ const Hashtag = () => {
                       </VButton>
                     </div>
                     <div>
-                      <li className="marker:m-0 font-normal text-sm text-[#1F1F1F]">
-                        Đã mua hashtag <b>#toquocghicong </b>vào lúc{" "}
+                      <li className="text-left  font-normal text-sm text-[#1F1F1F] ">
+                        Đã mua hashtag <b>#toquocghicong </b>vào lúc
                         <b>14:45</b> ngày <b>31/05/2024</b>
                       </li>
                       <li className="font-normal text-sm text-[#1F1F1F] pt-2">
                         Thời hạn sở hữu: <b>31/12/2024</b>
                       </li>
                     </div>
-                    <VButton className="rounded-[18px] bg-[#4284F3] px-4 flex items-center gap-2 h-9 w-full mt-2">
+                    <VButton className="rounded-[18px] bg-[#4284F3] px-4 flex items-center gap-2 h-9 w-full ">
                       <img src="/images/tinnhan.svg" alt="" />
                       <p className="text-white font-medium text-sm">Liên hệ</p>
                     </VButton>
@@ -559,12 +560,12 @@ const Hashtag = () => {
             <div>
               <VButton
                 onClick={() => handlePurchaseButtonClick(hashtag)}
-                className={`flex items-center gap-2 w-auto rounded-2xl px-4 py-2 border border-[#0000000D] sm:h-9 h-7 shadow shadow-[#0000001A] ${
+                className={` flex items-center gap-2 w-auto bg-[#4284F3] !text-white rounded-2xl px-4 py-2 border border-[#0000000D] sm:h-9 h-7 shadow shadow-[#0000001A] ${
                   purchaseButtonClicked &&
                   hashtag.id === myhashtagId &&
                   (hashtag.id === 1 || hashtag.id === 3 || hashtag.id === 4)
-                    ? "bg-[#4284F3] !text-white"
-                    : "bg-[#4284F3] !text-white"
+                    ? "opacity-50 "
+                    : " "
                 }`}
               >
                 <img src="/images/shopping.svg" alt="" />

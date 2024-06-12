@@ -514,7 +514,7 @@ const Hashtag = () => {
                         />
                       </VButton>
                     </div>
-                    <div>
+                    <ul className="list-disc pl-4">
                       <li className="text-left  font-normal text-sm text-[#1F1F1F] ">
                         Đã mua hashtag <b>#toquocghicong </b>vào lúc
                         <b>14:45</b> ngày <b>31/05/2024</b>
@@ -522,7 +522,7 @@ const Hashtag = () => {
                       <li className="font-normal text-sm text-[#1F1F1F] pt-2">
                         Thời hạn sở hữu: <b>31/12/2024</b>
                       </li>
-                    </div>
+                    </ul>
                     <VButton className="rounded-[18px] bg-[#4284F3] px-4 flex items-center gap-2 h-9 w-full ">
                       <img src="/images/tinnhan.svg" alt="" />
                       <p className="text-white font-medium text-sm">Liên hệ</p>

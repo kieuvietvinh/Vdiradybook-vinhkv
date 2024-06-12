@@ -294,9 +294,6 @@ const chatpage = [
     id: 1,
     img: "/image/userone.png",
     name: "Huyền Thương",
-    tatel: "Trò chuyện",
-    minute: "5 phút trước",
-    active: false,
   },
 ];
 
@@ -322,7 +319,6 @@ const Hashtag = () => {
 
   const handaddId = (e: any) => {
     setMyhashtagId(e.id);
-    console.log("e.id :", e.id);
   };
   const [purchaseButtonClicked, setPurchaseButtonClicked] = useState(false);
 
@@ -408,7 +404,7 @@ const Hashtag = () => {
               ? "shadow-md shadow-[#4284F3]"
               : "shadow-none"
           } ${
-            hashtag.id === 2 &&
+            (hashtag.id === 2 || hashtag.id === 5) &&
             purchaseButtonClicked &&
             hashtag.id === myhashtagId
               ? "bg-[#28CD4133]"
@@ -518,7 +514,7 @@ const Hashtag = () => {
                       </VButton>
                     </div>
                     <div>
-                      <li className="font-normal text-sm text-[#1F1F1F]">
+                      <li className="marker:m-0 font-normal text-sm text-[#1F1F1F]">
                         Đã mua hashtag <b>#toquocghicong </b>vào lúc{" "}
                         <b>14:45</b> ngày <b>31/05/2024</b>
                       </li>
